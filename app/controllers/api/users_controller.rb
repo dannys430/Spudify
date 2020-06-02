@@ -1,17 +1,17 @@
-class UsersController < ApplicationController
+class Api::UsersController < ApplicationController
   
   before_action :ensure_signed_in, only: [:index, ]
 
-  def new
-    @user = User.new
-    render :new
-  end
+  # def new
+  #   @user = User.new
+  #   render :new
+  # end
 
   def create
     @user = User.new(user_params)
     if @user.save
       sign_in(@user)
-      #redirect
+      render :show
     else
       flash.now[:errors] = @user.errors.full_messages
       # render json: @user.errors.full_messages

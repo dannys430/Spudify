@@ -7,7 +7,7 @@ class Signup extends React.Component {
       email: '',
       password: '',
       name: '',
-      birth_date: '',
+      birthDate: '',
       gender: ''
     }
 
@@ -56,14 +56,73 @@ class Signup extends React.Component {
             />
           </label>
           
+
+
+
+
+
           <label>What's your date of birth?
-            <input type="date"/>
+            <select name="" id="">
+              <option selected disabled value>Month</option>
+              <option value="01">January</option>
+              <option value="02">February</option>
+              <option value="03">March</option>
+              <option value="04">April</option>
+              <option value="05">May</option>
+              <option value="06">June</option>
+              <option value="07">July</option>
+              <option value="08">August</option>
+              <option value="09">September</option>
+              <option value="10">October</option>
+              <option value="11">November</option>
+              <option value="12">December</option>
+            </select>
+
+            <input type="text" placeholder="DD"/>
+            <input type="text" placeholder="YYYY"/>
+            
+            
           </label>
 
+
+
+
+
+
+
+
           <label>What's your gender?
-            <input type="radio" value="Male"/>
-            <input type="radio" value="Female"/>
-            <input type="radio" value="Non-binary"/>
+
+            <label>Male
+              <input 
+                type="radio"
+                id="Male"
+                name="gender" 
+                value='Male'
+                onChange={this.handleInput('gender')}
+              />
+            </label>
+
+            <label>Female
+              <input 
+                type="radio"
+                id="Female"
+                name="gender" 
+                value='Female'
+                onChange={this.handleInput('gender')}
+              />
+            </label>
+
+            <label>Non-binary
+              <input 
+                type="radio"
+                id="Non-binary"
+                name="gender" 
+                value='Non-binary'
+                onChange={this.handleInput('gender')}
+              />
+            </label>
+
           </label>
           <button onClick={this.handleSubmit}>SIGN UP</button>
           
