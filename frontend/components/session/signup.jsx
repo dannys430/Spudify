@@ -3,62 +3,21 @@ import React from 'react';
 class Signup extends React.Component {
   constructor(props) {
     super(props);
-    // this.bday = {
-    //   month: '',
-    //   date: '',
-    //   year: ''
-    // }
+  
     this.state = {
       email: '',
       password: '',
       name: '',
-      // birth_date: this.bday['year'] + this.bday['month'] + this.bday['date'],
-      birth_date: '',
+      birth_date: {
+        month: '',
+        date: '',
+        year: ''
+      },
       gender: ''
     }
 
-    
-
     this.handleSubmit = this.handleSubmit.bind(this)
-    // this.handleDate = this.handleDate.bind(this)
-
-    // this.handleBirthday = this.handleBirthday.bind(this)
-    // this.parseBirthday = this.parseBirthday.bind(this)
-
-    // this.handleMonth = this.handleMonth.bind(this)
-    // this.handleDate = this.handleDate.bind(this)
-    // this.handleYear = this.handleYear.bind(this)
-
-
   }
-
-  
-  // handleMonth(month) {
-    
-  //     this.bday['month'] = month
-    
-
-  //   // this.bday[month] = '12'
-  // }
-
-  // handleDate(date) {
-    
-  //     this.bday['date'] = date
-    
-
-  //   // this.bday[date] = '30'
-  // }
-
-  // handleYear(year) {
-    
-  //     this.bday['year'] = year
-    
-
-  //   // this.bday[year] = '1980'
-  // }
-
-  
-
 
 
   handleInput(type) {
@@ -67,54 +26,41 @@ class Signup extends React.Component {
     }
   }
 
-  // handleInput2(type1, type2) {
-  //   return (e) => {
-  //     this.setState({ [type1]: { [type2]: e.target.value}})
-  //   }
-  // }
+  handleYear(type) {
+    return (e) => {
+      this.setState({ birth_date: { [type]: e.target.value } })
+    }
+  }
 
-  // handleBirthday(type) {
-  //   return (e) => {
-  //     this.bday[type] = e.target.value
-  //   }
-  // }
+  handleMonth(type) {
+    return (e) => {
+      this.setState({birth_date: {[type]: e.target.value}})
+    }
+  }
 
-  // parseBirthday() {
-  //   this.setState({ birth_date: this.bday[month] + this.bday[date] + this.bday[year]})
-  // }
+  handleDate(type) {
+    return (e) => {
+      this.setState({ birth_date: { [type]: e.target.value } })
+    }
+  }
+
 
   handleSubmit(e) {
     e.preventDefault()
-    // this.parseBirthday()
-    this.props.createNewUser(this.state)
+    // debugger
+    const newUser = {
+      email: this.state.email,
+      password: this.state.password,
+      name: this.state.name,
+      birth_date: this.state.birth_date.date + this.state.birth_date.year + this.state.birth_date.month,
+      gender: this.state.gender
+    }
+    this.props.createNewUser(newUser)
     .then(() => this.props.history.push('/'))
   }
 
-  // FIRST
-  // function handleDate(mo) {
-  //   return function (dat) {
-  //     return function (yr) {
-  //       const month = mo.toString()
-  //       const date = dat.toString()
-  //       const year = yr.toString()
-  //       return year + month.padStart(2, '0') + date.padStart(2, '0')
-  //     }
-  //   }
-  // }
-
-  // SECOND
-  // handleDate(mo) {
-  //   return function (dt) {
-  //     return function (yr) {
-  //       const month = mo.toString()
-  //       const date = dt.toString()
-  //       const year = yr.toString()
-  //       return this.setState({birth_date: year + month.padStart(2, '0') + date.padStart(2, '0') }) 
-  //     }
-  //   }
-  // }
-  
   render() {
+    
     return (
       <div>
         <h1>Sign up for free to start listening.</h1>
@@ -127,6 +73,8 @@ class Signup extends React.Component {
               onChange={this.handleInput('email')}
             />
           </label>
+          
+          <br/>
 
           <label>Create a password
             <input 
@@ -136,6 +84,8 @@ class Signup extends React.Component {
             />
           </label>
 
+          <br />
+
           <label>What should we call you?
             <input 
               type="text" 
@@ -144,12 +94,12 @@ class Signup extends React.Component {
             />
           </label>
           
+          <br />
 
+            <input type="text" value={this.state.birth_date.date} onChange={this.handleDate('date')} />
+            <input type="text" value={this.state.birth_date.year} onChange={this.handleYear('year')} />
 
-
-
-
-            {/* <select onChange={this.handleDate('03')}>
+            <select value={this.state.birth_date.month} onChange={this.handleMonth('month')} >
               <option selected disabled value>Month</option>
               <option value="01">January</option>
               <option value="02">February</option>
@@ -163,28 +113,19 @@ class Signup extends React.Component {
               <option value="10">October</option>
               <option value="11">November</option>
               <option value="12">December</option>
-            </select> */}
+            </select>
 
-
-            {/* <input type="text" value={this.bday.month} onChange={() => this.handleMonth('12')}/>
-            <input type="text" onChange={() => this.handleDate('30')}/>
-          <input type="text" onChange={() => this.handleYear('1970')}/> */}
 
             {/* this works */}
-          <label>What's your date of birth?
+          {/* <label>What's your date of birth?
             <input 
               type="date"
               value={this.state.birth_date}
               onChange={this.handleInput('birth_date')}
             />
-          </label>
+          </label> */}
 
-
-
-
-
-
-
+          <br />
 
           <label>What's your gender?
 
@@ -219,6 +160,9 @@ class Signup extends React.Component {
             </label>
 
           </label>
+
+          <br />
+
           <button onClick={this.handleSubmit}>SIGN UP</button>
           
         </form>

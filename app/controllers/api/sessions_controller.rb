@@ -19,7 +19,7 @@ class Api::SessionsController < ApplicationController
 
   def destroy
     sign_out
-    #redirect
+    render json: { message: 'Logout successful.' }
   end
   
 end

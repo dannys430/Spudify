@@ -8,7 +8,7 @@ import LoginContainer from './session/login_container'
 import NavBarContainer from './navbar/nav_bar_container'
 
 const App = ({store}) => (
-  <div>
+  <div className="div">
     <Route path="/" component={NavBarContainer} />
     <AuthRoute path="/signup" component={SignupContainer} />
     <AuthRoute path="/login" component={LoginContainer} />
