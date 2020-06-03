@@ -8,11 +8,9 @@ class Signup extends React.Component {
       email: '',
       password: '',
       name: '',
-      birth_date: {
-        month: '',
-        date: '',
-        year: ''
-      },
+      bday_month: '',
+      bday_year: '',
+      bday_date: '',
       gender: ''
     }
 
@@ -26,35 +24,19 @@ class Signup extends React.Component {
     }
   }
 
-  handleYear(type) {
-    return (e) => {
-      this.setState({ birth_date: { [type]: e.target.value } })
-    }
-  }
-
-  handleMonth(type) {
-    return (e) => {
-      this.setState({birth_date: {[type]: e.target.value}})
-    }
-  }
-
-  handleDate(type) {
-    return (e) => {
-      this.setState({ birth_date: { [type]: e.target.value } })
-    }
-  }
-
+  // nesting state does a shallow merge
 
   handleSubmit(e) {
     e.preventDefault()
-    // debugger
+    debugger
     const newUser = {
       email: this.state.email,
       password: this.state.password,
       name: this.state.name,
-      birth_date: this.state.birth_date.date + this.state.birth_date.year + this.state.birth_date.month,
+      birth_date: this.state.bday_year + '/' + this.state.bday_month + '/' + this.state.bday_date,
       gender: this.state.gender
     }
+    debugger
     this.props.createNewUser(newUser)
     .then(() => this.props.history.push('/'))
   }
@@ -69,6 +51,7 @@ class Signup extends React.Component {
           <label>What's your email?
             <input 
               type="text" 
+              placeholder="Enter your email."
               value={this.state.email}
               onChange={this.handleInput('email')}
             />
@@ -79,6 +62,7 @@ class Signup extends React.Component {
           <label>Create a password
             <input 
               type="password"
+              placeholder="Create a password."
               value={this.state.password}
               onChange={this.handleInput('password')}
             />
@@ -89,6 +73,7 @@ class Signup extends React.Component {
           <label>What should we call you?
             <input 
               type="text" 
+              placeholder="Enter a profile name."
               value={this.state.name}
               onChange={this.handleInput('name')}
             />
@@ -96,34 +81,26 @@ class Signup extends React.Component {
           
           <br />
 
-            <input type="text" value={this.state.birth_date.date} onChange={this.handleDate('date')} />
-            <input type="text" value={this.state.birth_date.year} onChange={this.handleYear('year')} />
-
-            <select value={this.state.birth_date.month} onChange={this.handleMonth('month')} >
-              <option selected disabled value>Month</option>
-              <option value="01">January</option>
-              <option value="02">February</option>
-              <option value="03">March</option>
-              <option value="04">April</option>
-              <option value="05">May</option>
-              <option value="06">June</option>
-              <option value="07">July</option>
-              <option value="08">August</option>
-              <option value="09">September</option>
-              <option value="10">October</option>
-              <option value="11">November</option>
-              <option value="12">December</option>
+          <label>What's your date of birth?
+            <select value={this.state.bday_month} onChange={this.handleInput('bday_month')} >
+                <option value='' disabled >Month</option>
+                <option value="01">January</option>
+                <option value="02">February</option>
+                <option value="03">March</option>
+                <option value="04">April</option>
+                <option value="05">May</option>
+                <option value="06">June</option>
+                <option value="07">July</option>
+                <option value="08">August</option>
+                <option value="09">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
             </select>
 
-
-            {/* this works */}
-          {/* <label>What's your date of birth?
-            <input 
-              type="date"
-              value={this.state.birth_date}
-              onChange={this.handleInput('birth_date')}
-            />
-          </label> */}
+            <input type="text" placeholder="DD" maxlength="2" value={this.state.bday_date} onChange={this.handleInput('bday_date')} />
+            <input type="text" placeholder="YYYY" maxlength="4" value={this.state.bday_year} onChange={this.handleInput('bday_year')} />
+          </label>
 
           <br />
 

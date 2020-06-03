@@ -470,11 +470,9 @@ var Signup = /*#__PURE__*/function (_React$Component) {
       email: '',
       password: '',
       name: '',
-      birth_date: {
-        month: '',
-        date: '',
-        year: ''
-      },
+      bday_month: '',
+      bday_year: '',
+      bday_date: '',
       gender: ''
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
@@ -489,56 +487,25 @@ var Signup = /*#__PURE__*/function (_React$Component) {
       return function (e) {
         _this2.setState(_defineProperty({}, type, e.target.value));
       };
-    }
-  }, {
-    key: "handleYear",
-    value: function handleYear(type) {
-      var _this3 = this;
+    } // nesting state does a shallow merge
 
-      return function (e) {
-        _this3.setState({
-          birth_date: _defineProperty({}, type, e.target.value)
-        });
-      };
-    }
-  }, {
-    key: "handleMonth",
-    value: function handleMonth(type) {
-      var _this4 = this;
-
-      return function (e) {
-        _this4.setState({
-          birth_date: _defineProperty({}, type, e.target.value)
-        });
-      };
-    }
-  }, {
-    key: "handleDate",
-    value: function handleDate(type) {
-      var _this5 = this;
-
-      return function (e) {
-        _this5.setState({
-          birth_date: _defineProperty({}, type, e.target.value)
-        });
-      };
-    }
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
-      var _this6 = this;
+      var _this3 = this;
 
-      e.preventDefault(); // debugger
-
+      e.preventDefault();
+      debugger;
       var newUser = {
         email: this.state.email,
         password: this.state.password,
         name: this.state.name,
-        birth_date: this.state.birth_date.date + this.state.birth_date.year + this.state.birth_date.month,
+        birth_date: this.state.bday_year + '/' + this.state.bday_month + '/' + this.state.bday_date,
         gender: this.state.gender
       };
+      debugger;
       this.props.createNewUser(newUser).then(function () {
-        return _this6.props.history.push('/');
+        return _this3.props.history.push('/');
       });
     }
   }, {
@@ -548,31 +515,25 @@ var Signup = /*#__PURE__*/function (_React$Component) {
         onSubmit: this.handleSubmit
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "What's your email?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
+        placeholder: "Enter your email.",
         value: this.state.email,
         onChange: this.handleInput('email')
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Create a password", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "password",
+        placeholder: "Create a password.",
         value: this.state.password,
         onChange: this.handleInput('password')
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "What should we call you?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
+        placeholder: "Enter a profile name.",
         value: this.state.name,
         onChange: this.handleInput('name')
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        value: this.state.birth_date.date,
-        onChange: this.handleDate('date')
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        value: this.state.birth_date.year,
-        onChange: this.handleYear('year')
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-        value: this.state.birth_date.month,
-        onChange: this.handleMonth('month')
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "What's your date of birth?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        value: this.state.bday_month,
+        onChange: this.handleInput('bday_month')
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        selected: true,
-        disabled: true,
-        value: true
+        value: "",
+        disabled: true
       }, "Month"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "01"
       }, "January"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
@@ -597,7 +558,19 @@ var Signup = /*#__PURE__*/function (_React$Component) {
         value: "11"
       }, "November"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "12"
-      }, "December")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "What's your gender?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Male", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, "December")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        placeholder: "DD",
+        maxlength: "2",
+        value: this.state.bday_date,
+        onChange: this.handleInput('bday_date')
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        placeholder: "YYYY",
+        maxlength: "4",
+        value: this.state.bday_year,
+        onChange: this.handleInput('bday_year')
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "What's your gender?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Male", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "radio",
         id: "Male",
         name: "gender",
