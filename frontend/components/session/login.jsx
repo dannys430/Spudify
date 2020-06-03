@@ -23,11 +23,24 @@ class Login extends React.Component {
       .then(() => this.props.history.push('/'))
   }
 
+  renderErrors() {
+    return (
+      <ul>
+        {this.props.errors.map((error, i) => (
+          <li key={`error-${i}`}>
+            {error}
+          </li>
+        ))}
+      </ul>
+    );
+  }
+
   render() {
     return (
       <div>
-        <h1>To continue, log in to Spudify.</h1>
+        <p>To continue, log in to Spudify.</p>
         <form onSubmit={this.handleSubmit}>
+          {this.renderErrors()}
           <input 
             type="text" 
             placeholder="Email address" 
@@ -35,7 +48,7 @@ class Login extends React.Component {
             onChange={this.handleInput('email')}
           />
           <input 
-            type="text" 
+            type="password" 
             placeholder="Password" 
             value={this.state.password}
             onChange={this.handleInput('password')}

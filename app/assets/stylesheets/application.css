@@ -16,5 +16,25 @@
 
 
  .div {
-   background: blue;;
+   background: white;;
+ }
+
+ .signup-form {
+   display: flex;
+
+ }
+
+ .month {
+   display: flex;
+   flex-wrap: wrap;
+ }
+
+ .date {
+   display: flex;
+   flex-wrap: wrap;
+ }
+
+ .year {
+   display: flex;
+   flex-wrap: wrap;
  }
