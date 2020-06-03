@@ -13,9 +13,9 @@ class Api::UsersController < ApplicationController
       sign_in(@user)
       render :show
     else
-      flash.now[:errors] = @user.errors.full_messages
-      # render json: @user.errors.full_messages
-      render :new
+      # flash.now[:errors] = @user.errors.full_messages
+      render json: @user.errors.full_messages
+      # render :new
     end
   end
 
@@ -23,6 +23,7 @@ class Api::UsersController < ApplicationController
   end
 
   def show
+    @user = selected_user
   end
 
   def edit
