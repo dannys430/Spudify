@@ -1,0 +1,104 @@
+.form {
+  // background-color: gray;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  box-sizing: border-box;
+  border-top: 1px solid #d9dadc;
+  padding-top: 30px;
+}
+
+
+.form-input {
+  // border-radius: 5px;
+  border: 1px solid #d9dadc;
+  // padding: 7px 116px;
+  padding: 7px 230px 7px 10px;
+  margin-bottom: 47px;
+  text-align: left;
+}
+
+.form-input:after {
+  margin-bottom: 30px;
+}
+
+.form-input:focus {
+  border: 1px solid gray;
+}
+
+.form-errors {
+  color: red;
+  font-family: 'ProximaNova-Regular';
+  margin-top: -40px;
+  margin-bottom: 3px;
+}
+
+// .form-errors:after {
+//   margin-top: -33px;
+//   margin-bottom: 4px;
+// }
+
+.logo-div {
+  display: flex;
+  justify-content: center;
+  padding: 21px;
+  // border-bottom: 1px solid #d9dadc;
+  // background-color: blue;
+  
+}
+
+.logo {
+  max-width: 220px;
+}
+
+.login-msg {
+  font-size: 15px;
+  font-weight: 200;
+  font-family: 'ProximaNova-Bold';
+  display: flex;
+  justify-content: center;
+  letter-spacing: -.15px;
+  padding-bottom: 10px;
+}
+
+.facebook-button {
+  background-color: #3b5997;
+  color: white;
+  padding: 12px 87px;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 9px;
+  font-size: 12.8px;
+  font-family: 'ProximaNova-Bold';
+  letter-spacing: 2px;
+}
+
+.apple-button {
+  background-color: #000000;
+  color: white;
+  padding: 11px 96px;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 9px;
+  font-size: 12.8px;
+  font-family: 'ProximaNova-Bold';
+  letter-spacing: 2px;
+}
+
+.login-button {
+  background-color: green;
+  color: white;
+  padding: 12px 60px;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  float: right;
+  margin-bottom: 9px;
+  font-size: 12.8px;
+  font-family: 'ProximaNova-Bold';
+  letter-spacing: 2px;
+
+}
+

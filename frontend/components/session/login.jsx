@@ -2,7 +2,7 @@ import React from 'react';
 
 function ValidationMsg(props) {
   if (!props.valid) {
-    return <div className='error-msg'>{props.message}</div>
+    return <div className='form-errors'>{props.message}</div>
   }
   return null;
 }
@@ -77,12 +77,25 @@ class Login extends React.Component {
   render() {
     return (
       <>
-        <p >To continue, log in to Spudify.</p>
-        <div className='form'>
+        <div className="logo-div">
+          <img className="logo" src="/assets/spudify_logo.png" alt="Spudify Logo" />
+        </div>
+        <section className="form">
+        
+        <div>
           <form onSubmit={this.handleSubmit}>
+            <p className="login-msg">To continue, log in to Spotify.</p>
+
             
+              <button className="facebook-button"><p> &#9824; CONTINUE WITH FACEBOOK</p></button>
+              <button className="apple-button"><p> &#129364; CONTINUE WITH POTATO</p></button>
+            
+            
+
+
             <label>
-              <input 
+              <input
+                className="form-input"
                 type="text" 
                 placeholder="Email address" 
                 value={this.state.email}
@@ -94,7 +107,8 @@ class Login extends React.Component {
             <br/>
 
             <label>
-              <input 
+              <input
+                className="form-input"
                 type="password" 
                 placeholder="Password" 
                 value={this.state.password}
@@ -105,9 +119,10 @@ class Login extends React.Component {
             
             <br/>
 
-            <button onClick={this.handleSubmit}>LOG IN</button>
+            <button className="login-button" onClick={this.handleSubmit}>LOG IN</button>
           </form>
         </div>
+        </section>
       </>
     )
   }
