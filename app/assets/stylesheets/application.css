@@ -15,15 +15,15 @@
  */
 
 
- .div {
-   background: white;;
- }
 
- .signup-form {
+ .form {
    display: flex;
-
+   justify-content: center;
+   flex-direction: row;
  }
 
+
+/* 
  .month {
    display: flex;
    flex-wrap: wrap;
@@ -38,3 +38,15 @@
    display: flex;
    flex-wrap: wrap;
  }
+
+ .signup-errors {
+   position: relative;
+ } */
+
+ /* .center {
+  margin: auto;
+  width: 50%;
+  border: 3px solid green;
+  padding: 10px;
+} */
+

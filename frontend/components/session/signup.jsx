@@ -1,31 +1,142 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+function ValidationMsg(props) {
+  if (!props.valid) {
+    return <div className='error-msg'>{props.message}</div>
+  }
+  return null;
+}
+
 class Signup extends React.Component {
   constructor(props) {
     super(props);
   
     this.state = {
-      email: '',
-      password: '',
-      name: '',
-      bday_month: '',
-      bday_year: '',
-      bday_date: '',
-      gender: ''
+      email: '', emailValid: false,
+      password: '', passwordValid: false,
+      name: '', nameValid: false,
+      bday_month: '', 
+      bday_year: '', yearValid: false,
+      bday_date: '', dateValid: false,
+      gender: '',
+
+      formValid: false,
+      errorMsg: {}
     }
 
     this.handleSubmit = this.handleSubmit.bind(this)
   }
+  
+  validateForm() {
+    const { emailValid, passwordValid, nameValid, dateValid, yearValid } = this.state;
+    this.setState({
+      formValid: emailValid && passwordValid && nameValid && dateValid && yearValid
+    })
+  }
 
+  updateEmail(email) {
+    this.setState({email}, this.validateEmail)
+  }
+
+  validateEmail() {
+    const {email} = this.state;
+    let emailValid = true;
+    let errorMsg = {...this.state.errorMsg}
+    
+    if (!email.length) {
+      emailValid = false;
+      errorMsg.email = 'You need to enter your email.'
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      emailValid = false;
+      errorMsg.email = `This email is invalid.`
+    }
+    
+    this.setState({emailValid, errorMsg}, this.validateForm)
+  }
+  
+  updatePassword(password) {
+    this.setState({password}, this.validatePassword)
+  }
+
+  validatePassword() {
+    const {password} = this.state;
+    let passwordValid = true;
+    let errorMsg = { ...this.state.errorMsg}
+
+    if (!password.length) {
+      passwordValid = false;
+      errorMsg.password = 'You need to enter a password.'
+    } else if (password.length < 6) {
+      passwordValid = false;
+      errorMsg.password = 'Your password is too short.';
+    }
+
+    this.setState({passwordValid, errorMsg}, this.validateForm);
+  }
+
+  updateName(name) {
+    this.setState({name}, this.validateName)
+  }
+
+  validateName() {
+    const {name} = this.state;
+    let nameValid = true;
+    let errorMsg = {...this.state.errorMsg}
+
+    if (!name.length) {
+      nameValid = false;
+      errorMsg.name = 'Enter a name for your profile.'
+    } else {
+      nameValid = false;
+      errorMsg.name = 'This appears on your profile.'
+    }
+
+    this.setState({nameValid, errorMsg}, this.validateForm);
+  }
+
+  updateDate(bday_date) {
+    this.setState({bday_date}, this.validateDate)
+  }
+
+  validateDate() {
+    const {bday_date} = this.state;
+    let dateValid = true;
+    let errorMsg = {...this.state.errorMsg}
+
+    if (!bday_date.length || bday_date > 31 || isNaN(bday_date)) {
+      dateValid = false;
+      errorMsg.date = 'Enter a valid day of the month.'
+    } 
+
+    this.setState({dateValid, errorMsg}, this.validateForm);
+  }
+
+  updateYear(bday_year) {
+    this.setState({bday_year}, this.validateYear)
+  }
+
+  validateYear() {
+    const {bday_year} = this.state;
+    let yearValid = true;
+    let errorMsg = {...this.state.errorMsg}
+
+    if (!bday_year.length || bday_year < 1900 || isNaN(bday_year)) {
+      yearValid = false;
+      errorMsg.year = 'Enter a valid year.'
+    } else if(bday_year > 2007) {
+      yearValid = false;
+      errorMsg.year = `Sorry, you don't meet Spudify's age requirements`
+    }
+
+    this.setState({yearValid, errorMsg}, this.validateForm);
+  }
 
   handleInput(type) {
     return (e) => {
       this.setState({[type]: e.target.value})
     }
   }
-
-  // nesting state does a shallow merge
 
   handleSubmit(e) {
     e.preventDefault()
@@ -40,34 +151,21 @@ class Signup extends React.Component {
     .then(() => this.props.history.push('/'))
   }
 
-  renderErrors() {
-    return (
-      <ul>
-        {this.props.errors.map((error, i) => (
-          <li key={`error-${i}`}>
-            {error}
-          </li>
-        ))}
-      </ul>
-    );
-  }
-
-
   render() {
     return (
       <>
-        <div className='signup-form'>
-          <h1>Sign up for free to start listening.</h1>
+        <h1>Sign up for free to start listening.</h1>
+        <div className='form'>
           <form onSubmit={this.handleSubmit}>
-            {this.renderErrors()}
             <label>What's your email?
               <br/>
               <input 
                 type="text" 
                 placeholder="Enter your email."
                 value={this.state.email}
-                onChange={this.handleInput('email')}
-              />
+                onChange={(e) => this.updateEmail(e.target.value)}
+                />
+              <ValidationMsg valid={this.state.emailValid} message={this.state.errorMsg.email} />
             </label>
             
             <br/>
@@ -78,8 +176,9 @@ class Signup extends React.Component {
                 type="password"
                 placeholder="Create a password."
                 value={this.state.password}
-                onChange={this.handleInput('password')}
+                onChange={(e) => this.updatePassword(e.target.value)}
               />
+              <ValidationMsg valid={this.state.passwordValid} message={this.state.errorMsg.password} />
             </label>
 
             <br />
@@ -90,21 +189,20 @@ class Signup extends React.Component {
                 type="text" 
                 placeholder="Enter a profile name."
                 value={this.state.name}
-                onChange={this.handleInput('name')}
+                onChange={(e) => this.updateName(e.target.value)}
               />
+              <ValidationMsg valid={this.state.nameValid} message={this.state.errorMsg.name} />
             </label>
-            <br/>
-            <label>This appears on your profile.</label>
             
-            <br />
+        
 
             <div>
               <label>What's your date of birth?
                 <br/>
 
-                <div className='month'>
+                <div>
                   <label>Month
-                    {/* <br/> */}
+                    <br/>
                     <select value={this.state.bday_month} onChange={this.handleInput('bday_month')} >
                         <option value='' disabled >Month</option>
                         <option value="01">January</option>
@@ -124,55 +222,58 @@ class Signup extends React.Component {
                 </div>
 
                 
-                <div className="date">
+                <div>
                   <label>Day
                     {/* <br/> */}
-                    <input type="text" placeholder="DD" maxLength="2" value={this.state.bday_date} onChange={this.handleInput('bday_date')} />
+                    <input type="text" placeholder="DD" maxLength="2" value={this.state.bday_date} onChange={(e) => this.updateDate(e.target.value)} />
+                    <ValidationMsg valid={this.state.dateValid} message={this.state.errorMsg.date} />
                   </label>
                 </div>
 
-                <div className="year">
+                <div>
                   <label>Year
                     {/* <br/> */}
-                    <input type="text" placeholder="YYYY" maxLength="4" value={this.state.bday_year} onChange={this.handleInput('bday_year')} />
+                    <input type="text" placeholder="YYYY" maxLength="4" value={this.state.bday_year} onChange={(e) => this.updateYear(e.target.value)} />
+                    <ValidationMsg valid={this.state.yearValid} message={this.state.errorMsg.year} />
                   </label>
                 </div>
 
-                
               </label>
             </div>
 
             <br />
 
-            <label>What's your gender?
-              <br/>
-                <input 
-                  type="radio"
-                  id="Male"
-                  name="gender" 
-                  value='Male'
-                  onChange={this.handleInput('gender')}
-                />
-                <label>Male</label>
-
-                <input 
-                  type="radio"
-                  id="Female"
-                  name="gender" 
-                  value='Female'
-                  onChange={this.handleInput('gender')}
-                />
-                <label>Female</label>
-
-                <input 
-                  type="radio"
-                  id="Non-binary"
-                  name="gender" 
-                  value='Non-binary'
-                  onChange={this.handleInput('gender')}
-                />
-                <label>Non-binary</label>
-            </label>
+            <div>
+              <label>What's your gender?
+                <br/>
+                  <input 
+                    type="radio"
+                    id="Male"
+                    name="gender" 
+                    value='Male'
+                    onChange={this.handleInput('gender')}
+                  />
+                  <label>Male</label>
+  
+                  <input 
+                    type="radio"
+                    id="Female"
+                    name="gender" 
+                    value='Female'
+                    onChange={this.handleInput('gender')}
+                  />
+                  <label>Female</label>
+  
+                  <input 
+                    type="radio"
+                    id="Non-binary"
+                    name="gender" 
+                    value='Non-binary'
+                    onChange={this.handleInput('gender')}
+                  />
+                  <label>Non-binary</label>
+              </label>
+            </div>
 
             <br />
 

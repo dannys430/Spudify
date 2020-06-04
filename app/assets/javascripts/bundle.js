@@ -179,9 +179,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var App = function App() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "div"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/",
     component: _navbar_nav_bar_container__WEBPACK_IMPORTED_MODULE_5__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_route_utils__WEBPACK_IMPORTED_MODULE_2__["AuthRoute"], {
@@ -309,6 +307,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -333,6 +335,16 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+function ValidationMsg(props) {
+  if (!props.valid) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "error-msg"
+    }, props.message);
+  }
+
+  return null;
+}
+
 var Login = /*#__PURE__*/function (_React$Component) {
   _inherits(Login, _React$Component);
 
@@ -346,13 +358,77 @@ var Login = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {
       email: '',
-      password: ''
+      emailValid: false,
+      password: '',
+      passwordValid: false,
+      formValid: false,
+      errorMsg: {}
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(Login, [{
+    key: "validateForm",
+    value: function validateForm() {
+      var _this$state = this.state,
+          emailValid = _this$state.emailValid,
+          passwordValid = _this$state.passwordValid;
+      this.setState({
+        formValid: emailValid && passwordValid
+      });
+    }
+  }, {
+    key: "updateEmail",
+    value: function updateEmail(email) {
+      this.setState({
+        email: email
+      }, this.validateEmail);
+    }
+  }, {
+    key: "validateEmail",
+    value: function validateEmail() {
+      var email = this.state.email;
+      var emailValid = true;
+
+      var errorMsg = _objectSpread({}, this.state.errorMsg);
+
+      if (!email.length) {
+        emailValid = false;
+        errorMsg.email = 'Please enter your Spudify email address.';
+      }
+
+      this.setState({
+        emailValid: emailValid,
+        errorMsg: errorMsg
+      }, this.validateForm);
+    }
+  }, {
+    key: "updatePassword",
+    value: function updatePassword(password) {
+      this.setState({
+        password: password
+      }, this.validatePassword);
+    }
+  }, {
+    key: "validatePassword",
+    value: function validatePassword() {
+      var password = this.state.password;
+      var passwordValid = true;
+
+      var errorMsg = _objectSpread({}, this.state.errorMsg);
+
+      if (!password.length) {
+        passwordValid = false;
+        errorMsg.password = 'Please enter your password.';
+      }
+
+      this.setState({
+        passwordValid: passwordValid,
+        errorMsg: errorMsg
+      }, this.validateForm);
+    }
+  }, {
     key: "handleInput",
     value: function handleInput(type) {
       var _this2 = this;
@@ -372,32 +448,37 @@ var Login = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
-    key: "renderErrors",
-    value: function renderErrors() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.props.errors.map(function (error, i) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          key: "error-".concat(i)
-        }, error);
-      }));
-    }
-  }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "To continue, log in to Spudify."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      var _this4 = this;
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "To continue, log in to Spudify."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
-      }, this.renderErrors(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         placeholder: "Email address",
         value: this.state.email,
-        onChange: this.handleInput('email')
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        onChange: function onChange(e) {
+          return _this4.updateEmail(e.target.value);
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ValidationMsg, {
+        valid: this.state.emailValid,
+        message: this.state.errorMsg.email
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "password",
         placeholder: "Password",
         value: this.state.password,
-        onChange: this.handleInput('password')
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onChange: function onChange(e) {
+          return _this4.updatePassword(e.target.value);
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ValidationMsg, {
+        valid: this.state.passwordValid,
+        message: this.state.errorMsg.password
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleSubmit
-      }, "LOG IN")));
+      }, "LOG IN"))));
     }
   }]);
 
@@ -456,6 +537,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -481,6 +566,16 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+function ValidationMsg(props) {
+  if (!props.valid) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "error-msg"
+    }, props.message);
+  }
+
+  return null;
+}
+
 var Signup = /*#__PURE__*/function (_React$Component) {
   _inherits(Signup, _React$Component);
 
@@ -494,18 +589,175 @@ var Signup = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {
       email: '',
+      emailValid: false,
       password: '',
+      passwordValid: false,
       name: '',
+      nameValid: false,
       bday_month: '',
       bday_year: '',
+      yearValid: false,
       bday_date: '',
-      gender: ''
+      dateValid: false,
+      gender: '',
+      formValid: false,
+      errorMsg: {}
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(Signup, [{
+    key: "validateForm",
+    value: function validateForm() {
+      var _this$state = this.state,
+          emailValid = _this$state.emailValid,
+          passwordValid = _this$state.passwordValid,
+          nameValid = _this$state.nameValid,
+          dateValid = _this$state.dateValid,
+          yearValid = _this$state.yearValid;
+      this.setState({
+        formValid: emailValid && passwordValid && nameValid && dateValid && yearValid
+      });
+    }
+  }, {
+    key: "updateEmail",
+    value: function updateEmail(email) {
+      this.setState({
+        email: email
+      }, this.validateEmail);
+    }
+  }, {
+    key: "validateEmail",
+    value: function validateEmail() {
+      var email = this.state.email;
+      var emailValid = true;
+
+      var errorMsg = _objectSpread({}, this.state.errorMsg);
+
+      if (!email.length) {
+        emailValid = false;
+        errorMsg.email = 'You need to enter your email.';
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        emailValid = false;
+        errorMsg.email = "This email is invalid.";
+      }
+
+      this.setState({
+        emailValid: emailValid,
+        errorMsg: errorMsg
+      }, this.validateForm);
+    }
+  }, {
+    key: "updatePassword",
+    value: function updatePassword(password) {
+      this.setState({
+        password: password
+      }, this.validatePassword);
+    }
+  }, {
+    key: "validatePassword",
+    value: function validatePassword() {
+      var password = this.state.password;
+      var passwordValid = true;
+
+      var errorMsg = _objectSpread({}, this.state.errorMsg);
+
+      if (!password.length) {
+        passwordValid = false;
+        errorMsg.password = 'You need to enter a password.';
+      } else if (password.length < 6) {
+        passwordValid = false;
+        errorMsg.password = 'Your password is too short.';
+      }
+
+      this.setState({
+        passwordValid: passwordValid,
+        errorMsg: errorMsg
+      }, this.validateForm);
+    }
+  }, {
+    key: "updateName",
+    value: function updateName(name) {
+      this.setState({
+        name: name
+      }, this.validateName);
+    }
+  }, {
+    key: "validateName",
+    value: function validateName() {
+      var name = this.state.name;
+      var nameValid = true;
+
+      var errorMsg = _objectSpread({}, this.state.errorMsg);
+
+      if (!name.length) {
+        nameValid = false;
+        errorMsg.name = 'Enter a name for your profile.';
+      } else {
+        nameValid = false;
+        errorMsg.name = 'This appears on your profile.';
+      }
+
+      this.setState({
+        nameValid: nameValid,
+        errorMsg: errorMsg
+      }, this.validateForm);
+    }
+  }, {
+    key: "updateDate",
+    value: function updateDate(bday_date) {
+      this.setState({
+        bday_date: bday_date
+      }, this.validateDate);
+    }
+  }, {
+    key: "validateDate",
+    value: function validateDate() {
+      var bday_date = this.state.bday_date;
+      var dateValid = true;
+
+      var errorMsg = _objectSpread({}, this.state.errorMsg);
+
+      if (!bday_date.length || bday_date > 31 || isNaN(bday_date)) {
+        dateValid = false;
+        errorMsg.date = 'Enter a valid day of the month.';
+      }
+
+      this.setState({
+        dateValid: dateValid,
+        errorMsg: errorMsg
+      }, this.validateForm);
+    }
+  }, {
+    key: "updateYear",
+    value: function updateYear(bday_year) {
+      this.setState({
+        bday_year: bday_year
+      }, this.validateYear);
+    }
+  }, {
+    key: "validateYear",
+    value: function validateYear() {
+      var bday_year = this.state.bday_year;
+      var yearValid = true;
+
+      var errorMsg = _objectSpread({}, this.state.errorMsg);
+
+      if (!bday_year.length || bday_year < 1900 || isNaN(bday_year)) {
+        yearValid = false;
+        errorMsg.year = 'Enter a valid year.';
+      } else if (bday_year > 2007) {
+        yearValid = false;
+        errorMsg.year = "Sorry, you don't meet Spudify's age requirements";
+      }
+
+      this.setState({
+        yearValid: yearValid,
+        errorMsg: errorMsg
+      }, this.validateForm);
+    }
+  }, {
     key: "handleInput",
     value: function handleInput(type) {
       var _this2 = this;
@@ -513,8 +765,7 @@ var Signup = /*#__PURE__*/function (_React$Component) {
       return function (e) {
         _this2.setState(_defineProperty({}, type, e.target.value));
       };
-    } // nesting state does a shallow merge
-
+    }
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
@@ -533,39 +784,45 @@ var Signup = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
-    key: "renderErrors",
-    value: function renderErrors() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.props.errors.map(function (error, i) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          key: "error-".concat(i)
-        }, error);
-      }));
-    }
-  }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "signup-form"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Sign up for free to start listening."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      var _this4 = this;
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Sign up for free to start listening."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
-      }, this.renderErrors(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "What's your email?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "What's your email?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         placeholder: "Enter your email.",
         value: this.state.email,
-        onChange: this.handleInput('email')
+        onChange: function onChange(e) {
+          return _this4.updateEmail(e.target.value);
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ValidationMsg, {
+        valid: this.state.emailValid,
+        message: this.state.errorMsg.email
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Create a password", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "password",
         placeholder: "Create a password.",
         value: this.state.password,
-        onChange: this.handleInput('password')
+        onChange: function onChange(e) {
+          return _this4.updatePassword(e.target.value);
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ValidationMsg, {
+        valid: this.state.passwordValid,
+        message: this.state.errorMsg.password
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "What should we call you?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         placeholder: "Enter a profile name.",
         value: this.state.name,
-        onChange: this.handleInput('name')
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "This appears on your profile."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "What's your date of birth?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "month"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Month", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        onChange: function onChange(e) {
+          return _this4.updateName(e.target.value);
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ValidationMsg, {
+        valid: this.state.nameValid,
+        message: this.state.errorMsg.name
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "What's your date of birth?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Month", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
         value: this.state.bday_month,
         onChange: this.handleInput('bday_month')
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
@@ -595,23 +852,29 @@ var Signup = /*#__PURE__*/function (_React$Component) {
         value: "11"
       }, "November"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "12"
-      }, "December")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "date"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Day", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, "December")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Day", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         placeholder: "DD",
         maxLength: "2",
         value: this.state.bday_date,
-        onChange: this.handleInput('bday_date')
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "year"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Year", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        onChange: function onChange(e) {
+          return _this4.updateDate(e.target.value);
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ValidationMsg, {
+        valid: this.state.dateValid,
+        message: this.state.errorMsg.date
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Year", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         placeholder: "YYYY",
         maxLength: "4",
         value: this.state.bday_year,
-        onChange: this.handleInput('bday_year')
-      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "What's your gender?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        onChange: function onChange(e) {
+          return _this4.updateYear(e.target.value);
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ValidationMsg, {
+        valid: this.state.yearValid,
+        message: this.state.errorMsg.year
+      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "What's your gender?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "radio",
         id: "Male",
         name: "gender",
@@ -629,7 +892,7 @@ var Signup = /*#__PURE__*/function (_React$Component) {
         name: "gender",
         value: "Non-binary",
         onChange: this.handleInput('gender')
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Non-binary")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Non-binary"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleSubmit
       }, "SIGN UP"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Have an account?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/login"
