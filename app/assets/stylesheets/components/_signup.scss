@@ -1,0 +1,263 @@
+.logo-small-div {
+  display: flex;
+  justify-content: center;
+  margin-top: 35px;
+  margin-bottom: 10px;
+}
+
+.logo-small {
+  max-width: 140px;
+}
+
+.signup-form {
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+}
+
+.signup-form-form {
+  width: 409px;
+}
+
+.signup-msg {
+  font-size: 30.25px;
+  font-family: 'ProximaNova-Bold';
+  display: flex;
+  justify-content: center;
+  letter-spacing: -1px;
+  padding-bottom: 26px;
+  word-spacing: -2px;
+}
+
+.guest-button {
+  background-color: #3b5997;
+  color: white;
+  padding-top: 14.25px;
+  padding-bottom: 14.25px;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 9px;
+  font-size: 12.8px;
+  font-family: 'ProximaNova-Bold';
+  letter-spacing: 2px;
+  transition: 0.3s;
+}
+
+.or-signup {
+    border: none;
+    border-top: 1px solid #bdbdbd;
+    color: #878787;
+    overflow: visible;
+    text-align: center;
+    height: 5px;
+    margin-top: 23px;
+    margin-bottom: 19px;
+    letter-spacing: 2px;
+    width: 85%;
+}
+
+.or-signup:after {
+    background: #fff;
+    content: 'or';
+    font-family: 'ProximaNova-Bold';
+    font-size: 14px;
+    padding: 0px 20px 0px 20px;
+    position: relative;
+    top: -10px;
+}
+
+
+.signup-msg-2 {
+  font-size: 17px;
+  font-family: 'ProximaNova-Bold';
+  display: flex;
+  justify-content: center;
+  letter-spacing: -.15px;
+  padding-top: 1px;
+  padding-bottom: 17px;
+}
+
+
+
+.signup-prompts {
+  font-size: 14px;
+  font-weight: 200;
+  font-family: 'ProximaNova-Bold';
+  display: flex;
+  flex-direction: column;
+  letter-spacing: -.15px;
+  // padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+
+
+.signup-form-input {
+  font-size: 14px;
+  border: 1px solid #bdbdbd;
+  border-radius: 4px;
+  padding: 11px 226px 11px 10px;
+  margin-bottom: 27px;
+  text-align: left;
+}
+
+
+.signup-form-input:after {
+  margin-bottom: 30px;
+}
+
+.signup-form-input:focus {
+  border: 1px solid gray;
+}
+
+.signup-bday-div {
+  display: flex;
+  // flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.signup-bday-labels {
+  font-family: 'ProximaNova-Regular';
+}
+
+
+.signup-month-input {
+  font-size: 16.8px;
+  // color: #787878;
+  font-family: 'ProximaNova-Regular';
+  border: 1px solid #bdbdbd;
+  border-radius: 4px;
+  // padding: 11px 87px 11px 7px;
+  // margin-bottom: 47px;
+  text-align: left;
+  width: 172px;
+  padding-top: 9px;
+  padding-bottom: 9px;
+  padding-left: 10px;
+}
+.signup-month-input:focus {
+  border: 1px solid gray;
+}
+
+
+.signup-date-input {
+  font-size: 14px;
+  border: 1px solid #bdbdbd;
+  border-radius: 4px;
+  // padding: 11px 10px 11px 10px;
+  // margin-bottom: 47px;
+  text-align: left;
+  width: 70px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 10px;
+}
+.signup-date-input:focus {
+  border: 1px solid gray;
+}
+
+.signup-year-input {
+  font-size: 14px;
+  border: 1px solid #bdbdbd;
+  border-radius: 4px;
+  // padding: 11px 10px 11px 10px;
+  // margin-bottom: 47px;
+  text-align: left;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 10px;
+  width: 90px;
+}
+.signup-year-input:focus {
+  border: 1px solid gray;
+}
+
+.month-div {
+  display: flex;
+  flex-direction: column;  
+}
+
+.month-placeholder {
+  font-family: 'ProximaNova-Regular';
+  color: orange!important;
+}
+
+.date-div {
+  display: flex;
+  flex-direction: column;  
+}
+
+.year-div {
+  display: flex;
+  flex-direction: column;
+}
+
+.gender {
+  display: flex;
+  margin-top: 10px;
+}
+
+.gender label {
+  font-family: 'ProximaNova-Regular';
+}
+
+.male-radio {
+  margin-right: 10px;
+}
+
+.female-radio {
+  margin-left: 20px;
+  margin-right: 10px;
+}
+
+.non-binary-radio {
+  margin-left: 20px;
+  margin-right: 10px;
+}
+
+.signup-form-errors {
+  color: red;
+  font-family: 'ProximaNova-Regular';
+  margin-top: -20px;
+  margin-bottom: 2.7px;
+}
+
+.signup-button-2-div {
+  display: flex;
+  flex-direction: column;
+}
+
+.signup-button-2 {
+  background-color: #58ba55;
+  color: white;
+  padding: 12px 60px;
+  border-radius: 25px;
+  margin-bottom: 9px;
+  display: flex;
+  justify-content: center;
+  font-size: 12.8px;
+  font-family: 'ProximaNova-Bold';
+  letter-spacing: 2px;
+  transition: 0.3s;
+}
+
+.signup-button-2:hover {
+  background-color: #67d962;
+}
+
+.signup-login {
+  font-family: 'ProximaNova-Regular';
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 40px;
+}
+
+.tiny-login-link {
+  text-decoration: underline;
+  color: #67d962;
+  padding-left: 3px;
+}
+

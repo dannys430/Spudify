@@ -1,0 +1,168 @@
+.logo-div {
+  display: flex;
+  justify-content: center;
+  padding: 21px;
+}
+
+.logo {
+  max-width: 220px;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  box-sizing: border-box;
+  border-top: 1px solid #d9dadc;
+  padding-top: 30px;
+}
+
+
+.login-msg {
+  font-size: 15px;
+  font-family: 'ProximaNova-Bold';
+  display: flex;
+  justify-content: center;
+  letter-spacing: -.15px;
+  padding-bottom: 10px;
+}
+
+.fb-apple-buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.facebook-button {
+  background-color: #3b5997;
+  color: white;
+  padding: 14px;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 9px;
+  font-size: 12.8px;
+  font-family: 'ProximaNova-Bold';
+  letter-spacing: 2px;
+  transition: 0.3s;
+}
+
+.facebook-button:hover {
+  background-color: #3a61b3;
+}
+
+.apple-button {
+  background-color: #000000;
+  color: white;
+  padding: 11px;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 9px;
+  font-size: 12.8px;
+  font-family: 'ProximaNova-Bold';
+  letter-spacing: 2px;
+  transition: 0.3s;
+}
+
+.apple-button:hover {
+  background-color: #333333;
+}
+
+.or {
+    border: none;
+    border-top: 1px solid #d9dadc;
+    color: #333;
+    overflow: visible;
+    text-align: center;
+    height: 5px;
+    margin-top: 23px;
+    margin-bottom: 19px;
+}
+
+.or:after {
+    background: #fff;
+    content: 'OR';
+    font-family: 'ProximaNova-Bold';
+    font-size: 12px;
+    padding: 0px 18.5px 0px 18.5px;
+    position: relative;
+    top: -10px;
+}
+
+.form-input {
+  border: 1px solid #d9dadc;
+  padding: 7px 226px 7px 10px;
+  margin-bottom: 47px;
+  text-align: left;
+}
+
+.form-input::placeholder {
+  color: #c1c3c6;
+}
+.form-input:focus::placeholder {
+  color: #e8e8ea;
+}
+
+.form-input:after {
+  margin-bottom: 30px;
+}
+
+.form-input:focus {
+  border: 1px solid gray;
+}
+
+.form-errors {
+  color: red;
+  font-family: 'ProximaNova-Regular';
+  margin-top: -40px;
+  margin-bottom: 3px;
+}
+
+.login-button-div {
+  border-bottom: 1px solid #d9dadc;
+  padding-top: 1px;
+  padding-bottom: 60px;
+}
+
+.login-button {
+  background-color: #58ba55;
+  color: white;
+  padding: 12px 60px;
+  border-radius: 25px;
+  float: right;
+  margin-bottom: 9px;
+  font-size: 12.8px;
+  font-family: 'ProximaNova-Bold';
+  letter-spacing: 2px;
+  transition: 0.3s;
+}
+
+.login-button:hover {
+  background-color: #67d962;
+}
+
+
+.login-msg-2-div {
+  padding-top: 33px;
+}
+
+.signup-button {
+  margin-top: 8px;
+  border: 2px solid #616366;
+  color: #616366;
+  padding: 12px 96px;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  font-size: 12.8px;
+  font-family: 'ProximaNova-Bold';
+  letter-spacing: 2px;
+  transition: 0.3s;
+}
+
+.signup-button:hover {
+  background-color: #616366;
+  color: #fff;
+}
+
+
