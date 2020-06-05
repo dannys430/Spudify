@@ -156,7 +156,7 @@ class Signup extends React.Component {
     return (
       <>
         <div className="logo-small-div">
-          <img className="logo-small" src="/assets/spudify_solid_black_w_R.png" alt="Spudify Logo"/>
+          <img className="logo-small" src="/assets/logo.png" alt="Spudify Logo"/>
         </div>
 
         <section className='signup-form'>
@@ -222,9 +222,9 @@ class Signup extends React.Component {
                   <div className="month-div">
                     <label className="signup-bday-labels">Month
                       <br/>
-                      <div className="month-select">
+                      <div>
                         <select className="signup-month-input" value={this.state.bday_month} onChange={this.handleInput('bday_month')} >
-                            <option className="month-placeholder" value='' disabled >Month</option>
+                            <option value='' disabled >Month</option>
                             <option value="01">January</option>
                             <option value="02">February</option>
                             <option value="03">March</option>
