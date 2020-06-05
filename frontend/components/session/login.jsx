@@ -79,7 +79,7 @@ class Login extends React.Component {
     return (
       <>
         <div className="logo-div">
-          <img className="logo" src="/assets/spudify_solid_black_w_R.png" alt="Spudify Logo" />
+          <img className="logo" src="/assets/logo.png" alt="Spudify Logo" />
         </div>
 
         <section className="form">

@@ -459,7 +459,7 @@ var Login = /*#__PURE__*/function (_React$Component) {
         className: "logo-div"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "logo",
-        src: "/assets/spudify_solid_black_w_R.png",
+        src: "/assets/logo.png",
         alt: "Spudify Logo"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "form"
@@ -824,7 +824,7 @@ var Signup = /*#__PURE__*/function (_React$Component) {
         className: "logo-small-div"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "logo-small",
-        src: "/assets/spudify_solid_black_w_R.png",
+        src: "/assets/logo.png",
         alt: "Spudify Logo"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "signup-form"
@@ -888,14 +888,11 @@ var Signup = /*#__PURE__*/function (_React$Component) {
         className: "month-div"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "signup-bday-labels"
-      }, "Month", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "month-select"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+      }, "Month", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
         className: "signup-month-input",
         value: this.state.bday_month,
         onChange: this.handleInput('bday_month')
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        className: "month-placeholder",
         value: "",
         disabled: true
       }, "Month"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
