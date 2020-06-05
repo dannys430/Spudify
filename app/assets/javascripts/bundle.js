@@ -459,7 +459,7 @@ var Login = /*#__PURE__*/function (_React$Component) {
         className: "logo-div"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "logo",
-        src: "/assets/logo.png",
+        src: window.logoURL,
         alt: "Spudify Logo"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "form"
@@ -824,7 +824,7 @@ var Signup = /*#__PURE__*/function (_React$Component) {
         className: "logo-small-div"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "logo-small",
-        src: "/assets/logo.png",
+        src: window.logoURL,
         alt: "Spudify Logo"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "signup-form"

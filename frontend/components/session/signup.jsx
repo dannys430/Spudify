@@ -156,7 +156,7 @@ class Signup extends React.Component {
     return (
       <>
         <div className="logo-small-div">
-          <img className="logo-small" src="/assets/logo.png" alt="Spudify Logo"/>
+          <img className="logo-small" src={window.logoURL} alt="Spudify Logo"/>
         </div>
 
         <section className='signup-form'>
