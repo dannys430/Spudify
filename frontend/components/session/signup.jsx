@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function ValidationMsg(props) {
   if (!props.valid) {
-    return <div className='error-msg'>{props.message}</div>
+    return <div className='signup-form-errors'>{props.message}</div>
   }
   return null;
 }
@@ -87,10 +87,11 @@ class Signup extends React.Component {
     if (!name.length) {
       nameValid = false;
       errorMsg.name = 'Enter a name for your profile.'
-    } else {
-      nameValid = false;
-      errorMsg.name = 'This appears on your profile.'
-    }
+    } 
+    // else {
+    //   nameValid = false;
+    //   errorMsg.name = 'This appears on your profile.'
+    // }
 
     this.setState({nameValid, errorMsg}, this.validateForm);
   }
@@ -154,12 +155,27 @@ class Signup extends React.Component {
   render() {
     return (
       <>
-        <h1>Sign up for free to start listening.</h1>
-        <div className='form'>
-          <form onSubmit={this.handleSubmit}>
-            <label>What's your email?
+        <div className="logo-small-div">
+          <img className="logo-small" src="/assets/spudify_solid_black_w_R.png" alt="Spudify Logo"/>
+        </div>
+
+        <section className='signup-form'>
+
+          <form className="signup-form-form" onSubmit={this.handleSubmit}>
+            <h1 className="signup-msg">Sign up for free to start listening.</h1>
+
+            <div className="fb-apple-buttons">
+              <button className="guest-button"><p>CONTINUE AS GUEST</p></button>
+            </div>
+
+            <hr className="or-signup" />
+
+            <h2 className="signup-msg-2">Sign up with your email address</h2>
+
+            <label className="signup-prompts" >What's your email?
               <br/>
-              <input 
+              <input
+                className="signup-form-input" 
                 type="text" 
                 placeholder="Enter your email."
                 value={this.state.email}
@@ -170,9 +186,10 @@ class Signup extends React.Component {
             
             <br/>
 
-            <label>Create a password
+            <label className="signup-prompts" >Create a password
               <br/>
-              <input 
+              <input
+                className="signup-form-input" 
                 type="password"
                 placeholder="Create a password."
                 value={this.state.password}
@@ -183,9 +200,10 @@ class Signup extends React.Component {
 
             <br />
 
-            <label>What should we call you?
+            <label className="signup-prompts" >What should we call you?
               <br/>
-              <input 
+              <input
+                className="signup-form-input" 
                 type="text" 
                 placeholder="Enter a profile name."
                 value={this.state.name}
@@ -196,95 +214,118 @@ class Signup extends React.Component {
             
         
 
-            <div>
-              <label>What's your date of birth?
+            <label className="signup-prompts" >What's your date of birth?
+              <div>
                 <br/>
 
-                <div>
-                  <label>Month
-                    <br/>
-                    <select value={this.state.bday_month} onChange={this.handleInput('bday_month')} >
-                        <option value='' disabled >Month</option>
-                        <option value="01">January</option>
-                        <option value="02">February</option>
-                        <option value="03">March</option>
-                        <option value="04">April</option>
-                        <option value="05">May</option>
-                        <option value="06">June</option>
-                        <option value="07">July</option>
-                        <option value="08">August</option>
-                        <option value="09">September</option>
-                        <option value="10">October</option>
-                        <option value="11">November</option>
-                        <option value="12">December</option>
-                    </select>
-                  </label>
+                <div className="signup-bday-div">
+                  <div className="month-div">
+                    <label className="signup-bday-labels">Month
+                      <br/>
+                      <div className="month-select">
+                        <select className="signup-month-input" value={this.state.bday_month} onChange={this.handleInput('bday_month')} >
+                            <option className="month-placeholder" value='' disabled >Month</option>
+                            <option value="01">January</option>
+                            <option value="02">February</option>
+                            <option value="03">March</option>
+                            <option value="04">April</option>
+                            <option value="05">May</option>
+                            <option value="06">June</option>
+                            <option value="07">July</option>
+                            <option value="08">August</option>
+                            <option value="09">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
+                      </div>
+                    </label>
+                  </div>
+  
+                  
+                  <div className="date-div">
+                    <label className="signup-bday-labels">Day
+                      {/* <br/> */}
+                      <div className="date-input">
+                        <input className="signup-date-input" type="text" placeholder="DD" maxLength="2" value={this.state.bday_date} onChange={(e) => this.updateDate(e.target.value)} />
+                      </div>
+                    </label>
+                  </div>
+  
+                  <div className="year-div">
+                    <label className="signup-bday-labels">Year
+                      {/* <br/> */}
+                      <div className="year-input">
+                        <input className="signup-year-input" type="text" placeholder="YYYY" maxLength="4" value={this.state.bday_year} onChange={(e) => this.updateYear(e.target.value)} />
+                      </div>
+                    </label>
+                  </div>
                 </div>
 
-                
-                <div>
-                  <label>Day
-                    {/* <br/> */}
-                    <input type="text" placeholder="DD" maxLength="2" value={this.state.bday_date} onChange={(e) => this.updateDate(e.target.value)} />
-                    <ValidationMsg valid={this.state.dateValid} message={this.state.errorMsg.date} />
-                  </label>
-                </div>
-
-                <div>
-                  <label>Year
-                    {/* <br/> */}
-                    <input type="text" placeholder="YYYY" maxLength="4" value={this.state.bday_year} onChange={(e) => this.updateYear(e.target.value)} />
-                    <ValidationMsg valid={this.state.yearValid} message={this.state.errorMsg.year} />
-                  </label>
-                </div>
-
-              </label>
-            </div>
+              </div>
+            </label>
+            
+            <ValidationMsg valid={this.state.dateValid} message={this.state.errorMsg.date} />
+            <br/>
+            <ValidationMsg valid={this.state.yearValid} message={this.state.errorMsg.year} />
 
             <br />
 
-            <div>
-              <label>What's your gender?
-                <br/>
-                  <input 
-                    type="radio"
-                    id="Male"
-                    name="gender" 
-                    value='Male'
-                    onChange={this.handleInput('gender')}
-                  />
+            <label className="signup-prompts" >What's your gender?
+              <div className='gender'>
+                {/* <br/> */}
+
+
+                  <div className="male-radio">
+                    <input 
+                      type="radio"
+                      id="Male"
+                      name="gender" 
+                      value='Male'
+                      onChange={this.handleInput('gender')}
+                    />
+                  </div>
                   <label>Male</label>
   
-                  <input 
-                    type="radio"
-                    id="Female"
-                    name="gender" 
-                    value='Female'
-                    onChange={this.handleInput('gender')}
-                  />
+                  <div className="female-radio">
+                    <input 
+                      type="radio"
+                      id="Female"
+                      name="gender" 
+                      value='Female'
+                      onChange={this.handleInput('gender')}
+                    />
+                  </div>
                   <label>Female</label>
   
-                  <input 
-                    type="radio"
-                    id="Non-binary"
-                    name="gender" 
-                    value='Non-binary'
-                    onChange={this.handleInput('gender')}
-                  />
+                  <div className="non-binary-radio">
+                    <input 
+                      type="radio"
+                      id="Non-binary"
+                      name="gender" 
+                      value='Non-binary'
+                      onChange={this.handleInput('gender')}
+                    />
+                  </div>
                   <label>Non-binary</label>
-              </label>
-            </div>
+              </div>
+            </label>
 
             <br />
 
               {/* don't use javascript:void */}
             {/* <p>By clicking on Sign up, you agree to Spudify's <a href='javascript:void(0)'>Terms and Conditions of Use</a>.</p> */}
             
-            <button onClick={this.handleSubmit}>SIGN UP</button>
-            <p>Have an account?<Link to="/login">Log in</Link>.</p>
+
+            <div className="signup-button-2-div">
+            	<button className="signup-button-2" onClick={this.handleSubmit}>SIGN UP</button>
+            </div>
+
+              <p className="signup-login">Have an account?<Link className="tiny-login-link" to="/login">Log in</Link>.</p>
+           
             
           </form>
-        </div>
+        </section>
       </>
     )
   }

@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 function ValidationMsg(props) {
   if (!props.valid) {
@@ -78,19 +79,21 @@ class Login extends React.Component {
     return (
       <>
         <div className="logo-div">
-          <img className="logo" src="/assets/spudify_logo.png" alt="Spudify Logo" />
+          <img className="logo" src="/assets/spudify_solid_black_w_R.png" alt="Spudify Logo" />
         </div>
+
         <section className="form">
         
-        <div>
           <form onSubmit={this.handleSubmit}>
             <p className="login-msg">To continue, log in to Spotify.</p>
 
             
-              <button className="facebook-button"><p> &#9824; CONTINUE WITH FACEBOOK</p></button>
-              <button className="apple-button"><p> &#129364; CONTINUE WITH POTATO</p></button>
+              <div className="fb-apple-buttons">
+                <button className="facebook-button"><p>CONTINUE AS GUEST</p></button>
+                <button className="apple-button"><p> &#129364; CONTINUE WITH POTATO</p></button>
+              </div>
             
-            
+            <hr className="or" />
 
 
             <label>
@@ -119,9 +122,18 @@ class Login extends React.Component {
             
             <br/>
 
-            <button className="login-button" onClick={this.handleSubmit}>LOG IN</button>
+            <div className='login-button-div'>
+              <button className="login-button" onClick={this.handleSubmit}>LOG IN</button>
+            </div>
+
+          
+            <div className="login-msg-2-div">
+              <p className="login-msg">Don't have an account?</p>
+            </div>
+
+            <Link to="/signup" className="signup-button">SIGN UP FOR SPUDIFY</Link>
+            
           </form>
-        </div>
         </section>
       </>
     )
