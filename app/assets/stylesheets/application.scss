@@ -15,7 +15,14 @@
 
  @font-face {
 	 font-family: 'lineto-circular-black';
-	 src:url('/assets/proxima/lineto-circular-black.woff') format('woff');
+	 src:url('/assets/lineto/lineto-circular-black.woff') format('woff');
+	 font-weight: normal;
+	 font-style: normal;
+ }
+
+ @font-face {
+	 font-family: 'lineto-circular-book';
+	 src:url('/assets/lineto/lineto-circular-book.woff') format('woff');
 	 font-weight: normal;
 	 font-style: normal;
  }
