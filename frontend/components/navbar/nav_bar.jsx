@@ -3,24 +3,28 @@ import {Link} from 'react-router-dom';
 
 const NavBar = ({currentUser, logout}) => {
   const display = currentUser ? (
-    <div>
-      <p>Hello, {currentUser.name}</p>
-      <button onClick={logout}>Log Out</button>
-    </div>
+    <ul className="nav1-ul">
+      <li>Hello, {currentUser.name}</li>
+      <li><button onClick={logout}>Log Out</button></li>
+    </ul>
   ) : (
-    <div>
-      <Link className="nav1-btns" to="/signup">Sign Up</Link>
-      <Link className="nav1-btns" to="/login">Log In</Link>
-    </div>
+    <ul className="nav1-ul">
+      <li><Link to="/signup">Sign up</Link></li>
+      <li><Link to="/login">Log In</Link></li>
+    </ul>
   );
 
   return (
     <header>
-      <nav className="nav1">
-        <img className="logo2" src={window.logo2URL} alt="Spudify Logo" />
-        <div className="nav1-btns-div">
+      <Link className="logo2" to="/"><img src={window.logo2URL} alt="Spudify Logo" /></Link>
+        <nav className="nav1">
+        <ul className="nav1-ul">
+          <li><Link to="">Premium</Link></li>
+          <li><Link to="">Help</Link></li>
+          <li><Link to="">Download</Link></li>
+          <li>|</li>
           {display}
-        </div>
+        </ul>
       </nav>
     </header>
   )

@@ -19,34 +19,39 @@
   }
 }
 
-// .nav {
-//   position: fixed;;
-// }
+
 
 .nav1 {
   background: black;
-  // height: 80px;
+  margin-right: 10%;
 }
 
-.nav1-btns {
-  color: blue;
-}
+
 
 .logo2 {
   max-width: 160px;
   // padding-top: 18px;
-  // margin-left: 128px;
+  margin-left: 10%;
 }
 
 header {
-  background: maroon;
+  background: black;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 30px 10%;
+  padding: 19.5px 0%;
+  position: fixed;
+  width: 100%;
 }
 
-// .nav1-btns-div {
+.nav1-ul {
+  display: flex;
+}
 
-// }
+.nav1-ul > li {
+  margin-left: 34px;
+  font-family: 'lineto-circular-black';
+  font-size: 15.8px;
+  color: rgb(255, 255, 255);
+}
 
