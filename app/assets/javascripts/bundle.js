@@ -229,7 +229,9 @@ var NavBar = function NavBar(_ref) {
     className: "logo2",
     src: window.logo2URL,
     alt: "Spudify Logo"
-  }), display));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "nav1-btns-div"
+  }, display)));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (NavBar);

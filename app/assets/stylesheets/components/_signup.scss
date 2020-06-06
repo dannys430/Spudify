@@ -15,10 +15,6 @@
   padding-top: 30px;
 }
 
-.signup-form-form {
-  width: 409px;
-}
-
 .signup-msg {
   font-size: 30.25px;
   font-family: 'ProximaNova-Bold';
@@ -91,13 +87,14 @@
   margin-bottom: 10px;
 }
 
-
-
 .signup-form-input {
+  width: 450px;
+  height: 48px;
   font-size: 14px;
   border: 1px solid #bdbdbd;
   border-radius: 4px;
-  padding: 11px 226px 11px 10px;
+  padding-left: 11px;
+  padding-right: 11px;
   margin-bottom: 27px;
   text-align: left;
 }
