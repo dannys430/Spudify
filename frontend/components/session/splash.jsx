@@ -10,7 +10,6 @@ class Splash extends React.Component {
     return (
       <div>
         <NavBarContainer />
-        <h1 className="regular-test">everything</h1>
         <div className="background-blue">
           <h1 className="lineto-test">Listening is everything</h1>
         </div>

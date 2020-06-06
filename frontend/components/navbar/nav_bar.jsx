@@ -9,16 +9,18 @@ const NavBar = ({currentUser, logout}) => {
     </div>
   ) : (
     <div>
-      <Link to="/signup">Sign Up</Link>
-      <Link to="/login">Log In</Link>
+      <Link className="nav1-btns" to="/signup">Sign Up</Link>
+      <Link className="nav1-btns" to="/login">Log In</Link>
     </div>
   );
 
   return (
-    <header className="nav">
-      <img className="logo" src={window.logoURL} alt=""/>
-      <nav>
-        {display}
+    <header>
+      <nav className="nav1">
+        <img className="logo2" src={window.logo2URL} alt="Spudify Logo" />
+        <div className="nav1-btns-div">
+          {display}
+        </div>
       </nav>
     </header>
   )
