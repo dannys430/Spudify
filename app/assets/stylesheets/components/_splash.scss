@@ -1,0 +1,37 @@
+.section1 {
+  height: 100vh;
+  margin: 0;
+  // background: var(--blue);
+  background: 
+    linear-gradient(to top,rgba(0,0,0,1),rgba(255,255,255,0)),
+    linear-gradient(to right, rgb(161, 102, 155), rgb(120, 152, 197));
+}
+
+.section1-div {
+  margin: 0 auto;
+  width: 50%;
+}
+
+.section2 {
+  height: 78vh;
+  margin: 0;
+  background: 
+    linear-gradient(to right, rgb(44, 94, 146), rgb(85, 47, 109));    
+}
+
+.section3 {
+  height: 51vh;
+  margin: 0;
+  background: rgba(255,255,255,0)
+}
+
+
+
+
+
+// .splash-msg {
+//   font-family: 'lineto-circular-black';
+//   font-size: 155px;
+//   letter-spacing: -5.5px;
+//   color: var(--green);
+// }

@@ -10,9 +10,20 @@ class Splash extends React.Component {
     return (
       <div>
         <NavBarContainer />
-        <div className="background-blue">
-          <h1 className="lineto-test">Listening is everything</h1>
-        </div>
+        <section className="section1">
+          <div className="section1-div">
+
+          </div>
+        </section>
+        <section className="section2">
+
+        </section>
+
+        <section className="section3">
+
+        </section>
+        
+
       </div>
     )
   }
