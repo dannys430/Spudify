@@ -15,11 +15,11 @@ const NavBar = ({currentUser, logout}) => {
   );
 
   return (
-    <header>
-      <h1>SPUDIFY</h1>
-      <div>
+    <header className="nav">
+      <img className="logo" src={window.logoURL} alt=""/>
+      <nav>
         {display}
-      </div>
+      </nav>
     </header>
   )
 }

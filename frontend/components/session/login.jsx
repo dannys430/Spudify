@@ -79,7 +79,7 @@ class Login extends React.Component {
     return (
       <>
         <div className="logo-div">
-          <img className="logo" src={window.logoURL} alt="Spudify Logo" />
+          <Link to="/"><img className="logo" src={window.logoURL} alt="Spudify Logo" /></Link>
         </div>
 
         <section className="form">

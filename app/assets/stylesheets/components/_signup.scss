@@ -201,23 +201,27 @@
   font-family: 'ProximaNova-Regular';
 }
 
-.male-radio {
-  margin-right: 10px;
+.gender input {
+  margin-right: 12px;
+  margin-top: -5px;
 }
 
-.female-radio {
-  margin-left: 20px;
-  margin-right: 10px;
+.female-radio  {
+  margin-left: 24px;
 }
 
 .non-binary-radio {
-  margin-left: 20px;
-  margin-right: 10px;
+  margin-left: 24px;
+}
+
+input[type=radio]:focus{
+  color: green;
 }
 
 .signup-form-errors {
   color: red;
   font-family: 'ProximaNova-Regular';
+  font-size: 14px;
   margin-top: -20px;
   margin-bottom: 2.7px;
 }
@@ -258,4 +262,12 @@
   color: #67d962;
   padding-left: 3px;
 }
+
+
+
+.error-messages {
+  padding-left: 20px;
+  padding-top: 1px;
+}
+
 
