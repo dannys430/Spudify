@@ -18,14 +18,13 @@ const NavBar = ({currentUser, logout}) => {
     <header>
       <Link className="logo2" to="/"><img src={window.logo2URL} alt="Spudify Logo" /></Link>
         <nav className="nav1">
-        <ul className="nav1-ul">
-          <li><Link to="">Premium</Link></li>
-          <li><Link to="">Help</Link></li>
-          <li><Link to="">Download</Link></li>
-          <li>|</li>
-          {display}
-        </ul>
-      </nav>
+          <ul className="nav1-ul">
+            <li><a href="https://github.com/dannys430" target="_blank">Git Hub</a></li>
+            <li><a href="https://www.linkedin.com/in/daniel-singer/" target="_blank">Linked In</a></li>
+            <li>|</li>
+            {display}
+          </ul>
+        </nav>
     </header>
   )
 }
