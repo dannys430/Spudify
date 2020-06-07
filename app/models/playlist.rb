@@ -12,7 +12,10 @@
 #
 class Playlist < ApplicationRecord
   validates :playlist_name, :user_id, presence: true
-  validates :private: inclusion: {in: [true, false]}
+  validates :private, inclusion: {in: [true, false]}
 
+  belongs_to :user,
+  foreign_key: :user_id,
+  class_name: :User
   
 end
