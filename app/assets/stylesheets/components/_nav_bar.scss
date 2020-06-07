@@ -1,0 +1,35 @@
+header {
+  // background: black;
+  background: rgba(0, 0, 0, .55);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 19.5px 0%;
+  position: fixed;
+  width: 100%;
+}
+
+.logo2 {
+  max-width: 160px;
+  margin-left: 10%;
+}
+
+.nav1 {
+  margin-right: 10%;
+}
+
+.nav1-ul {
+  display: flex;
+}
+
+.nav1-ul > li {
+  margin-left: 34px;
+  font-family: 'lineto-circular-black';
+  font-size: 15.8px;
+  color: var(--white);
+}
+
+.nav1-ul > li:hover {
+  color: var(--blue);
+}
+

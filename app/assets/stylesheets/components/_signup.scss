@@ -15,13 +15,9 @@
   padding-top: 30px;
 }
 
-.signup-form-form {
-  width: 409px;
-}
-
 .signup-msg {
   font-size: 30.25px;
-  font-family: 'ProximaNova-Bold';
+  font-family: 'lineto-circular-black';
   display: flex;
   justify-content: center;
   letter-spacing: -1px;
@@ -39,7 +35,7 @@
   justify-content: center;
   margin-bottom: 9px;
   font-size: 12.8px;
-  font-family: 'ProximaNova-Bold';
+  font-family: 'lineto-circular-black';
   letter-spacing: 2px;
   transition: 0.3s;
 }
@@ -60,7 +56,7 @@
 .or-signup:after {
     background: #fff;
     content: 'or';
-    font-family: 'ProximaNova-Bold';
+    font-family: 'lineto-circular-black';
     font-size: 14px;
     padding: 0px 20px 0px 20px;
     position: relative;
@@ -70,7 +66,7 @@
 
 .signup-msg-2 {
   font-size: 17px;
-  font-family: 'ProximaNova-Bold';
+  font-family: 'lineto-circular-black';
   display: flex;
   justify-content: center;
   letter-spacing: -.15px;
@@ -83,7 +79,7 @@
 .signup-prompts {
   font-size: 14px;
   font-weight: 200;
-  font-family: 'ProximaNova-Bold';
+  font-family: 'lineto-circular-black';
   display: flex;
   flex-direction: column;
   letter-spacing: -.15px;
@@ -91,13 +87,14 @@
   margin-bottom: 10px;
 }
 
-
-
 .signup-form-input {
+  width: 450px;
+  height: 48px;
   font-size: 14px;
   border: 1px solid #bdbdbd;
   border-radius: 4px;
-  padding: 11px 226px 11px 10px;
+  padding-left: 11px;
+  padding-right: 11px;
   margin-bottom: 27px;
   text-align: left;
 }
@@ -119,14 +116,14 @@
 }
 
 .signup-bday-labels {
-  font-family: 'ProximaNova-Regular';
+  font-family: 'lineto-circular-book';
 }
 
 
 .signup-month-input {
   font-size: 16.8px;
   // color: #787878;
-  font-family: 'ProximaNova-Regular';
+  font-family: 'lineto-circular-book';
   border: 1px solid #bdbdbd;
   border-radius: 4px;
   // padding: 11px 87px 11px 7px;
@@ -198,26 +195,30 @@
 }
 
 .gender label {
-  font-family: 'ProximaNova-Regular';
+  font-family: 'lineto-circular-book';
 }
 
-.male-radio {
-  margin-right: 10px;
+.gender input {
+  margin-right: 12px;
+  margin-top: -5px;
 }
 
-.female-radio {
-  margin-left: 20px;
-  margin-right: 10px;
+.female-radio  {
+  margin-left: 24px;
 }
 
 .non-binary-radio {
-  margin-left: 20px;
-  margin-right: 10px;
+  margin-left: 24px;
+}
+
+input[type=radio]:focus{
+  color: green;
 }
 
 .signup-form-errors {
   color: red;
-  font-family: 'ProximaNova-Regular';
+  font-family: 'lineto-circular-book';
+  font-size: 14px;
   margin-top: -20px;
   margin-bottom: 2.7px;
 }
@@ -236,7 +237,7 @@
   display: flex;
   justify-content: center;
   font-size: 12.8px;
-  font-family: 'ProximaNova-Bold';
+  font-family: 'lineto-circular-black';
   letter-spacing: 2px;
   transition: 0.3s;
 }
@@ -246,7 +247,7 @@
 }
 
 .signup-login {
-  font-family: 'ProximaNova-Regular';
+  font-family: 'lineto-circular-book';
   display: flex;
   justify-content: center;
   margin-top: 10px;
@@ -258,4 +259,12 @@
   color: #67d962;
   padding-left: 3px;
 }
+
+
+
+.error-messages {
+  padding-left: 20px;
+  padding-top: 1px;
+}
+
 

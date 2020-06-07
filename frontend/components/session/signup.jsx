@@ -3,10 +3,20 @@ import { Link } from 'react-router-dom';
 
 function ValidationMsg(props) {
   if (!props.valid) {
-    return <div className='signup-form-errors'>{props.message}</div>
+  return <div >{props.message}</div>
   }
+
   return null;
 }
+
+const warningIcon =
+  <svg role="img" height="14" width="13" fill="#444444" viewbox="0 0 24 24">
+    <circle cx="6.5" cy="7" r="6" fill="none" stroke="red"></circle>
+    <line x1="6.5" y1="7" x2="6.5" fill="#181818" stroke="red" stroke-width="10%" stroke-linecap="round" y2="4"></line>
+    <circle cx="6.5" cy="10" r=".32" fill="#181818" stroke="red"></circle>
+  </svg>
+;
+
 
 class Signup extends React.Component {
   constructor(props) {
@@ -46,10 +56,10 @@ class Signup extends React.Component {
     
     if (!email.length) {
       emailValid = false;
-      errorMsg.email = 'You need to enter your email.'
+      errorMsg.email = <div className="signup-form-errors" >{warningIcon} <p className="signup-form-errors error-messages">You need to enter your email.</p></div>
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       emailValid = false;
-      errorMsg.email = `This email is invalid.`
+      errorMsg.email = <div className="signup-form-errors" >{warningIcon} <p className="signup-form-errors error-messages">This email is invalid.</p></div>
     }
     
     this.setState({emailValid, errorMsg}, this.validateForm)
@@ -66,10 +76,10 @@ class Signup extends React.Component {
 
     if (!password.length) {
       passwordValid = false;
-      errorMsg.password = 'You need to enter a password.'
+      errorMsg.password = <div className="signup-form-errors" >{warningIcon} <p className="signup-form-errors error-messages">You need to enter a password.</p></div>
     } else if (password.length < 6) {
       passwordValid = false;
-      errorMsg.password = 'Your password is too short.';
+      errorMsg.password = <div className="signup-form-errors" >{warningIcon} <p className="signup-form-errors error-messages">Your password is too short.</p></div>
     }
 
     this.setState({passwordValid, errorMsg}, this.validateForm);
@@ -86,7 +96,7 @@ class Signup extends React.Component {
 
     if (!name.length) {
       nameValid = false;
-      errorMsg.name = 'Enter a name for your profile.'
+      errorMsg.name = <div className="signup-form-errors" >{warningIcon} <p className="signup-form-errors error-messages">Enter a name for your profile.</p></div>
     } 
     // else {
     //   nameValid = false;
@@ -107,7 +117,7 @@ class Signup extends React.Component {
 
     if (!bday_date.length || bday_date > 31 || isNaN(bday_date)) {
       dateValid = false;
-      errorMsg.date = 'Enter a valid day of the month.'
+      errorMsg.date = <div className="signup-form-errors" >{warningIcon} <p className="signup-form-errors error-messages">Enter a valid day of the month.</p></div>
     } 
 
     this.setState({dateValid, errorMsg}, this.validateForm);
@@ -124,10 +134,10 @@ class Signup extends React.Component {
 
     if (!bday_year.length || bday_year < 1900 || isNaN(bday_year)) {
       yearValid = false;
-      errorMsg.year = 'Enter a valid year.'
+      errorMsg.year = <div className="signup-form-errors" >{warningIcon} <p className="signup-form-errors error-messages">Enter a valid year.</p></div>
     } else if(bday_year > 2007) {
       yearValid = false;
-      errorMsg.year = `Sorry, you don't meet Spudify's age requirements`
+      errorMsg.year = <div className="signup-form-errors" >{warningIcon} <p className="signup-form-errors error-messages">Sorry, you don't meet Spudify's age requirements</p></div>
     }
 
     this.setState({yearValid, errorMsg}, this.validateForm);
@@ -156,7 +166,7 @@ class Signup extends React.Component {
     return (
       <>
         <div className="logo-small-div">
-          <img className="logo-small" src={window.logoURL} alt="Spudify Logo"/>
+          <Link to="/"><img className="logo-small" src={window.logoURL} alt="Spudify Logo"/></Link>
         </div>
 
         <section className='signup-form'>
@@ -277,37 +287,46 @@ class Signup extends React.Component {
 
 
                   <div className="male-radio">
-                    <input 
-                      type="radio"
-                      id="Male"
-                      name="gender" 
-                      value='Male'
-                      onChange={this.handleInput('gender')}
-                    />
+                    <label>
+                      <input 
+                        type="radio"
+                        id="Male"
+                        name="gender" 
+                        value='Male'
+                        onChange={this.handleInput('gender')}
+                      />
+                      Male
+                    </label>
                   </div>
-                  <label>Male</label>
+                  
   
                   <div className="female-radio">
-                    <input 
-                      type="radio"
-                      id="Female"
-                      name="gender" 
-                      value='Female'
-                      onChange={this.handleInput('gender')}
-                    />
+                    <label>
+                      <input 
+                        type="radio"
+                        id="Female"
+                        name="gender" 
+                        value='Female'
+                        onChange={this.handleInput('gender')}
+                      />
+                      Female
+                    </label>
                   </div>
-                  <label>Female</label>
+                  
   
                   <div className="non-binary-radio">
-                    <input 
-                      type="radio"
-                      id="Non-binary"
-                      name="gender" 
-                      value='Non-binary'
-                      onChange={this.handleInput('gender')}
-                    />
+                    <label>
+                      <input 
+                        type="radio"
+                        id="Non-binary"
+                        name="gender" 
+                        value='Non-binary'
+                        onChange={this.handleInput('gender')}
+                      />
+                      Non-binary
+                    </label>
                   </div>
-                  <label>Non-binary</label>
+                  
               </div>
             </label>
 

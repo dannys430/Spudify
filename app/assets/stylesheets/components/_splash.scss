@@ -1,0 +1,116 @@
+.section1 {
+  height: 100vh;
+  // background: var(--blue);
+  background: 
+    linear-gradient(to top,rgba(0,0,0,1),rgba(255,255,255,0)),
+    linear-gradient(to right, rgb(161, 102, 155), rgb(120, 152, 197));
+}
+
+.section1-div {
+  padding-top: 140px;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  width: 1170px
+}
+
+.section1-div1 {
+  // background: green;
+  width: 35%;
+  padding: 19px;
+  padding-top: 84px;
+  margin-left: 11px;
+  margin-right: -11px;
+}
+.section1-div1 > h1 {
+  font-size: 80px;
+  font-family: 'lineto-circular-black';
+  color: var(--white);
+  letter-spacing: -0.04em;
+  line-height: 1.15;
+}
+
+.section1-div1 > h2 {
+  font-size: 23px;
+  font-family: 'lineto-circular-black';
+  color: var(--white);
+  margin-right: -8px;
+  letter-spacing: .2px;
+
+}
+
+.section1-div2 {
+  // background: red;
+  width: 76%;
+  // display: flex;
+  // flex-direction: row;
+  // flex-wrap: wrap;
+  // margin-right: -3px;
+}
+
+.section1-div2 ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.section1-div2 img {
+  min-width: 237.40px;
+  max-width: 237.40px;
+  padding: 8px;
+}
+
+.web-player-btn-div {
+  float: left;
+  padding-top: 51px;
+}
+
+.web-player-btn {
+  background-color: #58ba55;
+  color: white;
+  padding: 17.5px 55.5px;
+  border-radius: 30px;
+  margin-bottom: 9px;
+  font-size: 16px;
+  font-family: 'lineto-circular-black';
+  letter-spacing: 2px;
+  transition: 0.3s;
+}
+
+.web-player-btn h1 {
+  margin-top: 2px;
+}
+
+
+
+
+// temporarily adding margin-bottom to section 1 instead of section 3
+.section1 {
+  margin-bottom: 200px;
+}
+
+// section 2 and 3 don't have content yet
+// .section2 {
+//   height: 78vh;
+//   margin: 0;
+//   background: 
+//     linear-gradient(to right, rgb(44, 94, 146), rgb(85, 47, 109));    
+// }
+
+// .section3 {
+//   height: 51vh;
+//   margin: 0;
+//   background: var(--white);
+//   margin-bottom: 200px;
+// }
+
+
+
+
+// 'Listening is everything...'
+// .splash-msg {
+//   font-family: 'lineto-circular-black';
+//   font-size: 155px;
+//   letter-spacing: -5.5px;
+//   color: var(--green);
+// }

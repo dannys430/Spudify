@@ -1,0 +1,32 @@
+footer {
+  background: var(--black);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  position: fixed;
+  z-index: -1;
+  height: 200px;
+  bottom: 0;
+}
+
+footer > ul {
+  display: flex;
+  margin-right: 10%;
+}
+
+footer > ul > li {
+  margin-left: 34px;
+}
+
+.social-icons {
+  max-width: 50px;
+  transition: .2s;
+}
+
+.social-icons:hover {
+  transform: scale(1.05);
+}
+
+
+
