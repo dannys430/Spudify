@@ -159,14 +159,14 @@ class Signup extends React.Component {
       gender: this.state.gender
     }
     this.props.createNewUser(newUser)
-    .then(() => this.props.history.push('/'))
+    .then(() => this.props.history.push('/us'))
   }
 
   render() {
     return (
       <>
         <div className="logo-small-div">
-          <Link to="/"><img className="logo-small" src={window.logoURL} alt="Spudify Logo"/></Link>
+          <Link to="/us"><img className="logo-small" src={window.logoURL} alt="Spudify Logo"/></Link>
         </div>
 
         <section className='signup-form'>

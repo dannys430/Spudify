@@ -11,7 +11,7 @@ import PlaylistModalContainer from './playlist/playlist_modal_container'
 
 const App = () => (
   <div>
-    <Route exact path="/" component={SplashContainer} />
+    <Route exact path="/us" component={SplashContainer} />
     <AuthRoute path="/signup" component={SignupContainer} />
     <AuthRoute path="/login" component={LoginContainer} />
 

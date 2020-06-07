@@ -5,7 +5,7 @@ class Footer extends React.Component {
   render() {
     return (
       <footer>
-        <Link className="logo2" to="/"><img src={window.logo2URL} alt="Spudify Logo" /></Link>
+        <Link className="logo2" to="/us"><img src={window.logo2URL} alt="Spudify Logo" /></Link>
         <ul>
           <li><a href="https://github.com/dannys430" target="_blank"><img className="social-icons" src={window.githubURL} alt="Github Logo" /></a></li>
           <li><a href="https://www.linkedin.com/in/daniel-singer/" target="_blank"><img className="social-icons" src={window.linkedinURL} alt="Linked In Logo" /></a></li>
