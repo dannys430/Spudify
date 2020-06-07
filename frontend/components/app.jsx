@@ -7,7 +7,7 @@ import SplashContainer from './session/splash_container'
 import SignupContainer from './session/signup_container'
 import LoginContainer from './session/login_container'
 
-import PlaylistModalContainer from './playlist/playlist_modal_container'
+import HomeContainer from  './home/home_container'
 
 const App = () => (
   <div>
@@ -15,7 +15,7 @@ const App = () => (
     <AuthRoute path="/signup" component={SignupContainer} />
     <AuthRoute path="/login" component={LoginContainer} />
 
-    <Route path="/playlist" component={PlaylistModalContainer} />
+    <Route exact path="/" component={HomeContainer} />
 
   </div>
 )
