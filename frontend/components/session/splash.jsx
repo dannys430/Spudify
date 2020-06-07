@@ -19,25 +19,28 @@ class Splash extends React.Component {
             <div className="section1-div1">
               <h1>Jump back in</h1>
               <h2>Pick up your music right where you left off.</h2>
-              {/* <Link to="/" className="login-button">OPEN WEB PLAYER</Link> */}
+              <div className="web-player-btn-div"><Link to="/" className="web-player-btn">OPEN WEB PLAYER</Link></div>
             </div>
             <div className="section1-div2">
-              <div><img src="/assets/splash/1.jpeg" /></div>
-              <div><img src="/assets/splash/2.jpeg" /></div>
-              <div><img src="/assets/splash/3.jpeg" /></div>
-              <div><img src="/assets/splash/4.jpeg" /></div>
-              <div><img src="/assets/splash/5.jpeg" /></div>
-              <div><img src="/assets/splash/6.jpeg" /></div>
+              <ul>
+                <li><Link to=""><img src={window.img1URL} /></Link></li>
+                <li><Link to=""><img src={window.img2URL} /></Link></li>
+                <li><Link to=""><img src={window.img3URL} /></Link></li>
+                <li><Link to=""><img src={window.img4URL} /></Link></li>
+                <li><Link to=""><img src={window.img5URL} /></Link></li>
+                <li><Link to=""><img src={window.img6URL} /></Link></li>
+              </ul>
               
             </div>
           </div>
         </section>
 
-        <section className="section2">
+        {/* section 2 and 3 don't have content yet */}
+        {/* <section className="section2">
         </section>
 
         <section className="section3">
-        </section>
+        </section> */}
 
         <FooterContainer />
       </div>
