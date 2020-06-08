@@ -25,10 +25,10 @@ class Splash extends React.Component {
               <ul>
                 <li><Link to=""><img src={window.test1URL} /></Link></li>
                 <li><Link to=""><img src={window.test2URL} /></Link></li>
-                <li><Link to=""><img src={window.test3URL} /></Link></li>
+                {/* <li><Link to=""><img src={window.test3URL} /></Link></li>
                 <li><Link to=""><img src={window.test4URL} /></Link></li>
                 <li><Link to=""><img src={window.test5URL} /></Link></li>
-                <li><Link to=""><img src={window.test6URL} /></Link></li>
+                <li><Link to=""><img src={window.test6URL} /></Link></li> */}
 
                 {/* <li><Link to=""><img src={window.img1URL} /></Link></li>
                 <li><Link to=""><img src={window.img2URL} /></Link></li>
