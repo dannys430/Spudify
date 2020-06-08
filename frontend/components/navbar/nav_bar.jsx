@@ -19,7 +19,7 @@ const NavBar = ({currentUser, logout}) => {
       <Link className="logo2" to="/us"><img src={window.logo2URL} alt="Spudify Logo" /></Link>
         <nav className="nav1">
           <ul className="nav1-ul">
-            <li><a href="https://github.com/dannys430" target="_blank">Git Hub</a></li>
+            <li><a href="https://github.com/dannys430" target="_blank">GitHub</a></li>
             <li><a href="https://www.linkedin.com/in/daniel-singer/" target="_blank">Linked In</a></li>
             <li>|</li>
             {display}
