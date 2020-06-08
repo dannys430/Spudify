@@ -16,7 +16,7 @@ const NavBar = ({currentUser, logout}) => {
 
   return (
     <header>
-      <Link className="logo2" to="/"><img src={window.logo2URL} alt="Spudify Logo" /></Link>
+      <Link className="logo2" to="/us"><img src={window.logo2URL} alt="Spudify Logo" /></Link>
         <nav className="nav1">
           <ul className="nav1-ul">
             <li><a href="https://github.com/dannys430" target="_blank">GitHub</a></li>

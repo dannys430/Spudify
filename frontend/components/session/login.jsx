@@ -72,14 +72,14 @@ class Login extends React.Component {
   handleSubmit(e) {
     e.preventDefault()
     this.props.login(this.state)
-      .then(() => this.props.history.push('/'))
+      .then(() => this.props.history.push('/us'))
   }
 
   render() {
     return (
       <>
         <div className="logo-div">
-          <Link to="/"><img className="logo" src={window.logoURL} alt="Spudify Logo" /></Link>
+          <Link to="/us"><img className="logo" src={window.logoURL} alt="Spudify Logo" /></Link>
         </div>
 
         <section className="form">

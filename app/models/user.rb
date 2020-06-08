@@ -26,6 +26,11 @@ class User < ApplicationRecord
   validates :password, length: {minimum: 6}, allow_nil: true
   attr_reader :password
 
+  has_many :playlists,
+  foreign_key: :user_id,
+  class_name: :Playlist
+
+  has_one_attached :photo
   
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
