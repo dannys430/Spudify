@@ -558,11 +558,13 @@ var PlaylistModal = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {
       playlist_name: "",
-      user_id: window.currentUser.id // photoURL: "",
-      // photo: null,
-
+      user_id: window.currentUser.id,
+      photo: null,
+      photoUrl: "",
+      photoFile: null
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.handleFile = _this.handleFile.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -574,35 +576,70 @@ var PlaylistModal = /*#__PURE__*/function (_React$Component) {
       return function (e) {
         _this2.setState(_defineProperty({}, field, e.currentTarget.value));
       };
-    } // handleFile(e) {
-    //   let file = e.target.files[0]
-    //   this.setState({photo: file})
-    // }
+    }
+  }, {
+    key: "handleFile",
+    value: function handleFile(e) {
+      var _this3 = this;
 
+      var reader = new FileReader();
+      var file = e.currentTarget.files[0];
+
+      reader.onloadend = function () {
+        return _this3.setState({
+          photoUrl: reader.result,
+          photoFile: file
+        });
+      };
+
+      if (file) {
+        reader.readAsDataURL(file);
+      } else {
+        this.setState({
+          photoUrl: "",
+          photoFile: null
+        });
+      }
+    }
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
-      var _this3 = this;
+      var _this4 = this;
 
       e.preventDefault();
-      var playlist = new FormData(); // playlist.append('playlist[playlist_name]', this.state.playlist_name )
-      // playlist.append('playlist[user_id]', this.state.user_id )
-      // playlist.append('playlist[photo]', this.state.photo )
+      var playlist = new FormData();
+      playlist.append('playlist[playlist_name]', this.state.playlist_name);
+      playlist.append('playlist[user_id]', this.state.user_id);
 
-      this.props.createNewPlaylist(this.state).then(function () {
-        return _this3.props.history.push("/us");
+      if (this.state.photoFile) {
+        playlist.append('playlist[photo]', this.state.photoFile);
+      }
+
+      this.props.createNewPlaylist(playlist).then(function () {
+        return _this4.props.history.push("/us");
       });
     }
   }, {
     key: "render",
     value: function render() {
+      var _this5 = this;
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Create new playlist"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Playlist Name", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         placeholder: "New Playlist",
         onChange: this.update('playlist_name')
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Playlist Photo?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "file",
+        onChange: function onChange(e) {
+          return _this5.handleFile(e);
+        }
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "playlist-pic-preview",
+        src: this.state.photoUrl,
+        alt: ""
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleSubmit
       }, "CREATE")));
     }
@@ -1905,9 +1942,9 @@ var createPlaylist = function createPlaylist(playlist) {
   return $.ajax({
     url: "/api/playlists",
     method: 'POST',
-    data: {
-      playlist: playlist
-    }
+    data: playlist,
+    contentType: false,
+    processData: false
   });
 };
 
