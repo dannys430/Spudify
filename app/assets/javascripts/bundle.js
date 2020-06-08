@@ -558,7 +558,7 @@ var PlaylistModal = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {
       playlist_name: "",
-      user_id: "" // photoURL: "",
+      user_id: window.currentUser.id // photoURL: "",
       // photo: null,
 
     };
@@ -602,10 +602,6 @@ var PlaylistModal = /*#__PURE__*/function (_React$Component) {
         type: "text",
         placeholder: "New Playlist",
         onChange: this.update('playlist_name')
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "User Id", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        placeholder: "User Id",
-        onChange: this.update('user_id')
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleSubmit
       }, "CREATE")));

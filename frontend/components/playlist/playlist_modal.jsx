@@ -7,7 +7,7 @@ class PlaylistModal extends React.Component {
 
     this.state = {
       playlist_name: "",
-      user_id: "",
+      user_id: window.currentUser.id,
       // photoURL: "",
       // photo: null,
     }
@@ -51,28 +51,9 @@ class PlaylistModal extends React.Component {
             />
           </label>
 
-          {/* <label>Description
-            <input
-              type="text"
-              placeholder="Description"
-              onChange={this.update('description')}
-            />
-          </label> */}
-
-         
-
-          <label>User Id
-            <input
-              type="text"
-              placeholder="User Id"
-              onChange={this.update('user_id')}
-            />
-          </label>
-
           {/* <input type="file" onChange={(e) => this.handleFile(e)}/> */}
 
           <button onClick={this.handleSubmit}>CREATE</button>
-
           
         </form>
       </div>
