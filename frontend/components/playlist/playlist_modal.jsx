@@ -7,7 +7,9 @@ class PlaylistModal extends React.Component {
 
     this.state = {
       playlist_name: "",
-      user_id: ""
+      user_id: "",
+      // photoURL: "",
+      // photo: null,
     }
 
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -19,10 +21,20 @@ class PlaylistModal extends React.Component {
     }
   }
 
+  // handleFile(e) {
+  //   let file = e.target.files[0]
+  //   this.setState({photo: file})
+  // }
+
   handleSubmit(e) {
     e.preventDefault()
+    let playlist = new FormData()
+    // playlist.append('playlist[playlist_name]', this.state.playlist_name )
+    // playlist.append('playlist[user_id]', this.state.user_id )
+    // playlist.append('playlist[photo]', this.state.photo )
+
     this.props.createNewPlaylist(this.state)
-    .then(() => this.props.history.push(`/`))
+    .then(() => this.props.history.push(`/us`))
   }
   
   render() {
@@ -47,6 +59,8 @@ class PlaylistModal extends React.Component {
             />
           </label> */}
 
+         
+
           <label>User Id
             <input
               type="text"
@@ -55,7 +69,10 @@ class PlaylistModal extends React.Component {
             />
           </label>
 
+          {/* <input type="file" onChange={(e) => this.handleFile(e)}/> */}
+
           <button onClick={this.handleSubmit}>CREATE</button>
+
           
         </form>
       </div>

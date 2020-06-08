@@ -36,6 +36,7 @@ class Signup extends React.Component {
     }
 
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleDemo = this.handleDemo.bind(this)
   }
   
   validateForm() {
@@ -149,6 +150,12 @@ class Signup extends React.Component {
     }
   }
 
+  handleDemo(e) {
+    e.preventDefault()
+    this.props.login({ email: 'mc@gmail.com', password: 'dembabies' })
+      .then(() => this.props.history.push('/us'))
+  }
+
   handleSubmit(e) {
     e.preventDefault()
     const newUser = {
@@ -175,7 +182,7 @@ class Signup extends React.Component {
             <h1 className="signup-msg">Sign up for free to start listening.</h1>
 
             <div className="fb-apple-buttons">
-              <button className="guest-button"><p>CONTINUE AS GUEST</p></button>
+              <button onClick={this.handleDemo} className="guest-button"><p>CONTINUE AS GUEST</p></button>
             </div>
 
             <hr className="or-signup" />

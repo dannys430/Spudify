@@ -20,6 +20,7 @@ class Login extends React.Component {
     }
 
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleDemo = this.handleDemo.bind(this)
   }
 
   validateForm() {
@@ -68,6 +69,12 @@ class Login extends React.Component {
       this.setState({ [type]: e.target.value })
     }
   }
+
+  handleDemo(e) {
+    e.preventDefault()
+    this.props.login({ email: 'mc@gmail.com', password: 'dembabies' })
+      .then(() => this.props.history.push('/us'))
+  }
   
   handleSubmit(e) {
     e.preventDefault()
@@ -89,7 +96,7 @@ class Login extends React.Component {
 
             
               <div className="fb-apple-buttons">
-                <button className="facebook-button"><p>CONTINUE AS GUEST</p></button>
+                <button onClick={this.handleDemo} className="facebook-button"><p>CONTINUE AS GUEST</p></button>
                 <button className="apple-button"><p> &#129364; CONTINUE WITH POTATO</p></button>
               </div>
             
