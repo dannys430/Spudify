@@ -97,7 +97,7 @@ class Login extends React.Component {
             
               <div className="fb-apple-buttons">
                 <button onClick={this.handleDemo} className="facebook-button"><p>CONTINUE AS GUEST</p></button>
-                <button className="apple-button"><p> &#129364; CONTINUE WITH POTATO</p></button>
+                <button disabled className="apple-button"><p> &#129364; CONTINUE WITH POTATO</p></button>
               </div>
             
             <hr className="or" />

@@ -871,6 +871,7 @@ var Login = /*#__PURE__*/function (_React$Component) {
         onClick: this.handleDemo,
         className: "facebook-button"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "CONTINUE AS GUEST")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        disabled: true,
         className: "apple-button"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " \uD83E\uDD54 CONTINUE WITH POTATO"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
         className: "or"
