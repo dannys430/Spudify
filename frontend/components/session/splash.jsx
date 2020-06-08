@@ -24,7 +24,7 @@ class Splash extends React.Component {
             <div className="section1-div2">
               <ul>
                 <li><Link to=""><img src={window.test1URL} /></Link></li>
-                <li><Link to=""><img src={window.test2URL} /></Link></li>
+                {/* <li><Link to=""><img src={window.test2URL} /></Link></li> */}
                 {/* <li><Link to=""><img src={window.test3URL} /></Link></li>
                 <li><Link to=""><img src={window.test4URL} /></Link></li>
                 <li><Link to=""><img src={window.test5URL} /></Link></li>
