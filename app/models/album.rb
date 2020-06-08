@@ -21,5 +21,7 @@ class Album < ApplicationRecord
   belongs_to :artist,
   foreign_key: :artist_id,
   class_name: :Artist
+
+  has_one_attached :cover_art
   
 end

@@ -19,4 +19,6 @@ class Artist < ApplicationRecord
   through: :albums,
   source: :songs
   
+  has_one_attached :profile_pic
+
 end
