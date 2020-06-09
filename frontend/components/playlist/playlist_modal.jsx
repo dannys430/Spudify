@@ -19,10 +19,9 @@ class PlaylistModal extends React.Component {
   }
 
   handleSubmit(e) {
-    // debugger
     e.preventDefault()
     this.props.createPlaylist(this.state)
-      .then(() => this.props.history.push(`/`))
+      .then(() => this.props.closeModal())
   }
   
   render() {
@@ -38,6 +37,8 @@ class PlaylistModal extends React.Component {
               onChange={this.update('playlist_name')}
             />
           </label>
+
+          <button onClick={() => this.props.closeModal()}>CANCEL</button>
 
           <button onClick={this.handleSubmit}>CREATE</button>
 

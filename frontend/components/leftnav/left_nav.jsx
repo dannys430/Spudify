@@ -46,9 +46,16 @@ class LeftNav extends React.Component {
 
         </section>
 
-        <section>
-          <div></div>
-          <div></div>
+        <section className="left-nav-section2">
+          <h2>PLAYLISTS</h2>
+          <div className="plus-sign-div-container">
+            
+              <svg className="plus-icon" fill="var(--black)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px">
+                <path d="M 11 5 L 11 11 L 5 11 L 5 13 L 11 13 L 11 19 L 13 19 L 13 13 L 19 13 L 19 11 L 13 11 L 13 5 Z" />
+              </svg>
+              <h1>{this.props.otherForm}</h1>
+            
+          </div>
         </section>
 
         <section>

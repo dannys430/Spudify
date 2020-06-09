@@ -274,7 +274,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _session_login_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./session/login_container */ "./frontend/components/session/login_container.js");
 /* harmony import */ var _home_home_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./home/home_container */ "./frontend/components/home/home_container.js");
 /* harmony import */ var _song_song_form_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./song/song_form_container */ "./frontend/components/song/song_form_container.js");
-/* harmony import */ var _playlist_playlist_modal_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./playlist/playlist_modal_container */ "./frontend/components/playlist/playlist_modal_container.js");
+/* harmony import */ var _modal_modal_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modal/modal_container */ "./frontend/components/modal/modal_container.js");
 
 
 
@@ -286,7 +286,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var App = function App() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_playlist_playlist_modal_container__WEBPACK_IMPORTED_MODULE_8__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_modal_modal_container__WEBPACK_IMPORTED_MODULE_8__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
     path: "/us",
     component: _session_splash_container__WEBPACK_IMPORTED_MODULE_3__["default"]
@@ -451,7 +451,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
- // import PlaylistModalContainer from '../playlist/playlist_modal_container';
 
 
 
@@ -587,7 +586,20 @@ var LeftNav = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
         d: "M291.301 81.778l166.349 373.587-19.301 8.635-166.349-373.587zM64 463.746v-384h21.334v384h-21.334zM192 463.746v-384h21.334v384h-21.334z",
         fill: "var(--ltgray)"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Your Library")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null));
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Your Library")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "left-nav-section2"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "PLAYLISTS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "plus-sign-div-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+        className: "plus-icon",
+        fill: "var(--black)",
+        xmlns: "http://www.w3.org/2000/svg",
+        viewBox: "0 0 24 24",
+        width: "24px",
+        height: "24px"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+        d: "M 11 5 L 11 11 L 5 11 L 5 13 L 11 13 L 11 19 L 13 19 L 13 13 L 19 13 L 19 11 L 13 11 L 13 5 Z"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.props.otherForm))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null));
     }
   }]);
 
@@ -610,17 +622,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _left_nav__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./left_nav */ "./frontend/components/leftnav/left_nav.jsx");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+/* harmony import */ var _left_nav__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./left_nav */ "./frontend/components/leftnav/left_nav.jsx");
 
  // import { fetchNewSong } from '../../actions/song_actions';
 
- // const mDTP = (dispatch) => {
-//   return {
-//     fetchNewSong: (id) => dispatch(fetchNewSong(id))
-//   }
-// }
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(null, null)(_left_nav__WEBPACK_IMPORTED_MODULE_2__["default"]));
+
+var mSTP = {};
+
+var mDTP = function mDTP(dispatch) {
+  return {
+    // fetchNewSong: (id) => dispatch(fetchNewSong(id))
+    otherForm: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      className: "create-playlist",
+      onClick: function onClick() {
+        return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__["openModal"])('playlist'));
+      }
+    }, "Create Playlist")
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(null, mDTP)(_left_nav__WEBPACK_IMPORTED_MODULE_3__["default"]));
 
 /***/ }),
 
@@ -720,6 +743,87 @@ var mDTP = function mDTP(dispatch) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(null, mDTP)(_media_bar__WEBPACK_IMPORTED_MODULE_3__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/modal/modal.jsx":
+/*!*********************************************!*\
+  !*** ./frontend/components/modal/modal.jsx ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _playlist_playlist_modal_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../playlist/playlist_modal_container */ "./frontend/components/playlist/playlist_modal_container.js");
+
+
+
+var Modal = function Modal(_ref) {
+  var modal = _ref.modal,
+      closeModal = _ref.closeModal;
+
+  if (!modal) {
+    return null;
+  }
+
+  var component;
+
+  switch (modal) {
+    case 'playlist':
+      component = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_playlist_playlist_modal_container__WEBPACK_IMPORTED_MODULE_1__["default"], null);
+      break;
+
+    default:
+      return null;
+  }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: closeModal
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick(e) {
+      return e.stopPropagation();
+    }
+  }, component));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Modal);
+
+/***/ }),
+
+/***/ "./frontend/components/modal/modal_container.js":
+/*!******************************************************!*\
+  !*** ./frontend/components/modal/modal_container.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+/* harmony import */ var _modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modal */ "./frontend/components/modal/modal.jsx");
+
+
+
+
+var mSTP = function mSTP(state) {
+  return {
+    modal: state.ui.modal
+  };
+};
+
+var mDTP = function mDTP(dispatch) {
+  return {
+    closeModal: function closeModal() {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__["closeModal"])());
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_modal__WEBPACK_IMPORTED_MODULE_2__["default"]));
 
 /***/ }),
 
@@ -883,15 +987,16 @@ var PlaylistModal = /*#__PURE__*/function (_React$Component) {
     value: function handleSubmit(e) {
       var _this3 = this;
 
-      // debugger
       e.preventDefault();
       this.props.createPlaylist(this.state).then(function () {
-        return _this3.props.history.push("/");
+        return _this3.props.closeModal();
       });
     }
   }, {
     key: "render",
     value: function render() {
+      var _this4 = this;
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "playlist-modal"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
@@ -901,6 +1006,10 @@ var PlaylistModal = /*#__PURE__*/function (_React$Component) {
         placeholder: "New Playlist",
         onChange: this.update('playlist_name')
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this4.props.closeModal();
+        }
+      }, "CANCEL"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleSubmit
       }, "CREATE")));
     }
@@ -924,7 +1033,9 @@ var PlaylistModal = /*#__PURE__*/function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_playlist_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/playlist_actions */ "./frontend/actions/playlist_actions.js");
-/* harmony import */ var _playlist_modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./playlist_modal */ "./frontend/components/playlist/playlist_modal.jsx");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+/* harmony import */ var _playlist_modal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./playlist_modal */ "./frontend/components/playlist/playlist_modal.jsx");
+
 
 
 
@@ -933,11 +1044,14 @@ var mDTP = function mDTP(dispatch) {
   return {
     createPlaylist: function createPlaylist(playlist) {
       return dispatch(Object(_actions_playlist_actions__WEBPACK_IMPORTED_MODULE_1__["createPlaylist"])(playlist));
+    },
+    closeModal: function closeModal() {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__["closeModal"])());
     }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(null, mDTP)(_playlist_modal__WEBPACK_IMPORTED_MODULE_2__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(null, mDTP)(_playlist_modal__WEBPACK_IMPORTED_MODULE_3__["default"]));
 
 /***/ }),
 
@@ -2400,7 +2514,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var UIReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  ModalReducer: _modal_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
+  modal: _modal_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (UIReducer);
 
