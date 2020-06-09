@@ -13,12 +13,17 @@ class Artist < ApplicationRecord
 
   has_many :albums,
   foreign_key: :artist_id,
-  class_name: :Album
+  class_name: :Album,
+  dependent: :destroy
 
   has_many :songs,
   through: :albums,
   source: :songs
   
-  has_one_attached :profile_pic
+  has_one_attached :profile_photo,
+  dependent: :destroy
+
+  has_one_attached :cover_photo,
+  dependent: :destroy
 
 end

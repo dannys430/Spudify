@@ -30,4 +30,7 @@ class Song < ApplicationRecord
   through: :playlist_songs,
   source: :playlist
 
+  has_one_attached :song_file,
+  dependent: :destroy
+
 end

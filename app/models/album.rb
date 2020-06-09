@@ -16,12 +16,14 @@ class Album < ApplicationRecord
   
   has_many :songs,
   foreign_key: :album_id,
-  class_name: :Song
+  class_name: :Song,
+  dependent: :destroy
   
   belongs_to :artist,
   foreign_key: :artist_id,
   class_name: :Artist
 
-  has_one_attached :cover_art
+  has_one_attached :cover_art,
+  dependent: :destroy
   
 end
