@@ -1,0 +1,50 @@
+.left-nav {
+  background: var(--black);
+  width: 232px;
+  height: 100vh;
+  position: fixed;
+  z-index: -1;
+}
+
+.left-nav-logo {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+  margin-left: -50px;
+}
+
+.left-nav-section1 {
+  margin-left: 16px;
+  margin-top: 22px;
+}
+
+.left-nav-section1 div {
+  display: flex;
+  padding: 8px;
+}
+.left-nav-section1 div:hover svg {
+  fill: var(--white);
+}
+.left-nav-section1 div:hover h1 {
+  color: white;
+}
+
+
+.left-nav-section1 h1 {
+  color: var(--ltgray);
+  font-family: 'lineto-circular-book';
+  font-size: 14px;
+  letter-spacing: .2px;
+  padding-left: 16px;
+  padding-top: 3px;
+}
+
+
+
+.left-nav-font {
+  
+}
+.left-nav-font:hover {
+  color: var(--white);
+}
+
