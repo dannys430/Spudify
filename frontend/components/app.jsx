@@ -9,6 +9,8 @@ import LoginContainer from './session/login_container'
 
 import HomeContainer from  './home/home_container'
 
+import SongFormContainer from  './song/song_form_container'
+
 const App = () => (
   <div>
     <Route exact path="/us" component={SplashContainer} />
@@ -16,6 +18,8 @@ const App = () => (
     <AuthRoute path="/login" component={LoginContainer} />
 
     <Route exact path="/" component={HomeContainer} />
+
+    <Route exact path="/songform" component={SongFormContainer} />
 
   </div>
 )
