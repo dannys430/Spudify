@@ -7,3 +7,10 @@ export const createSong = (song) => {
     processData: false
   })
 }
+
+export const fetchSong = (id) => {
+  return $.ajax({
+    url: `api/songs/${id}`,
+    method: 'GET',
+  })
+}

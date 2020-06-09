@@ -9,6 +9,10 @@ class Api::SongsController < ApplicationController
     end
   end
 
+  def show
+    @song = Song.find(params[:id])
+  end
+
   def destroy
   end
 
