@@ -11,8 +11,11 @@ import HomeContainer from  './home/home_container'
 
 import SongFormContainer from  './song/song_form_container'
 
+import PlaylistModalContainer from  './playlist/playlist_modal_container'
+
 const App = () => (
   <div>
+    <PlaylistModalContainer/>
     <Route exact path="/us" component={SplashContainer} />
     <AuthRoute path="/signup" component={SignupContainer} />
     <AuthRoute path="/login" component={LoginContainer} />

@@ -27,7 +27,7 @@ class PlaylistModal extends React.Component {
   
   render() {
     return (
-      <div>
+      <div className="playlist-modal">
         <form onSubmit={this.handleSubmit}>
           <h1>Create playlist</h1>
 
