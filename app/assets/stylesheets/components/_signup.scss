@@ -28,8 +28,7 @@
 .guest-button {
   background-color: #3b5997;
   color: white;
-  padding-top: 14.25px;
-  padding-bottom: 14.25px;
+  padding: 15.5px;
   border-radius: 25px;
   display: flex;
   justify-content: center;
@@ -37,7 +36,12 @@
   font-size: 12.8px;
   font-family: 'lineto-circular-black';
   letter-spacing: 2px;
-  transition: 0.3s;
+  transition: 0.1s;
+}
+
+.guest-button:hover {
+  background-color: #6b82b1;
+  transform: scale(1.04);
 }
 
 .or-signup {
@@ -231,7 +235,7 @@ input[type=radio]:focus{
 .signup-button-2 {
   background-color: #58ba55;
   color: white;
-  padding: 12px 60px;
+  padding: 15.5px;
   border-radius: 25px;
   margin-bottom: 9px;
   display: flex;
@@ -239,11 +243,12 @@ input[type=radio]:focus{
   font-size: 12.8px;
   font-family: 'lineto-circular-black';
   letter-spacing: 2px;
-  transition: 0.3s;
+  transition: 0.1s;
 }
 
 .signup-button-2:hover {
   background-color: #67d962;
+  transform: scale(1.04);
 }
 
 .signup-login {
@@ -256,8 +261,12 @@ input[type=radio]:focus{
 
 .tiny-login-link {
   text-decoration: underline;
-  color: #67d962;
+  color: #58ba55;
   padding-left: 3px;
+}
+
+.tiny-login-link:hover {
+  color: #67d962;
 }
 
 
