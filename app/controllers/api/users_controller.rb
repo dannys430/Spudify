@@ -12,22 +12,6 @@ class Api::UsersController < ApplicationController
     end
   end
 
-  def index
-  end
-
-  def show
-    @user = selected_user
-  end
-
-  def edit
-  end
-
-  def update
-  end
-
-  def destroy
-  end
-
   def user_params
     params.require(:user).permit(:email, :password, :name, :birth_date, :gender)
   end
