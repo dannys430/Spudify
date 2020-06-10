@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 // import { fetchNewSong } from '../../actions/song_actions';
 
-import { openModal} from '../../actions/modal_actions';
+import { openModal } from '../../actions/modal_actions';
 
 import LeftNav from './left_nav';
 
