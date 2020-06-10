@@ -1,0 +1,33 @@
+// .playlist-index-li {
+//   background: white;
+//   height: 20px;
+//   width: 200px;
+//   margin-left: 23px;
+//   list-style: none;
+
+// }
+
+.playlist-index-div {
+  height: 310px;
+  background: var(--black);
+  overflow: scroll;
+  list-style: none;
+  padding-left: 17px;
+  margin-top: 16px;
+}
+
+.playlist-index-div h1 {
+  color: rgb(174,174,174);
+  font-size: 14.5px;
+  font-family: 'lineto-circular-book';
+  opacity: .7;
+}
+
+.playlist-index-div h1:hover {
+  color: var(--white);
+  opacity: initial;
+}
+
+.playlist-index-div li {
+  padding: 7px;
+}

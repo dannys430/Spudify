@@ -5,6 +5,7 @@ import LeftNavContainer from '../leftnav/left_nav_container'
 import MediaBarContainer from '../mediabar/media_bar_container';
 
 class Home extends React.Component {
+  
   render() {
     return (
       <div>

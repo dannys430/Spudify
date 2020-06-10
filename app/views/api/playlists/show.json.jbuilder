@@ -1,4 +1,4 @@
-json.extract! @playlist, :id, :playlist_name, :description, :private
+# json.extract! @playlist, :id, :playlist_name, :description, :private
 
-json.creatorName @playlist.user.name
+# json.creatorName @playlist.user.name
 

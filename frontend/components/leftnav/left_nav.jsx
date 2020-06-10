@@ -1,14 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import PlaylistIndexContainer from '../playlist/playlist_index_container'
+
+
 class LeftNav extends React.Component {
   constructor(props) {
     super(props);
   }
 
-  componentDidMount() {
-    this.props.playlists
-  }
+  // componentDidMount() {
+  //   // debugger
+
+  //   this.props.requestUser(this.props.userId)
+  // }
 
   render() {
 
@@ -78,9 +83,7 @@ class LeftNav extends React.Component {
         </section>
 
         <section>
-          {/* render playlist index */}
-          <div>{currentUser.name}</div>
-          {/* <div>{currentUser.playlists}</div> */}
+          <PlaylistIndexContainer />
         </section>
         
       </div>
