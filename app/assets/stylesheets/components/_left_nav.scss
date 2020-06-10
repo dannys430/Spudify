@@ -53,8 +53,7 @@
 
 .left-nav-section2 div {
   display: flex;
-  padding: 8px;
-  padding-top: 18px;
+  padding: 5px 8px;
   
 }
 .left-nav-section2 div:hover h1 {
@@ -68,6 +67,7 @@
   letter-spacing: 1.4px;
   padding-left: 8px;
   padding-top: 2px;
+  padding-bottom: 13px
 }
 
 .left-nav-section2 h1 {
@@ -79,11 +79,29 @@
   padding-top: 7px;
 }
 
+.plus-sign-div-container {
+  transition: 1s;
+}
+.plus-sign-div-container:hover svg {
+  background: var(--white);
+}
+
 .plus-icon {
   background: var(--ltgray);
   padding: 4px;
 }
 
+
 .create-playlist {
   letter-spacing: .2px;
+}
+
+
+.heart-icon-div:hover svg {
+  background-color: transparentize($color: #000000, $amount: 1);
+}
+
+.heart-icon {
+  padding: 8.5px;
+  background: linear-gradient(to right, rgb(161, 102, 155), rgb(120, 152, 197));
 }
