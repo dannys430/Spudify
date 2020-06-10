@@ -1,11 +1,14 @@
 import { connect } from 'react-redux';
-import { createNewPlaylist } from '../../actions/playlist_actions';
+import { createPlaylist } from '../../actions/playlist_actions';
+
+import {closeModal} from '../../actions/modal_actions';
 
 import PlaylistModal from './playlist_modal'
 
 const mDTP = (dispatch) => {
   return {
-    createNewPlaylist: (playlist) => dispatch(createNewPlaylist(playlist))
+    createPlaylist: (playlist) => dispatch(createPlaylist(playlist)),
+    closeModal: () => dispatch(closeModal())
   }
 }
 
