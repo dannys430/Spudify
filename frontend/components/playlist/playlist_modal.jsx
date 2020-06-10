@@ -27,20 +27,23 @@ class PlaylistModal extends React.Component {
   render() {
     return (
       <div className="playlist-modal">
-        <form onSubmit={this.handleSubmit}>
-          <h1>Create playlist</h1>
+        <form className="playlist-modal-form" onSubmit={this.handleSubmit}>
+          <h1>Create new playlist</h1>
 
-          <label>Playlist Name
-            <input 
-              type="text" 
-              placeholder="New Playlist"
-              onChange={this.update('playlist_name')}
-            />
-          </label>
+          <div className="playlist-modal-input">
+            <h2>Playlist Name</h2>
+              <input
+                type="text"
+                placeholder="New Playlist"
+                onChange={this.update('playlist_name')}
+              />
+          </div>
 
-          <button onClick={() => this.props.closeModal()}>CANCEL</button>
 
-          <button onClick={this.handleSubmit}>CREATE</button>
+          <div className="playlist-modal-buttons-div">
+            <button className="cancel-button" onClick={() => this.props.closeModal()}>CANCEL</button>
+            <button className="create-button" onClick={this.handleSubmit}>CREATE</button>
+          </div>
 
         </form>
       </div>
