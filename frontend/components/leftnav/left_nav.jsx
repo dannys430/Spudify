@@ -6,8 +6,23 @@ class LeftNav extends React.Component {
     super(props);
   }
 
+  componentDidMount() {
+    this.props.playlists
+  }
 
   render() {
+
+    // const playlist = this.props.currentUser.playlists[0]
+
+    // const playlistIndex = user.playlists.map(playlist => {
+    //   debugger
+    //   return (
+    //     <ul>
+    //       <li>{playlist.playlist_name}</li>
+    //     </ul>
+    //   )
+    // })
+
     return (
       <div className="left-nav">
         <div className="left-nav-logo">
@@ -64,6 +79,8 @@ class LeftNav extends React.Component {
 
         <section>
           {/* render playlist index */}
+          <div>{currentUser.name}</div>
+          {/* <div>{currentUser.playlists}</div> */}
         </section>
         
       </div>

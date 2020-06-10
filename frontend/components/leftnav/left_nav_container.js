@@ -7,7 +7,12 @@ import { openModal} from '../../actions/modal_actions';
 import LeftNav from './left_nav';
 
 
-const mSTP = ({})
+const mSTP = (state) => {
+  // debugger
+  return {
+    playlists: state.session.entities.PlaylistReducer
+  }
+}
 
 const mDTP = (dispatch) => {
   return {

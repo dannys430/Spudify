@@ -545,8 +545,22 @@ var LeftNav = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(LeftNav, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.playlists;
+    }
+  }, {
     key: "render",
     value: function render() {
+      // const playlist = this.props.currentUser.playlists[0]
+      // const playlistIndex = user.playlists.map(playlist => {
+      //   debugger
+      //   return (
+      //     <ul>
+      //       <li>{playlist.playlist_name}</li>
+      //     </ul>
+      //   )
+      // })
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "left-nav"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -611,7 +625,7 @@ var LeftNav = /*#__PURE__*/function (_React$Component) {
         className: "active-path",
         "data-old_color": "#000000",
         fill: "#B3B3B3"
-      })), " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Liked Songs"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null));
+      })), " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Liked Songs"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, currentUser.name)));
     }
   }]);
 
@@ -641,7 +655,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var mSTP = {};
+
+var mSTP = function mSTP(state) {
+  // debugger
+  return {
+    playlists: state.session.entities.PlaylistReducer
+  };
+};
 
 var mDTP = function mDTP(dispatch) {
   return {
