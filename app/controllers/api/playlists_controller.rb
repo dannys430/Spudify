@@ -1,9 +1,10 @@
 class Api::PlaylistsController < ApplicationController
 
-  # before_action :ensure_signed_in
+  before_action :ensure_signed_in
 
   def create
-    @playlist = Playlist.new(playlist_params)
+    # @playlist = Playlist.new(playlist_params)
+    @playlist = current_user.playlists.new(playlist_params)
     if @playlist.save
       render 'api/playlists/show'
     else
@@ -11,7 +12,14 @@ class Api::PlaylistsController < ApplicationController
     end
   end
 
+  def index
+    @playlists = current_user.playlists
+    render 'api/playlists/index'
+  end
+
   def show
+    @playlist = Playlist.find(params[:id])
+    render 'api/playlists/show'
   end
 
   def update
@@ -21,7 +29,7 @@ class Api::PlaylistsController < ApplicationController
   end
 
   def playlist_params
-    params.require(:playlist).permit(:playlist_name, :description, :user_id, :private)
+    params.require(:playlist).permit(:playlist_name, :description, :private)
   end
   
 end
