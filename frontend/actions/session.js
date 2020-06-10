@@ -1,4 +1,4 @@
-import {createUser, createSession, deleteSession} from '../utils/session'
+import { createUser, createSession, deleteSession } from '../utils/session'
 
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER'
 export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER'
@@ -20,21 +20,21 @@ const receiveErrors = (errors) => ({
 
 export const createNewUser = (user) => dispatch => {
   return createUser(user)
-  .then(
-    user => dispatch(receiveCurrentUser(user)),
-    error => dispatch(receiveErrors(error.responseJSON))
-  )
+    .then(
+      user => dispatch(receiveCurrentUser(user)),
+      error => dispatch(receiveErrors(error.responseJSON))
+    )
 }
 
 export const login = (user) => dispatch => {
   return createSession(user)
-  .then(
-    user => dispatch(receiveCurrentUser(user)),
-    error => dispatch(receiveErrors(error.responseJSON))
-  )
+    .then(
+      user => dispatch(receiveCurrentUser(user)),
+      error => dispatch(receiveErrors(error.responseJSON))
+    )
 }
 
 export const logout = () => dispatch => {
   return deleteSession()
-  .then(() => dispatch(logoutCurrentUser()))
+    .then(() => dispatch(logoutCurrentUser()))
 }
