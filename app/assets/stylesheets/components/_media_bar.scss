@@ -1,0 +1,14 @@
+.mediabar {
+  background: var(--gray);
+  width: 100%;
+  position: fixed;
+  height: 90px;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid var(--black);
+}
+
+.play-button {
+  max-width: 50px;
+}
