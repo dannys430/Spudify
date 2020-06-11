@@ -1,14 +1,22 @@
 import React from 'react';
 
 class PlaylistContent extends React.Component {
-  
+  // constructor(props) {
+  //   super(props)
+  // }
+
   componentDidMount() {
-    debugger
-    this.props.requestPlaylist(this.props.playlist.id)
+    // debugger
+    // return this.props.requestPlaylist(this.props.playlist.id)
+    return this.props.requestPlaylist(this.props.match.params.id)
   }
 
 
   render() {
+
+    if (!this.props.playlist) {
+      return null;
+    }
 
     return (
       <div>
@@ -16,9 +24,10 @@ class PlaylistContent extends React.Component {
           <div className="album-photo"></div>
           <div>
             <h2>PLAYLIST</h2>
-            {/* <h1>Don't Tell The Bank(feat.Roshin) - Shaun Frank</h1> */}
             <h1>{this.props.playlist.playlist_name}</h1>
-            <h2>Danny Singer</h2>
+            <h2>{this.props.playlist.user.name}</h2>
+            {/* <h2>{this.props.playlist.songs.first.song_name}</h2> */}
+
           </div>
         </section>
       </div>

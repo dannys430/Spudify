@@ -13,20 +13,24 @@ import SongFormContainer from  './song/song_form_container';
 
 import ModalContainer from  './modal/modal_container';
 
-import PlaylistContentContainer from './playlist/playlist_content_container';
 
-const App = (store) => (
+
+
+const App = () => (
   <div>
     <ModalContainer/>
-    <Route exact path="/us" component={SplashContainer} />
-    <AuthRoute path="/signup" component={SignupContainer} />
-    <AuthRoute path="/login" component={LoginContainer} />
+
+      <Switch>
+        <Route exact path="/us" component={SplashContainer} />
+        <AuthRoute path="/signup" component={SignupContainer} />
+        <AuthRoute path="/login" component={LoginContainer} />
+        <Route path="/" component={HomeContainer} />    {/** bc this is last in the switch, the preceding routes will never render HomeContainer */}
+      </Switch>
 
     <Route exact path="/songform" component={SongFormContainer} />
   
-    <Route exact path="/" component={HomeContainer} />
 
-    <Route path="/playlists/:id" store={store} component={PlaylistContentContainer} />
+
 
   </div>
 )

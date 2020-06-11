@@ -3,18 +3,20 @@ import {connect} from 'react-redux';
 
 import PlaylistContent from './playlist_content';
 
-import { requestPlaylist } from '../../actions/playlist_actions';
+import { requestPlaylist, requestPlaylists } from '../../actions/playlist_actions';
 
 const mSTP = (state, ownProps) => {
-  debugger
+  // debugger
   return {
-    playlist: state.entites.playlists[ownProps.match.params.id]
+    playlist: state.entities.playlists[ownProps.match.params.id],
+    // playlists: state.entities.playlists
   }
 }
 
 const mDTP = (dispatch) => {
   return {
-    requestPlaylist: (id) => dispatch(requestPlaylist(id))
+    requestPlaylist: (id) => dispatch(requestPlaylist(id)),
+    // requestPlaylists: () => dispatch(requestPlaylists())
   }
 }
 

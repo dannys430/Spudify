@@ -5,9 +5,9 @@ import PlaylistIndexContainer from '../playlist/playlist_index_container'
 
 
 class LeftNav extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   // componentDidMount() {
   //   // debugger

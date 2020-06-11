@@ -9,13 +9,15 @@ import {requestUser} from '../../actions/user_actions';
 import LeftNav from './left_nav';
 
 
-// const mSTP = (state, ownProps) => {
-//   // debugger
-//   return {
-//     user: state.entities.users[79],
-//     // playlists: state.entities.PlaylistReducer
-//   }
-// }
+const mSTP = (state, ownProps) => {
+  // debugger
+  return {
+    // user: state.entities.users[79],
+    // playlists: state.entities.PlaylistReducer
+    // state,
+    // ownProps
+  }
+}
 
 const mDTP = (dispatch) => {
   return {
@@ -29,4 +31,4 @@ const mDTP = (dispatch) => {
   }
 }
 
-export default connect(null, mDTP)(LeftNav);
+export default connect(mSTP, mDTP)(LeftNav);

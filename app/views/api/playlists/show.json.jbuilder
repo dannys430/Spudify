@@ -2,3 +2,4 @@
 
 # json.creatorName @playlist.user.name
 
+json.extract! @playlist.songs
