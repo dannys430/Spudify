@@ -13,17 +13,20 @@ import SongFormContainer from  './song/song_form_container';
 
 import ModalContainer from  './modal/modal_container';
 
-const App = () => (
+import PlaylistContentContainer from './playlist/playlist_content_container';
+
+const App = (store) => (
   <div>
     <ModalContainer/>
     <Route exact path="/us" component={SplashContainer} />
     <AuthRoute path="/signup" component={SignupContainer} />
     <AuthRoute path="/login" component={LoginContainer} />
 
+    <Route exact path="/songform" component={SongFormContainer} />
   
     <Route exact path="/" component={HomeContainer} />
 
-    <Route exact path="/songform" component={SongFormContainer} />
+    <Route path="/playlists/:id" store={store} component={PlaylistContentContainer} />
 
   </div>
 )
