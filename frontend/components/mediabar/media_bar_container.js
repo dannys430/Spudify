@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import { fetchNewSong } from '../../actions/song_actions';
 
 import MediaBar from './media_bar';
