@@ -17,6 +17,8 @@ Spudify was designed with modularity in mind.  By leveraging React component nes
 ![](signup.gif)
 
 
+
+
 ## Playlists
 ![alt text](playlist.gif)
 
