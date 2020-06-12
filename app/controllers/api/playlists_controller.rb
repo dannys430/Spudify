@@ -13,8 +13,10 @@ class Api::PlaylistsController < ApplicationController
   end
 
   def index
+    # debugger
     @playlists = current_user.playlists
-    render 'api/playlists/index'
+    # render 'api/playlists/index'
+    render :index
   end
 
   def show
