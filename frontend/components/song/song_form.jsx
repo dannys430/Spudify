@@ -93,11 +93,6 @@ class SongForm extends React.Component {
                 onChange={this.update('explicit')}
               />
             </label>
-<<<<<<< HEAD
-
-=======
-            
->>>>>>> playlist
             <label>False
               <input
                 type="radio"
@@ -109,21 +104,11 @@ class SongForm extends React.Component {
             </label>
 
           </label>
-<<<<<<< HEAD
 
-=======
           
->>>>>>> playlist
-
-
           <label>Song File
             <input type="file" onChange={(e) => this.handleFile(e)} />
           </label>
-<<<<<<< HEAD
-
-=======
-          
->>>>>>> playlist
           <button onClick={this.handleSubmit}>ADD SONG</button>
 
         </form>
