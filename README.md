@@ -14,4 +14,6 @@ Spudify was designed with modularity in mind.  By leveraging React component nes
 
 ## Sign up & Login
 
-http://www.giphy.com/gifs/YmVjgvtpiGXWc3D2aR
+![alt text](https://giphy.com/gifs/LrACFThxlG0l5nUhvX "Logo Title Text 1")
+
+
