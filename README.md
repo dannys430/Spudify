@@ -14,6 +14,9 @@ Spudify was designed with modularity in mind.  By leveraging React component nes
 
 ## before and after sign in
 
+
+| before sign in | after sign in |
+| ------------- |:-------------:|
 | ![](not_signed_in.png) | ![](signed_in.png)|
 
 
