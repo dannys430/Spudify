@@ -16,6 +16,7 @@
  @font-face {
 	 font-family: 'lineto-circular-black';
 	 src:url(asset-path('/assets/lineto/lineto-circular-black.woff')) format('woff');
+	 src:url(asset-path('/assets/lineto/lineto-circular-black.woff?#iefix')) format('embedded-opentype');
 	 font-weight: normal;
 	 font-style: normal;
  }
@@ -23,6 +24,7 @@
  @font-face {
 	 font-family: 'lineto-circular-book';
 	 src:url(asset-path('/assets/lineto/lineto-circular-book.woff')) format('woff');
+	 src:url(asset-path('/assets/lineto/lineto-circular-book.woff?#iefix')) format('embedded-opentype');
 	 font-weight: normal;
 	 font-style: normal;
  }
