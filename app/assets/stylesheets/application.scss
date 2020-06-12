@@ -15,17 +15,18 @@
 
  @font-face {
 	 font-family: 'lineto-circular-black';
-	 src:url('/assets/lineto/lineto-circular-black.woff') format('woff');
+	 src:font-url('../stylesheets/lineto-circular-black.woff') format('woff');
 	 font-weight: normal;
 	 font-style: normal;
  }
 
  @font-face {
 	 font-family: 'lineto-circular-book';
-	 src:url('/assets/lineto/lineto-circular-book.woff') format('woff');
+	 src:font-url('../stylesheets/lineto-circular-book.woff') format('woff');
 	 font-weight: normal;
 	 font-style: normal;
  }
+
 
  @import "base/reset";
 
