@@ -10,15 +10,7 @@ To build Spudify, I used the following stack:
   * React - front-end rendering
   * Redux - state-management
 
+Spudify was designed with modularity in mind.  By leveraging React component nesting, I was able to design a guest experience that is infinitely customizable.  Conditionally rendering components based on any number of factors, including a user’s signed-in status, means full control over touchpoints and allows for simple funnel testing and ultimately, enhanced conversions. Modularity has the added benefit of seemless site maintenance, and no service disruptions.
 
-
-
-Spudify was designed with React for front-end rendering, Redux for state management, Postgresql, React for front-end rendering, and Redux for state management
-
-Spudify’s modularity allows for seemless site maintenance, and no service disruptions.  By leveraging React component nesting and 
-
-
-Conditionally rendering components based on any number of factors, including a user’s signed-in status, allows for an endlessly customizable guest experience.  This translates to funnel optimization and  maximum conversions. 
-
-
+![alt text](https://ibb.co/Lgdw8B2 "Logo Title Text 1")
 
