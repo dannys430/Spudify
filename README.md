@@ -1,24 +1,24 @@
-# README
+Spudify is an audio streaming platform inspired by Spotify.  Guests can browse content,  enjoy complementary access, and indulge in their favorite sounds.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Checkout out Spudify here:
 
-Things you may want to cover:
+[I'm an inline-style link](https://spudify.herokuapp.com/#/us)
 
-* Ruby version
+To make Spudify, I used the following stack
+	Ruby on Rails - web-application framework
+	Postgresql - database management
+	React - front-end rendering
+	Redux - state-management
 
-* System dependencies
 
-* Configuration
 
-* Database creation
 
-* Database initialization
+Spudify was designed with React for front-end rendering, Redux for state management, Postgresql, React for front-end rendering, and Redux for state management
 
-* How to run the test suite
+Spudify’s modularity allows for seemless site maintenance, and no service disruptions.  By leveraging React component nesting and 
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+Conditionally rendering components based on any number of factors, including a user’s signed-in status, allows for an endlessly customizable guest experience.  This translates to funnel optimization and  maximum conversions. 
 
-* ...
+
+
