@@ -14,14 +14,14 @@ class Home extends React.Component {
   // componentDidMount() {
   //   return this.props.requestPlaylists()
   // }
-
+  
   render() {
     // debugger
     return (
       <div>
-        <LeftNavContainer />
-        <MainContentContainer />
-        <MediaBarContainer />
+        <LeftNavContainer/>
+        <MainContentContainer/>
+        <MediaBarContainer/>
       </div>
     )
   }
