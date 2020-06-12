@@ -21,3 +21,11 @@ export const fetchPlaylists = () => {
     method: 'GET'
   })
 }
+
+// export const fetchPlaylistSongs = (id) => {
+//   // debugger
+//   return $.ajax({
+//     url: `/api/playlists/${id}/songs/`,
+//     method: 'GET'
+//   })
+// }
