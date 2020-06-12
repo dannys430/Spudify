@@ -14,7 +14,11 @@ class MainContent extends React.Component {
   // componentDidMount() {
   //   return this.props.requestPlaylists()
   // }
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> playlist
   render() {
     return (
       <div className="main-content-div" >
