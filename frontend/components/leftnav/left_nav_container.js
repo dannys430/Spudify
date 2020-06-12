@@ -4,19 +4,25 @@ import { connect } from 'react-redux';
 
 import { openModal } from '../../actions/modal_actions';
 
+import {requestUser} from '../../actions/user_actions';
+
 import LeftNav from './left_nav';
 
 
-const mSTP = (state) => {
+const mSTP = (state, ownProps) => {
   // debugger
   return {
-    playlists: state.session.entities.PlaylistReducer
+    // user: state.entities.users[79],
+    // playlists: state.entities.PlaylistReducer
+    // state,
+    // ownProps
   }
 }
 
 const mDTP = (dispatch) => {
   return {
     // fetchNewSong: (id) => dispatch(fetchNewSong(id))
+    // requestUser: (id) => dispatch(requestUser(id)),
     otherForm: (
       <button className="create-playlist" onClick={() => dispatch(openModal('playlist'))}>
         Create Playlist
@@ -25,4 +31,4 @@ const mDTP = (dispatch) => {
   }
 }
 
-export default connect(null, mDTP)(LeftNav);
+export default connect(mSTP, mDTP)(LeftNav);
