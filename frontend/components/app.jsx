@@ -25,9 +25,9 @@ const App = () => (
         <AuthRoute path="/signup" component={SignupContainer} />
         <AuthRoute path="/login" component={LoginContainer} />
         <Route path="/" component={HomeContainer} />   
+        <Route exact path="/songform" component={SongFormContainer} />
       </Switch>
 
-    <Route exact path="/songform" component={SongFormContainer} />
   
 
 
