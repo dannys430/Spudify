@@ -24,7 +24,7 @@ const App = () => (
         <Route exact path="/us" component={SplashContainer} />
         <AuthRoute path="/signup" component={SignupContainer} />
         <AuthRoute path="/login" component={LoginContainer} />
-        <Route path="/" component={HomeContainer} />    {/** bc this is last in the switch, the preceding routes will never render HomeContainer */}
+        <Route path="/" component={HomeContainer} />   
       </Switch>
 
     <Route exact path="/songform" component={SongFormContainer} />

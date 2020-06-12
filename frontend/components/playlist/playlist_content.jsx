@@ -25,7 +25,7 @@ class PlaylistContent extends React.Component {
       const ul = []
       ul.push(
         // <li>{song.song_name}</li>
-      <li><Link to={`/playlists/${this.props.playlist.id}/songs/${song.id}`}><h2>{song.song_name}</h2></Link></li>
+      <li><Link to={`/playlists/${this.props.playlist.id}/songs/${song.id}`}><h2>{song.song_name}</h2>{song.artist.artist_name}</Link></li>
 
       )
       return ul
@@ -40,6 +40,7 @@ class PlaylistContent extends React.Component {
             <h1>{this.props.playlist.playlist_name}</h1>
             <h2>{this.props.playlist.user.name}</h2>
             <h2>{songList}</h2>
+            
 
           </div>
         </section>

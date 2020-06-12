@@ -13,8 +13,3 @@ const Root = ({store}) => (
 );
 
 export default Root;
-
-
-{/* <Provider store={store}>    give the connect function access to everything */}
-
-// connect is like the librarian that lets members have access to book from mstp and dvd from mdtp
