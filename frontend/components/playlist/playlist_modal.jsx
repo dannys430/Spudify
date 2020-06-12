@@ -21,6 +21,7 @@ class PlaylistModal extends React.Component {
   handleSubmit(e) {
     e.preventDefault()
     this.props.createPlaylist(this.state)
+      .then(() => this.props.requestPlaylists())
       .then(() => this.props.closeModal())
   }
   
