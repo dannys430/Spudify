@@ -16,4 +16,4 @@ Spudify was designed with modularity in mind.  By leveraging React component nes
 
 ![alt text](https://giphy.com/gifs/LrACFThxlG0l5nUhvX "Logo Title Text 1")
 
-
+![](https://giphy.com/gifs/LrACFThxlG0l5nUhvX)
