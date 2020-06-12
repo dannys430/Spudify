@@ -24,10 +24,10 @@ const App = () => (
         <Route exact path="/us" component={SplashContainer} />
         <AuthRoute path="/signup" component={SignupContainer} />
         <AuthRoute path="/login" component={LoginContainer} />
+        <Route exact path="/songform" component={SongFormContainer} />
         <Route path="/" component={HomeContainer} />   
       </Switch>
 
-    <Route exact path="/songform" component={SongFormContainer} />
   
 
 
