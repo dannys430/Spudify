@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 
 import {AuthRoute} from '../utils/route_utils';
 
@@ -13,16 +13,24 @@ import SongFormContainer from  './song/song_form_container';
 
 import ModalContainer from  './modal/modal_container';
 
+
+
+
 const App = () => (
   <div>
     <ModalContainer/>
-    <Route exact path="/us" component={SplashContainer} />
-    <AuthRoute path="/signup" component={SignupContainer} />
-    <AuthRoute path="/login" component={LoginContainer} />
 
-    <Route exact path="/" component={HomeContainer} />
+      <Switch>
+        <Route exact path="/us" component={SplashContainer} />
+        <AuthRoute path="/signup" component={SignupContainer} />
+        <AuthRoute path="/login" component={LoginContainer} />
+        <Route path="/" component={HomeContainer} />   
+      </Switch>
 
     <Route exact path="/songform" component={SongFormContainer} />
+  
+
+
 
   </div>
 )
