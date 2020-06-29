@@ -41,7 +41,6 @@ class PlaylistContent extends React.Component {
             <h2>PLAYLIST</h2>
             <h1>{this.props.playlist.playlist_name}</h1>
             <h2>{this.props.playlist.user.name}</h2>
-            {/* <h2>{this.props.playlist.songs[5].artist.artist_name}</h2> */}
           </div>
         </section>
 
