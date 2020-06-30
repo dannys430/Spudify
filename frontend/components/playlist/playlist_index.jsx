@@ -24,19 +24,18 @@ class PlaylistIndex extends React.Component {
 
     const playlists = this.props.playlists
 
-    const toDisplay = playlists.map((playlist, i) => {
-      const ul = []
-      ul.push (
-        <li key={i} className="playlist-index-li"><Link to={`/playlists/${playlist.id}`}><h1>{playlist.playlist_name}</h1></Link></li>
+    const ul = []
+
+    playlists.forEach((playlist) => {
+      ul.unshift (
+        <li className="playlist-index-li"><Link to={`/playlists/${playlist.id}`}><h1>{playlist.playlist_name}</h1></Link></li>
       )
-      return ul
-      
     })
 
     return (
-      <div className="playlist-index-div">
-        {toDisplay}
-      </div>
+        <div className="playlist-index-div">
+          {ul}
+        </div>
     )
   }
 }

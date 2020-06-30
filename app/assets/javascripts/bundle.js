@@ -1375,19 +1375,17 @@ var PlaylistIndex = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       var playlists = this.props.playlists;
-      var toDisplay = playlists.map(function (playlist, i) {
-        var ul = [];
-        ul.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          key: i,
+      var ul = [];
+      playlists.forEach(function (playlist) {
+        ul.unshift( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           className: "playlist-index-li"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
           to: "/playlists/".concat(playlist.id)
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, playlist.playlist_name))));
-        return ul;
       });
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "playlist-index-div"
-      }, toDisplay);
+      }, ul);
     }
   }]);
 
