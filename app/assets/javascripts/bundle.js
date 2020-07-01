@@ -2226,7 +2226,16 @@ var Signup = /*#__PURE__*/function (_React$Component) {
     value: function handleSubmit(e) {
       var _this4 = this;
 
-      e.preventDefault();
+      e.preventDefault(); // validateDate()
+
+      var func = function func() {
+        _this4.validateName();
+      }; // addEventListener('click', this.validateName())
+      // addEventListener('click', this.validateDate())
+      // addEventListener('click', this.validateYear())
+
+
+      func();
       var newUser = {
         email: this.state.email,
         password: this.state.password,
