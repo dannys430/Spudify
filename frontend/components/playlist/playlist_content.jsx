@@ -37,10 +37,12 @@ class PlaylistContent extends React.Component {
       <div>
         <section className="pc-section1">
           <div className="album-photo"></div>
-          <div>
-            <h2>PLAYLIST</h2>
-            <h1>{this.props.playlist.playlist_name}</h1>
-            <h2>{this.props.playlist.user.name}</h2>
+          <div className="playlist-info-div">
+            <span>
+              <h2>PLAYLIST</h2>
+              <h1>{this.props.playlist.playlist_name}</h1>
+              <h2>{this.props.playlist.user.name}</h2>
+            </span>
           </div>
         </section>
 
