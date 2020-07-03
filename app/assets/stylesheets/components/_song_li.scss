@@ -1,0 +1,24 @@
+.song-li {
+  // background: blue;
+  padding-left: 70px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  -webkit-user-select: none;  
+  -moz-user-select: none;    
+  -ms-user-select: none;      
+  user-select: none;
+}
+
+.song-li:hover {
+  background: rgb(49, 57, 59);
+}
+
+.song-li h1 {
+  font-size: 16px;
+  color: var(--white);
+}
+
+.song-li p {
+  font-size: 14px;
+  color: var(--ltgray);
+}

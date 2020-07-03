@@ -4,13 +4,43 @@ import { Link } from 'react-router-dom';
 import SongDiv from '../song/song_div';
 
 class PlaylistContent extends React.Component {
-  // constructor(props) {
-  //   super(props)
-  // }
+  constructor(props) {
+    super(props)
+    
+    this.state = {
+      currentSong: null,
+      playing: false,
+      history: []
+    }
+  }
 
   componentDidMount() {
     // return this.props.requestPlaylist(this.props.playlist.id)
     return this.props.requestPlaylist(this.props.match.params.id)
+  }
+
+  componentDidUpdate(previousProps, previousState) {
+    // console.log(this.state)
+    if (this.state.currentSong !== previousState.currentSong) {
+      let url;
+      // switch (this.state.currentSong.song_name) {
+      //   case "obsessedtest":
+      //     url = this.state.currentSong.songUrl
+      //     break;
+      //   // case "Booting Up":
+      //   //   url = bootingUp
+      //   //   break;
+      //   default:
+      //     break;
+      // }
+      // if (url) {
+        this.player.src = this.state.currentSong.songUrl;
+        this.player.play()
+        this.setState({playing: true})
+        this.state.history.push(this.state.currentSong)
+        console.log(this.state)
+      // }
+    }
   }
 
   render() {
@@ -26,13 +56,17 @@ class PlaylistContent extends React.Component {
     const playlistSongs = this.props.playlist.songs
 
     const songList = playlistSongs.map(song => {
-      const ul = []
-      ul.push(<SongDiv song={song}></SongDiv>)
-      // console.log(ul)
-      return ul
-    })
-
-    // debugger
+      return (
+        <li className="song-li"
+          // key={song.id} 
+          onDoubleClick={() => this.setState({currentSong: song})}
+        >
+          <h1>{song.song_name}</h1>
+          <p>{song.artist.artist_name} • {song.album.album_name}</p>
+          
+        </li>
+      )
+    });
 
     return (
       <div>
@@ -49,14 +83,15 @@ class PlaylistContent extends React.Component {
           </div>
         </section>
 
-        <section>
+        <section className="pc-section2">
           <div>
-            <h2>{songList}</h2>
+            <ul>{songList}</ul>
+            <audio ref={ref => this.player = ref} />
           </div>
         </section>
 
         <section>
-          <h1>hello</h1>
+          {/* <h1>hello</h1> */}
           {/* <audio controls>
             <source src={window.obsessed} type="audio/mp3"/>
           </audio> */}
