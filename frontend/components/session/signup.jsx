@@ -158,6 +158,17 @@ class Signup extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
+    // validateDate()
+
+    const func = () => {
+      this.validateName()
+    };
+    // addEventListener('click', this.validateName())
+    // addEventListener('click', this.validateDate())
+    // addEventListener('click', this.validateYear())
+
+    func()
+
     const newUser = {
       email: this.state.email,
       password: this.state.password,
@@ -168,6 +179,7 @@ class Signup extends React.Component {
     this.props.createNewUser(newUser)
     .then(() => this.props.history.push('/us'))
   }
+
 
   render() {
     return (

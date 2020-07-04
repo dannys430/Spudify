@@ -19,7 +19,7 @@ class Splash extends React.Component {
             <div className="section1-div1">
               <h1>Jump back in</h1>
               <h2>Pick up your music right where you left off.</h2>
-              <div className="web-player-btn-div"><Link to="/" className="web-player-btn">OPEN WEB PLAYER</Link></div>
+              <div className="web-player-btn-div"><a href="/" className="web-player-btn">OPEN WEB PLAYER</a></div>
             </div>
             <div className="section1-div2">
               <ul>
