@@ -38,7 +38,7 @@ class PlaylistContent extends React.Component {
         this.player.play()
         this.setState({playing: true})
         this.state.history.push(this.state.currentSong)
-        console.log(this.state)
+        // console.log(this.state)
       // }
     }
   }
