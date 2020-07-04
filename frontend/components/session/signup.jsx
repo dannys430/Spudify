@@ -152,7 +152,7 @@ class Signup extends React.Component {
 
   handleDemo(e) {
     e.preventDefault()
-    this.props.login({ email: 'mc@gmail.com', password: 'dembabies' })
+    this.props.login({ email: 'mariah@example.com', password: 'dembabies' })
       .then(() => this.props.history.push('/us'))
   }
 
