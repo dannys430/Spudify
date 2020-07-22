@@ -49,7 +49,7 @@ class SongForm extends React.Component {
       song.append('song[song_file]', this.state.songFile);
     }
 
-    this.props.createNewSong(song)
+    this.props.createSong(song)
       .then(() => this.props.history.push(`/us`))
   }
 

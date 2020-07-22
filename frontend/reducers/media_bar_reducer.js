@@ -1,0 +1,68 @@
+import {
+  RECEIVE_PREV_SONG, 
+  RECEIVE_CURRENT_SONG, 
+  RECEIVE_NEXT_SONG,
+  RECEIVE_QUEUE,
+  PLAY,
+  PAUSE,
+  RECEIVE_DURATION,
+  RECEIVE_CURRENT_TIME
+} from '../actions/media_bar_actions';
+
+const initialState = {
+  playing: false,
+  currentSong: null,
+  history: [],
+  queue: [],
+  duration: null,
+  currentTime: null
+}
+
+const formatTime = (time) => {
+  return (!isNaN(time)) ? (`${Math.floor(time / 60)} : ${Math.floor(time % 60)}`) : null
+}
+
+const MediaBarReducer = (state = initialState, action) => {
+  Object.freeze(state)
+  let newState = Object.assign({}, state);
+
+  switch(action.type) {
+    case RECEIVE_PREV_SONG:
+      !newState.history.includes(action.song) ? newState.history.push(action.song) : null
+      return newState;
+    case RECEIVE_CURRENT_SONG:
+      newState.currentSong = action.song
+      return newState;
+    case RECEIVE_NEXT_SONG:
+      newState.queue.unshift(action.song)
+      return newState;
+    case RECEIVE_QUEUE:
+      const songs = Object.values(action.songs)
+      songs.forEach(song => {
+        if(!newState.queue.includes(song)) {
+          newState.queue.push(song);
+        }
+      })
+      return newState
+    case PLAY:
+      newState.playing = true
+      return newState;
+    case PAUSE:
+      newState.playing = false
+      return newState;
+    case RECEIVE_DURATION:
+      newState.duration = newState.currentSong
+        ? formatTime(document.getElementById('media-bar').duration) 
+        : null
+      return newState;
+    case RECEIVE_CURRENT_TIME:
+      newState.currentTime = newState.currentSong
+        ? formatTime(document.getElementById('audio').currentTime)
+        : null
+      return newState;
+    default:
+      return state;
+  }
+}
+
+export default MediaBarReducer;

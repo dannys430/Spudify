@@ -45,5 +45,11 @@
 .pc-section2 {
   font-family: 'lineto-circular-book';
   height: 100vh;
-  background: linear-gradient(to top, rgba(0,0,0,.6),#121212)  
+  background: linear-gradient(to top, rgba(0,0,0,.6),#121212);
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.current-time-duration {
+  color: var(--white);
 }

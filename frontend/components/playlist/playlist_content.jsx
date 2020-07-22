@@ -1,50 +1,66 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 
-import SongDiv from '../song/song_div';
+import SongContainer from '../song/song_container';
 
 class PlaylistContent extends React.Component {
   constructor(props) {
     super(props)
-    
-    this.state = {
-      currentSong: null,
-      playing: false,
-      history: []
-    }
+
+    // this.state = {
+    //   currentTime: null,
+    //   duration: null,
+    // }
+
+    // this.handlePlay = this.handlePlay.bind(this)
+    // this.handlePause = this.handlePause.bind(this)
   }
+  //do component did mount within Song Div, NOT playlist, so that it grabs duration of all songs, not the first song in playlist.
 
   componentDidMount() {
-    // return this.props.requestPlaylist(this.props.playlist.id)
-    return this.props.requestPlaylist(this.props.match.params.id)
+    // document.getElementById('audio') ? document.getElementById('audio').addEventListener('loadedmetadata', e => {
+    //   const duration = document.getElementById('audio').duration
+    //   this.setState({
+    //     duration: e.target.duration
+    //   })
+    // }) : null;
+    // document.getElementById('audio') ? document.getElementById('audio').addEventListener("timeupdate", e => {
+    //   // const duration = document.getElementById('audio').duration
+    //   this.setState({
+    //     currentTime: e.target.currentTime,
+    //   });
+    // }): null;
+
+    this.props.requestPlaylist(this.props.match.params.id)  // getting the playlist with id found in query
+    this.props.receiveCurrentSong(this.props.queue[0])
   }
 
-  componentDidUpdate(previousProps, previousState) {
-    // console.log(this.state)
-    if (this.state.currentSong !== previousState.currentSong) {
-      let url;
-      // switch (this.state.currentSong.song_name) {
-      //   case "obsessedtest":
-      //     url = this.state.currentSong.songUrl
-      //     break;
-      //   // case "Booting Up":
-      //   //   url = bootingUp
-      //   //   break;
-      //   default:
-      //     break;
-      // }
-      // if (url) {
-        this.player.src = this.state.currentSong.songUrl;
-        this.player.play()
-        this.setState({playing: true})
-        this.state.history.push(this.state.currentSong)
-        // console.log(this.state)
-      // }
-    }
-  }
+  // componentDidUpdate() {
+  //   // this.props.playing ? document.getElementById('audio').play() : document.getElementById('audio').pause()
+
+  //   // this.props.receiveCurrentSong(this.props.queue[0])
+  //   // console.log(this.props.currentSong)
+  // }
+
+  // componentWillUnmount() {
+  //   this.props.playlist = null;
+  // }
+
+  // handlePlay(song) {
+  //   this.props.receiveCurrentSong(song)
+  //   this.props.play()
+  //   document.getElementById('audio').play()
+  //   this.props.history.push(song)
+  // }
+
+  // handlePause(song) {
+  //   this.props.receiveCurrentSong(song)
+  //   this.props.pause()
+  //   document.getElementById('audio').pause()
+  // }
+
 
   render() {
-    // debugger
     if (!this.props.playlist) {
       return null;
     }
@@ -54,19 +70,50 @@ class PlaylistContent extends React.Component {
     }
 
     const playlistSongs = this.props.playlist.songs
+    this.props.receiveQueue(playlistSongs)
+    // this.props.receiveQueue(this.props.playlist.songs)
+    // console.log(this.props.queue)
 
-    const songList = playlistSongs.map(song => {
+    const formatTime = (time) => {
+      return (!isNaN(time)) ? (`${Math.floor(time / 60)} : ${Math.floor(time % 60)}`) : null
+    }
+
+    // const currentTime = formatTime(this.state.currentTime)
+    // const duration = formatTime(this.state.duration)
+
+
+    const songList = playlistSongs ? playlistSongs.map((song, id) => {
       return (
-        <li className="song-li"
-          // key={song.id} 
-          onDoubleClick={() => this.setState({currentSong: song})}
-        >
-          <h1>{song.song_name}</h1>
-          <p>{song.artist.artist_name} • {song.album.album_name}</p>
-          
-        </li>
+        <SongContainer key={id} song={song}/>
+
+
+
+        // <li className="song-li"
+        //   key={id}
+        //   onDoubleClick={() => this.handlePlay(song)}
+        // >
+        //   {/* {this.state.currentTime} */}
+        //   {/* {this.props.playing === false && (<button onClick={() => this.handlePlay(song)}>Play</button>)}
+        //   {this.props.playing === true && (<button onClick={() => this.handlePause(song)}>Pause</button>)} */}
+
+        //   <h1>{song.song_name}</h1>
+        //   <p><Link to={`/artists/${song.artist.id}`}>{song.artist.artist_name}</Link> • <Link to={`/albums/${song.album.id}`}>{song.album.album_name}</Link>    </p>
+
+        //   {/* {duration} */}
+        //   {this.props.playing || !this.props.playing ? (
+        //     <div className="current-time-duration">
+        //       {currentTime} | {duration}
+        //     </div>
+        //   ) : (
+        //       ""
+        //     )}
+
+
+        // </li>
       )
-    });
+    }) : null;
+
+    // const source = this.props.currentSong ? this.props.currentSong.songUrl : this.props.queue[0].songUrl;
 
     return (
       <div>
@@ -86,15 +133,7 @@ class PlaylistContent extends React.Component {
         <section className="pc-section2">
           <div>
             <ul>{songList}</ul>
-            <audio ref={ref => this.player = ref} />
           </div>
-        </section>
-
-        <section>
-          {/* <h1>hello</h1> */}
-          {/* <audio controls>
-            <source src={window.obsessed} type="audio/mp3"/>
-          </audio> */}
         </section>
 
       </div>

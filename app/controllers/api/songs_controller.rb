@@ -9,8 +9,15 @@ class Api::SongsController < ApplicationController
     end
   end
 
+  def index
+    #@songs = Songs.all
+    @songs = Song.all
+    render :index
+  end
+
   def show
     @song = Song.find(params[:id])
+    render :show
   end
 
   def destroy
