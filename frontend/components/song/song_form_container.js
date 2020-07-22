@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
-import { createNewSong } from '../../actions/song_actions';
+import { createSong } from '../../actions/song_actions';
 
 import SongForm from './song_form'
 
 const mDTP = (dispatch) => {
   return {
-    createNewSong: (song) => dispatch(createNewSong(song))
+    createSong: (song) => dispatch(createSong(song))
   }
 }
 

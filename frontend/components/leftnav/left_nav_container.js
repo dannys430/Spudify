@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-// import { fetchNewSong } from '../../actions/song_actions';
+// import { fetchSong } from '../../actions/song_actions';
 
 import { openModal } from '../../actions/modal_actions';
 
@@ -21,13 +21,14 @@ const mSTP = (state, ownProps) => {
 
 const mDTP = (dispatch) => {
   return {
-    // fetchNewSong: (id) => dispatch(fetchNewSong(id))
+    // fetchSong: (id) => dispatch(fetchSong(id))
     // requestUser: (id) => dispatch(requestUser(id)),
     otherForm: (
       <button className="create-playlist" onClick={() => dispatch(openModal('playlist'))}>
         Create Playlist
       </button>
-    )
+    ),
+    openModal: () => dispatch(openModal('playlist'))
   }
 }
 

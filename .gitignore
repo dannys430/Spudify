@@ -30,3 +30,4 @@
 # ignore bundle.js and bundle.js.map
 /assets/javascripts/bundle.js
 /assets/javascripts/bundle.js.map
+node_modules

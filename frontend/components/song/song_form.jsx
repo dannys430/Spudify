@@ -49,7 +49,7 @@ class SongForm extends React.Component {
       song.append('song[song_file]', this.state.songFile);
     }
 
-    this.props.createNewSong(song)
+    this.props.createSong(song)
       .then(() => this.props.history.push(`/us`))
   }
 
@@ -93,6 +93,7 @@ class SongForm extends React.Component {
                 onChange={this.update('explicit')}
               />
             </label>
+            
             <label>False
               <input
                 type="radio"
@@ -104,11 +105,13 @@ class SongForm extends React.Component {
             </label>
 
           </label>
-
           
+
+
           <label>Song File
             <input type="file" onChange={(e) => this.handleFile(e)} />
           </label>
+          
           <button onClick={this.handleSubmit}>ADD SONG</button>
 
         </form>
