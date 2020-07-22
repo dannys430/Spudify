@@ -1611,7 +1611,10 @@ var MediaBar = /*#__PURE__*/function (_React$Component) {
         onClick: function onClick() {
           return _this2.handleNext();
         }
-      }, next), this.props.playing || !this.props.playing ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.duration) : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, next), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "volume",
+        type: "range"
+      }), this.props.playing || !this.props.playing ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.duration) : ""), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         id: "volume",
         type: "range"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("audio", {

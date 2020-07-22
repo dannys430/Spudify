@@ -133,13 +133,15 @@ class MediaBar extends React.Component {
             {this.props.playing === true && (<button onClick={() => this.handlePause()}>{icon}</button>)}
             <button onClick={() => this.handleNext()}>{next}</button>
 
+            <input id="volume" type="range"/>
+
             {this.props.playing || !this.props.playing ? (
               <div>
                 {this.props.duration}
                 {/* {currentTime} */}
               </div>
             ) : (
-                ""
+              ""
               )}
           </div>
 
