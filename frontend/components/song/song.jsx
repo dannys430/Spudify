@@ -2,8 +2,16 @@ import React from 'react';
 import { Link, Route } from 'react-router-dom';
 import { RECEIVE_DURATION } from '../../actions/media_bar_actions';
 
-const formatTime = (time) => {
-  return (!isNaN(time)) ? (`${Math.floor(time / 60)} : ${Math.floor(time % 60)}`) : null
+// const formatTime = (time) => {
+//   return (!isNaN(time)) ? (`${Math.floor(time / 60)} : ${Math.floor(time % 60)}`) : null
+// }
+
+String.prototype.toMMSS = function () {
+  var sec_num = parseInt(this, 10);
+  var mins = Math.floor((sec_num) / 60);
+  var secs = sec_num - (mins * 60);
+  if (secs < 10) { secs = "0" + secs; }
+  return mins + ":" + secs;
 }
 
 class Song extends React.Component {
@@ -40,7 +48,7 @@ class Song extends React.Component {
     const audio = document.createElement('audio')
     audio.src = this.props.song.songUrl
     audio.onloadedmetadata = () => {
-      this.setState({duration: formatTime(audio.duration)})
+      this.setState({duration: `${audio.duration}`.toMMSS()})
     }
   }
 
@@ -85,6 +93,14 @@ class Song extends React.Component {
       this.props.play()
       document.getElementById('media-bar').src = song.songUrl
       document.getElementById('media-bar').play()
+
+      document.getElementById('media-bar').addEventListener('loadedmetadata', (e) => {
+        this.props.receiveDuration()
+      })
+      document.getElementById('media-bar').addEventListener('timeupdate', (e) => {
+        this.props.receiveCurrentTime()
+      })
+      
       if(song !== this.props.history[this.props.history.length - 1]) {
         this.props.history.push(song)
       }

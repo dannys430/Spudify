@@ -14,8 +14,8 @@ const mSTP = (state, ownProps) => {
     playing: state.ui.mediaBar.playing,
     history: state.ui.mediaBar.history,
     queue: state.ui.mediaBar.queue,
-    // duration: state.ui.mediaBar.duration,
-    // currentTime: state.ui.mediaBar.currentTime,
+    duration: state.ui.mediaBar.duration,
+    currentTime: state.ui.mediaBar.currentTime,
   }
 }
 
@@ -25,8 +25,8 @@ const mDTP = (dispatch) => {
     play: () => dispatch(play()),
     pause: () => dispatch(pause()),
     receiveQueue: (songs) => dispatch(receiveQueue(songs)),
-    // receiveDuration: () => dispatch(receiveDuration()),
-    // receiveCurrentTime: () => dispatch(receiveCurrentTime())
+    receiveDuration: () => dispatch(receiveDuration()),
+    receiveCurrentTime: () => dispatch(receiveCurrentTime())
   }
 }
 

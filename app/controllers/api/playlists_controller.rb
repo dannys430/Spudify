@@ -14,7 +14,7 @@ class Api::PlaylistsController < ApplicationController
 
   def index
     # debugger
-    @playlists = current_user.playlists.includes(:songs) # adding 'includes' here preloads the association, removing n+1 queries.
+    @playlists = current_user.playlists #.includes(:songs) # adding 'includes' here preloads the association, removing n+1 queries.
     # render 'api/playlists/index'
     render :index
   end
