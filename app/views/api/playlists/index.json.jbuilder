@@ -6,19 +6,18 @@
     
     json.songs do
       json.array! playlist.songs.each do |song|
-        # json.set! song.id do                                    # vv this is making expensive aws requests, make sure comment out
-          json.extract! song, :id, :song_name, :artist, :album #, :song_file
-          # json.songUrl url_for(song.song_file)
-
-          if Rails.application.assets.find_asset("#{song.song_name.split(' ').join('_')}.mp3") != nil
-            json.songUrl asset_url("#{song.song_name.split(' ').join('_')}.mp3")
+        #json.set! song.id do                                    # vv this is making expensive aws requests, make sure comment out
+          json.extract! song, :id, :song_name, :artist, :album #:song_file
+          
+          if song.song_file.attached?
+            json.songUrl url_for(song.song_file)
           end
 
-          if Rails.application.assets.find_asset("#{song.album.album_name.split(' ').join('_')}") != nil
-            json.coverArtUrl image_url("#{song.album.album_name.split(' ').join('_')}")
+          if song.album.cover_art.attached?
+            json.coverArtUrl url_for(song.album.cover_art)
           end
 
-        # end
+        #end
       end
     end
 

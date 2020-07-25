@@ -12,6 +12,8 @@
 
 .play-pause {
   max-width: 35px;
+  margin-left: 25px;
+  margin-right: 25px;
 }
 
 .media-bar-div {
@@ -126,3 +128,290 @@ h1 {
   line-height: 30px;
   width: 100px;
 }
+
+
+
+.left-div {
+  width: 20%;
+  height: 56px;
+  // background: blue;
+}
+
+.center-div {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+}
+
+.controls-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.progress-bar-div {
+  display: flex;
+  justify-content: center;
+  color: var(--ltgray);
+  font-size: 12.5px;
+  align-items: center;
+}
+
+.current-time {
+  min-width: 40px;
+}
+
+
+
+
+
+
+
+
+// .progress {
+//   // width: 90%; 
+//   // height: 20px; 
+//   // background-color: blue;
+//   position: absolute;
+//   height: 4px;
+//   background: rgb(83,83,83);
+//   cursor: pointer;
+//   border-radius: 50px;
+//   width: 80%;
+// }
+
+// .bar {
+//   // width: 90%;
+//   // height: 15px;
+//   // background-color: white;
+//   position: absolute;
+//   left: 5px;
+//   right: 5px;
+//   top: 5px;
+//   bottom: 5px;
+//   // width: 50%;
+//   // background: var(--ltgray);
+//   // border-radius: 50px;
+// }
+// .bar > div {
+//   position: absolute;
+//   left: 0;
+//   top: 0;
+//   bottom: 0;
+//   width: 50%;
+//   background: white;
+// }
+
+// .progress-bar-div:hover .bar {
+//   background: rgb(29, 285, 84)
+// }
+
+.progress {
+  position: absolute;
+  left: 150px;
+  top: 70px;
+  right: 100px;
+  bottom: 5px;
+  background: black;
+  cursor: pointer;
+}
+
+.progress > .bar {
+  position: absolute;
+  left: 5px;
+  right: 5px;
+  top: 5px;
+  bottom: 5px;
+}
+
+.progress > .bar > div {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  // width: 50%;
+  background: white;
+}
+
+
+
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    input[type='range'] {
+      overflow: hidden;
+      width: 300px;
+      height: 4.6px;
+      border-radius: 10px;
+      -webkit-appearance: none;
+      background-color: rgb(81, 81, 81);
+    }
+    
+    input[type='range']::-webkit-slider-runnable-track {
+      height: 10px;
+      -webkit-appearance: none;
+      color: #13bba4;
+      margin-top: -1px;
+    }
+    
+    input[type='range']::-webkit-slider-thumb {
+      width: 10px;
+      -webkit-appearance: none;
+      height: 15px;
+      // cursor: ew-resize;
+      // background: #434343;
+      background: var(--white);
+      box-shadow: -300px 0 0 300px var(--ltgray);
+      // &:hover {
+      //   box-shadow: -300px 0 0 300px rgb(29, 185, 84)
+      // }
+    }
+
+    .progress-input-range-div:hover input[type='range']::-webkit-slider-thumb {
+      box-shadow: -300px 0 0 300px rgb(29, 185, 84)
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.media-bar-duration {
+  // min-width: 4%;
+  // display: flex;
+  // flex-direction: row-reverse;
+  min-width: 40px;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.right-div {
+  width: 20%;
+  height: 50px;
+  // background: blue;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 
+// .player {
+//   margin: 15px 0;
+//   background: black;
+//   width: 50%;
+//   height: 20px;
+//   background-color: green;
+//   position: relative;
+// }
+
+// .controls {
+//   float: left;
+// }
+
+// .controls > a {
+//  text-decoration: none;
+//  height: 50px;
+//  width: 50px;
+//  box-sizing: border-box;
+//  text-align: center;
+//  padding: 15px 0;
+//  float: left; 
+//  color: white;
+// }
+
+// .controls > a:hover {
+//   text-decoration: wavy;
+//   background-color: #084380;
+//   color: #b3b3b3
+// }
+
+// .progress {
+//   position: absolute;
+//   left: 4px;
+//   top: 4px;
+//   right: 4px;
+//   bottom: 4px;
+//   background: black;
+//   cursor: pointer;
+// }
+
+// .progress > .bar {
+//   position: absolute;
+//   left: 3px;
+//   right: 3px;
+//   top: 3px;
+//   bottom: 3px;
+// }
+
+// .progress > .bar > div {
+//   position: absolute;
+//   left: 0px;
+//   top: 0;
+//   bottom: 0;
+//   width: 25%;
+//   background: white;
+// }
+
+
+
+
+
+// .fa {
+//   display: inline-block;
+//   font: normal normal normal 14px/1 FontAwesome;
+//   font-size: inherit;
+//   text-rendering: auto;
+//   -webkit-font-smoothing: antialiased;
+//   -moz-osx-font-smoothing: grayscale;
+// }
+
+// .fa-play-circle-o:before {
+//   content: "\f01d";
+// }
+
+// .fa-play-circle:before {
+//   content: "\f144";
+// }
+
+// .fa-play:before {
+//   content: "\f04b";
+// }
+
+// .fa-pause:before {
+//   content: "\f04c";
+// }
+// .fa-pause-circle-o:before {
+//   content: "\f28c";
+// }
+// .fa-pause-circle-o:before {
+//   content: "\f28c";
+// }
+
+

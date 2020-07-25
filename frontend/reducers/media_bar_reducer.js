@@ -18,8 +18,16 @@ const initialState = {
   currentTime: null
 }
 
-const formatTime = (time) => {
-  return (!isNaN(time)) ? (`${Math.floor(time / 60)} : ${Math.floor(time % 60)}`) : null
+// const formatTime = (time) => {
+//   return (!isNaN(time)) ? (`${Math.floor(time / 60)}:${Math.floor(time % 60)}`) : null
+// }
+
+String.prototype.toMMSS = function () {
+  var sec_num = parseInt(this, 10);
+  var mins = Math.floor((sec_num) / 60);
+  var secs = sec_num - (mins * 60);
+  if (secs < 10) { secs = "0" + secs; }
+  return mins + ":" + secs;
 }
 
 const MediaBarReducer = (state = initialState, action) => {
@@ -52,12 +60,12 @@ const MediaBarReducer = (state = initialState, action) => {
       return newState;
     case RECEIVE_DURATION:
       newState.duration = newState.currentSong
-        ? formatTime(document.getElementById('media-bar').duration) 
+        ? `${document.getElementById('media-bar').duration}`.toMMSS()
         : null
       return newState;
     case RECEIVE_CURRENT_TIME:
       newState.currentTime = newState.currentSong
-        ? formatTime(document.getElementById('audio').currentTime)
+        ? `${document.getElementById('media-bar').currentTime}`.toMMSS()
         : null
       return newState;
     default:

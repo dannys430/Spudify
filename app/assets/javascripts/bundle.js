@@ -1448,19 +1448,60 @@ var MediaBar = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
+<<<<<<< HEAD
       currentTime: null,
       duration: null
     };
+=======
+      // song_src: 'https://active-storage-spudify-dev.s3.amazonaws.com/ik_mis_je_ft._kempi.mp3',
+      // song_src: 'http://jukebox.pierrevanlierop.nl/The90s/01.%20Collective%20Soul%20-%20Shine%20(June%201994).mp3',
+      // is_playing: false,
+      // progress: 0.0333,
+      // progress_drag: false,
+      duration: null
+    }; // this.is_progress_dirty = false
+    // this.registered_events = false
+
+>>>>>>> playlist
     _this.handlePlay = _this.handlePlay.bind(_assertThisInitialized(_this));
     _this.handlePause = _this.handlePause.bind(_assertThisInitialized(_this));
     _this.handlePrev = _this.handlePrev.bind(_assertThisInitialized(_this));
     _this.handleNext = _this.handleNext.bind(_assertThisInitialized(_this));
     return _this;
+<<<<<<< HEAD
   }
+=======
+  } // startSetProgress(e) {
+  //   this.setState({
+  //     progress_drag: true
+  //   })
+  //   this.setProgress(e)
+  // }
+  // stopSetProgress(e) {
+  //   this.setState({
+  //     progress_drag: false
+  //   })
+  //   this.setProgress(e)
+  // }
+  // setProgress(e) {
+  //   if (this.state.progress_drag) {
+  //     var progress = (e.clientX - offsetLeft(this.refs.progress_bar)) / this.refs.progress_bar.clientWidth
+  //     this.setState({
+  //       progress: progress
+  //     })
+  //     this.is_progress_dirty = true
+  //   }
+  // }
+  // togglePlay() {
+  //   this.setState({ is_playing: !this.state.is_playing })
+  // }
+
+>>>>>>> playlist
 
   _createClass(MediaBar, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+<<<<<<< HEAD
       if (!this.props.currentSong) {
         this.props.receiveCurrentSong(this.props.queue[0]);
       }
@@ -1469,15 +1510,61 @@ var MediaBar = /*#__PURE__*/function (_React$Component) {
     key: "componentDidUpdate",
     value: function componentDidUpdate() {
       this.props.receiveDuration();
+=======
+      var _this2 = this;
+
+      var audio = new Audio();
+      audio.id = 'media-bar';
+      document.body.appendChild(audio);
+      this.slider.value = 0;
+      this.currentTimeInterval = null; // Get duration of the song and set it as max slider value
+
+      audio.onloadedmetadata = function () {
+        this.setState({
+          duration: audio.duration
+        });
+      }.bind(this); // Sync slider position with song current time
+
+
+      audio.onplay = function () {
+        _this2.currentTimeInterval = setInterval(function () {
+          _this2.slider.value = audio.currentTime;
+        }, 500);
+      };
+
+      audio.onpause = function () {
+        clearInterval(_this2.currentTimeInterval);
+      }; // Seek functionality
+
+
+      this.slider.onchange = function (e) {
+        clearInterval(_this2.currentTimeInterval);
+        audio.currentTime = e.target.value;
+      };
+>>>>>>> playlist
     }
   }, {
     key: "handlePlay",
     value: function handlePlay() {
+<<<<<<< HEAD
+=======
+      var _this3 = this;
+
+>>>>>>> playlist
       if (!this.props.currentSong) {
         this.props.receiveCurrentSong(this.props.queue[0]);
         this.props.play();
         document.getElementById('media-bar').src = this.props.queue[0].songUrl;
         document.getElementById('media-bar').play();
+<<<<<<< HEAD
+=======
+        document.getElementById('media-bar').addEventListener('progress', function (e) {
+          _this3.props.receiveDuration();
+        });
+        document.getElementById('media-bar').addEventListener('timeupdate', function (e) {
+          _this3.props.receiveCurrentTime();
+        });
+>>>>>>> playlist
       }
 
       if (this.props.queue[0] !== this.props.history[this.props.history.length - 1]) {
@@ -1519,6 +1606,7 @@ var MediaBar = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+<<<<<<< HEAD
       var _this2 = this;
 
       var formatTime = function formatTime(time) {
@@ -1527,6 +1615,15 @@ var MediaBar = /*#__PURE__*/function (_React$Component) {
 
       var currentTime = formatTime(this.state.currentTime);
       var duration = formatTime(this.state.duration);
+=======
+      var _this4 = this;
+
+      // const formatTime = (time) => {
+      //   return (!isNaN(time)) ? (`${Math.floor(time / 60)} : ${Math.floor(time % 60)}`) : null
+      // }
+      // const currentTime = formatTime(this.state.currentTime)
+      // const duration = formatTime(this.state.duration)
+>>>>>>> playlist
       var icon = this.props.playing ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "play-pause",
         src: "/assets/pause.svg",
@@ -1563,8 +1660,12 @@ var MediaBar = /*#__PURE__*/function (_React$Component) {
         y2: "13",
         stroke: "#b3b3b3",
         "stroke-width": "2"
+<<<<<<< HEAD
       }))); // const source = this.props.currentSong ? this.props.currentSong.songUrl : this.props.queue[0].songUrl;
 
+=======
+      })));
+>>>>>>> playlist
       var songInfo = this.props.currentSong ? this.props.currentSong.coverArtUrl ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "media-bar-div"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -1591,6 +1692,7 @@ var MediaBar = /*#__PURE__*/function (_React$Component) {
         className: "media-bar-div-song-info"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.currentSong.song_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/artists/".concat(this.props.currentSong.artist.id)
+<<<<<<< HEAD
       }, this.props.currentSong.artist.artist_name)))) : null;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", {
         id: "mediabar",
@@ -1620,11 +1722,98 @@ var MediaBar = /*#__PURE__*/function (_React$Component) {
           return _this2.handleNext();
         }
       }, "Sorry, your browser doesn't support HTML5 audio."));
+=======
+      }, this.props.currentSong.artist.artist_name)))) : null; // if (this.refs.player) {
+      //   var player = this.refs.player
+      //   if (player.currentSrc !== this.state.song_src) {
+      //     player.src = this.state.song_src
+      //   }
+      //   if (player.paused) {
+      //     if (this.state.is_playing) {
+      //       player.play()
+      //     }
+      //   } else if (!this.state.is_playing) {
+      //     player.pause()
+      //   }
+      //   if (this.is_progress_dirty) {
+      //     this.is_progress_dirty = false
+      //     player.currentTime = player.duration * this.state.progress
+      //   }
+      //   if (!this.registered_events) {
+      //     this.registered_events = true
+      //     player.addEventListener('progress', e => {
+      //       // console.log(e)
+      //       if (!this.is_progress_dirty) {
+      //         this.setState({
+      //           progress: player.currentTime / player.duration
+      //         })
+      //       }
+      //     })
+      //   }
+      // }
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", {
+        id: "mediabar",
+        className: "mediabar"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "left-div"
+      }, songInfo), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "center-div"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "controls-div"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this4.handlePrev();
+        }
+      }, prev), this.props.playing === false && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this4.handlePlay();
+        }
+      }, icon), this.props.playing === true && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this4.handlePause();
+        }
+      }, icon), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this4.handleNext();
+        }
+      }, next)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "progress-bar-div"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "current-time"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.currentTime)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "progress-input-range-div"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        ref: function ref(slider) {
+          _this4.slider = slider;
+        },
+        type: "range",
+        name: "points",
+        min: "0",
+        max: this.state.duration
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "media-bar-duration"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.duration)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "right-div"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)));
+>>>>>>> playlist
     }
   }]);
 
   return MediaBar;
+<<<<<<< HEAD
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+=======
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component); // function offsetLeft(el) {
+//   var left = 0;
+//   while (el && el !== document) {
+//     left += el.offsetLeft
+//     el = el.offsetParent
+//   }
+//   return left + 5
+// }
+
+>>>>>>> playlist
 
 /* harmony default export */ __webpack_exports__["default"] = (MediaBar);
 
@@ -3436,10 +3625,27 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+<<<<<<< HEAD
 
 
 var formatTime = function formatTime(time) {
   return !isNaN(time) ? "".concat(Math.floor(time / 60), " : ").concat(Math.floor(time % 60)) : null;
+=======
+ // const formatTime = (time) => {
+//   return (!isNaN(time)) ? (`${Math.floor(time / 60)} : ${Math.floor(time % 60)}`) : null
+// }
+
+String.prototype.toMMSS = function () {
+  var sec_num = parseInt(this, 10);
+  var mins = Math.floor(sec_num / 60);
+  var secs = sec_num - mins * 60;
+
+  if (secs < 10) {
+    secs = "0" + secs;
+  }
+
+  return mins + ":" + secs;
+>>>>>>> playlist
 };
 
 var Song = /*#__PURE__*/function (_React$Component) {
@@ -3482,7 +3688,11 @@ var Song = /*#__PURE__*/function (_React$Component) {
 
       audio.onloadedmetadata = function () {
         _this2.setState({
+<<<<<<< HEAD
           duration: formatTime(audio.duration)
+=======
+          duration: "".concat(audio.duration).toMMSS()
+>>>>>>> playlist
         });
       };
     } // componentDidUpdate() {
@@ -3517,12 +3727,26 @@ var Song = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handlePlay",
     value: function handlePlay(song) {
+<<<<<<< HEAD
+=======
+      var _this3 = this;
+
+>>>>>>> playlist
       // this.setState({nowPlaying: true})
       if (!this.props.currentSong || this.props.currentSong !== song) {
         this.props.receiveCurrentSong(song);
         this.props.play();
         document.getElementById('media-bar').src = song.songUrl;
         document.getElementById('media-bar').play();
+<<<<<<< HEAD
+=======
+        document.getElementById('media-bar').addEventListener('loadedmetadata', function (e) {
+          _this3.props.receiveDuration();
+        });
+        document.getElementById('media-bar').addEventListener('timeupdate', function (e) {
+          _this3.props.receiveCurrentTime();
+        });
+>>>>>>> playlist
 
         if (song !== this.props.history[this.props.history.length - 1]) {
           this.props.history.push(song);
@@ -3554,7 +3778,11 @@ var Song = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+<<<<<<< HEAD
       var _this3 = this;
+=======
+      var _this4 = this;
+>>>>>>> playlist
 
       var song = this.props.song; // const songName = song.song_name;
       // const artist = song.artist
@@ -3645,6 +3873,7 @@ var Song = /*#__PURE__*/function (_React$Component) {
         draggable: "true",
         className: "song-div",
         onMouseEnter: function onMouseEnter() {
+<<<<<<< HEAD
           return _this3.toggleHover();
         },
         onMouseLeave: function onMouseLeave() {
@@ -3652,11 +3881,21 @@ var Song = /*#__PURE__*/function (_React$Component) {
         },
         onDoubleClick: function onDoubleClick() {
           return _this3.handlePlay(song);
+=======
+          return _this4.toggleHover();
+        },
+        onMouseLeave: function onMouseLeave() {
+          return _this4.toggleHover();
+        },
+        onDoubleClick: function onDoubleClick() {
+          return _this4.handlePlay(song);
+>>>>>>> playlist
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "play-pause-sml-div"
       }, this.props.currentSong !== song ? this.state.hovered ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
+<<<<<<< HEAD
           return _this3.handlePlay(song);
         }
       }, playIconHover) : note : this.state.hovered ? this.props.playing ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -3666,6 +3905,17 @@ var Song = /*#__PURE__*/function (_React$Component) {
       }, pauseIcon) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
           return _this3.handlePlay(song);
+=======
+          return _this4.handlePlay(song);
+        }
+      }, playIconHover) : note : this.state.hovered ? this.props.playing ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this4.handlePause();
+        }
+      }, pauseIcon) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this4.handlePlay(song);
+>>>>>>> playlist
         }
       }, playIcon) : noteActive), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.currentSong === song ? songNameActive : songName, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "song-details"
@@ -3711,9 +3961,15 @@ var mSTP = function mSTP(state, ownProps) {
     currentSong: state.ui.mediaBar.currentSong,
     playing: state.ui.mediaBar.playing,
     history: state.ui.mediaBar.history,
+<<<<<<< HEAD
     queue: state.ui.mediaBar.queue // duration: state.ui.mediaBar.duration,
     // currentTime: state.ui.mediaBar.currentTime,
 
+=======
+    queue: state.ui.mediaBar.queue,
+    duration: state.ui.mediaBar.duration,
+    currentTime: state.ui.mediaBar.currentTime
+>>>>>>> playlist
   };
 };
 
@@ -3730,9 +3986,19 @@ var mDTP = function mDTP(dispatch) {
     },
     receiveQueue: function receiveQueue(songs) {
       return dispatch(Object(_actions_media_bar_actions__WEBPACK_IMPORTED_MODULE_2__["receiveQueue"])(songs));
+<<<<<<< HEAD
     } // receiveDuration: () => dispatch(receiveDuration()),
     // receiveCurrentTime: () => dispatch(receiveCurrentTime())
 
+=======
+    },
+    receiveDuration: function receiveDuration() {
+      return dispatch(Object(_actions_media_bar_actions__WEBPACK_IMPORTED_MODULE_2__["receiveDuration"])());
+    },
+    receiveCurrentTime: function receiveCurrentTime() {
+      return dispatch(Object(_actions_media_bar_actions__WEBPACK_IMPORTED_MODULE_2__["receiveCurrentTime"])());
+    }
+>>>>>>> playlist
   };
 };
 
@@ -4070,10 +4336,27 @@ var initialState = {
   queue: [],
   duration: null,
   currentTime: null
+<<<<<<< HEAD
 };
 
 var formatTime = function formatTime(time) {
   return !isNaN(time) ? "".concat(Math.floor(time / 60), " : ").concat(Math.floor(time % 60)) : null;
+=======
+}; // const formatTime = (time) => {
+//   return (!isNaN(time)) ? (`${Math.floor(time / 60)}:${Math.floor(time % 60)}`) : null
+// }
+
+String.prototype.toMMSS = function () {
+  var sec_num = parseInt(this, 10);
+  var mins = Math.floor(sec_num / 60);
+  var secs = sec_num - mins * 60;
+
+  if (secs < 10) {
+    secs = "0" + secs;
+  }
+
+  return mins + ":" + secs;
+>>>>>>> playlist
 };
 
 var MediaBarReducer = function MediaBarReducer() {
@@ -4113,11 +4396,19 @@ var MediaBarReducer = function MediaBarReducer() {
       return newState;
 
     case _actions_media_bar_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_DURATION"]:
+<<<<<<< HEAD
       newState.duration = newState.currentSong ? formatTime(document.getElementById('media-bar').duration) : null;
       return newState;
 
     case _actions_media_bar_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_TIME"]:
       newState.currentTime = newState.currentSong ? formatTime(document.getElementById('audio').currentTime) : null;
+=======
+      newState.duration = newState.currentSong ? "".concat(document.getElementById('media-bar').duration).toMMSS() : null;
+      return newState;
+
+    case _actions_media_bar_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_TIME"]:
+      newState.currentTime = newState.currentSong ? "".concat(document.getElementById('media-bar').currentTime).toMMSS() : null;
+>>>>>>> playlist
       return newState;
 
     default:

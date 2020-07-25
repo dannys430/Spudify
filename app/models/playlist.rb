@@ -27,3 +27,4 @@ class Playlist < ApplicationRecord
   source: :song
   
 end
+
