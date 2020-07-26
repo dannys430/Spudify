@@ -23,11 +23,11 @@ const mDTP = (dispatch) => {
   return {
     // fetchSong: (id) => dispatch(fetchSong(id))
     // requestUser: (id) => dispatch(requestUser(id)),
-    otherForm: (
-      <button className="create-playlist" onClick={() => dispatch(openModal('playlist'))}>
-        Create Playlist
-      </button>
-    ),
+    // otherForm: (
+    //   <button className="create-playlist" onClick={() => dispatch(openModal('playlist'))}>
+    //     Create Playlist
+    //   </button>
+    // ),
     openModal: () => dispatch(openModal('playlist'))
   }
 }
