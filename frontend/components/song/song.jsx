@@ -165,8 +165,13 @@ class Song extends React.Component {
     const songName = <p className="song-name">{this.props.song.song_name}</p>
     const songNameActive = <p className="song-name-active">{this.props.song.song_name}</p>
 
+    const songDivStyles = {}
+    if(this.props.currentSong === song) {
+      songDivStyles.backgroundColor = "rgb(40, 40, 40)"
+    }
+    
     return (
-      <div draggable="true" className="song-div" onMouseEnter={() => this.toggleHover()} onMouseLeave={() => this.toggleHover()} onDoubleClick={() => this.handlePlay(song)}>
+      <div style={songDivStyles} draggable="true" className="song-div" onMouseEnter={() => this.toggleHover()} onMouseLeave={() => this.toggleHover()} onDoubleClick={() => this.handlePlay(song)}>
         <div className="play-pause-sml-div">
           {/* {(this.state.nowPlaying === false || (this.state.nowPlaying === true && this.props.currentSong !== song)) && (<button onClick={() => this.handlePlay(song)}>{playIcon}</button>)} */}
           {/* {(this.state.nowPlaying === true && this.props.currentSong === song) && (<button onClick={() => this.handlePause()}>{pauseIcon}</button>)} */}

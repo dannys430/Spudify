@@ -3769,7 +3769,14 @@ var Song = /*#__PURE__*/function (_React$Component) {
       var songNameActive = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "song-name-active"
       }, this.props.song.song_name);
+      var songDivStyles = {};
+
+      if (this.props.currentSong === song) {
+        songDivStyles.backgroundColor = "rgb(40, 40, 40)";
+      }
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        style: songDivStyles,
         draggable: "true",
         className: "song-div",
         onMouseEnter: function onMouseEnter() {
