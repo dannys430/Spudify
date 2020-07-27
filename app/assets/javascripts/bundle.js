@@ -2773,8 +2773,8 @@ var Login = /*#__PURE__*/function (_React$Component) {
 
       e.preventDefault();
       this.props.login({
-        email: 'mariah@example.com',
-        password: 'dembabies'
+        email: 'guest@example.com',
+        password: 'password'
       }).then(function () {
         return _this3.props.history.push('/us');
       });
@@ -2813,10 +2813,10 @@ var Login = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleDemo,
         className: "facebook-button"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "CONTINUE AS GUEST")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        disabled: true,
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "CONTINUE AS GUEST")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "https://github.com/dannys430/",
         className: "apple-button"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " \uD83E\uDD54 CONTINUE WITH POTATO"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "CONTINUE TO GITHUB"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
         className: "or"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "form-input",
@@ -3208,8 +3208,8 @@ var Signup = /*#__PURE__*/function (_React$Component) {
 
       e.preventDefault();
       this.props.login({
-        email: 'mariah@example.com',
-        password: 'dembabies'
+        email: 'guest@example.com',
+        password: 'password'
       }).then(function () {
         return _this3.props.history.push('/us');
       });
