@@ -72,7 +72,7 @@ class Login extends React.Component {
 
   handleDemo(e) {
     e.preventDefault()
-    this.props.login({ email: 'mariah@example.com', password: 'dembabies' })
+    this.props.login({ email: 'guest@example.com', password: 'password' })
       .then(() => this.props.history.push('/us'))
   }
   

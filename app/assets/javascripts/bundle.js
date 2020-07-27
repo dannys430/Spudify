@@ -2673,8 +2673,8 @@ var Login = /*#__PURE__*/function (_React$Component) {
 
       e.preventDefault();
       this.props.login({
-        email: 'mariah@example.com',
-        password: 'dembabies'
+        email: 'guest@example.com',
+        password: 'password'
       }).then(function () {
         return _this3.props.history.push('/us');
       });
@@ -3108,8 +3108,8 @@ var Signup = /*#__PURE__*/function (_React$Component) {
 
       e.preventDefault();
       this.props.login({
-        email: 'mariah@example.com',
-        password: 'dembabies'
+        email: 'guest@example.com',
+        password: 'password'
       }).then(function () {
         return _this3.props.history.push('/us');
       });
