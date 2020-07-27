@@ -494,7 +494,12 @@ seal_1994.cover_art.attach(io: File.open("https://active-storage-spudify-pro.s3.
 
 # PLAYLISTS
 # 90's Hits
-90s_hits = guest.playlists.create(
-  playlist_name: '90s Hits'
+seal_hits = guest.playlists.create(
+  playlist_name: 'Seal Hits'
 )
-90s_hits.songs.push(the_beginning, crazy, violet, bring_it_on, prayer_for_the_dying, kiss_from_a_rose)
+seal_hits.songs.push(the_beginning, crazy, violet, bring_it_on, prayer_for_the_dying, kiss_from_a_rose)
+
+classic_mariah = guest.playlists.create(
+  playlist_name: 'Classic Mariah'
+)
+classic_mariah.songs.push(hateu, ill_be_lovin_u_long_time, cruise_control, touch_my_body, obsessed, for_the_record)
