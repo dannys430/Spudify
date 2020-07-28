@@ -3896,7 +3896,7 @@ var Song = /*#__PURE__*/function (_React$Component) {
       // }
 
       var note = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
-        className: "play-pause-sml",
+        className: "note-sml",
         width: "20",
         height: "20"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("circle", {
@@ -3919,7 +3919,7 @@ var Song = /*#__PURE__*/function (_React$Component) {
         y2: "7"
       }));
       var noteActive = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
-        className: "play-pause-sml",
+        className: "note-sml",
         width: "20",
         height: "20"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("circle", {
@@ -3941,21 +3941,40 @@ var Song = /*#__PURE__*/function (_React$Component) {
         y1: "4.5",
         y2: "7"
       }));
-      var playIconHover = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      var playIconHover = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "play-pause-sml"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+        height: "15px",
+        width: "15px"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("polygon", {
+        fill: "#FFFFFF",
+        points: "1,1 13,7 1,13"
+      })));
+      var playIcon = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "play-pause-sml"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+        height: "15px",
+        width: "15px"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("polygon", {
+        fill: "#68D962",
+        points: "1,1 13,7 1,13"
+      })));
+      var pauseIcon = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
         className: "play-pause-sml",
-        src: "/assets/play_sml_hover.svg",
-        alt: "play"
-      });
-      var playIcon = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "play-pause-sml",
-        src: "/assets/play_sml.svg",
-        alt: "play"
-      });
-      var pauseIcon = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "play-pause-sml",
-        src: "/assets/pause_sml.svg",
-        alt: "pause"
-      });
+        viewBox: "0 0 40 40",
+        width: "15px",
+        height: "15px"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("g", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("rect", {
+        x: "23.5",
+        width: "6",
+        height: "40",
+        fill: "#68D962"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("rect", {
+        x: "10.5",
+        width: "6",
+        height: "40",
+        fill: "#68D962"
+      })));
       var songName = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "song-name"
       }, this.props.song.song_name);

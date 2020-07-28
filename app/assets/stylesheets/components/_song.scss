@@ -13,8 +13,13 @@
   background-color: var(--gray);
 }
 
+.note-sml {
+  width: 12px
+}
+
 .play-pause-sml {
   width: 12px;
+  margin-top: 2px;
 }
 
 .play-pause-sml-div {
@@ -49,16 +54,17 @@
   margin-right: 10px;
 }
 
-.song-div-menu-button::before {
+.song-div-menu-button {
   display: none;
-}
-
-.song-div-menu-button:hover {
   align-self: center;
   margin-right: 60px;
   font-size: 5px;
   letter-spacing: 3px;
   color: white;
+}
+
+.song-div:hover .song-div-menu-button {
+  display: initial;
 }
 
 .duration {
