@@ -32,7 +32,7 @@ mariah_carey = Artist.create(
   artist_name: 'Mariah Carey', 
   bio: "Rising to prominence in the early 90's, Mariah Carey is known the world over. Her remarkable vocal range and seductive honey-harmonies bless each record that bears her name"
 )
-mariah_carey.cover_photo.attach(io: File.open('https://active-storage-spudify-pro.s3.amazonaws.com/artists/mariah_carey/mariah_carey_cover_photo.jpg'), filename: 'mariah_carey_cover_photo.jpg')
+mariah_carey.cover_photo.attach(io: open('https://active-storage-spudify-pro.s3.amazonaws.com/artists/mariah_carey/mariah_carey_cover_photo.jpg'), filename: 'mariah_carey_cover_photo.jpg')
 
 # Always Never
 always_never = Artist.create(
