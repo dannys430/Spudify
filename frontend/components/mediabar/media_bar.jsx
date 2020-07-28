@@ -258,7 +258,7 @@ class MediaBar extends React.Component {
           </div>
 
           <div className="right-div">
-            {volumeMute}
+            {volumeHigh}
             <input
                 className="volume-slider"
                 ref={(volumeSlider) => { this.volumeSlider = volumeSlider }}

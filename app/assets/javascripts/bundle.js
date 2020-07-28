@@ -1913,7 +1913,7 @@ var MediaBar = /*#__PURE__*/function (_React$Component) {
         className: "media-bar-duration"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.duration)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "right-div"
-      }, volumeMute, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, volumeHigh, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "volume-slider",
         ref: function ref(volumeSlider) {
           _this4.volumeSlider = volumeSlider;
