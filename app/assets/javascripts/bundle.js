@@ -1869,6 +1869,14 @@ var MediaBar = /*#__PURE__*/function (_React$Component) {
         document.title = "Spudify";
       }
 
+      document.addEventListener('contextmenu', function (event) {
+        event.preventDefault();
+        var songMenu = document.createElement('div');
+        songMenu.styles.width = "20px";
+        songMenu.styles.height = "20px";
+        songMenu.styles.backgroundColor = 'blue';
+        document.appendChild(songMenu);
+      });
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", {
         id: "mediabar",
         className: "mediabar"
@@ -2818,6 +2826,10 @@ var Login = /*#__PURE__*/function (_React$Component) {
       if (!email.length) {
         emailValid = false;
         errorMsg.email = 'Please enter your Spudify email address.';
+        document.getElementById('form-input-email').style.border = '1px solid red';
+      } else {
+        emailValid = true;
+        document.getElementById('form-input-email').style.border = '1px solid gray';
       }
 
       this.setState({
@@ -2843,6 +2855,10 @@ var Login = /*#__PURE__*/function (_React$Component) {
       if (!password.length) {
         passwordValid = false;
         errorMsg.password = 'Please enter your password.';
+        document.getElementById('form-input-password').style.border = '1px solid red';
+      } else {
+        passwordValid = true;
+        document.getElementById('form-input-password').style.border = '1px solid gray';
       }
 
       this.setState({
@@ -2912,6 +2928,7 @@ var Login = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "CONTINUE TO GITHUB"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
         className: "or"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "form-input-email",
         className: "form-input",
         type: "text",
         placeholder: "Email address",
@@ -2923,6 +2940,7 @@ var Login = /*#__PURE__*/function (_React$Component) {
         valid: this.state.emailValid,
         message: this.state.errorMsg.email
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "form-input-password",
         className: "form-input",
         type: "password",
         placeholder: "Password",
@@ -3059,8 +3077,8 @@ var warningIcon = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.crea
   x2: "6.5",
   fill: "#181818",
   stroke: "red",
-  "stroke-width": "10%",
-  "stroke-linecap": "round",
+  strokeWidth: "10%",
+  strokeLinecap: "round",
   y2: "4"
 }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("circle", {
   cx: "6.5",
@@ -3137,6 +3155,7 @@ var Signup = /*#__PURE__*/function (_React$Component) {
         }, warningIcon, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "signup-form-errors error-messages"
         }, "You need to enter your email."));
+        document.getElementById('signup-form-input-email').style.border = '1px solid red';
       } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         emailValid = false;
         errorMsg.email = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -3144,6 +3163,10 @@ var Signup = /*#__PURE__*/function (_React$Component) {
         }, warningIcon, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "signup-form-errors error-messages"
         }, "This email is invalid."));
+        document.getElementById('signup-form-input-email').style.border = '1px solid red';
+      } else {
+        emailValid = true;
+        document.getElementById('signup-form-input-email').style.border = '1px solid gray';
       }
 
       this.setState({
@@ -3173,6 +3196,7 @@ var Signup = /*#__PURE__*/function (_React$Component) {
         }, warningIcon, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "signup-form-errors error-messages"
         }, "You need to enter a password."));
+        document.getElementById('signup-form-input-password').style.border = '1px solid red';
       } else if (password.length < 6) {
         passwordValid = false;
         errorMsg.password = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -3180,6 +3204,10 @@ var Signup = /*#__PURE__*/function (_React$Component) {
         }, warningIcon, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "signup-form-errors error-messages"
         }, "Your password is too short."));
+        document.getElementById('signup-form-input-password').style.border = '1px solid red';
+      } else {
+        passwordValid = true;
+        document.getElementById('signup-form-input-password').style.border = '1px solid gray';
       }
 
       this.setState({
@@ -3209,16 +3237,26 @@ var Signup = /*#__PURE__*/function (_React$Component) {
         }, warningIcon, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "signup-form-errors error-messages"
         }, "Enter a name for your profile."));
-      } // else {
-      //   nameValid = false;
-      //   errorMsg.name = 'This appears on your profile.'
-      // }
-
+        document.getElementById('signup-form-input-name').style.border = '1px solid red';
+      } else {
+        nameValid = true;
+        document.getElementById('signup-form-input-name').style.border = '1px solid gray';
+      }
 
       this.setState({
         nameValid: nameValid,
         errorMsg: errorMsg
       }, this.validateForm);
+    }
+  }, {
+    key: "handleMonth",
+    value: function handleMonth() {
+      var dropdown = document.getElementById('signup-form-input-month');
+      dropdown.style.border = '1px solid red';
+      dropdown.addEventListener('change', function () {
+        dropdown.style.border = '1px solid gray';
+      });
+      this.state.bday_month.length ? dropdown.style.border = '1px solid gray' : null;
     }
   }, {
     key: "updateDate",
@@ -3242,6 +3280,10 @@ var Signup = /*#__PURE__*/function (_React$Component) {
         }, warningIcon, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "signup-form-errors error-messages"
         }, "Enter a valid day of the month."));
+        document.getElementById('signup-form-input-date').style.border = '1px solid red';
+      } else {
+        dateValid = true;
+        document.getElementById('signup-form-input-date').style.border = '1px solid gray';
       }
 
       this.setState({
@@ -3271,6 +3313,7 @@ var Signup = /*#__PURE__*/function (_React$Component) {
         }, warningIcon, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "signup-form-errors error-messages"
         }, "Enter a valid year."));
+        document.getElementById('signup-form-input-year').style.border = '1px solid red';
       } else if (bday_year > 2007) {
         yearValid = false;
         errorMsg.year = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -3278,6 +3321,10 @@ var Signup = /*#__PURE__*/function (_React$Component) {
         }, warningIcon, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "signup-form-errors error-messages"
         }, "Sorry, you don't meet Spudify's age requirements"));
+        document.getElementById('signup-form-input-year').style.border = '1px solid red';
+      } else {
+        yearValid = true;
+        document.getElementById('signup-form-input-year').style.border = '1px solid gray';
       }
 
       this.setState({
@@ -3365,6 +3412,7 @@ var Signup = /*#__PURE__*/function (_React$Component) {
       }, "Sign up with your email address"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "signup-prompts"
       }, "What's your email?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "signup-form-input-email",
         className: "signup-form-input",
         type: "text",
         placeholder: "Enter your email.",
@@ -3378,6 +3426,7 @@ var Signup = /*#__PURE__*/function (_React$Component) {
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "signup-prompts"
       }, "Create a password", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "signup-form-input-password",
         className: "signup-form-input",
         type: "password",
         placeholder: "Create a password.",
@@ -3391,6 +3440,7 @@ var Signup = /*#__PURE__*/function (_React$Component) {
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "signup-prompts"
       }, "What should we call you?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "signup-form-input-name",
         className: "signup-form-input",
         type: "text",
         placeholder: "Enter a profile name.",
@@ -3410,6 +3460,10 @@ var Signup = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "signup-bday-labels"
       }, "Month", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        onClick: function onClick() {
+          return _this5.handleMonth();
+        },
+        id: "signup-form-input-month",
         className: "signup-month-input",
         value: this.state.bday_month,
         onChange: this.handleInput('bday_month')
@@ -3447,6 +3501,7 @@ var Signup = /*#__PURE__*/function (_React$Component) {
       }, "Day", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "date-input"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "signup-form-input-date",
         className: "signup-date-input",
         type: "text",
         placeholder: "DD",
@@ -3462,6 +3517,7 @@ var Signup = /*#__PURE__*/function (_React$Component) {
       }, "Year", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "year-input"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "signup-form-input-year",
         className: "signup-year-input",
         type: "text",
         placeholder: "YYYY",
