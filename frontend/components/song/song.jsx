@@ -181,8 +181,10 @@ class Song extends React.Component {
     const songNameActive = <p className="song-name-active">{this.props.song.song_name}</p>
 
     const songDivStyles = {}
+    const songDivMenuButtonStyles = {}
     if(this.props.currentSong === song) {
       songDivStyles.backgroundColor = "rgb(40, 40, 40)"
+      songDivMenuButtonStyles.display = 'initial'
     }
     
     return (
@@ -213,7 +215,7 @@ class Song extends React.Component {
         </div>
    
         <div className="duration">
-          <div className="song-div-menu-button">•••</div>
+          <div style={songDivMenuButtonStyles} id="song-div-menu-button" className="song-div-menu-button">•••</div>
           <div>{this.state.duration}</div>
         </div>
         {/* {this.state.currentTime} */}
