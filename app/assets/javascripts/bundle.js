@@ -2894,6 +2894,7 @@ var Login = /*#__PURE__*/function (_React$Component) {
       var _this4 = this;
 
       e.preventDefault();
+      this.validateEmail();
       this.props.login(this.state).then(function () {
         return _this4.props.history.push('/us');
       });
@@ -3361,14 +3362,7 @@ var Signup = /*#__PURE__*/function (_React$Component) {
 
       e.preventDefault(); // validateDate()
 
-      var func = function func() {
-        _this4.validateName();
-      }; // addEventListener('click', this.validateName())
-      // addEventListener('click', this.validateDate())
-      // addEventListener('click', this.validateYear())
-
-
-      func();
+      this.validateEmail();
       var newUser = {
         email: this.state.email,
         password: this.state.password,

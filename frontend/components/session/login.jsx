@@ -86,6 +86,9 @@ class Login extends React.Component {
   
   handleSubmit(e) {
     e.preventDefault()
+
+    this.validateEmail()
+
     this.props.login(this.state)
       .then(() => this.props.history.push('/us'))
   }
