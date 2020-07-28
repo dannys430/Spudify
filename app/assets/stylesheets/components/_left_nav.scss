@@ -82,6 +82,11 @@
 .plus-sign-div-container {
   transition: 1s;
 }
+
+.plus-sign-div-container button {
+  display: flex;
+}
+
 .plus-sign-div-container:hover svg {
   background: var(--white);
 }

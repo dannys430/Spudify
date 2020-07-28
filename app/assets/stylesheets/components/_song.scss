@@ -49,8 +49,22 @@
   margin-right: 10px;
 }
 
+.song-div-menu-button::before {
+  display: none;
+}
+
+.song-div-menu-button:hover {
+  align-self: center;
+  margin-right: 60px;
+  font-size: 5px;
+  letter-spacing: 3px;
+  color: white;
+}
+
 .duration {
   margin-left: auto;
   margin-right: 15px;
   font-size: 14px;
+  display: flex;
+  flex-direction: row;
 }

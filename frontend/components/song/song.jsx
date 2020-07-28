@@ -197,7 +197,10 @@ class Song extends React.Component {
           <div className="song-details"><p><Link to={`/artists/${this.props.song.artist.id}`}>{this.props.song.artist.artist_name}</Link></p> <h2 className="bullet-point">•</h2> <p><Link to={`/albums/${this.props.song.album.id}`}>{this.props.song.album.album_name}</Link></p></div>
         </div>
    
-        <div className="duration">{this.state.duration}</div>
+        <div className="duration">
+          <div className="song-div-menu-button">•••</div>
+          <div>{this.state.duration}</div>
+        </div>
         {/* {this.state.currentTime} */}
         
       </div>

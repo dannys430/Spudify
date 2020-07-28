@@ -14,8 +14,8 @@ const initialState = {
   currentSong: null,
   history: [],
   queue: [],
-  duration: null,
-  currentTime: null
+  duration: '0:00',
+  currentTime: '0:00'
 }
 
 // const formatTime = (time) => {
