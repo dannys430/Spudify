@@ -146,22 +146,37 @@ class Song extends React.Component {
     //   this.setState({currentTime: e.target.currentTime})
     // }
 
-    const note =  <svg className="play-pause-sml" width='20' height='20'>
+    const note =  <svg className="note-sml" width='20' height='20'>
                     <circle stroke="#aeaeae" fill="transparent" r="2" cx="6" cy="16"></circle>
                     <line stroke="#aeaeae" x1="8" x2="8" y1="16" y2="4"></line>
                     <line stroke="#aeaeae" x1="8" x2="12" y1="4.5" y2="7"></line>
                   </svg>
 
-    const noteActive =  <svg className="play-pause-sml" width='20' height='20'>
+    const noteActive =  <svg className="note-sml" width='20' height='20'>
                           <circle stroke="#68d962" fill="transparent" r="2" cx="6" cy="16"></circle>
                           <line stroke="#68d962" x1="8" x2="8" y1="16" y2="4"></line>
                           <line stroke="#68d962" x1="8" x2="12" y1="4.5" y2="7"></line>
                         </svg>
 
-    const playIconHover = <img className="play-pause-sml" src="/assets/play_sml_hover.svg" alt="play" /> 
-    const playIcon = <img className="play-pause-sml" src="/assets/play_sml.svg" alt="play" /> 
-    const pauseIcon = <img className="play-pause-sml" src="/assets/pause_sml.svg" alt="pause" />
-
+    const playIconHover =   <div className="play-pause-sml">
+                              <svg height="15px" width="15px">
+                                <polygon fill="#FFFFFF" points="1,1 13,7 1,13" />
+                              </svg>
+                            </div>
+    
+    const playIcon =  <div className="play-pause-sml">
+                        <svg height="15px" width="15px">
+                          <polygon fill="#68D962" points="1,1 13,7 1,13" />
+                        </svg>
+                      </div>
+    
+    const pauseIcon = <svg className="play-pause-sml" viewBox="0 0 40 40"width="15px" height="15px">
+                        <g>
+                          <rect x="23.5" width="6" height="40" fill="#68D962" />
+                          <rect x="10.5" width="6" height="40" fill="#68D962" />
+                        </g>
+                      </svg>
+                      
     const songName = <p className="song-name">{this.props.song.song_name}</p>
     const songNameActive = <p className="song-name-active">{this.props.song.song_name}</p>
 
