@@ -1548,45 +1548,15 @@ var MediaBar = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      // song_src: 'https://active-storage-spudify-dev.s3.amazonaws.com/ik_mis_je_ft._kempi.mp3',
-      // song_src: 'http://jukebox.pierrevanlierop.nl/The90s/01.%20Collective%20Soul%20-%20Shine%20(June%201994).mp3',
-      // is_playing: false,
-      // progress: 0.0333,
-      // progress_drag: false,
-      duration: null
-    }; // this.is_progress_dirty = false
-    // this.registered_events = false
-
+      duration: null,
+      volume: null
+    };
     _this.handlePlay = _this.handlePlay.bind(_assertThisInitialized(_this));
     _this.handlePause = _this.handlePause.bind(_assertThisInitialized(_this));
     _this.handlePrev = _this.handlePrev.bind(_assertThisInitialized(_this));
     _this.handleNext = _this.handleNext.bind(_assertThisInitialized(_this));
     return _this;
-  } // startSetProgress(e) {
-  //   this.setState({
-  //     progress_drag: true
-  //   })
-  //   this.setProgress(e)
-  // }
-  // stopSetProgress(e) {
-  //   this.setState({
-  //     progress_drag: false
-  //   })
-  //   this.setProgress(e)
-  // }
-  // setProgress(e) {
-  //   if (this.state.progress_drag) {
-  //     var progress = (e.clientX - offsetLeft(this.refs.progress_bar)) / this.refs.progress_bar.clientWidth
-  //     this.setState({
-  //       progress: progress
-  //     })
-  //     this.is_progress_dirty = true
-  //   }
-  // }
-  // togglePlay() {
-  //   this.setState({ is_playing: !this.state.is_playing })
-  // }
-
+  }
 
   _createClass(MediaBar, [{
     key: "componentDidMount",
@@ -1596,19 +1566,19 @@ var MediaBar = /*#__PURE__*/function (_React$Component) {
       var audio = new Audio();
       audio.id = 'media-bar';
       document.body.appendChild(audio);
-      this.slider.value = 0;
-      this.currentTimeInterval = null; // Get duration of the song and set it as max slider value
+      this.timeSlider.value = 0;
+      this.currentTimeInterval = null; // Get duration of the song and set it as max timeSlider value
 
       audio.onloadedmetadata = function () {
         this.setState({
           duration: audio.duration
         });
-      }.bind(this); // Sync slider position with song current time
+      }.bind(this); // Sync timeSlider position with song current time
 
 
       audio.onplay = function () {
         _this2.currentTimeInterval = setInterval(function () {
-          _this2.slider.value = audio.currentTime;
+          _this2.timeSlider.value = audio.currentTime;
         }, 500);
       };
 
@@ -1617,7 +1587,7 @@ var MediaBar = /*#__PURE__*/function (_React$Component) {
       }; // Seek functionality
 
 
-      this.slider.onchange = function (e) {
+      this.timeSlider.onchange = function (e) {
         clearInterval(_this2.currentTimeInterval);
         audio.currentTime = e.target.value;
       };
@@ -1681,20 +1651,46 @@ var MediaBar = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this4 = this;
 
-      // const formatTime = (time) => {
-      //   return (!isNaN(time)) ? (`${Math.floor(time / 60)} : ${Math.floor(time % 60)}`) : null
-      // }
-      // const currentTime = formatTime(this.state.currentTime)
-      // const duration = formatTime(this.state.duration)
-      var icon = this.props.playing ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "play-pause",
-        src: "/assets/pause.svg",
-        alt: "pause"
-      }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "play-pause",
-        src: "/assets/play.svg",
-        alt: "play"
-      });
+      var icon = this.props.playing ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "play-pause"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+        width: "40",
+        height: "40",
+        viewBox: "0 0 130 130"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("g", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("circle", {
+        fill: "none",
+        stroke: "#b3b3b3",
+        "stroke-width": "4",
+        cx: "64",
+        cy: "64",
+        r: "62"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+        stroke: "null",
+        fill: "#b3b3b3",
+        id: "svg_3",
+        d: "m80.065076,86.881925a6.141957,1.390361 0 0 1 -6.141957,-1.390361l0,-43.101201a6.141957,1.390361 0 0 1 12.283913,0l0,43.101201a6.141957,1.390361 0 0 1 -6.141957,1.390361z"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+        stroke: "null",
+        fill: "#b3b3b3",
+        id: "svg_7",
+        d: "m46.822559,87.15441a6.14196,1.39036 0 0 1 -6.14196,-1.39037l0,-43.1012a6.14196,1.39036 0 0 1 12.28391,0l0,43.1012a6.14196,1.39036 0 0 1 -6.14195,1.39037z"
+      })))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "play-pause"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+        width: "40",
+        height: "40",
+        viewBox: "0 0 130 130"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("g", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("circle", {
+        fill: "none",
+        stroke: "#b3b3b3",
+        "stroke-width": "4",
+        cx: "64",
+        cy: "64",
+        r: "62"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("polygon", {
+        fill: "#b3b3b3",
+        points: "45,38 90,64 45,90"
+      }))));
       var shuffle = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: ""
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
@@ -1748,9 +1744,7 @@ var MediaBar = /*#__PURE__*/function (_React$Component) {
         stroke: "#b3b3b3",
         "stroke-width": "2"
       })));
-      var repeat = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: ""
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+      var repeat = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
         width: "60px",
         height: "18px",
         viewBox: "1 1 100 600"
@@ -1766,6 +1760,76 @@ var MediaBar = /*#__PURE__*/function (_React$Component) {
         "class": "active-path",
         "data-old_color": "#000000",
         fill: "#B3B3B3"
+      }))));
+      var volumeMute = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+        width: "25px",
+        height: "25px",
+        viewBox: "0 0 500 700"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("g", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+        d: "M100,300 L100,450 L180,450 L320,530 L320,220 L180,300 L100,300 Z",
+        fill: "transparent",
+        stroke: "#B3B3B3",
+        "stroke-width": "30px"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+        d: "M400,310 L540,450",
+        fill: "transparent",
+        stroke: "#B3B3B3",
+        "stroke-width": "30px"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+        d: "M400,450 L540,310",
+        fill: "transparent",
+        stroke: "#B3B3B3",
+        "stroke-width": "30px"
+      }))));
+      var volumeLow = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+        width: "25px",
+        height: "25px",
+        viewBox: "0 0 500 700"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("g", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+        d: "M100,300 L100,450 L180,450 L320,530 L320,220 L180,300 L100,300 Z",
+        fill: "transparent",
+        stroke: "#B3B3B3",
+        "stroke-width": "30px"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+        d: "M400,310 C470,390 400,450 400,450",
+        fill: "transparent",
+        stroke: "#B3B3B3",
+        "stroke-width": "30px"
+      }))));
+      var volumeMedium = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+        width: "25px",
+        height: "25px",
+        viewBox: "0 0 500 700"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("g", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+        d: "M100,300 L100,450 L180,450 L320,530 L320,220 L180,300 L100,300 Z",
+        fill: "transparent",
+        stroke: "#B3B3B3",
+        "stroke-width": "30px"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+        d: "M420,260 C530,390 420,500 420,500",
+        fill: "transparent",
+        stroke: "#B3B3B3",
+        "stroke-width": "30px"
+      }))));
+      var volumeHigh = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+        width: "25px",
+        height: "25px",
+        viewBox: "0 0 500 700"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("g", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+        d: "M100,300 L100,450 L180,450 L320,530 L320,220 L180,300 L100,300 Z",
+        fill: "transparent",
+        stroke: "#B3B3B3",
+        "stroke-width": "30px"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+        d: "M410,270 C520,390 410,490 410,490",
+        fill: "transparent",
+        stroke: "#B3B3B3",
+        "stroke-width": "30px"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+        d: "M490,180 C670,390 490,580 490,580",
+        fill: "transparent",
+        stroke: "#B3B3B3",
+        "stroke-width": "30px"
       }))));
       var songInfo = this.props.currentSong ? this.props.currentSong.coverArtUrl ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "media-bar-div"
@@ -1793,34 +1857,13 @@ var MediaBar = /*#__PURE__*/function (_React$Component) {
         className: "media-bar-div-song-info"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.currentSong.song_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/artists/".concat(this.props.currentSong.artist.id)
-      }, this.props.currentSong.artist.artist_name)))) : null; // if (this.refs.player) {
-      //   var player = this.refs.player
-      //   if (player.currentSrc !== this.state.song_src) {
-      //     player.src = this.state.song_src
-      //   }
-      //   if (player.paused) {
-      //     if (this.state.is_playing) {
-      //       player.play()
-      //     }
-      //   } else if (!this.state.is_playing) {
-      //     player.pause()
-      //   }
-      //   if (this.is_progress_dirty) {
-      //     this.is_progress_dirty = false
-      //     player.currentTime = player.duration * this.state.progress
-      //   }
-      //   if (!this.registered_events) {
-      //     this.registered_events = true
-      //     player.addEventListener('progress', e => {
-      //       // console.log(e)
-      //       if (!this.is_progress_dirty) {
-      //         this.setState({
-      //           progress: player.currentTime / player.duration
-      //         })
-      //       }
-      //     })
-      //   }
-      // }
+      }, this.props.currentSong.artist.artist_name)))) : null;
+
+      if (this.props.currentSong && this.props.playing) {
+        document.title = "".concat(this.props.currentSong.song_name, " \u2022 ").concat(this.props.currentSong.artist.artist_name);
+      } else if (this.props.currentSong && this.props.playing === false) {
+        document.title = "Spudify";
+      }
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", {
         id: "mediabar",
@@ -1854,8 +1897,9 @@ var MediaBar = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.currentTime)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "progress-input-range-div"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        ref: function ref(slider) {
-          _this4.slider = slider;
+        className: "time-slider",
+        ref: function ref(timeSlider) {
+          _this4.timeSlider = timeSlider;
         },
         type: "range",
         name: "points",
@@ -1865,20 +1909,21 @@ var MediaBar = /*#__PURE__*/function (_React$Component) {
         className: "media-bar-duration"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.duration)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "right-div"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)));
+      }, volumeMute, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "volume-slider",
+        ref: function ref(volumeSlider) {
+          _this4.volumeSlider = volumeSlider;
+        },
+        type: "range",
+        name: "points",
+        min: "0",
+        max: this.state.volume
+      })));
     }
   }]);
 
   return MediaBar;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component); // function offsetLeft(el) {
-//   var left = 0;
-//   while (el && el !== document) {
-//     left += el.offsetLeft
-//     el = el.offsetParent
-//   }
-//   return left + 5
-// }
-
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (MediaBar);
 

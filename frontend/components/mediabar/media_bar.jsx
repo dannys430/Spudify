@@ -6,17 +6,9 @@ class MediaBar extends React.Component {
     super(props);
 
     this.state = {
-      // song_src: 'https://active-storage-spudify-dev.s3.amazonaws.com/ik_mis_je_ft._kempi.mp3',
-      // song_src: 'http://jukebox.pierrevanlierop.nl/The90s/01.%20Collective%20Soul%20-%20Shine%20(June%201994).mp3',
-      // is_playing: false,
-      // progress: 0.0333,
-      // progress_drag: false,
-
       duration: null,
+      volume: null
     }
-
-    // this.is_progress_dirty = false
-    // this.registered_events = false
 
     this.handlePlay = this.handlePlay.bind(this)
     this.handlePause = this.handlePause.bind(this)
@@ -24,53 +16,23 @@ class MediaBar extends React.Component {
     this.handleNext = this.handleNext.bind(this)
   }
 
-  // startSetProgress(e) {
-  //   this.setState({
-  //     progress_drag: true
-  //   })
-  //   this.setProgress(e)
-  // }
-
-  // stopSetProgress(e) {
-  //   this.setState({
-  //     progress_drag: false
-  //   })
-  //   this.setProgress(e)
-  // }
-
-  // setProgress(e) {
-  //   if (this.state.progress_drag) {
-  //     var progress = (e.clientX - offsetLeft(this.refs.progress_bar)) / this.refs.progress_bar.clientWidth
-  //     this.setState({
-  //       progress: progress
-  //     })
-  //     this.is_progress_dirty = true
-  //   }
-  // }
-  
-  // togglePlay() {
-  //   this.setState({ is_playing: !this.state.is_playing })
-  // }
-
-
-
   componentDidMount() {
     const audio = new Audio()
     audio.id = 'media-bar'
     document.body.appendChild(audio);
 
-    this.slider.value = 0;
+    this.timeSlider.value = 0;
     this.currentTimeInterval = null;
 
-    // Get duration of the song and set it as max slider value
+    // Get duration of the song and set it as max timeSlider value
     audio.onloadedmetadata = function () {
       this.setState({ duration: audio.duration });
     }.bind(this);
 
-    // Sync slider position with song current time
+    // Sync timeSlider position with song current time
     audio.onplay = () => {
       this.currentTimeInterval = setInterval(() => {
-        this.slider.value = audio.currentTime;
+        this.timeSlider.value = audio.currentTime;
       }, 500);
     };
 
@@ -79,7 +41,7 @@ class MediaBar extends React.Component {
     };
 
     // Seek functionality
-    this.slider.onchange = (e) => {
+    this.timeSlider.onchange = (e) => {
       clearInterval(this.currentTimeInterval);
       audio.currentTime = e.target.value;
     };
@@ -134,17 +96,24 @@ class MediaBar extends React.Component {
   }
 
   render() {
-
-    // const formatTime = (time) => {
-    //   return (!isNaN(time)) ? (`${Math.floor(time / 60)} : ${Math.floor(time % 60)}`) : null
-    // }
-
-    // const currentTime = formatTime(this.state.currentTime)
-    // const duration = formatTime(this.state.duration)
-
     const icon = this.props.playing 
-    ? <img className="play-pause" src="/assets/pause.svg" alt="pause" />
-    : <img className="play-pause" src="/assets/play.svg" alt="play" /> 
+      ? <div className="play-pause">
+          <svg width="40" height="40" viewBox="0 0 130 130">
+            <g>
+              <circle fill="none" stroke="#b3b3b3" stroke-width="4" cx="64" cy="64" r="62" />
+              <path stroke="null" fill="#b3b3b3" id="svg_3" d="m80.065076,86.881925a6.141957,1.390361 0 0 1 -6.141957,-1.390361l0,-43.101201a6.141957,1.390361 0 0 1 12.283913,0l0,43.101201a6.141957,1.390361 0 0 1 -6.141957,1.390361z" />
+              <path stroke="null" fill="#b3b3b3" id="svg_7" d="m46.822559,87.15441a6.14196,1.39036 0 0 1 -6.14196,-1.39037l0,-43.1012a6.14196,1.39036 0 0 1 12.28391,0l0,43.1012a6.14196,1.39036 0 0 1 -6.14195,1.39037z" />
+            </g>
+          </svg>
+        </div>
+      : <div className="play-pause">
+          <svg width="40" height="40" viewBox="0 0 130 130">
+            <g>
+              <circle fill="none" stroke="#b3b3b3" stroke-width="4" cx="64" cy="64" r="62" />
+              <polygon fill="#b3b3b3" points="45,38 90,64 45,90" />
+            </g>
+          </svg>
+        </div>
 
     const shuffle =   <div className="">
                         <svg width="60px" height="20px" viewBox="0 0 150 100">
@@ -170,7 +139,7 @@ class MediaBar extends React.Component {
                     </svg>
                   </div>
 
-    const repeat =  <div className="">
+    const repeat =  <div>
                       <svg width="60px" height="18px" viewBox="1 1 100 600">
                         <g>
                           <path d="M507.336,100.696l-96-96c-4.576-4.576-11.456-5.952-17.44-3.456c-5.984,2.496-9.888,8.288-9.888,14.752v48h-208    c-97.216,0-176,78.784-176,176c0,8.832,7.168,16,16,16h64c8.832,0,16-7.168,16-16c0-44.192,35.808-80,80-80h208v48    c0,6.464,3.904,12.32,9.888,14.784c5.984,2.496,12.864,1.12,17.44-3.456l96-96C513.576,117.08,513.576,106.936,507.336,100.696z" data-original="#000000" class="active-path" data-old_color="#000000" fill="#B3B3B3"/>
@@ -178,6 +147,44 @@ class MediaBar extends React.Component {
                         </g>
                       </svg>
                     </div>
+
+    const volumeMute =  <div>
+                          <svg width="25px" height="25px" viewBox="0 0 500 700">
+                            <g>
+                              <path d="M100,300 L100,450 L180,450 L320,530 L320,220 L180,300 L100,300 Z" fill="transparent" stroke="#B3B3B3" stroke-width="30px"></path>
+                              <path d="M400,310 L540,450" fill="transparent" stroke="#B3B3B3" stroke-width="30px"></path>
+                              <path d="M400,450 L540,310" fill="transparent" stroke="#B3B3B3" stroke-width="30px"></path>
+                            </g>
+                          </svg>
+                        </div>
+      
+    const volumeLow = <div>
+                        <svg width="25px" height="25px" viewBox="0 0 500 700">
+                          <g>
+                            <path d="M100,300 L100,450 L180,450 L320,530 L320,220 L180,300 L100,300 Z" fill="transparent" stroke="#B3B3B3" stroke-width="30px"></path>
+                            <path d="M400,310 C470,390 400,450 400,450" fill="transparent" stroke="#B3B3B3" stroke-width="30px"></path>
+                          </g>
+                        </svg>
+                      </div>
+      
+    const volumeMedium =  <div>
+                            <svg width="25px" height="25px" viewBox="0 0 500 700">
+                              <g>
+                                <path d="M100,300 L100,450 L180,450 L320,530 L320,220 L180,300 L100,300 Z" fill="transparent" stroke="#B3B3B3" stroke-width="30px"></path>                                
+                                <path d="M420,260 C530,390 420,500 420,500" fill="transparent" stroke="#B3B3B3" stroke-width="30px"></path>
+                              </g>
+                            </svg>
+                          </div>
+
+    const volumeHigh =  <div>
+                            <svg width="25px" height="25px" viewBox="0 0 500 700">
+                              <g>
+                                <path d="M100,300 L100,450 L180,450 L320,530 L320,220 L180,300 L100,300 Z" fill="transparent" stroke="#B3B3B3" stroke-width="30px"></path>
+                                <path d="M410,270 C520,390 410,490 410,490" fill="transparent" stroke="#B3B3B3" stroke-width="30px"></path>
+                                <path d="M490,180 C670,390 490,580 490,580" fill="transparent" stroke="#B3B3B3" stroke-width="30px"></path>
+                              </g>
+                            </svg>
+                          </div>
 
     const songInfo = 
       this.props.currentSong
@@ -200,52 +207,11 @@ class MediaBar extends React.Component {
               </div>
         : null
 
-
-
-
-
-
-    // if (this.refs.player) {
-    //   var player = this.refs.player
-    //   if (player.currentSrc !== this.state.song_src) {
-    //     player.src = this.state.song_src
-    //   }
-
-    //   if (player.paused) {
-    //     if (this.state.is_playing) {
-    //       player.play()
-    //     }
-    //   } else if (!this.state.is_playing) {
-    //     player.pause()
-    //   }
-
-    //   if (this.is_progress_dirty) {
-    //     this.is_progress_dirty = false
-    //     player.currentTime = player.duration * this.state.progress
-    //   }
-
-    //   if (!this.registered_events) {
-    //     this.registered_events = true
-
-    //     player.addEventListener('progress', e => {
-    //       // console.log(e)
-    //       if (!this.is_progress_dirty) {
-    //         this.setState({
-    //           progress: player.currentTime / player.duration
-    //         })
-    //       }
-    //     })
-    //   }
-    // }
-
-
-
-
-
-
-
-
-
+    if(this.props.currentSong && this.props.playing) {
+      document.title = `${this.props.currentSong.song_name} • ${this.props.currentSong.artist.artist_name}`
+    } else if(this.props.currentSong && this.props.playing === false) {
+      document.title = `Spudify`
+    }
 
     return(
       <footer id="mediabar" className="mediabar">
@@ -269,22 +235,10 @@ class MediaBar extends React.Component {
                 <div>{this.props.currentTime}</div>
               </div>
 
-              {/* <i onClick={this.togglePlay.bind(this)}>play/pause</i>
-              <div 
-                onMouseDown={this.startSetProgress.bind(this)}
-                onMouseMove={this.setProgress.bind(this)}
-                onMouseLeave={this.stopSetProgress.bind(this)}
-                onMouseUp={this.stopSetProgress.bind(this)}
-                className="progress"
-              >
-                <div ref="progress_bar" className="bar">
-                  <div style={{width: `${this.state.progress * 100}%`}}></div>
-                </div>
-              </div> */}
-
             <div className="progress-input-range-div">
               <input
-                ref={(slider) => { this.slider = slider }}
+                className="time-slider"
+                ref={(timeSlider) => { this.timeSlider = timeSlider }}
                 type="range"
                 name="points"
                 min="0" max={this.state.duration}
@@ -300,40 +254,19 @@ class MediaBar extends React.Component {
           </div>
 
           <div className="right-div">
-            
-            <br />
-            
+            {volumeMute}
+            <input
+                className="volume-slider"
+                ref={(volumeSlider) => { this.volumeSlider = volumeSlider }}
+                type="range"
+                name="points"
+                min="0" max={this.state.volume}
+              />
           </div>
-
-            {/* <audio id="media-bar" onEnded={() => this.handleNext()}>
-              Sorry, your browser doesn't support HTML5 audio.
-            </audio> */}
-
-        {/* <audio ref="player">
-          <source src={this.state.song_src}></source>
-        </audio> */}
-
-
-
-       
-
-
-
-
-            
+  
       </footer>
     )
   }
 }
-
-// function offsetLeft(el) {
-//   var left = 0;
-//   while (el && el !== document) {
-//     left += el.offsetLeft
-//     el = el.offsetParent
-//   }
-//   return left + 5
-// }
-
 
 export default MediaBar;
