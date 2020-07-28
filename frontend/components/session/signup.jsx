@@ -12,7 +12,7 @@ function ValidationMsg(props) {
 const warningIcon =
   <svg role="img" height="14" width="13" fill="#444444" viewbox="0 0 24 24">
     <circle cx="6.5" cy="7" r="6" fill="none" stroke="red"></circle>
-    <line x1="6.5" y1="7" x2="6.5" fill="#181818" stroke="red" stroke-width="10%" stroke-linecap="round" y2="4"></line>
+    <line x1="6.5" y1="7" x2="6.5" fill="#181818" stroke="red" strokeWidth="10%" strokeLinecap="round" y2="4"></line>
     <circle cx="6.5" cy="10" r=".32" fill="#181818" stroke="red"></circle>
   </svg>
 ;
@@ -58,9 +58,14 @@ class Signup extends React.Component {
     if (!email.length) {
       emailValid = false;
       errorMsg.email = <div className="signup-form-errors" >{warningIcon} <p className="signup-form-errors error-messages">You need to enter your email.</p></div>
+      document.getElementById('signup-form-input-email').style.border = '1px solid red'
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       emailValid = false;
       errorMsg.email = <div className="signup-form-errors" >{warningIcon} <p className="signup-form-errors error-messages">This email is invalid.</p></div>
+      document.getElementById('signup-form-input-email').style.border = '1px solid red'
+    } else {
+      emailValid = true
+      document.getElementById('signup-form-input-email').style.border = '1px solid gray'
     }
     
     this.setState({emailValid, errorMsg}, this.validateForm)
@@ -78,9 +83,14 @@ class Signup extends React.Component {
     if (!password.length) {
       passwordValid = false;
       errorMsg.password = <div className="signup-form-errors" >{warningIcon} <p className="signup-form-errors error-messages">You need to enter a password.</p></div>
+      document.getElementById('signup-form-input-password').style.border = '1px solid red'
     } else if (password.length < 6) {
       passwordValid = false;
       errorMsg.password = <div className="signup-form-errors" >{warningIcon} <p className="signup-form-errors error-messages">Your password is too short.</p></div>
+      document.getElementById('signup-form-input-password').style.border = '1px solid red'
+    } else {
+      passwordValid = true
+      document.getElementById('signup-form-input-password').style.border = '1px solid gray'
     }
 
     this.setState({passwordValid, errorMsg}, this.validateForm);
@@ -98,13 +108,22 @@ class Signup extends React.Component {
     if (!name.length) {
       nameValid = false;
       errorMsg.name = <div className="signup-form-errors" >{warningIcon} <p className="signup-form-errors error-messages">Enter a name for your profile.</p></div>
-    } 
-    // else {
-    //   nameValid = false;
-    //   errorMsg.name = 'This appears on your profile.'
-    // }
+      document.getElementById('signup-form-input-name').style.border = '1px solid red'
+    } else {
+      nameValid = true
+      document.getElementById('signup-form-input-name').style.border = '1px solid gray'
+    }
 
     this.setState({nameValid, errorMsg}, this.validateForm);
+  }
+
+  handleMonth() {
+    const dropdown = document.getElementById('signup-form-input-month')
+    dropdown.style.border = '1px solid red'
+    dropdown.addEventListener('change', () => {
+      dropdown.style.border = '1px solid gray'
+    })
+    this.state.bday_month.length ? dropdown.style.border = '1px solid gray' : null
   }
 
   updateDate(bday_date) {
@@ -119,7 +138,11 @@ class Signup extends React.Component {
     if (!bday_date.length || bday_date > 31 || isNaN(bday_date)) {
       dateValid = false;
       errorMsg.date = <div className="signup-form-errors" >{warningIcon} <p className="signup-form-errors error-messages">Enter a valid day of the month.</p></div>
-    } 
+      document.getElementById('signup-form-input-date').style.border = '1px solid red'
+    } else {
+      dateValid = true
+      document.getElementById('signup-form-input-date').style.border = '1px solid gray'
+    }
 
     this.setState({dateValid, errorMsg}, this.validateForm);
   }
@@ -136,9 +159,14 @@ class Signup extends React.Component {
     if (!bday_year.length || bday_year < 1900 || isNaN(bday_year)) {
       yearValid = false;
       errorMsg.year = <div className="signup-form-errors" >{warningIcon} <p className="signup-form-errors error-messages">Enter a valid year.</p></div>
+      document.getElementById('signup-form-input-year').style.border = '1px solid red'
     } else if(bday_year > 2007) {
       yearValid = false;
       errorMsg.year = <div className="signup-form-errors" >{warningIcon} <p className="signup-form-errors error-messages">Sorry, you don't meet Spudify's age requirements</p></div>
+      document.getElementById('signup-form-input-year').style.border = '1px solid red'
+    } else {
+      yearValid = true
+      document.getElementById('signup-form-input-year').style.border = '1px solid gray'
     }
 
     this.setState({yearValid, errorMsg}, this.validateForm);
@@ -204,6 +232,7 @@ class Signup extends React.Component {
             <label className="signup-prompts" >What's your email?
               <br/>
               <input
+                id="signup-form-input-email"
                 className="signup-form-input" 
                 type="text" 
                 placeholder="Enter your email."
@@ -218,6 +247,7 @@ class Signup extends React.Component {
             <label className="signup-prompts" >Create a password
               <br/>
               <input
+                id="signup-form-input-password"
                 className="signup-form-input" 
                 type="password"
                 placeholder="Create a password."
@@ -232,6 +262,7 @@ class Signup extends React.Component {
             <label className="signup-prompts" >What should we call you?
               <br/>
               <input
+                id="signup-form-input-name"
                 className="signup-form-input" 
                 type="text" 
                 placeholder="Enter a profile name."
@@ -252,7 +283,7 @@ class Signup extends React.Component {
                     <label className="signup-bday-labels">Month
                       <br/>
                       <div>
-                        <select className="signup-month-input" value={this.state.bday_month} onChange={this.handleInput('bday_month')} >
+                        <select onClick={() => this.handleMonth()} id="signup-form-input-month" className="signup-month-input" value={this.state.bday_month} onChange={this.handleInput('bday_month')} >
                             <option value='' disabled >Month</option>
                             <option value="01">January</option>
                             <option value="02">February</option>
@@ -276,7 +307,7 @@ class Signup extends React.Component {
                     <label className="signup-bday-labels">Day
                       {/* <br/> */}
                       <div className="date-input">
-                        <input className="signup-date-input" type="text" placeholder="DD" maxLength="2" value={this.state.bday_date} onChange={(e) => this.updateDate(e.target.value)} />
+                        <input id="signup-form-input-date" className="signup-date-input" type="text" placeholder="DD" maxLength="2" value={this.state.bday_date} onChange={(e) => this.updateDate(e.target.value)} />
                       </div>
                     </label>
                   </div>
@@ -285,7 +316,7 @@ class Signup extends React.Component {
                     <label className="signup-bday-labels">Year
                       {/* <br/> */}
                       <div className="year-input">
-                        <input className="signup-year-input" type="text" placeholder="YYYY" maxLength="4" value={this.state.bday_year} onChange={(e) => this.updateYear(e.target.value)} />
+                        <input id="signup-form-input-year"className="signup-year-input" type="text" placeholder="YYYY" maxLength="4" value={this.state.bday_year} onChange={(e) => this.updateYear(e.target.value)} />
                       </div>
                     </label>
                   </div>

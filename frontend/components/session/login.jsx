@@ -42,6 +42,10 @@ class Login extends React.Component {
     if (!email.length) {
       emailValid = false;
       errorMsg.email = 'Please enter your Spudify email address.'
+      document.getElementById('form-input-email').style.border = '1px solid red'
+    } else {
+      emailValid = true
+      document.getElementById('form-input-email').style.border = '1px solid gray'
     }
     
     this.setState({emailValid, errorMsg}, this.validateForm)
@@ -59,6 +63,10 @@ class Login extends React.Component {
     if (!password.length) {
       passwordValid = false;
       errorMsg.password = 'Please enter your password.'
+      document.getElementById('form-input-password').style.border = '1px solid red'
+    } else {
+      passwordValid = true
+      document.getElementById('form-input-password').style.border = '1px solid gray'
     }
 
     this.setState({passwordValid, errorMsg}, this.validateForm);
@@ -105,6 +113,7 @@ class Login extends React.Component {
 
             <label>
               <input
+                id="form-input-email"
                 className="form-input"
                 type="text" 
                 placeholder="Email address" 
@@ -118,6 +127,7 @@ class Login extends React.Component {
 
             <label>
               <input
+                id="form-input-password"
                 className="form-input"
                 type="password" 
                 placeholder="Password" 
