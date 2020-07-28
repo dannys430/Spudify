@@ -3982,9 +3982,11 @@ var Song = /*#__PURE__*/function (_React$Component) {
         className: "song-name-active"
       }, this.props.song.song_name);
       var songDivStyles = {};
+      var songDivMenuButtonStyles = {};
 
       if (this.props.currentSong === song) {
         songDivStyles.backgroundColor = "rgb(40, 40, 40)";
+        songDivMenuButtonStyles.display = 'initial';
       }
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -4025,6 +4027,8 @@ var Song = /*#__PURE__*/function (_React$Component) {
       }, this.props.song.album.album_name)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "duration"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        style: songDivMenuButtonStyles,
+        id: "song-div-menu-button",
         className: "song-div-menu-button"
       }, "\u2022\u2022\u2022"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.duration)));
     }
