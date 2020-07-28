@@ -45,6 +45,10 @@ class MediaBar extends React.Component {
       clearInterval(this.currentTimeInterval);
       audio.currentTime = e.target.value;
     };
+
+    document.getElementById('media-bar').addEventListener('ended', () => {
+      this.handleNext()
+    })
   }
 
   handlePlay() {

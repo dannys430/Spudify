@@ -1591,6 +1591,10 @@ var MediaBar = /*#__PURE__*/function (_React$Component) {
         clearInterval(_this2.currentTimeInterval);
         audio.currentTime = e.target.value;
       };
+
+      document.getElementById('media-bar').addEventListener('ended', function () {
+        _this2.handleNext();
+      });
     }
   }, {
     key: "handlePlay",
@@ -4001,7 +4005,9 @@ var Song = /*#__PURE__*/function (_React$Component) {
         to: "/albums/".concat(this.props.song.album.id)
       }, this.props.song.album.album_name)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "duration"
-      }, this.state.duration));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "song-div-menu-button"
+      }, "\u2022\u2022\u2022"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.duration)));
     }
   }]);
 
@@ -4396,8 +4402,8 @@ var initialState = {
   currentSong: null,
   history: [],
   queue: [],
-  duration: null,
-  currentTime: null
+  duration: '0:00',
+  currentTime: '0:00'
 }; // const formatTime = (time) => {
 //   return (!isNaN(time)) ? (`${Math.floor(time / 60)}:${Math.floor(time % 60)}`) : null
 // }
