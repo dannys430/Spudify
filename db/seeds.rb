@@ -8,11 +8,11 @@
 
 require 'open-uri'
 
-User.destroy_all
-Artist.destroy_all
-Album.destroy_all
 Song.destroy_all
+Album.destroy_all
+Artist.destroy_all
 Playlist.destroy_all
+User.destroy_all
 
 # USERS
 # Guest
@@ -24,13 +24,15 @@ guest = User.create(
   gender: 'Male'
 )
 
+
+
 # ARTISTS
 # Mariah Carey
 mariah_carey = Artist.create(
   artist_name: 'Mariah Carey', 
   bio: "Rising to prominence in the early 90's, Mariah Carey is known the world over. Her remarkable vocal range and seductive honey-harmonies bless each record that bears her name"
 )
-mariah_carey.cover_photo.attach(io: File.open('/Users/dls/Desktop/Spudify/app/assets/images/Mariah_Carey.jpg'), filename: 'Mariah_Carey.jpg')
+mariah_carey.cover_photo.attach(io: File.open('https://active-storage-spudify-pro.s3.amazonaws.com/artists/mariah_carey/mariah_carey_cover_photo.jpg'), filename: 'mariah_carey_cover_photo.jpg')
 
 # Always Never
 always_never = Artist.create(
