@@ -217,14 +217,7 @@ class MediaBar extends React.Component {
       document.title = `Spudify`
     }
 
-    document.addEventListener('contextmenu', function (event) {
-      event.preventDefault();
-      const songMenu = document.createElement('div')
-      songMenu.styles.width = "20px"
-      songMenu.styles.height = "20px"
-      songMenu.styles.backgroundColor = 'blue'
-      document.appendChild(songMenu)
-    })
+   
 
     return(
       <footer id="mediabar" className="mediabar">

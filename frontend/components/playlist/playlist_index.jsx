@@ -26,9 +26,9 @@ class PlaylistIndex extends React.Component {
 
     const ul = []
 
-    playlists.forEach((playlist) => {
+    playlists.forEach((playlist, id) => {
       ul.unshift (
-        <li className="playlist-index-li"><Link to={`/playlists/${playlist.id}`}><h1>{playlist.playlist_name}</h1></Link></li>
+        <li key={id} className="playlist-index-li"><Link to={`/playlists/${playlist.id}`}><h1>{playlist.playlist_name}</h1></Link></li>
       )
     })
 

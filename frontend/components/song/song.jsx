@@ -2,6 +2,8 @@ import React from 'react';
 import { Link, Route } from 'react-router-dom';
 import { RECEIVE_DURATION } from '../../actions/media_bar_actions';
 
+import SongMenuContainer from './song_menu_container'
+
 // const formatTime = (time) => {
 //   return (!isNaN(time)) ? (`${Math.floor(time / 60)} : ${Math.floor(time % 60)}`) : null
 // }
@@ -181,10 +183,8 @@ class Song extends React.Component {
     const songNameActive = <p className="song-name-active">{this.props.song.song_name}</p>
 
     const songDivStyles = {}
-    const songDivMenuButtonStyles = {}
     if(this.props.currentSong === song) {
       songDivStyles.backgroundColor = "rgb(40, 40, 40)"
-      songDivMenuButtonStyles.display = 'initial'
     }
     
     return (
@@ -215,10 +215,11 @@ class Song extends React.Component {
         </div>
    
         <div className="duration">
-          <div style={songDivMenuButtonStyles} id="song-div-menu-button" className="song-div-menu-button">•••</div>
+          <SongMenuContainer song={song} currentSong={this.props.currentSong}/>
           <div>{this.state.duration}</div>
         </div>
         {/* {this.state.currentTime} */}
+
         
       </div>
     )

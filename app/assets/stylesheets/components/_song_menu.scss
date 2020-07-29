@@ -1,0 +1,44 @@
+.song-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-right: 60px;
+  min-width: 200px;
+  max-height: 30px;
+  align-self: center;
+}
+
+.song-div-menu-button {
+  display: none;
+  position: relative;
+  font-size: 5px;
+  letter-spacing: 3px;
+  color: white;
+}
+
+.song-div:hover .song-div-menu-button {
+  display: initial;
+}
+
+.song-menu-dropdown {
+  background-color: var(--gray);
+  position: absolute;
+  z-index: 1;
+  margin-top: 10px;
+  border: 1px solid rgb(30, 30, 30);
+  border-radius: 3px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.song-menu-dropdown li {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.song-menu-dropdown li:hover {
+  background-color: rgb(51, 51, 51);
+  color: var(--white);
+}
