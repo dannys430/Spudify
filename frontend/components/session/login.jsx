@@ -120,7 +120,7 @@ class Login extends React.Component {
                 className="form-input"
                 type="text" 
                 placeholder="Email address" 
-                value={this.state.email}
+                value={this.state.email.toLowerCase()}
                 onChange={(e) => this.updateEmail(e.target.value)}
               />
               <ValidationMsg valid={this.state.emailValid} message={this.state.errorMsg.email} />

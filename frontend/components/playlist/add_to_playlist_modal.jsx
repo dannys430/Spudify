@@ -34,7 +34,11 @@ class AddToPlaylistModal extends React.Component {
   }
 
   addSong() {
-    console.log('apple')
+    console.log(this.props.playlists[0].songs[0])
+    const song = this.props.playlists[0].songs[0]
+    const playlist = this.props.playlists[1]
+    playlist.songs.push(song)
+    playlist.save
     // this.props.openModal()
   }
   

@@ -2257,7 +2257,11 @@ var AddToPlaylistModal = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "addSong",
     value: function addSong() {
-      console.log('apple'); // this.props.openModal()
+      console.log(this.props.playlists[0].songs[0]);
+      var song = this.props.playlists[0].songs[0];
+      var playlist = this.props.playlists[1];
+      playlist.songs.push(song);
+      playlist.save; // this.props.openModal()
     }
   }, {
     key: "render",
@@ -3154,7 +3158,7 @@ var Login = /*#__PURE__*/function (_React$Component) {
         className: "form-input",
         type: "text",
         placeholder: "Email address",
-        value: this.state.email,
+        value: this.state.email.toLowerCase(),
         onChange: function onChange(e) {
           return _this5.updateEmail(e.target.value);
         }
