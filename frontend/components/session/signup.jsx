@@ -47,7 +47,7 @@ class Signup extends React.Component {
   }
 
   updateEmail(email) {
-    this.setState({email}, this.validateEmail)
+    this.setState({email: email.toLowerCase()}, this.validateEmail)
   }
 
   validateEmail() {

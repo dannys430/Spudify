@@ -3037,7 +3037,7 @@ var Login = /*#__PURE__*/function (_React$Component) {
     key: "updateEmail",
     value: function updateEmail(email) {
       this.setState({
-        email: email
+        email: email.toLowerCase()
       }, this.validateEmail);
     }
   }, {
@@ -3158,7 +3158,7 @@ var Login = /*#__PURE__*/function (_React$Component) {
         className: "form-input",
         type: "text",
         placeholder: "Email address",
-        value: this.state.email.toLowerCase(),
+        value: this.state.email,
         onChange: function onChange(e) {
           return _this5.updateEmail(e.target.value);
         }
@@ -3363,7 +3363,7 @@ var Signup = /*#__PURE__*/function (_React$Component) {
     key: "updateEmail",
     value: function updateEmail(email) {
       this.setState({
-        email: email
+        email: email.toLowerCase()
       }, this.validateEmail);
     }
   }, {
