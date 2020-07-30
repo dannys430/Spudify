@@ -5,10 +5,16 @@ import {openModal} from '../../actions/modal_actions';
 
 import SongMenu from './song_menu';
 
+const mSTP = (state) => {
+  return {
+    queue: state.ui.mediaBar.queue
+  }
+}
+
 const mDTP = (dispatch) => {
   return {
     openModal: () => dispatch(openModal('add_to_playlist'))
   }
 }
 
-export default connect(null, mDTP)(SongMenu);
+export default connect(mSTP, mDTP)(SongMenu);

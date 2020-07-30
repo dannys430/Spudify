@@ -13,6 +13,11 @@ class SongMenu extends React.Component {
     this.setState(prevState => ({ menuShowing: !prevState.menuShowing }))
   }
 
+  handleQueue() {
+    this.props.queue.push(this.props.song)
+    console.log(this.props.queue)
+  }
+
   render() {
 
     const songDivMenuButtonStyles = {}
@@ -26,7 +31,7 @@ class SongMenu extends React.Component {
         <div onClick={() => this.toggleMenu()} style={songDivMenuButtonStyles} id="song-div-menu-button" className="song-div-menu-button">•••</div>
         {this.state.menuShowing && (
           <div className="song-menu-dropdown">
-            <li>Add to Queue</li>
+            <li onClick={() => this.handleQueue()}>Add to Queue</li>
             <li onClick={() => this.props.openModal()}>Add to Playlist</li>
             <li>Remove from this Playlist</li> {/* only if within PlaylistContent*/}
           </div>
