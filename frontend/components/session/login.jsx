@@ -118,7 +118,8 @@ class Login extends React.Component {
               <input
                 id="form-input-email"
                 className="form-input"
-                type="text" 
+                type="text"
+                autoCapitalize="off"
                 placeholder="Email address" 
                 value={this.state.email}
                 onChange={(e) => this.updateEmail(e.target.value)}

@@ -228,6 +228,7 @@ class Signup extends React.Component {
                 id="signup-form-input-email"
                 className="signup-form-input" 
                 type="text" 
+                autoCapitalize="off"
                 placeholder="Enter your email."
                 value={this.state.email}
                 onChange={(e) => this.updateEmail(e.target.value)}
