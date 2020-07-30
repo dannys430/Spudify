@@ -26,9 +26,20 @@ class PlaylistModal extends React.Component {
   }
   
   render() {
+
+    const xIcon =   <div>
+                      <svg width="150px" height="80px" viewBox="270 160 400 400">
+                        <g>
+                          <path d="M400,310 L540,450" fill="transparent" stroke="var(--white)" stroke-width="10px"></path>
+                          <path d="M400,450 L540,310" fill="transparent" stroke="var(--white)" stroke-width="10px"></path>
+                        </g>
+                      </svg>
+                    </div>
+
     return (
       <div className="playlist-modal">
         <form className="playlist-modal-form" onSubmit={this.handleSubmit}>
+          <button onClick={() => this.props.closeModal()}>{xIcon}</button>
           <h1>Create new playlist</h1>
 
           <div className="playlist-modal-input">

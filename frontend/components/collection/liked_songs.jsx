@@ -7,7 +7,7 @@ class LikedSongs extends React.Component {
 
   render() {
     return (
-       <div style={{color: 'white', fontSize: '50px'}} >hello from LikedSongs</div>
+       <div style={{color: 'white', fontSize: '50px'}} >Coming Soon!</div>
     )
   }
 };

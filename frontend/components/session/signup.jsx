@@ -188,14 +188,7 @@ class Signup extends React.Component {
     e.preventDefault()
     // validateDate()
 
-    const func = () => {
-      this.validateName()
-    };
-    // addEventListener('click', this.validateName())
-    // addEventListener('click', this.validateDate())
-    // addEventListener('click', this.validateYear())
-
-    func()
+    this.validateEmail()
 
     const newUser = {
       email: this.state.email,
