@@ -4,6 +4,7 @@
   height: 260px;
   background: linear-gradient(to bottom, rgba(82, 82, 82, 1), rgba(42, 42, 42, 1));
   padding-top: 80px;
+  padding-left: 30px;
 }
 
 .album-photo {
@@ -12,7 +13,7 @@
   background: rgb(42, 42, 42);
   min-height: 230px;
   min-width: 230px;
-  margin-left: 30px;
+  // margin-left: 30px;
   box-shadow: 0px 10px 40px -16px black;
   display: flex;
   justify-content: center;
@@ -23,7 +24,7 @@
   font-size: 50px;
   font-family: 'lineto-circular-black';
   color: var(--white);
-
+  white-space: nowrap;
 }
 .pc-section1 h2 {
   font-size: 15px;
@@ -44,10 +45,10 @@
 
 .pc-section2 {
   font-family: 'lineto-circular-book';
-  height: 100vh;
-  background: linear-gradient(to top, rgba(0,0,0,.6),#121212);
-  padding-left: 30px;
-  padding-right: 30px;
+  // height: 100vh;
+  // background: linear-gradient(to top, rgba(0,0,0,.6),#121212);
+  // padding-left: 30px;
+  // padding-right: 30px;
 }
 
 .current-time-duration {
