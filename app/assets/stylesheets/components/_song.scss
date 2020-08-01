@@ -1,8 +1,12 @@
 .song-div {
   display: flex;
   padding-left: 18px;
+  padding-right: 18px;
   padding-top: 12px;
   padding-bottom: 12px;
+  min-width: 60vw;
+  margin-left: 30px;
+  margin-right: 30px;
   -webkit-user-select: none;  
   -moz-user-select: none;    
   -ms-user-select: none;      
@@ -34,6 +38,13 @@
   color: #68d962;
 }
 
+.song-details-div {
+  white-space: nowrap;
+  margin-right: auto;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
 .song-details {
   display: flex;
 }
@@ -55,8 +66,8 @@
 }
 
 .duration {
-  margin-left: auto;
-  margin-right: 15px;
+  // margin-left: auto;
+  // margin-right: 15px;
   font-size: 14px;
   display: flex;
   flex-direction: row;

@@ -208,7 +208,7 @@ class Song extends React.Component {
           {/* {this.props.currentSong === song && this.props.playing === true ? <button onClick={() => this.handlePause()}>{pauseIcon}</button> : <button onClick={() => this.handlePlay(song)}>{playIcon}</button>} */}
         </div>
 
-        <div>
+        <div className="song-details-div">
           {this.props.currentSong === song ? songNameActive : songName}
           {/* {this.props.song.song_name} */}
           <div className="song-details"><p><Link to={`/artists/${this.props.song.artist.id}`}>{this.props.song.artist.artist_name}</Link></p> <h2 className="bullet-point">•</h2> <p><Link to={`/albums/${this.props.song.album.id}`}>{this.props.song.album.album_name}</Link></p></div>
