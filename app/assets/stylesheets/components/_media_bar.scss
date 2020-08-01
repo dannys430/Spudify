@@ -38,16 +38,24 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .media-bar-div-song-info p:nth-child(1) {
   font-size: 14px;
   color: white;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .media-bar-div-song-info p:nth-child(2) {
   font-size: 12.5px;
   color: rgb(174,174,174);
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .media-bar-div-song-info p:nth-child(2):hover {
@@ -132,13 +140,15 @@ h1 {
 
 
 .left-div {
-  width: 20%;
+  // width: 20%;
+  width: 25%;
   height: 56px;
   // background: blue;
 }
 
 .center-div {
-  width: 40%;
+  // width: 40%;
+  width: 50%;
   display: flex;
   flex-direction: column;
 }
@@ -337,7 +347,8 @@ h1 {
 }
 
 .right-div {
-  width: 20%;
+  // width: 20%;
+  width: 25%;
   height: 50px;
   display: flex;
   flex-direction: row;

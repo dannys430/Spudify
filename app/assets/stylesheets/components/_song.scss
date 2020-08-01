@@ -32,10 +32,16 @@
 
 .song-name {
   color: var(--white);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .song-name-active {
   color: #68d962;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .song-details-div {
@@ -56,6 +62,12 @@
 .song-details p:hover {
   color: var(--white);
   text-decoration: underline;
+}
+
+.song-details-album {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .bullet-point {
