@@ -87,7 +87,7 @@ class LeftNav extends React.Component {
             </Link>
         </section>
 
-        <section>
+        <section className="left-nav-section3">
           <PlaylistIndexContainer />
         </section>
         

@@ -1331,7 +1331,9 @@ var LeftNav = /*#__PURE__*/function (_React$Component) {
         className: "active-path",
         "data-old_color": "#000000",
         fill: "#B3B3B3"
-      })), " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Liked Songs")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_playlist_playlist_index_container__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
+      })), " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Liked Songs")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "left-nav-section3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_playlist_playlist_index_container__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
     }
   }]);
 
@@ -3195,19 +3197,19 @@ var Search = /*#__PURE__*/function (_React$Component) {
 
       if (this.state.query) {
         for (var artistId in artists) {
-          if (artists[artistId]['artist_name'].toLowerCase().includes(this.state.query.toLowerCase())) {
+          if (artists[artistId]['artist_name'] && artists[artistId]['artist_name'].toLowerCase().includes(this.state.query.toLowerCase())) {
             artistResults.push(artists[artistId]);
           }
         }
 
         for (var albumId in albums) {
-          if (albums[albumId]['album_name'].toLowerCase().includes(this.state.query.toLowerCase())) {
+          if (albums[albumId]['album_name'] && albums[albumId]['album_name'].toLowerCase().includes(this.state.query.toLowerCase())) {
             albumResults.push(albums[albumId]);
           }
         }
 
         for (var playlistId in playlists) {
-          if (playlists[playlistId]['playlist_name'].toLowerCase().includes(this.state.query.toLowerCase())) {
+          if (playlists[playlistId]['playlist_name'] && playlists[playlistId]['playlist_name'].toLowerCase().includes(this.state.query.toLowerCase())) {
             playlistResults.push(playlists[playlistId]);
           }
         }

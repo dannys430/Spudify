@@ -113,3 +113,11 @@
   padding: 8.5px;
   background: linear-gradient(to right, rgb(161, 102, 155), rgb(120, 152, 197));
 }
+
+.left-nav-section3 {
+  position: fixed;
+  top: 360px;
+  bottom: 113px;
+  overflow-y: scroll;
+  width: inherit;
+}

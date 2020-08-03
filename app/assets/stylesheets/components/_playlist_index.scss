@@ -1,10 +1,14 @@
 .playlist-index-div {
-  height: 421px;
-  background: var(--black);
-  overflow: scroll;
+  // height: 421px;
+  // background: var(--black);
+  // overflow: scroll;
   list-style: none;
   padding-left: 17px;
-  margin-top: 16px;
+  padding-right: 17px;
+  // margin-top: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .playlist-index-div h1 {
@@ -12,6 +16,9 @@
   font-size: 14.5px;
   font-family: 'lineto-circular-book';
   opacity: .7;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .playlist-index-div h1:hover {
