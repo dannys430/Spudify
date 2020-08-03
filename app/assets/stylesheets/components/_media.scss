@@ -51,4 +51,7 @@
   color: var(--ltgray);
   font-size: 12px;
   font-family: 'lineto-circular-book';
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
