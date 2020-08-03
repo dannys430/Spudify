@@ -1,0 +1,54 @@
+.media {
+  width: 180px;
+  height: 255px;
+  margin: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  border-radius: 10px;
+  background: var(--gray);
+}
+
+.media-content {
+  width: 140px;
+}
+
+.artist-profile-photo-icon {
+  width: 140px;
+  height: 140px;
+  background: #0f0f0f;
+  border-radius: 100px;
+  box-shadow: 0px 0px 15px -7px black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.album-cover-art-icon {
+  width: 140px;
+  height: 140px;
+  background: #0f0f0f;
+  box-shadow: 0px 0px 15px -7px black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.media h2 {
+  color: var(--white);
+  font-size: 16px;
+  font-family: 'lineto-circular-book';
+  margin-bottom: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.media p {
+  color: var(--ltgray);
+  font-size: 12px;
+  font-family: 'lineto-circular-book';
+}
