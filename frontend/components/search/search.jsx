@@ -109,6 +109,7 @@ class Search extends React.Component {
         <Media key={id} playlist={playlist} />
       )
     })
+    
 
     // const playlistSongResultsList = playlistSongResults.map(playlistSongResult => {
     //   const ul = []
