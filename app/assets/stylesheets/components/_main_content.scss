@@ -1,11 +1,13 @@
 .main-content-div {
   // background: var(--dkgray);
   background: linear-gradient(to top, rgba(0,0,0,0.95), #121212);
-  height: 100vh;
+  // height: 100vh;
   position: fixed;
   overflow: scroll;
   z-index: -1;
   margin-left: 232px;
+  top: 0;
+  bottom: 91;
   right: 0;
   left: 0;
   overflow-x: hidden;
