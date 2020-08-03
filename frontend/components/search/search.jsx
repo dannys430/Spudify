@@ -90,7 +90,6 @@ class Search extends React.Component {
     // }
 
     
-
     // RESULTS LIST
 
     const artistResultsList = artistResults.map((artist, id) => {
