@@ -10,7 +10,6 @@ class Api::SongsController < ApplicationController
   end
 
   def index
-    #@songs = Songs.all
     @songs = Song.all
     render :index
   end

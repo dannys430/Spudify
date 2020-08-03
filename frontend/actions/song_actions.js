@@ -20,14 +20,14 @@ export const createSong = (song) => dispatch => {
     )
 }
 
-export const fetchSong = (id) => dispatch => {
+export const requestSong = (id) => dispatch => {
   return SongUtils.fetchSong(id)
     .then(
       song => dispatch(receiveSong(song))
     )
 }
 
-export const fetchSongs = () => dispatch => {
+export const requestSongs = () => dispatch => {
   return SongUtils.fetchSongs()
     .then(
       songs => dispatch(receiveSongs(songs))
