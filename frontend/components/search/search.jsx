@@ -50,19 +50,19 @@ class Search extends React.Component {
 
     if (this.state.query) {
       for (const artistId in artists) {
-        if(artists[artistId]['artist_name'].toLowerCase().includes(this.state.query.toLowerCase())) {
+        if (artists[artistId]['artist_name'] && artists[artistId]['artist_name'].toLowerCase().includes(this.state.query.toLowerCase())) {
           artistResults.push(artists[artistId])
         }
       }
 
       for (const albumId in albums) {
-        if(albums[albumId]['album_name'].toLowerCase().includes(this.state.query.toLowerCase())) {
+        if (albums[albumId]['album_name'] && albums[albumId]['album_name'].toLowerCase().includes(this.state.query.toLowerCase())) {
           albumResults.push(albums[albumId])
         }
       }
 
       for (const playlistId in playlists) {
-        if(playlists[playlistId]['playlist_name'].toLowerCase().includes(this.state.query.toLowerCase())) {
+        if (playlists[playlistId]['playlist_name'] && playlists[playlistId]['playlist_name'].toLowerCase().includes(this.state.query.toLowerCase())) {
           playlistResults.push(playlists[playlistId])
         }
       }
@@ -110,7 +110,7 @@ class Search extends React.Component {
       )
     })
 
-    
+
     // const playlistSongResultsList = playlistSongResults.map(playlistSongResult => {
     //   const ul = []
     //   ul.push(<li>{playlistSongResult}</li>)
