@@ -43,22 +43,30 @@ class Search extends React.Component {
     // SEARCH ALGORITHMS
     let artistResults = []
     let albumResults = []
+    let playlistResults = []
     
     // let playlistSongResults = []
     // let playlistArtistResults = []
 
-    for (const artistId in artists) {
-      if(artists[artistId]['artist_name'].toLowerCase().includes(this.state.query.toLowerCase())) {
-        artistResults.push(artists[artistId])
+    if (this.state.query) {
+      for (const artistId in artists) {
+        if(artists[artistId]['artist_name'].toLowerCase().includes(this.state.query.toLowerCase())) {
+          artistResults.push(artists[artistId])
+        }
+      }
+
+      for (const albumId in albums) {
+        if(albums[albumId]['album_name'].toLowerCase().includes(this.state.query.toLowerCase())) {
+          albumResults.push(albums[albumId])
+        }
+      }
+
+      for (const playlistId in playlists) {
+        if(playlists[playlistId]['playlist_name'].toLowerCase().includes(this.state.query.toLowerCase())) {
+          playlistResults.push(playlists[playlistId])
+        }
       }
     }
-
-    for (const albumId in albums) {
-      if(albums[albumId]['album_name'].toLowerCase().includes(this.state.query.toLowerCase())) {
-        albumResults.push(albums[albumId])
-      }
-    }
-
     // // playlist
     // for (const playlist in playlists) {
     //   if(playlists[playlist]['songs'] && playlists[playlist]['songs'].length > 0) {
@@ -94,6 +102,12 @@ class Search extends React.Component {
     const albumResultsList = albumResults.map((album, id) => {
       return (
         <Media key={id} album={album} />
+      )
+    })
+
+    const playlistResultsList = playlistResults.map((playlist, id) => {
+      return (
+        <Media key={id} playlist={playlist} />
       )
     })
 
@@ -133,6 +147,13 @@ class Search extends React.Component {
           <div className="">
             <h1>ALBUMS:</h1>
             <ul className="results-list">{albumResultsList}</ul>
+          </div>
+        )}
+
+        {this.state.query && playlistResultsList.length > 0 && (
+          <div className="">
+            <h1>PLAYLISTS:</h1>
+            <ul className="results-list">{playlistResultsList}</ul>
           </div>
         )}
 

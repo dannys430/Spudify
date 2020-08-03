@@ -1566,20 +1566,24 @@ var Media = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(Media, [{
+    key: "handleLink",
+    value: function handleLink() {
+      if (this.props.artist) {
+        return "/artists/".concat(this.props.artist.id);
+      } else if (this.props.album) {
+        return "/albums/".concat(this.props.album.id);
+      } else if (this.props.playlist) {
+        return "/playlists/".concat(this.props.playlist.id);
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this = this;
+
       var artist = this.props.artist ? this.props.artist : null;
       var album = this.props.album ? this.props.album : null;
-
-      var link = function link() {
-        if (artist) {
-          "/artists/".concat(artist.id);
-        } else if (album) {
-          "/albums/".concat(album.id);
-        } else {
-          null;
-        }
-      };
+      var playlist = this.props.playlist ? this.props.playlist : null;
 
       var media = function media() {
         if (artist) {
@@ -1605,9 +1609,7 @@ var Media = /*#__PURE__*/function (_React$Component) {
           }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
             src: album.coverArtUrl,
             alt: "album"
-          })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, album.album_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Album")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: ""
-          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, album.album_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Album")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "album-cover-art-icon"
           }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
             width: "50",
@@ -1618,11 +1620,25 @@ var Media = /*#__PURE__*/function (_React$Component) {
             d: "M25.6 11.565v45.38c-2.643-3.27-6.68-5.37-11.2-5.37-7.94 0-14.4 6.46-14.4 14.4s6.46 14.4 14.4 14.4 14.4-6.46 14.4-14.4v-51.82l48-10.205V47.2c-2.642-3.27-6.678-5.37-11.2-5.37-7.94 0-14.4 6.46-14.4 14.4s6.46 14.4 14.4 14.4S80 64.17 80 56.23V0L25.6 11.565zm-11.2 65.61c-6.176 0-11.2-5.025-11.2-11.2 0-6.177 5.024-11.2 11.2-11.2 6.176 0 11.2 5.023 11.2 11.2 0 6.174-5.026 11.2-11.2 11.2zm51.2-9.745c-6.176 0-11.2-5.024-11.2-11.2 0-6.174 5.024-11.2 11.2-11.2 6.176 0 11.2 5.026 11.2 11.2 0 6.178-5.026 11.2-11.2 11.2z",
             fill: "#7f7f7f"
           }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, album.album_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Album"));
+        } else if (playlist) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "album-cover-art-icon"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+            width: "50",
+            height: "50",
+            viewBox: "0 0 80 81",
+            xmlns: "http://www.w3.org/2000/svg"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("title", null, "Playlist Icon"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+            d: "M25.6 11.565v45.38c-2.643-3.27-6.68-5.37-11.2-5.37-7.94 0-14.4 6.46-14.4 14.4s6.46 14.4 14.4 14.4 14.4-6.46 14.4-14.4v-51.82l48-10.205V47.2c-2.642-3.27-6.678-5.37-11.2-5.37-7.94 0-14.4 6.46-14.4 14.4s6.46 14.4 14.4 14.4S80 64.17 80 56.23V0L25.6 11.565zm-11.2 65.61c-6.176 0-11.2-5.025-11.2-11.2 0-6.177 5.024-11.2 11.2-11.2 6.176 0 11.2 5.023 11.2 11.2 0 6.174-5.026 11.2-11.2 11.2zm51.2-9.745c-6.176 0-11.2-5.024-11.2-11.2 0-6.174 5.024-11.2 11.2-11.2 6.176 0 11.2 5.026 11.2 11.2 0 6.178-5.026 11.2-11.2 11.2z",
+            fill: "#7f7f7f"
+          }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, playlist.playlist_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "By ", playlist.user.name));
         }
       };
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: link()
+        to: function to() {
+          return _this.handleLink();
+        }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "media"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -3173,18 +3189,27 @@ var Search = /*#__PURE__*/function (_React$Component) {
           songs = _this$props2.songs; // SEARCH ALGORITHMS
 
       var artistResults = [];
-      var albumResults = []; // let playlistSongResults = []
+      var albumResults = [];
+      var playlistResults = []; // let playlistSongResults = []
       // let playlistArtistResults = []
 
-      for (var artistId in artists) {
-        if (artists[artistId]['artist_name'].toLowerCase().includes(this.state.query.toLowerCase())) {
-          artistResults.push(artists[artistId]);
+      if (this.state.query) {
+        for (var artistId in artists) {
+          if (artists[artistId]['artist_name'].toLowerCase().includes(this.state.query.toLowerCase())) {
+            artistResults.push(artists[artistId]);
+          }
         }
-      }
 
-      for (var albumId in albums) {
-        if (albums[albumId]['album_name'].toLowerCase().includes(this.state.query.toLowerCase())) {
-          albumResults.push(albums[albumId]);
+        for (var albumId in albums) {
+          if (albums[albumId]['album_name'].toLowerCase().includes(this.state.query.toLowerCase())) {
+            albumResults.push(albums[albumId]);
+          }
+        }
+
+        for (var playlistId in playlists) {
+          if (playlists[playlistId]['playlist_name'].toLowerCase().includes(this.state.query.toLowerCase())) {
+            playlistResults.push(playlists[playlistId]);
+          }
         }
       } // // playlist
       // for (const playlist in playlists) {
@@ -3217,6 +3242,12 @@ var Search = /*#__PURE__*/function (_React$Component) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_media_media__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: id,
           album: album
+        });
+      });
+      var playlistResultsList = playlistResults.map(function (playlist, id) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_media_media__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          key: id,
+          playlist: playlist
         });
       }); // const playlistSongResultsList = playlistSongResults.map(playlistSongResult => {
       //   const ul = []
@@ -3251,7 +3282,11 @@ var Search = /*#__PURE__*/function (_React$Component) {
         className: ""
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "ALBUMS:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "results-list"
-      }, albumResultsList)));
+      }, albumResultsList)), this.state.query && playlistResultsList.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: ""
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "PLAYLISTS:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "results-list"
+      }, playlistResultsList)));
     }
   }]);
 
