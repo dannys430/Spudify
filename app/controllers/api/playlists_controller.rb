@@ -12,6 +12,17 @@ class Api::PlaylistsController < ApplicationController
     end
   end
 
+  def add_song
+    @playlist = Playlist.find(params[:playlist_id])
+    @song = Song.find(params[:song_id])
+    @playlist_song = @playlist.playlist_songs.new(song_id: @song.id)
+    if @playlist_song.save
+      render 'api/playlists/show'
+    else
+      render json: @playlist_song.errors.full_messages, status: 422
+    end
+  end
+
   def index
     # debugger
     # @playlists = Playlist.all
@@ -35,5 +46,4 @@ class Api::PlaylistsController < ApplicationController
   def playlist_params
     params.require(:playlist).permit(:playlist_name, :description, :private)
   end
-  
 end

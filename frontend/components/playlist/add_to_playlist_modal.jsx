@@ -33,18 +33,20 @@ class AddToPlaylistModal extends React.Component {
       .then(() => this.props.closeModal())
   }
 
-  addSong() {
-    console.log(this.props.playlists[0].songs[0])
-    const song = this.props.playlists[0].songs[0]
-    const playlist = this.props.playlists[1]
-    playlist.songs.push(song)
-    playlist.save
-    // this.props.openModal()
+  addToNew() {
+    this.props.openModal('playlist', this.props.songToAdd)
+  }
+
+  addToExisting(playlistId) {
+    this.props.addPlaylistSong(playlistId, this.props.songToAdd) 
+      .then(() => this.props.closeModal())
+      .then(() => this.props.requestPlaylists())
+      .then(() => window.location.assign(`/#/playlists/${playlistId}`))
   }
   
   render() {
 
-    const playlists = this.props.playlists
+    const playlists = Object.values(this.props.playlists)
 
     const ul = []
 
@@ -58,11 +60,10 @@ class AddToPlaylistModal extends React.Component {
 
       ul.unshift(
         <div className="add-to-playlist-modal-single-playlist" key={id}>  
-            <Link to={`/playlists/${playlist.id}`}>
-              <div className="add-to-playlist-modal-album-photo">
-                <svg width="60" height="60" viewBox="0 0 80 81" xmlns="http://www.w3.org/2000/svg"><title>Playlist Icon</title><path d="M25.6 11.565v45.38c-2.643-3.27-6.68-5.37-11.2-5.37-7.94 0-14.4 6.46-14.4 14.4s6.46 14.4 14.4 14.4 14.4-6.46 14.4-14.4v-51.82l48-10.205V47.2c-2.642-3.27-6.678-5.37-11.2-5.37-7.94 0-14.4 6.46-14.4 14.4s6.46 14.4 14.4 14.4S80 64.17 80 56.23V0L25.6 11.565zm-11.2 65.61c-6.176 0-11.2-5.025-11.2-11.2 0-6.177 5.024-11.2 11.2-11.2 6.176 0 11.2 5.023 11.2 11.2 0 6.174-5.026 11.2-11.2 11.2zm51.2-9.745c-6.176 0-11.2-5.024-11.2-11.2 0-6.174 5.024-11.2 11.2-11.2 6.176 0 11.2 5.026 11.2 11.2 0 6.178-5.026 11.2-11.2 11.2z" fill="#7f7f7f"></path></svg>
-              </div>
-            </Link>
+            
+            <div onClick={() => this.addToExisting(playlist.id)} className="add-to-playlist-modal-album-photo">
+              <svg width="60" height="60" viewBox="0 0 80 81" xmlns="http://www.w3.org/2000/svg"><title>Playlist Icon</title><path d="M25.6 11.565v45.38c-2.643-3.27-6.68-5.37-11.2-5.37-7.94 0-14.4 6.46-14.4 14.4s6.46 14.4 14.4 14.4 14.4-6.46 14.4-14.4v-51.82l48-10.205V47.2c-2.642-3.27-6.678-5.37-11.2-5.37-7.94 0-14.4 6.46-14.4 14.4s6.46 14.4 14.4 14.4S80 64.17 80 56.23V0L25.6 11.565zm-11.2 65.61c-6.176 0-11.2-5.025-11.2-11.2 0-6.177 5.024-11.2 11.2-11.2 6.176 0 11.2 5.023 11.2 11.2 0 6.174-5.026 11.2-11.2 11.2zm51.2-9.745c-6.176 0-11.2-5.024-11.2-11.2 0-6.174 5.024-11.2 11.2-11.2 6.176 0 11.2 5.026 11.2 11.2 0 6.178-5.026 11.2-11.2 11.2z" fill="#7f7f7f"></path></svg>
+            </div>
             <p>{playlist.playlist_name}</p>
             <p>{songCount}</p>
         </div>
@@ -86,7 +87,7 @@ class AddToPlaylistModal extends React.Component {
           <button onClick={() => this.props.closeModal()}>{xIcon}</button>
           <h1>Add to playlist</h1>
           <div className="add-to-playlist-modal-buttons-div">
-            <button className="create-button" onClick={() => this.addSong()}>NEW PLAYLIST</button>
+            <button onClick={() => this.addToNew()} className="create-button">NEW PLAYLIST</button>
           </div>
 
           <div className="add-to-playlist-modal-playlists">
