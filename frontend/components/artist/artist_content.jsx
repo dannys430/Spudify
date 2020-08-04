@@ -66,8 +66,6 @@ class ArtistContent extends React.Component {
             <ul>{albumList}</ul>
           </div>
         </section>
-
-        <h1>hello from Artist Content</h1>
         
       </div>
     )
