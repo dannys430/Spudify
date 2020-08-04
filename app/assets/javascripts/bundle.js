@@ -2432,6 +2432,7 @@ var AddToPlaylistModal = /*#__PURE__*/function (_React$Component) {
       playlists.forEach(function (playlist, id) {
         var songCount = playlist.songs ? playlist.songs.length !== 1 ? "".concat(playlist.songs.length, " songs") : "".concat(playlist.songs.length, " song") : null;
         ul.unshift( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "add-to-playlist-modal-single-playlist",
           key: id
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
           to: "/playlists/".concat(playlist.id)
@@ -2445,7 +2446,7 @@ var AddToPlaylistModal = /*#__PURE__*/function (_React$Component) {
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("title", null, "Playlist Icon"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
           d: "M25.6 11.565v45.38c-2.643-3.27-6.68-5.37-11.2-5.37-7.94 0-14.4 6.46-14.4 14.4s6.46 14.4 14.4 14.4 14.4-6.46 14.4-14.4v-51.82l48-10.205V47.2c-2.642-3.27-6.678-5.37-11.2-5.37-7.94 0-14.4 6.46-14.4 14.4s6.46 14.4 14.4 14.4S80 64.17 80 56.23V0L25.6 11.565zm-11.2 65.61c-6.176 0-11.2-5.025-11.2-11.2 0-6.177 5.024-11.2 11.2-11.2 6.176 0 11.2 5.023 11.2 11.2 0 6.174-5.026 11.2-11.2 11.2zm51.2-9.745c-6.176 0-11.2-5.024-11.2-11.2 0-6.174 5.024-11.2 11.2-11.2 6.176 0 11.2 5.026 11.2 11.2 0 6.178-5.026 11.2-11.2 11.2z",
           fill: "#7f7f7f"
-        })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, playlist.playlist_name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, songCount))));
+        })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, playlist.playlist_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, songCount)));
       });
       var xIcon = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
         width: "150px",
@@ -3173,11 +3174,24 @@ var Search = /*#__PURE__*/function (_React$Component) {
       requestSongs();
     }
   }, {
+    key: "selectInputField",
+    value: function selectInputField() {
+      document.getElementById('search').focus();
+    }
+  }, {
     key: "updateQuery",
     value: function updateQuery(query) {
       this.setState({
         query: query
       });
+    }
+  }, {
+    key: "clearQuery",
+    value: function clearQuery() {
+      this.setState({
+        query: ''
+      });
+      document.getElementById('search').focus();
     }
   }, {
     key: "render",
@@ -3192,7 +3206,8 @@ var Search = /*#__PURE__*/function (_React$Component) {
 
       var artistResults = [];
       var albumResults = [];
-      var playlistResults = []; // let playlistSongResults = []
+      var playlistResults = [];
+      var songResults = []; // let playlistSongResults = []
       // let playlistArtistResults = []
 
       if (this.state.query) {
@@ -3211,6 +3226,12 @@ var Search = /*#__PURE__*/function (_React$Component) {
         for (var playlistId in playlists) {
           if (playlists[playlistId]['playlist_name'] && playlists[playlistId]['playlist_name'].toLowerCase().includes(this.state.query.toLowerCase())) {
             playlistResults.push(playlists[playlistId]);
+          }
+        }
+
+        for (var songId in songs) {
+          if (songs[songId]['song_name'] && songs[songId]['song_name'].toLowerCase().includes(this.state.query.toLowerCase())) {
+            songResults.push(songs[songId]);
           }
         }
       } // // playlist
@@ -3262,21 +3283,62 @@ var Search = /*#__PURE__*/function (_React$Component) {
       //   return ul
       // })
 
+      var searchIcon = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+        onClick: function onClick() {
+          return _this2.selectInputField();
+        },
+        width: "21",
+        height: "24"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("circle", {
+        stroke: "black",
+        fill: "none",
+        r: "8",
+        cx: "10",
+        cy: "10"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("line", {
+        x1: "15",
+        x2: "19.5",
+        y2: "21.5",
+        stroke: "black",
+        y1: "16"
+      }));
+      var xIcon = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+        width: "21",
+        height: "24"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("line", {
+        x1: "3",
+        x2: "17",
+        y2: "19",
+        stroke: "black",
+        y1: "5"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("line", {
+        x1: "17",
+        x2: "3",
+        y2: "19",
+        stroke: "black",
+        y1: "5"
+      }));
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "search-input-div"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        style: {
-          color: 'white',
-          fontSize: '50px'
-        },
-        id: "",
+        className: "search-input",
+        id: "search",
         type: "text",
-        placeholder: "Search...",
+        placeholder: "Search for Artists, Albums, or Playlists",
         value: this.state.query,
         onChange: function onChange(e) {
           return _this2.updateQuery(e.target.value);
         }
-      }), this.state.query && artistResultsList.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "search-icon-span"
+      }, searchIcon), this.state.query && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        onClick: function onClick() {
+          return _this2.clearQuery();
+        },
+        className: "x-icon-span"
+      }, xIcon)), this.state.query && artistResultsList.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: ""
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "ARTISTS:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "results-list"
@@ -3288,7 +3350,7 @@ var Search = /*#__PURE__*/function (_React$Component) {
         className: ""
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "PLAYLISTS:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "results-list"
-      }, playlistResultsList)));
+      }, playlistResultsList)), this.state.query && artistResultsList.length === 0 && albumResultsList.length === 0 && playlistResultsList.length === 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "No results found for \"", this.state.query, "\""));
     }
   }]);
 

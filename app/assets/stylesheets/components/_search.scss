@@ -4,6 +4,43 @@
   margin-right: 30px;
 }
 
+.search-input-div {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 25px;
+}
+
+.search-input {
+  color: black;
+  font-size: 14px;
+  background: white;
+  border-radius: 20px;
+  padding-left: 48px;
+  padding-right: 50px;
+  padding-top: 12px;
+  padding-bottom: 11px;
+  width: 100%;
+  min-width: 203px;
+  max-width: 364px;
+}
+
+.search-icon-span {
+  position: absolute;
+  margin-left: 12px;
+  margin-top: 8px;
+}
+.search-icon-span svg {
+  cursor: text;
+}
+
+.x-icon-span {
+  position: relative;
+  margin-top: 8px;
+  margin-left: -37px;
+}
+
 .results-list {
   display: flex;
   flex-direction: row;
