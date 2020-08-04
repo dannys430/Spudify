@@ -31,7 +31,7 @@ class Song extends React.Component {
     this.handlePlay = this.handlePlay.bind(this)
     this.handlePause = this.handlePause.bind(this)
 
-    this.toggleHover = this.toggleHover.bind(this)
+    // this.toggleHover = this.toggleHover.bind(this)
   }
 
   // componentWillUnmount() {
@@ -120,8 +120,16 @@ class Song extends React.Component {
     document.getElementById('media-bar').pause()
   }
 
-  toggleHover() {
-    this.setState(prevState => ({hovered: !prevState.hovered}));
+  // toggleHover() {
+  //   this.setState(prevState => ({hovered: !prevState.hovered}));
+  // }
+
+  enableHover() {
+    this.setState({hovered: true})
+  }
+
+  disableHover() {
+    this.setState({hovered: false})
   }
   
   render() {
@@ -188,7 +196,7 @@ class Song extends React.Component {
     }
     
     return (
-      <div style={songDivStyles} draggable="true" className="song-div" onMouseEnter={() => this.toggleHover()} onMouseLeave={() => this.toggleHover()} onDoubleClick={() => this.handlePlay(song)}>
+      <div style={songDivStyles} draggable="true" className="song-div" onMouseEnter={() => this.enableHover()} onMouseLeave={() => this.disableHover()} onDoubleClick={() => this.handlePlay(song)}>
         <div className="play-pause-sml-div">
           {/* {(this.state.nowPlaying === false || (this.state.nowPlaying === true && this.props.currentSong !== song)) && (<button onClick={() => this.handlePlay(song)}>{playIcon}</button>)} */}
           {/* {(this.state.nowPlaying === true && this.props.currentSong === song) && (<button onClick={() => this.handlePause()}>{pauseIcon}</button>)} */}

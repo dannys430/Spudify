@@ -839,7 +839,7 @@ var ArtistContent = /*#__PURE__*/function (_React$Component) {
         className: "playlist-info-div"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "ARTIST"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.props.artist.artist_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.artist.bio ? this.props.artist.bio : null)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "artist-section2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Albums"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, albumList))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "hello from Artist Content"));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Albums"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, albumList))));
     }
   }]);
 
@@ -4524,8 +4524,8 @@ var Song = /*#__PURE__*/function (_React$Component) {
       hovered: false
     };
     _this.handlePlay = _this.handlePlay.bind(_assertThisInitialized(_this));
-    _this.handlePause = _this.handlePause.bind(_assertThisInitialized(_this));
-    _this.toggleHover = _this.toggleHover.bind(_assertThisInitialized(_this));
+    _this.handlePause = _this.handlePause.bind(_assertThisInitialized(_this)); // this.toggleHover = this.toggleHover.bind(this)
+
     return _this;
   } // componentWillUnmount() {
   //   this.setState({duration: null, currentTime: null})
@@ -4612,14 +4612,22 @@ var Song = /*#__PURE__*/function (_React$Component) {
       // this.props.receiveCurrentSong(song)
       this.props.pause();
       document.getElementById('media-bar').pause();
+    } // toggleHover() {
+    //   this.setState(prevState => ({hovered: !prevState.hovered}));
+    // }
+
+  }, {
+    key: "enableHover",
+    value: function enableHover() {
+      this.setState({
+        hovered: true
+      });
     }
   }, {
-    key: "toggleHover",
-    value: function toggleHover() {
-      this.setState(function (prevState) {
-        return {
-          hovered: !prevState.hovered
-        };
+    key: "disableHover",
+    value: function disableHover() {
+      this.setState({
+        hovered: false
       });
     }
   }, {
@@ -4742,10 +4750,10 @@ var Song = /*#__PURE__*/function (_React$Component) {
         draggable: "true",
         className: "song-div",
         onMouseEnter: function onMouseEnter() {
-          return _this4.toggleHover();
+          return _this4.enableHover();
         },
         onMouseLeave: function onMouseLeave() {
-          return _this4.toggleHover();
+          return _this4.disableHover();
         },
         onDoubleClick: function onDoubleClick() {
           return _this4.handlePlay(song);
