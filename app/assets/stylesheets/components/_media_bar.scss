@@ -32,6 +32,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  -webkit-user-select: none;  
+  -moz-user-select: none;    
+  -ms-user-select: none;      
+  user-select: none;
 }
 
 .media-bar-div-song-info {
@@ -49,6 +53,10 @@
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  -webkit-user-select: none;  
+  -moz-user-select: none;    
+  -ms-user-select: none;      
+  user-select: none;
 }
 
 .media-bar-div-song-info p:nth-child(2) {
@@ -56,6 +64,10 @@
   color: rgb(174,174,174);
   text-overflow: ellipsis;
   overflow: hidden;
+  -webkit-user-select: none;  
+  -moz-user-select: none;    
+  -ms-user-select: none;      
+  user-select: none;
 }
 
 .media-bar-div-song-info p:nth-child(2):hover {
