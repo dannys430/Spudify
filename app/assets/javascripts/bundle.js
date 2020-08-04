@@ -3163,6 +3163,7 @@ var Search = /*#__PURE__*/function (_React$Component) {
   _createClass(Search, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      document.getElementById('search').focus();
       var _this$props = this.props,
           requestPlaylists = _this$props.requestPlaylists,
           requestArtists = _this$props.requestArtists,
@@ -3174,8 +3175,8 @@ var Search = /*#__PURE__*/function (_React$Component) {
       requestSongs();
     }
   }, {
-    key: "selectInputField",
-    value: function selectInputField() {
+    key: "selectSearchInput",
+    value: function selectSearchInput() {
       document.getElementById('search').focus();
     }
   }, {
@@ -3285,7 +3286,7 @@ var Search = /*#__PURE__*/function (_React$Component) {
 
       var searchIcon = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
         onClick: function onClick() {
-          return _this2.selectInputField();
+          return _this2.selectSearchInput();
         },
         width: "21",
         height: "24"

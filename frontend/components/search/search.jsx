@@ -13,6 +13,8 @@ class Search extends React.Component {
   }
 
   componentDidMount() {
+    document.getElementById('search').focus()
+    
     const {
       requestPlaylists, 
       requestArtists,
@@ -26,7 +28,7 @@ class Search extends React.Component {
     requestSongs()
   }
 
-  selectInputField() {
+  selectSearchInput() {
     document.getElementById('search').focus()
   }
 
@@ -141,7 +143,7 @@ class Search extends React.Component {
     //   return ul
     // })
 
-    const searchIcon =  <svg onClick={() => this.selectInputField()} width="21" height="24">
+    const searchIcon =  <svg onClick={() => this.selectSearchInput()} width="21" height="24">
                           <circle stroke="black" fill="none" r="8" cx="10" cy="10"></circle>
                           <line x1="15" x2="19.5" y2="21.5" stroke="black" y1="16"></line>
                         </svg>
