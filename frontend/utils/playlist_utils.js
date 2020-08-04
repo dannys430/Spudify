@@ -22,6 +22,14 @@ export const fetchPlaylists = () => {
   })
 }
 
+export const createPlaylistSong = (playlistId, songId) => {
+  // debugger
+  return $.ajax({
+    url: `/api/playlists/${playlistId}/addsong/${songId}`,
+    method: 'POST'
+  })
+}
+
 // export const fetchPlaylistSongs = (id) => {
 //   // debugger
 //   return $.ajax({

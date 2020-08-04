@@ -18,6 +18,11 @@ class SongMenu extends React.Component {
     console.log(this.props.queue)
   }
 
+  handleModal() {
+    this.props.openModal('add_to_playlist', this.props.song.id)
+    this.setState({menuShowing: false})
+  }
+  
   render() {
 
     const songDivMenuButtonStyles = {}
@@ -32,7 +37,7 @@ class SongMenu extends React.Component {
         {this.state.menuShowing && (
           <div className="song-menu-dropdown">
             <li onClick={() => this.handleQueue()}>Add to Queue</li>
-            <li onClick={() => this.props.openModal()}>Add to Playlist</li>
+            <li onClick={() => this.handleModal()}>Add to Playlist</li>
             <li>Remove from this Playlist</li> {/* only if within PlaylistContent*/}
           </div>
         )}

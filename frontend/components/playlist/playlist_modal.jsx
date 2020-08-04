@@ -20,9 +20,18 @@ class PlaylistModal extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
-    this.props.createPlaylist(this.state)
-      .then(() => this.props.requestPlaylists())
-      .then(() => this.props.closeModal())
+    if (this.props.songToAdd) {
+      this.props.createPlaylist(this.state)
+        .then(() => this.props.requestPlaylists())
+        .then(() => this.props.addPlaylistSong(Object.keys(this.props.playlists)[Object.keys(this.props.playlists).length - 1], this.props.songToAdd))
+        .then(() => this.props.requestPlaylists())
+        .then(() => this.props.closeModal())
+        .then(() => window.location.assign(`/#/playlists/${Object.keys(this.props.playlists)[Object.keys(this.props.playlists).length - 1]}`))
+    } else {
+      this.props.createPlaylist(this.state)
+        .then(() => this.props.requestPlaylists())
+        .then(() => this.props.closeModal())
+    }
   }
   
   render() {

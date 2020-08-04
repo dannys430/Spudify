@@ -32,7 +32,7 @@ class PlaylistContent extends React.Component {
     // }): null;
 
     this.props.requestPlaylist(this.props.match.params.id)  // getting the playlist with id found in query
-    this.props.receiveCurrentSong(this.props.queue[0])
+    // this.props.receiveCurrentSong(this.props.queue[0])
   }
 
   // componentDidUpdate() {
@@ -74,9 +74,9 @@ class PlaylistContent extends React.Component {
     // this.props.receiveQueue(this.props.playlist.songs)
     // console.log(this.props.queue)
 
-    const formatTime = (time) => {
-      return (!isNaN(time)) ? (`${Math.floor(time / 60)} : ${Math.floor(time % 60)}`) : null
-    }
+    // const formatTime = (time) => {
+    //   return (!isNaN(time)) ? (`${Math.floor(time / 60)} : ${Math.floor(time % 60)}`) : null
+    // }
 
     // const currentTime = formatTime(this.state.currentTime)
     // const duration = formatTime(this.state.duration)

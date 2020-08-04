@@ -1,6 +1,11 @@
 import { OPEN_MODAL, CLOSE_MODAL } from '../actions/modal_actions'
 
-const ModalReducer = (state = {}, action) => {
+const initialState = {
+  modalName: null,
+  songToAdd: null
+}
+
+const ModalReducer = (state = initialState, action) => {
   Object.freeze(state);
   switch(action.type) {
     case OPEN_MODAL:

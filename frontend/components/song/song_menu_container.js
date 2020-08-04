@@ -13,7 +13,8 @@ const mSTP = (state) => {
 
 const mDTP = (dispatch) => {
   return {
-    openModal: () => dispatch(openModal('add_to_playlist'))
+    // openModal: () => dispatch(openModal('add_to_playlist', secondarg)),
+    openModal: (modalName, songToAdd) => dispatch(openModal(modalName, songToAdd))
   }
 }
 

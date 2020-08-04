@@ -9,7 +9,7 @@ const Modal = ({modal, closeModal}) => {
   }
 
   let component;
-  switch(modal) {
+  switch(modal.modalName) {
     case 'playlist':
       component = <PlaylistModalContainer />;
       break;

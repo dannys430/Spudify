@@ -3,14 +3,14 @@ import { createPlaylist } from '../../actions/playlist_actions';
 
 import {openModal} from '../../actions/modal_actions';
 import {closeModal} from '../../actions/modal_actions';
-import {requestPlaylists } from '../../actions/playlist_actions';
-
+import { requestPlaylist, requestPlaylists, addPlaylistSong } from '../../actions/playlist_actions';
 
 import AddToPlaylistModal from './add_to_playlist_modal'
 
 const mSTP = (state) => {
   return {
-    playlists: Object.values(state.entities.playlists)
+    playlists: state.entities.playlists,
+    songToAdd: state.ui.modal.songToAdd
   }
 }
 
@@ -20,7 +20,9 @@ const mDTP = (dispatch) => {
     createPlaylist: (playlist) => dispatch(createPlaylist(playlist)),
     closeModal: () => dispatch(closeModal()),
     requestPlaylists: () => dispatch(requestPlaylists()),
-    openModal:  () => dispatch(openModal('playlist'))
+    // requestPlaylist: (id) => dispatch(requestPlaylist(id)), 
+    addPlaylistSong: (playlistId, songId) => dispatch(addPlaylistSong(playlistId, songId)),
+    openModal: (modalName, songToAdd) => dispatch(openModal(modalName, songToAdd))
   }
 }
 

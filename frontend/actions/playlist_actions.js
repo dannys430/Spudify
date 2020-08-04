@@ -1,4 +1,4 @@
-import { createPlaylistRequest, fetchPlaylist, fetchPlaylists, fetchPlaylistSongs } from '../utils/playlist_utils'
+import { createPlaylistRequest, fetchPlaylist, fetchPlaylists, createPlaylistSong } from '../utils/playlist_utils'
 
 export const RECEIVE_PLAYLIST = 'RECEIVE_PLAYLIST'
 export const RECEIVE_PLAYLISTS = 'RECEIVE_PLAYLISTS'
@@ -37,6 +37,14 @@ export const requestPlaylists = () => dispatch => {
   return fetchPlaylists()
     .then(
       playlists => dispatch(receivePlaylists(playlists))
+    )
+}
+
+// addPlaylistSong is the thunk action creator
+export const addPlaylistSong = (playlistId, songId) => dispatch => {
+  return createPlaylistSong(playlistId, songId)
+    .then(
+      playlist => dispatch(receivePlaylist(playlist))
     )
 }
 
