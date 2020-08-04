@@ -3339,7 +3339,7 @@ var Search = /*#__PURE__*/function (_React$Component) {
           return _this2.clearQuery();
         },
         className: "x-icon-span"
-      }, xIcon)), console.log(playlistResults), this.state.query && artistResultsList.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, xIcon)), this.state.query && artistResultsList.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: ""
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "ARTISTS:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "results-list"
