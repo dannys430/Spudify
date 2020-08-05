@@ -130,6 +130,12 @@ class Search extends React.Component {
       )
     })
 
+    const songResultsList = songResults.map((song, id) => {
+      return (
+        <Media key={id} song={song} />
+      )
+    })
+
 
     // const playlistSongResultsList = playlistSongResults.map(playlistSongResult => {
     //   const ul = []
@@ -187,6 +193,13 @@ class Search extends React.Component {
           <div className="">
             <h1>PLAYLISTS:</h1>
             <ul className="results-list">{playlistResultsList}</ul>
+          </div>
+        )}
+
+        {this.state.query && songResultsList.length > 0 && (
+          <div className="">
+            <h1>SONGS:</h1>
+            <ul className="results-list">{songResultsList}</ul>
           </div>
         )}
 

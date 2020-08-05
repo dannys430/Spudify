@@ -1589,6 +1589,8 @@ var Media = /*#__PURE__*/function (_React$Component) {
         return "/albums/".concat(this.props.album.id);
       } else if (this.props.playlist) {
         return "/playlists/".concat(this.props.playlist.id);
+      } else if (this.props.song) {
+        return "/albums/".concat(this.props.song.album_id);
       }
     }
   }, {
@@ -1599,6 +1601,7 @@ var Media = /*#__PURE__*/function (_React$Component) {
       var artist = this.props.artist ? this.props.artist : null;
       var album = this.props.album ? this.props.album : null;
       var playlist = this.props.playlist ? this.props.playlist : null;
+      var song = this.props.song ? this.props.song : null;
 
       var media = function media() {
         if (artist) {
@@ -1647,6 +1650,18 @@ var Media = /*#__PURE__*/function (_React$Component) {
             d: "M25.6 11.565v45.38c-2.643-3.27-6.68-5.37-11.2-5.37-7.94 0-14.4 6.46-14.4 14.4s6.46 14.4 14.4 14.4 14.4-6.46 14.4-14.4v-51.82l48-10.205V47.2c-2.642-3.27-6.678-5.37-11.2-5.37-7.94 0-14.4 6.46-14.4 14.4s6.46 14.4 14.4 14.4S80 64.17 80 56.23V0L25.6 11.565zm-11.2 65.61c-6.176 0-11.2-5.025-11.2-11.2 0-6.177 5.024-11.2 11.2-11.2 6.176 0 11.2 5.023 11.2 11.2 0 6.174-5.026 11.2-11.2 11.2zm51.2-9.745c-6.176 0-11.2-5.024-11.2-11.2 0-6.174 5.024-11.2 11.2-11.2 6.176 0 11.2 5.026 11.2 11.2 0 6.178-5.026 11.2-11.2 11.2z",
             fill: "#7f7f7f"
           }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, playlist.playlist_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "By ", playlist.user.name));
+        } else if (song) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "album-cover-art-icon"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+            width: "50",
+            height: "50",
+            viewBox: "0 0 80 81",
+            xmlns: "http://www.w3.org/2000/svg"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("title", null, "Playlist Icon"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+            d: "M25.6 11.565v45.38c-2.643-3.27-6.68-5.37-11.2-5.37-7.94 0-14.4 6.46-14.4 14.4s6.46 14.4 14.4 14.4 14.4-6.46 14.4-14.4v-51.82l48-10.205V47.2c-2.642-3.27-6.678-5.37-11.2-5.37-7.94 0-14.4 6.46-14.4 14.4s6.46 14.4 14.4 14.4S80 64.17 80 56.23V0L25.6 11.565zm-11.2 65.61c-6.176 0-11.2-5.025-11.2-11.2 0-6.177 5.024-11.2 11.2-11.2 6.176 0 11.2 5.023 11.2 11.2 0 6.174-5.026 11.2-11.2 11.2zm51.2-9.745c-6.176 0-11.2-5.024-11.2-11.2 0-6.174 5.024-11.2 11.2-11.2 6.176 0 11.2 5.026 11.2 11.2 0 6.178-5.026 11.2-11.2 11.2z",
+            fill: "#7f7f7f"
+          }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, song.song_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, song.artist.artist_name));
         }
       };
 
@@ -2863,7 +2878,7 @@ var PlaylistIndex = /*#__PURE__*/function (_React$Component) {
       var playlists = this.props.playlists;
       var ul = [];
       playlists.forEach(function (playlist, id) {
-        ul.unshift( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        ul.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: id
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
           to: "/playlists/".concat(playlist.id)
@@ -3324,6 +3339,12 @@ var Search = /*#__PURE__*/function (_React$Component) {
           key: id,
           playlist: playlist
         });
+      });
+      var songResultsList = songResults.map(function (song, id) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_media_media__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          key: id,
+          song: song
+        });
       }); // const playlistSongResultsList = playlistSongResults.map(playlistSongResult => {
       //   const ul = []
       //   ul.push(<li>{playlistSongResult}</li>)
@@ -3402,7 +3423,11 @@ var Search = /*#__PURE__*/function (_React$Component) {
         className: ""
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "PLAYLISTS:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "results-list"
-      }, playlistResultsList)), this.state.query && artistResultsList.length === 0 && albumResultsList.length === 0 && playlistResultsList.length === 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "No results found for \"", this.state.query, "\""));
+      }, playlistResultsList)), this.state.query && songResultsList.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: ""
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "SONGS:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "results-list"
+      }, songResultsList)), this.state.query && artistResultsList.length === 0 && albumResultsList.length === 0 && playlistResultsList.length === 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "No results found for \"", this.state.query, "\""));
     }
   }]);
 
