@@ -3427,7 +3427,7 @@ var Search = /*#__PURE__*/function (_React$Component) {
         className: ""
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "SONGS:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "results-list"
-      }, songResultsList)), this.state.query && artistResultsList.length === 0 && albumResultsList.length === 0 && playlistResultsList.length === 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "No results found for \"", this.state.query, "\""));
+      }, songResultsList)), this.state.query && artistResultsList.length === 0 && albumResultsList.length === 0 && playlistResultsList.length === 0 && songResultsList.length === 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "No results found for \"", this.state.query, "\""));
     }
   }]);
 
