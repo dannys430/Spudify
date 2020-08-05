@@ -207,6 +207,7 @@ class Search extends React.Component {
           && artistResultsList.length === 0
           && albumResultsList.length === 0
           && playlistResultsList.length === 0          
+          && songResultsList.length === 0          
           && (<h1>No results found for "{this.state.query}"</h1>)
         }
 
