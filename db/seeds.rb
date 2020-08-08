@@ -890,17 +890,17 @@ ActiveRecord::Base.transaction do
       bon_appetit.song_file.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/katy_perry/albums/Witness_(Deluxe)/11_Bon_appe%CC%81tit.mp3"), filename: "11_Bon_appe%CC%81tit.mp3")
 
   # 365
-  365_album = katy_perry.albums.create(
+  three_sixty_five_album = katy_perry.albums.create(
     album_name: '365',
     year: 20190214
   )
-  365_album.cover_art.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/katy_perry/albums/365_(Feat.+Zedd)/365_cover_art.jpg"), filename: "365_cover_art.jpg")
+  three_sixty_five_album.cover_art.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/katy_perry/albums/365_(Feat.+Zedd)/365_cover_art.jpg"), filename: "365_cover_art.jpg")
 
-      365_song = 365_album.songs.create(
+      three_sixty_five = three_sixty_five_album.songs.create(
         song_name: "365",
-        year: 365_album.year
+        year: three_sixty_five_album.year
       )
-      365_song.song_file.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/katy_perry/albums/365_(Feat.+Zedd)/1_365_(feat.+Zedd).mp3"), filename: "1_365_(feat.+Zedd).mp3")
+      three_sixty_five.song_file.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/katy_perry/albums/365_(Feat.+Zedd)/1_365_(feat.+Zedd).mp3"), filename: "1_365_(feat.+Zedd).mp3")
 
   # Harleys In Hawaii
   harleys_in_hawaii_album = katy_perry.albums.create(
@@ -1278,7 +1278,7 @@ ActiveRecord::Base.transaction do
   )
   pop_hits.songs.push(
     caution,
-    365_song,
+    three_sixty_five,
     a_no_no,
     supernatural,
     la_girls,
