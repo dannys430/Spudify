@@ -1021,15 +1021,15 @@ ActiveRecord::Base.transaction do
       hello_paul_damixie_remix.song_file.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/adele/albums/Hello_(Paul_Damixie_Remix)/1_Hello_(Paul_Damixie_Remix).mp3"), filename: "1_Hello_(Paul_Damixie_Remix).mp3")
 
   # 12" Masters - The Essential Mixes
-  12_inch_masters_the_essential_mixes = justin_timberlake.albums.create(
+  twelve_inch_masters_the_essential_mixes = justin_timberlake.albums.create(
     album_name: '12" Masters - The Essential Mixes',
     year: 20100917
   )
-  12_inch_masters_the_essential_mixes.cover_art.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/justin_timberlake/albums/12_Inch_Masters-The_Essential_Mixes/12_inch_masters-the_essential_mixes.jpg"), filename: "12_inch_masters-the_essential_mixes.jpg")
+  twelve_inch_masters_the_essential_mixes.cover_art.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/justin_timberlake/albums/12_Inch_Masters-The_Essential_Mixes/12_inch_masters-the_essential_mixes.jpg"), filename: "12_inch_masters-the_essential_mixes.jpg")
 
-      rock_your_body_paul_oakenfold_mix = 12_inch_masters_the_essential_mixes.songs.create(
+      rock_your_body_paul_oakenfold_mix = twelve_inch_masters_the_essential_mixes.songs.create(
         song_name: "Rock Your Body - Paul Oakenfold Mix",
-        year: 12_inch_masters_the_essential_mixes.year
+        year: twelve_inch_masters_the_essential_mixes.year
       )
       rock_your_body_paul_oakenfold_mix.song_file.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/justin_timberlake/albums/12_Inch_Masters-The_Essential_Mixes/4_Rock_Your_Body-Paul_Oakenfold_Mix.mp3"), filename: "4_Rock_Your_Body-Paul_Oakenfold_Mix.mp3")
 
