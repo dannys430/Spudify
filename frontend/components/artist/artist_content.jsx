@@ -47,7 +47,7 @@ class ArtistContent extends React.Component {
     return (
       <div>
         <section style={{backgroundImage: `url(${coverPhotoUrl})`}} id="cover-photo" className="artist-section1">
-          <div className="playlist-info-div">
+          <div className="artist-info-div">
             <span>
               <h2>ARTIST</h2>
               <h1>{this.props.artist.artist_name}</h1>

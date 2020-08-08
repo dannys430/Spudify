@@ -8,6 +8,17 @@
   background-position: 50%;
 }
 
+.artist-info-div {
+  width: 100vw;
+  position: relative;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
+}
+
+.artist-info-div span {
+  position: absolute;
+  bottom: 0;
+  padding: 30px;
+}
 
 .artist-section1 h1 {
   font-size: 95px;
