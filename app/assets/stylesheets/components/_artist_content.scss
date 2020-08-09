@@ -20,6 +20,16 @@
   padding: 30px;
 }
 
+.verified {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.verified > div {
+  margin-right: 10px;
+}
+
 .artist-section1 h1 {
   font-size: 95px;
   letter-spacing: -5px;
@@ -29,9 +39,10 @@
 }
 
 .artist-section1 h2 {
-  font-size: 15px;
+  font-size: 12px;
   font-family: 'lineto-circular-black';
   color: var(--white);
+  letter-spacing: 1px
 }
 
 .artist-section1 p {
