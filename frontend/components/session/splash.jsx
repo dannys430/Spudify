@@ -9,7 +9,32 @@ class Splash extends React.Component {
     super(props)
   }
 
+  componentDidMount() {
+    this.props.requestAlbums()
+  }
+
+  
+
   render() {
+
+    const albums = this.props.albums;
+
+    const sixAlbumIds = Object.keys(albums).slice(0,6)
+
+    const sixAlbums = []
+    
+    sixAlbumIds.map(id => {
+      sixAlbums.push(albums[id])
+    })
+
+    console.log(sixAlbums)
+
+    const sixAlbumsGallery = sixAlbums.map(album => {
+      return (
+        <li><Link to={`/albums/${album.id}`}><img src={album.coverArtUrl} /></Link></li>
+      )
+    })
+    
     return (
       <div>
         <NavBarContainer />
@@ -23,12 +48,13 @@ class Splash extends React.Component {
             </div>
             <div className="section1-div2">
               <ul>
-                <li><Link to=""><img src={window.img1URL} /></Link></li>
-                <li><Link to=""><img src={window.img2URL} /></Link></li>
-                <li><Link to=""><img src={window.img3URL} /></Link></li>
-                <li><Link to=""><img src={window.img4URL} /></Link></li>
-                <li><Link to=""><img src={window.img5URL} /></Link></li>
-                <li><Link to=""><img src={window.img6URL} /></Link></li>
+                {sixAlbumsGallery}
+                {/* <li><Link to="/albums/1"><img src={window.img1URL} /></Link></li>
+                <li><Link to="/albums/2"><img src={window.img2URL} /></Link></li>
+                <li><Link to="/albums/3"><img src={window.img3URL} /></Link></li>
+                <li><Link to="/albums/4"><img src={window.img4URL} /></Link></li>
+                <li><Link to="/albums/5"><img src={window.img5URL} /></Link></li>
+                <li><Link to="/albums/6"><img src={window.img6URL} /></Link></li> */}
               </ul>
               
             </div>
