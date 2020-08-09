@@ -1294,9 +1294,9 @@ var LeftNav = /*#__PURE__*/function (_React$Component) {
         className: "left-nav"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "left-nav-logo"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "logo2",
-        to: "/us"
+        href: "https://spudify.herokuapp.com/#/us"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: window.logo2URL,
         alt: "Spudify Logo"
@@ -4465,11 +4465,10 @@ var Splash = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var albums = this.props.albums;
       var albumKeys = Object.keys(albums);
-      var sixAlbumKeys = albumKeys.slice(10, 16);
+      var sixAlbumKeys = albumKeys.slice(0, 6);
       var sixAlbums = sixAlbumKeys.map(function (key) {
         return albums[key];
       });
-      console.log(sixAlbums);
       var sixAlbumsGallery = sixAlbums.map(function (album, id) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: id
