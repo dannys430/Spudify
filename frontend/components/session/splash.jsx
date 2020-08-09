@@ -19,15 +19,23 @@ class Splash extends React.Component {
 
     const albums = this.props.albums;
 
-    const sixAlbumIds = Object.keys(albums).slice(0,6)
+    const albumIds = Object.keys(albums)
 
-    const sixAlbums = []
-    
+    // const albumIds = [3, 25, 34, 33, 2, 6, 4, 8, 55, 47, 40, 32, 39]
+
+    const sixAlbumIds = [];
+    while (sixAlbumIds.length < 6) {
+      const random = Math.floor(Math.random() * albumIds.length) + 1;
+      if (sixAlbumIds.indexOf(random) === -1) {
+        sixAlbumIds.push(random);
+      }
+    }
+    // console.log(arr);
+
+    const sixAlbums = []    
     sixAlbumIds.map(id => {
       sixAlbums.push(albums[id])
     })
-
-    console.log(sixAlbums)
 
     const sixAlbumsGallery = sixAlbums.map(album => {
       return (
