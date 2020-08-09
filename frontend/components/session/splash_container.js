@@ -4,15 +4,19 @@ import Splash from './splash';
 
 import { logout } from '../../actions/session';
 
+import {requestAlbums} from '../../actions/album_actions'
+
 const mSTP = (state) => {
   return {
-    currentUser: state.session.currentUser
+    currentUser: state.session.currentUser,
+    albums: state.entities.albums
   }
 }
 
 const mDTP = (dispatch) => {
   return {
-    logout: () => dispatch(logout())
+    logout: () => dispatch(logout()),
+    requestAlbums: () => dispatch(requestAlbums())
   }
 }
 
