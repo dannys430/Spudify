@@ -4464,7 +4464,7 @@ var Splash = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var albums = this.props.albums;
       var albumKeys = Object.keys(albums);
-      var sixAlbumKeys = albumKeys.slice(6, 12);
+      var sixAlbumKeys = albumKeys.slice(10, 16);
       var sixAlbums = sixAlbumKeys.map(function (key) {
         return albums[key];
       });
