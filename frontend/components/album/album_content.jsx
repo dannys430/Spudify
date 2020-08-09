@@ -28,7 +28,7 @@ class AlbumContent extends React.Component {
 
     const songList = albumSongs ? albumSongs.map((song, id) => {
       return (
-        <SongContainer key={id} song={song} />
+        <SongContainer parentIsPlaylist={false} key={id} song={song} />
         
         // <li className="song-li" key={id}>
         //   <h1>{song.song_name}</h1>

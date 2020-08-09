@@ -38,7 +38,7 @@ class SongMenu extends React.Component {
           <div className="song-menu-dropdown">
             <li onClick={() => this.handleQueue()}>Add to Queue</li>
             <li onClick={() => this.handleModal()}>Add to Playlist</li>
-            <li>Remove from this Playlist</li> {/* only if within PlaylistContent*/}
+            {this.props.parentIsPlaylist ? <li>Remove from this Playlist</li> : null}
           </div>
         )}
         
