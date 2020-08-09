@@ -25,7 +25,7 @@ class Splash extends React.Component {
 
     const albumKeys = Object.keys(albums)
 
-    const sixAlbumKeys = albumKeys.slice(6, 12)
+    const sixAlbumKeys = albumKeys.slice(10, 16)
     
     const sixAlbums = sixAlbumKeys.map(key => {
       return albums[key]
