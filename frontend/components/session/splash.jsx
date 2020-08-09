@@ -16,30 +16,38 @@ class Splash extends React.Component {
 
 
   render() {
+
+
+
     // THIS WORKS
-    // const albums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    // const albums = Object.keys(this.props.albums)
     // var arr = [];
-    // while (arr.length < 6) {
-    //   var r = Math.floor(Math.random() * albums.length) + 1;
-    //   if (arr.indexOf(r) === -1) arr.push(r);
+    // for(let i = arr.length; arr.length < 2; i++) {
+    //   var r = Math.floor(Math.random() * albums.length);
+    //   if (!arr.includes(r)) arr.push(r);
     // }
     // console.log(arr);
 
     const albums = this.props.albums;
     const albumIds = Object.keys(albums)
-    
-    const idxArr = [];
-    while (idxArr.length < 6) {
-      let rand = Math.floor(Math.random() * albumIds.length) + 1;
-      if (idxArr.indexOf(rand) === -1) idxArr.push(rand);
-    }
 
-    const albumsArr = []
-    idxArr.map(i => {
-      albumsArr.push(albums[i])
+    // const albumIds = [26, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+    // const albums = {1:'apple', 2:'orange', 3:'nectarine', 4:'mango', 5:'plum', 6:'lemon'}
+    // const albumIds = [1, 2, 3, 4, 5, 6]
+
+    
+    let sixIds = []
+    while(sixIds.length < 5) {
+      let rand = Math.floor(Math.random() * albumIds.length)
+      if(albumIds.includes(rand) && !sixIds.includes(rand)) {
+        sixIds.push(rand)
+      }
+    }
+    const sixAlbums = sixIds.map(id => {
+      return albums[id]
     })
 
-    const albumsGallery = albumsArr.map((album, id) => {
+    const albumsGallery = sixAlbums.map((album, id) => {
       return (
         <li key={id}><Link to={`/albums/${album.id}`}><img src={album.coverArtUrl} /></Link></li>
       )
