@@ -4463,12 +4463,23 @@ var Splash = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       var albums = this.props.albums;
-      var sixAlbumIds = Object.keys(albums).slice(0, 6);
+      var albumIds = Object.keys(albums); // const albumIds = [3, 25, 34, 33, 2, 6, 4, 8, 55, 47, 40, 32, 39]
+
+      var sixAlbumIds = [];
+
+      while (sixAlbumIds.length < 6) {
+        var random = Math.floor(Math.random() * albumIds.length) + 1;
+
+        if (sixAlbumIds.indexOf(random) === -1) {
+          sixAlbumIds.push(random);
+        }
+      } // console.log(arr);
+
+
       var sixAlbums = [];
       sixAlbumIds.map(function (id) {
         sixAlbums.push(albums[id]);
       });
-      console.log(sixAlbums);
       var sixAlbumsGallery = sixAlbums.map(function (album) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
           to: "/albums/".concat(album.id)
