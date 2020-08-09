@@ -31,8 +31,7 @@ class LeftNav extends React.Component {
     return (
       <div className="left-nav">
         <div className="left-nav-logo">
-          {/* <Link className="logo2" to="/us"><img src={window.logo2URL} alt="Spudify Logo" /></Link> */}
-          <a className="logo2" href="https://spudify.herokuapp.com/#/us"><img src={window.logo2URL} alt="Spudify Logo" /></a>
+          <Link className="logo2" to="/us"><img src={window.logo2URL} alt="Spudify Logo" /></Link>
         </div>
 
         <section className="left-nav-section1">
