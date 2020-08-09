@@ -4462,39 +4462,20 @@ var Splash = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      // THIS WORKS
-      // const albums = Object.keys(this.props.albums)
-      // var arr = [];
-      // for(let i = arr.length; arr.length < 2; i++) {
-      //   var r = Math.floor(Math.random() * albums.length);
-      //   if (!arr.includes(r)) arr.push(r);
-      // }
-      // console.log(arr);
       var albums = this.props.albums;
-      var albumIds = Object.keys(albums); // const albumIds = [26, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
-      // const albums = {1:'apple', 2:'orange', 3:'nectarine', 4:'mango', 5:'plum', 6:'lemon'}
-      // const albumIds = [1, 2, 3, 4, 5, 6]
-
-      var sixIds = [];
-
-      while (sixIds.length < 5) {
-        var rand = Math.floor(Math.random() * albumIds.length);
-
-        if (albumIds.includes(rand) && !sixIds.includes(rand)) {
-          sixIds.push(rand);
-        }
-      }
-
-      var sixAlbums = sixIds.map(function (id) {
-        return albums[id];
+      var albumKeys = Object.keys(albums);
+      var sixAlbumKeys = albumKeys.slice(6, 12);
+      var sixAlbums = sixAlbumKeys.map(function (key) {
+        return albums[key];
       });
-      var albumsGallery = sixAlbums.map(function (album, id) {
+      console.log(sixAlbums);
+      var sixAlbumsGallery = sixAlbums.map(function (album, id) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: id
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
-          to: "/albums/".concat(album.id)
+          to: "/albums/".concat(album['id'])
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          src: album.coverArtUrl
+          src: album['coverArtUrl']
         })));
       });
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_navbar_nav_bar_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
@@ -4510,7 +4491,7 @@ var Splash = /*#__PURE__*/function (_React$Component) {
         className: "web-player-btn"
       }, "OPEN WEB PLAYER"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "section1-div2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, albumsGallery)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_footer_footer_container__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, sixAlbumsGallery)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_footer_footer_container__WEBPACK_IMPORTED_MODULE_2__["default"], null));
     }
   }]);
 
