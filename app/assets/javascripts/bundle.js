@@ -2697,6 +2697,7 @@ var PlaylistContent = /*#__PURE__*/function (_React$Component) {
 
       var songList = playlistSongs ? playlistSongs.map(function (song, id) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_song_song_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          parentIsPlaylist: true,
           key: id,
           song: song
         }) // <li className="song-li"
@@ -4850,7 +4851,7 @@ var Song = /*#__PURE__*/function (_React$Component) {
         }
       }, playIcon) : noteActive), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "song-details-div"
-      }, this.props.currentSong === song ? songNameActive : songName, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.props.currentSong === song ? songNameActive : songName, this.props.parentIsPlaylist ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "song-details"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/artists/".concat(this.props.song.artist.id)
@@ -4860,7 +4861,11 @@ var Song = /*#__PURE__*/function (_React$Component) {
         className: "song-details-album"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/albums/".concat(this.props.song.album.id)
-      }, this.props.song.album.album_name)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.props.song.album.album_name))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "song-details"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/artists/".concat(this.props.song.artist.id)
+      }, this.props.song.artist.artist_name)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "duration"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_song_menu_container__WEBPACK_IMPORTED_MODULE_3__["default"], {
         song: song

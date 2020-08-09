@@ -43,13 +43,14 @@
   font-family: 'lineto-circular-book';
   height: 100vh;
   background: linear-gradient(to top, rgba(0,0,0,.6),#121212);
-  margin-left: 30px;
-  margin-top: 30px;
+  padding-left: 30px;
+  padding-top: 30px;
 }
 
 .artist-section2 ul {
   display: flex;
   text-align: center;
+  flex-wrap: wrap;
 }
 
 .artist-section2 h1 {
@@ -79,6 +80,7 @@
   -moz-user-select: none;    
   -ms-user-select: none;      
   user-select: none;
+  width: 230px;
 }
 
 .artist-song-li h1 {
