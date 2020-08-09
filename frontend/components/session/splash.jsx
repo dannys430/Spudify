@@ -7,52 +7,38 @@ import { Link } from 'react-router-dom';
 class Splash extends React.Component {
   constructor(props) {
     super(props)
+
+  
   }
 
   componentDidMount() {
     this.props.requestAlbums()
+  
   }
+
 
 
 
   render() {
 
+    const albums = this.props.albums
 
+    const albumKeys = Object.keys(albums)
 
-    // THIS WORKS
-    // const albums = Object.keys(this.props.albums)
-    // var arr = [];
-    // for(let i = arr.length; arr.length < 2; i++) {
-    //   var r = Math.floor(Math.random() * albums.length);
-    //   if (!arr.includes(r)) arr.push(r);
-    // }
-    // console.log(arr);
-
-    const albums = this.props.albums;
-    const albumIds = Object.keys(albums)
-
-    // const albumIds = [26, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
-    // const albums = {1:'apple', 2:'orange', 3:'nectarine', 4:'mango', 5:'plum', 6:'lemon'}
-    // const albumIds = [1, 2, 3, 4, 5, 6]
-
+    const sixAlbumKeys = albumKeys.slice(6, 12)
     
-    let sixIds = []
-    while(sixIds.length < 5) {
-      let rand = Math.floor(Math.random() * albumIds.length)
-      if(albumIds.includes(rand) && !sixIds.includes(rand)) {
-        sixIds.push(rand)
-      }
-    }
-    const sixAlbums = sixIds.map(id => {
-      return albums[id]
+    const sixAlbums = sixAlbumKeys.map(key => {
+      return albums[key]
     })
 
-    const albumsGallery = sixAlbums.map((album, id) => {
+    console.log(sixAlbums)
+
+    const sixAlbumsGallery = sixAlbums.map((album, id) => {
       return (
-        <li key={id}><Link to={`/albums/${album.id}`}><img src={album.coverArtUrl} /></Link></li>
+        <li key={id}><Link to ={`/albums/${album['id']}`}><img src={album['coverArtUrl']} /></Link></li>
       )
     })
-
+    
 
     return (
       <div>
@@ -67,7 +53,7 @@ class Splash extends React.Component {
             </div>
             <div className="section1-div2">
               <ul>
-                {albumsGallery}
+                {sixAlbumsGallery}
                 {/* <li><Link to="/albums/1"><img src={window.img1URL} /></Link></li>
                 <li><Link to="/albums/2"><img src={window.img2URL} /></Link></li>
                 <li><Link to="/albums/3"><img src={window.img3URL} /></Link></li>
