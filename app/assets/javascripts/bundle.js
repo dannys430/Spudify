@@ -617,6 +617,7 @@ var AlbumContent = /*#__PURE__*/function (_React$Component) {
       this.props.receiveQueue(albumSongs);
       var songList = albumSongs ? albumSongs.map(function (song, id) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_song_song_container__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          parentIsPlaylist: false,
           key: id,
           song: song
         }) // <li className="song-li" key={id}>
@@ -4886,6 +4887,7 @@ var Song = /*#__PURE__*/function (_React$Component) {
       }, this.props.song.artist.artist_name)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "duration"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_song_menu_container__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        parentIsPlaylist: this.props.parentIsPlaylist,
         song: song
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.duration)));
     }
@@ -5252,7 +5254,7 @@ var SongMenu = /*#__PURE__*/function (_React$Component) {
         onClick: function onClick() {
           return _this2.handleModal();
         }
-      }, "Add to Playlist"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Remove from this Playlist"), " "));
+      }, "Add to Playlist"), this.props.parentIsPlaylist ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Remove from this Playlist") : null));
     }
   }]);
 

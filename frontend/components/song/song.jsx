@@ -226,7 +226,7 @@ class Song extends React.Component {
         </div>
    
         <div className="duration">
-          <SongMenuContainer song={song}/>
+          <SongMenuContainer parentIsPlaylist={this.props.parentIsPlaylist} song={song}/>
           <div>{this.state.duration}</div>
         </div>
         {/* {this.state.currentTime} */}
