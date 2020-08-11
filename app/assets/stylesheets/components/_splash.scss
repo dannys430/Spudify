@@ -1,7 +1,9 @@
 .section1 {
-  height: 100vh;
+  // height: 100vh;
+  min-height: 100vh;
   // height: fit-content;
-  padding-bottom: 125px;
+  // padding-bottom: 125px;
+  padding-bottom: 200px;
   // background: var(--blue);
   background: 
     linear-gradient(to top,rgba(0,0,0,1),rgba(255,255,255,0)),
