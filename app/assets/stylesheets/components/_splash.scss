@@ -67,6 +67,46 @@
   grid-gap: 16px;
 }
 
+.splash-song-div {
+  position: relative;
+}
+.splash-song-name-div {
+  display: none
+}
+
+.splash-song-div:hover .splash-song-name-div {
+  display: initial;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.splash-song-name-div svg {
+  margin-bottom: 15px;
+}
+
+.splash-song-name-div h1 {
+  font-family: 'lineto-circular-book';
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.splash-song-name-div p {
+  font-family: 'lineto-circular-book';
+  font-size: 14px;
+  color: var(--ltgray);
+  text-align: center;
+}
+
 // .section1-div2 img {
 //   min-width: 237.40px;
 //   max-width: 237.40px;
