@@ -9,7 +9,8 @@ import {requestAlbums} from '../../actions/album_actions'
 const mSTP = (state) => {
   return {
     currentUser: state.session.currentUser,
-    albums: state.entities.albums
+    albums: state.entities.albums,
+    history: state.ui.mediaBar.history
   }
 }
 

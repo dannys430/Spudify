@@ -1294,9 +1294,9 @@ var LeftNav = /*#__PURE__*/function (_React$Component) {
         className: "left-nav"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "left-nav-logo"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "logo2",
-        href: "https://spudify.herokuapp.com/#/us"
+        to: "/us"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: window.logo2URL,
         alt: "Spudify Logo"
@@ -4453,31 +4453,78 @@ var Splash = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, Splash);
 
     return _super.call(this, props);
-  }
+  } // componentDidMount() {
+  //   this.props.requestAlbums()
+  // }
+
 
   _createClass(Splash, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.props.requestAlbums();
-    }
-  }, {
     key: "render",
     value: function render() {
-      var albums = this.props.albums;
-      var albumKeys = Object.keys(albums);
-      var sixAlbumKeys = albumKeys.slice(0, 6);
-      var sixAlbums = sixAlbumKeys.map(function (key) {
-        return albums[key];
-      });
-      var sixAlbumsGallery = sixAlbums.map(function (album, id) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      // const albums = this.props.albums
+      // const albumKeys = Object.keys(albums)
+      // const sixAlbumKeys = albumKeys.slice(12, 18)
+      // const sixAlbums = sixAlbumKeys.map(key => {
+      //   return albums[key]
+      // })
+      // const sixAlbumsGallery = sixAlbums.map((album, id) => {
+      //   return (
+      //     <li key={id}><Link to ={`/albums/${album['id']}`}><img src={album['coverArtUrl']} /></Link></li>
+      //   )
+      // })
+      var history = this.props.history;
+      var historyDup = history.slice();
+      console.log(historyDup);
+      var historyLi = historyDup.length > 5 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, historyDup.reverse().slice(0, 6).map(function (song, id) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "splash-song-div",
           key: id
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
-          to: "/albums/".concat(album['id'])
+          to: "/albums/".concat(song['album']['id'])
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          src: album['coverArtUrl']
-        })));
-      });
+          src: song['coverArtUrl']
+        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
+          to: "/albums/".concat(song['album']['id'])
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "splash-song-name-div"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+          width: "30",
+          height: "30",
+          viewBox: "0 0 130 130"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("g", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("circle", {
+          fill: "none",
+          stroke: "#b3b3b3",
+          "stroke-width": "4",
+          cx: "64",
+          cy: "64",
+          r: "62"
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("polygon", {
+          fill: "#fff",
+          points: "45,38 90,64 45,90"
+        }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, song['song_name']), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, song['artist']['artist_name'])))));
+      })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.img1URL
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.img2URL
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.img3URL
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.img4URL
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.img5URL
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.img6URL
+      })));
+      console.log(historyLi); // const sixCoverArtUrls = []
+      // for(const entry in six) {
+      //   sixCoverArtUrls.push(entry['coverArtUrl'])
+      // }
+      // const sixAlbumsGallery2 = sixCoverArtUrls.map((url, id) => {
+      //   return (
+      //     <li key={id}><Link to ={`/albums/${album['id']}`}><img src={album['coverArtUrl']} /></Link></li>
+      //   )
+      // }) 
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_navbar_nav_bar_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "section1"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -4491,7 +4538,7 @@ var Splash = /*#__PURE__*/function (_React$Component) {
         className: "web-player-btn"
       }, "OPEN WEB PLAYER"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "section1-div2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, sixAlbumsGallery)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_footer_footer_container__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+      }, historyLi))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_footer_footer_container__WEBPACK_IMPORTED_MODULE_2__["default"], null));
     }
   }]);
 
@@ -4526,7 +4573,8 @@ __webpack_require__.r(__webpack_exports__);
 var mSTP = function mSTP(state) {
   return {
     currentUser: state.session.currentUser,
-    albums: state.entities.albums
+    albums: state.entities.albums,
+    history: state.ui.mediaBar.history
   };
 };
 
