@@ -11,16 +11,19 @@ class Splash extends React.Component {
   
   }
 
-  // componentDidMount() {
-  //   this.props.requestAlbums()
-  
-  // }
+  componentDidMount() {
+    // this.props.requestAlbum(5)
+    // this.props.requestAlbum(4)
+    // this.props.requestAlbum(3)
+    // this.props.requestAlbum(2)
+    // this.props.requestAlbum(1)
+    this.props.requestAlbums()
+  }
 
 
 
 
   render() {
-
     // const albums = this.props.albums
 
     // const albumKeys = Object.keys(albums)
@@ -37,18 +40,29 @@ class Splash extends React.Component {
     //   )
     // })
 
+    const albums = this.props.albums
+
+    // console.log(albums)
+
+    const albumsDup = albums
+
+    const albumsArray = []
+    for(const album in albumsDup) {
+      albumsArray.push(albumsDup[album])
+    }
+
     const history = this.props.history
 
     const historyDup = history.slice()
 
-   console.log(historyDup)
+  //  console.log(historyDup)
 
-    const historyLi = 
+    const splashGallery = 
       historyDup.length > 5
         ?
           <ul>
             {historyDup.reverse().slice(0, 6).map((song, id) => {
-              return(
+              return (
                 <li>
                   <div className="splash-song-div" key={id}><Link to ={`/albums/${song['album']['id']}`}><img src={song['coverArtUrl']} /></Link>
                     <Link to ={`/albums/${song['album']['id']}`}>
@@ -68,17 +82,41 @@ class Splash extends React.Component {
               )
             })}
           </ul>
-        : <ul>
-            <li><img src={window.img1URL} /></li>
-            <li><img src={window.img2URL} /></li>
-            <li><img src={window.img3URL} /></li>
-            <li><img src={window.img4URL} /></li>
-            <li><img src={window.img5URL} /></li>
-            <li><img src={window.img6URL} /></li>
+        :
+          <ul>
+          {albumsArray.reverse().slice(0, 6).map((album, id) => {
+              return (
+                <li>
+                  <div className="splash-song-div" key={id}><Link to={`/albums/${album['id']}`}><img src={album['coverArtUrl']} /></Link>
+                    <Link to={`/albums/${album['id']}`}>
+                      <div className="splash-song-name-div">
+                        <svg width="30" height="30" viewBox="0 0 130 130">
+                          <g>
+                            <circle fill="none" stroke="#b3b3b3" stroke-width="4" cx="64" cy="64" r="62" />
+                            <polygon fill="#fff" points="45,38 90,64 45,90" />
+                          </g>
+                        </svg>
+                        <h1>{album['album_name']}</h1>
+                        {/* <p>{album['artist']['artist_name'] ? album['artist']['artist_name'] : 'artist name'}</p> */}
+                      </div>
+                    </Link>
+                  </div>
+                </li>
+              )
+            })}
           </ul>
           
+        // : <ul>
+        //     <li><img src={window.img1URL} /></li>
+        //     <li><img src={window.img2URL} /></li>
+        //     <li><img src={window.img3URL} /></li>
+        //     <li><img src={window.img4URL} /></li>
+        //     <li><img src={window.img5URL} /></li>
+        //     <li><img src={window.img6URL} /></li>
+        //   </ul>
+          
 
-    console.log(historyLi)
+    // console.log(splashGallery)
 
     // const sixCoverArtUrls = []
     // for(const entry in six) {
@@ -105,7 +143,7 @@ class Splash extends React.Component {
             </div>
             <div className="section1-div2">
               {/* <ul> */}
-                {historyLi}
+                {splashGallery}
                
                 
                 {/* {sixAlbumsGallery} */}
