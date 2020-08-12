@@ -38,7 +38,7 @@ class Media extends React.Component {
         return (
           artist.profilePhotoUrl
             ? <div>
-                <div className="artist-profile-photo-icon">
+                <div className="artist-profile-photo-image">
                   <img src={artist.profilePhotoUrl} alt="artist" />
                 </div>
                 <h2>{artist.artist_name}</h2>
