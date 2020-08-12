@@ -15,7 +15,7 @@ class SongMenu extends React.Component {
 
   handleQueue() {
     this.props.queue.push(this.props.song)
-    console.log(this.props.queue)
+    this.setState({menuShowing: false})
   }
 
   handleModal() {

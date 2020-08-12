@@ -5309,7 +5309,9 @@ var SongMenu = /*#__PURE__*/function (_React$Component) {
     key: "handleQueue",
     value: function handleQueue() {
       this.props.queue.push(this.props.song);
-      console.log(this.props.queue);
+      this.setState({
+        menuShowing: false
+      });
     }
   }, {
     key: "handleModal",

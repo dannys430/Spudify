@@ -9,6 +9,9 @@
 #  updated_at  :datetime         not null
 #
 class PlaylistSong < ApplicationRecord
+
+  default_scope { order(created_at: :asc) }
+  
   belongs_to :playlist,
   foreign_key: :playlist_id,
   class_name: :Playlist
