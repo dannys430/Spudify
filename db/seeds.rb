@@ -34,6 +34,7 @@ ActiveRecord::Base.transaction do
     bio: "Rising to prominence in the early 90's, Mariah Carey is known the world over. Her remarkable vocal range and seductive honey-harmonies bless each record that bears her name"
   )
   mariah_carey.cover_photo.attach(io: open('https://active-storage-spudify-pro.s3.amazonaws.com/artists/mariah_carey/mariah_carey_cover_photo.jpg'), filename: 'mariah_carey_cover_photo.jpg')
+  mariah_carey.profile_photo.attach(io: open('https://active-storage-spudify-pro.s3.amazonaws.com/artists/mariah_carey/mariah_carey_profile_photo.jpg'), filename: 'mariah_carey_profile_photo.jpg')
 
   # Always Never
   always_never = Artist.create(
@@ -41,6 +42,7 @@ ActiveRecord::Base.transaction do
     bio: "With roots in Toronto, Canada, this alt-RnB duo is the force behind the viral hit, Wylin', from their self-titled debut album.  Their unique style imbues each track with a mood that is inescapable.",
   )
   always_never.cover_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/always_never/always_never_cover_photo.jpg"), filename: "always_never_cover_photo.jpg")
+  always_never.profile_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/always_never/always_never_profile_photo.jpg"), filename: "always_never_profile_photo.jpg")
 
   # Seal
   seal = Artist.create(
@@ -48,42 +50,49 @@ ActiveRecord::Base.transaction do
     bio: "With over 20 million records sold worldwide, Seal is an internationally recognized singer and songwriter known for hits like 'Crazy', 'Kiss From a Rose', and 'Love\'s Divine'",
   )
   seal.cover_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/seal/seal_cover_photo.jpg"), filename: "seal_cover_photo.jpg")
+  seal.profile_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/seal/seal_profile_photo.jpg"), filename: "seal_profile_photo.jpg")
 
   # Amanda Lepore
   amanda_lepore = Artist.create(
     artist_name: 'Amanda Lepore' 
   )
   amanda_lepore.cover_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/amanda_lepore/amanda_lepore_cover_photo.jpg"), filename: "amanda_lepore_cover_photo.jpg")
+  amanda_lepore.profile_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/amanda_lepore/amanda_lepore_profile_photo.jpg"), filename: "amanda_lepore_profile_photo.jpg")
 
   # Charlie Puth
   charlie_puth = Artist.create(
     artist_name: 'Charlie Puth' 
   )
   charlie_puth.cover_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/charlie_puth/charlie_puth_cover_photo.jpg"), filename: "charlie_puth_cover_photo.jpg")
+  charlie_puth.profile_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/charlie_puth/charlie_puth_profile_photo.jpg"), filename: "charlie_puth_profile_photo.jpg")
 
   # Cyril Hahn
   cyril_hahn = Artist.create(
     artist_name: 'Cyril Hahn' 
   )
   cyril_hahn.cover_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/cyril_hahn/cyril_hahn_cover_photo.jpg"), filename: "cyril_hahn_cover_photo.jpg")
+  cyril_hahn.profile_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/cyril_hahn/cyril_hahn_profile_photo.jpg"), filename: "cyril_hahn_profile_photo.jpg")
 
   # Janet Jackson
   janet_jackson = Artist.create(
     artist_name: 'Janet Jackson' 
   )
   janet_jackson.cover_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/janet_jackson/janet_jackson_cover_photo.jpg"), filename: "janet_jackson_cover_photo.jpg")
+  janet_jackson.profile_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/janet_jackson/janet_jackson_profile_photo.jpg"), filename: "janet_jackson_profile_photo.jpg")
 
   # JoJo
   jojo = Artist.create(
     artist_name: 'JoJo' 
   )
   jojo.cover_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/jojo/jojo_cover_photo.jpg"), filename: "jojo_cover_photo.jpg")
+  jojo.profile_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/jojo/jojo_profile_photo.jpg"), filename: "jojo_profile_photo.jpg")
 
   # Katy Perry
   katy_perry = Artist.create(
     artist_name: 'Katy Perry' 
   )
   katy_perry.cover_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/katy_perry/katy_perry_cover_photo.jpg"), filename: "katy_perry_cover_photo.jpg")
+  katy_perry.profile_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/katy_perry/katy_perry_profile_photo.jpg"), filename: "katy_perry_profile_photo.jpg")
 
   # Maverick Sabre
   maverick_sabre = Artist.create(
@@ -91,162 +100,189 @@ ActiveRecord::Base.transaction do
   )
   # no cover photo
   # maverick_sabre.cover_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/maverick_sabre/maverick_sabre_cover_photo.jpg"), filename: "maverick_sabre_cover_photo.jpg")
+  maverick_sabre.profile_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/maverick_sabre/maverick_sabre_profile_photo.jpg"), filename: "maverick_sabre_profile_photo.jpg")
 
   # Natasha Bedingfield
   natasha_bedingfield = Artist.create(
     artist_name: 'Natasha Bedingfield' 
   )
   natasha_bedingfield.cover_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/natasha_bedingfield/natasha_bedingfield_cover_photo.jpg"), filename: "natasha_bedingfield_cover_photo.jpg")
+  natasha_bedingfield.profile_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/natasha_bedingfield/natasha_bedingfield_profile_photo.jpg"), filename: "natasha_bedingfield_profile_photo.jpg")
 
   # Selena Gomez
   selena_gomez = Artist.create(
     artist_name: 'Selena Gomez' 
   )
   selena_gomez.cover_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/selena_gomez/selena_gomez_cover_photo.jpg"), filename: "selena_gomez_cover_photo.jpg")
+  selena_gomez.profile_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/selena_gomez/selena_gomez_profile_photo.jpg"), filename: "selena_gomez_profile_photo.jpg")
 
   # Mýa
   mya = Artist.create(
     artist_name: 'Mýa' 
   )
   mya.cover_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/my%CC%81a/mya_cover_photo.jpg"), filename: "mya_cover_photo.jpg")
+  mya.profile_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/my%CC%81a/mya_profile_photo.jpg"), filename: "mya_profile_photo.jpg")
 
   # Stacie Orrico
   stacie_orrico = Artist.create(
     artist_name: 'Stacie Orrico' 
   )
   # no cover photo
+  stacie_orrico.profile_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/stacie_orrico/stacie_orrico_profile_photo.jpg"), filename: "stacie_orrico_profile_photo.jpg")
 
   # Ashanti
   ashanti = Artist.create(
     artist_name: 'Ashanti' 
   )
   ashanti.cover_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/ashanti/ashanti_cover_photo.jpg"), filename: "ashanti_cover_photo.jpg")
+  ashanti.profile_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/ashanti/ashanti_profile_photo.jpg"), filename: "ashanti_profile_photo.jpg")
 
   # Elderbrook
   elderbrook = Artist.create(
     artist_name: 'Elderbrook' 
   )
   elderbrook.cover_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/elderbrook/elderbrook_cover_photo.jpg"), filename: "elderbrook_cover_photo.jpg")
+  elderbrook.profile_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/elderbrook/elderbrook_profile_photo.jpg"), filename: "elderbrook_profile_photo.jpg")
 
   # Adele
   adele = Artist.create(
     artist_name: 'Adele' 
   )
   adele.cover_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/adele/adele_cover_photo.jpg"), filename: "adele_cover_photo.jpg")
+  adele.profile_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/adele/adele_profile_photo.jpg"), filename: "adele_profile_photo.jpg")
 
   # Justin Timberlake
   justin_timberlake = Artist.create(
     artist_name: 'Justin Timberlake' 
   )
   justin_timberlake.cover_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/justin_timberlake/justin_timberlake_cover_photo.jpg"), filename: "justin_timberlake_cover_photo.jpg")
+  justin_timberlake.profile_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/justin_timberlake/justin_timberlake_profile_photo.jpg"), filename: "justin_timberlake_profile_photo.jpg")
 
   # Friendly Fires
   friendly_fires = Artist.create(
     artist_name: 'Friendly Fires' 
   )
   friendly_fires.cover_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/friendly_fires/friendly_fires_cover_photo.jpg"), filename: "friendly_fires_cover_photo.jpg")
+  friendly_fires.profile_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/friendly_fires/friendly_fires_profile_photo.jpg"), filename: "friendly_fires_profile_photo.jpg")
 
   # TLC
   tlc = Artist.create(
     artist_name: 'TLC' 
   )
   tlc.cover_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/tlc/tlc_cover_photo.jpg"), filename: "tlc_cover_photo.jpg")
+  tlc.profile_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/tlc/tlc_profile_photo.jpg"), filename: "tlc_profile_photo.jpg")
 
   # Bazzi
   bazzi = Artist.create(
     artist_name: 'Bazzi' 
   )
   bazzi.cover_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/bazzi/bazzi_cover_photo.jpg"), filename: "bazzi_cover_photo.jpg")
+  bazzi.profile_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/bazzi/bazzi_profile_photo.jpg"), filename: "bazzi_profile_photo.jpg")
 
   # Kelsey Lu
   kelsey_lu = Artist.create(
     artist_name: 'Kelsey Lu' 
   )
   kelsey_lu.cover_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/kelsey_lu/kelsey_lu_cover_photo.jpg"), filename: "kelsey_lu_cover_photo.jpg")
+  kelsey_lu.profile_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/kelsey_lu/kelsey_lu_profile_photo.jpg"), filename: "kelsey_lu_profile_photo.jpg")
 
   # Ben Delay
   ben_delay = Artist.create(
     artist_name: 'Ben Delay' 
   )
   ben_delay.cover_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/ben_delay/ben_delay_cover_photo.jpg"), filename: "ben_delay_cover_photo.jpg")
+  ben_delay.profile_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/ben_delay/ben_delay_profile_photo.jpg"), filename: "ben_delay_profile_photo.jpg")
 
   # Le Youth
   le_youth = Artist.create(
     artist_name: 'Le Youth' 
   )
   le_youth.cover_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/le_youth/le_youth_cover_photo.jpg"), filename: "le_youth_cover_photo.jpg")
+  le_youth.profile_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/le_youth/le_youth_profile_photo.jpg"), filename: "le_youth_profile_photo.jpg")
 
   # Rudimental
   rudimental = Artist.create(
     artist_name: 'Rudimental' 
   )
   rudimental.cover_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/rudimental/rudimental_cover_photo.jpg"), filename: "rudimental_cover_photo.jpg")
+  rudimental.profile_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/rudimental/rudimental_profile_photo.jpg"), filename: "rudimental_profile_photo.jpg")
 
   # Coldplay
   coldplay = Artist.create(
     artist_name: 'Coldplay' 
   )
   coldplay.cover_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/coldplay/coldplay_cover_photo.jpg"), filename: "coldplay_cover_photo.jpg")
+  coldplay.profile_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/coldplay/coldplay_profile_photo.jpg"), filename: "coldplay_profile_photo.jpg")
 
   # Catching Flies
   catching_flies = Artist.create(
     artist_name: 'Catching Flies' 
   )
   catching_flies.cover_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/catching_flies/catching_flies_cover_photo.jpg"), filename: "catching_flies_cover_photo.jpg")
+  catching_flies.profile_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/catching_flies/catching_flies_profile_photo.jpg"), filename: "catching_flies_profile_photo.jpg")
 
   # Dylan Sitts
   dylan_sitts = Artist.create(
     artist_name: 'Dylan Sitts' 
   )
   dylan_sitts.cover_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/dylan_sitts/dylan_sitts_cover_photo.jpg"), filename: "dylan_sitts_cover_photo.jpg")
+  dylan_sitts.profile_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/dylan_sitts/dylan_sitts_profile_photo.jpg"), filename: "dylan_sitts_profile_photo.jpg")
 
   # Jhené Aiko
   jhene_aiko = Artist.create(
     artist_name: 'Jhené Aiko' 
   )
   jhene_aiko.cover_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/jhene_aiko/jhene_aiko_cover_photo.jpg"), filename: "jhene_aiko_cover_photo.jpg")
+  jhene_aiko.profile_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/jhene_aiko/jhene_aiko_profile_photo.jpg"), filename: "jhene_aiko_profile_photo.jpg")
 
   # Sting
   sting = Artist.create(
     artist_name: 'Sting' 
   )
   sting.cover_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/sting/sting_cover_photo.jpg"), filename: "sting_cover_photo.jpg")
+  sting.profile_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/sting/sting_profile_photo.jpg"), filename: "sting_profile_photo.jpg")
 
   # Carly Rae Jepsen
   carly_rae_jepsen = Artist.create(
     artist_name: 'Carly Rae Jepsen' 
   )
   carly_rae_jepsen.cover_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/carly_rae_jepsen/carly_rae_jepsen_cover_photo.jpg"), filename: "carly_rae_jepsen_cover_photo.jpg")
+  carly_rae_jepsen.profile_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/carly_rae_jepsen/carly_rae_jepsen_profile_photo.jpg"), filename: "carly_rae_jepsen_profile_photo.jpg")
 
   # Miley Cyrus
   miley_cyrus = Artist.create(
     artist_name: 'Miley Cyrus' 
   )
   miley_cyrus.cover_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/miley_cyrus/miley_cyrus_cover_photo.jpg"), filename: "miley_cyrus_cover_photo.jpg")
+  miley_cyrus.profile_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/miley_cyrus/miley_cyrus_profile_photo.jpg"), filename: "miley_cyrus_profile_photo.jpg")
 
   # Lil Wayne
   lil_wayne = Artist.create(
     artist_name: 'Lil Wayne' 
   )
   lil_wayne.cover_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/lil_wayne/lil_wayne_cover_photo.jpg"), filename: "lil_wayne_cover_photo.jpg")
+  lil_wayne.profile_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/lil_wayne/lil_wayne_profile_photo.jpg"), filename: "lil_wayne_profile_photo.jpg")
 
   # ZAYN
   zayn = Artist.create(
     artist_name: 'ZAYN' 
   )
   zayn.cover_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/zayn/zayn_cover_photo.jpg"), filename: "zayn_cover_photo.jpg")
+  zayn.profile_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/zayn/zayn_profile_photo.jpg"), filename: "zayn_profile_photo.jpg")
 
   # Daniel Bedingfield
   daniel_bedingfield = Artist.create(
     artist_name: 'Daniel Bedingfield' 
   )
   daniel_bedingfield.cover_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/daniel_bedingfield/daniel_bedingfield_cover_photo.jpg"), filename: "daniel_bedingfield_cover_photo.jpg")
+  daniel_bedingfield.profile_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/daniel_bedingfield/daniel_bedingfield_profile_photo.jpg"), filename: "daniel_bedingfield_profile_photo.jpg")
 
   # Peter Bark
   peter_bark = Artist.create(
     artist_name: 'Peter Bark' 
   )
   peter_bark.cover_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/peter_bark/peter_bark_cover_photo.jpg"), filename: "peter_bark_cover_photo.jpg")
+  peter_bark.profile_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/artists/peter_bark/peter_bark_profile_photo.jpg"), filename: "peter_bark_profile_photo.jpg")
 
 
 
@@ -1276,6 +1312,7 @@ ActiveRecord::Base.transaction do
   pop_hits = guest.playlists.create(
     playlist_name: 'Pop Hits'
   )
+  pop_hits.playlist_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/playlists/pop_hits_playlist_photo.jpg"), filename: "pop_hits_playlist_photo.jpg")
   pop_hits.songs.push(
     caution,
     three_sixty_five,
@@ -1294,6 +1331,7 @@ ActiveRecord::Base.transaction do
   the_remix = guest.playlists.create(
     playlist_name: 'The Remix'
   )
+  the_remix.playlist_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/playlists/the_remix_playlist_photo.jpg"), filename: "the_remix_playlist_photo.jpg")
   the_remix.songs.push(
     hello_paul_damixie_remix, 
     rock_your_body_paul_oakenfold_mix,
@@ -1311,6 +1349,7 @@ ActiveRecord::Base.transaction do
   chill = guest.playlists.create(
     playlist_name: 'Chill'
   )
+  chill.playlist_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/playlists/chill_playlist_photo.jpg"), filename: "chill_playlist_photo.jpg")
   chill.songs.push(
     visitors,
     spotless_mind,
@@ -1326,6 +1365,7 @@ ActiveRecord::Base.transaction do
   mood = guest.playlists.create(
     playlist_name: 'Mood'
   )
+  mood.playlist_photo.attach(io: open("https://active-storage-spudify-pro.s3.amazonaws.com/playlists/mood_playlist_photo.jpg"), filename: "mood_playlist_photo.jpg")
   mood.songs.push(
     wylin,
     does_it_feel,
