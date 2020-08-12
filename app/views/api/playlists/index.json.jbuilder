@@ -3,6 +3,9 @@
   
     json.extract! playlist, :id, :playlist_name, :user
 
+    if playlist.playlist_photo.attached?
+      json.playlistPhotoUrl url_for(playlist.playlist_photo)
+    end
     
     json.songs do
       json.array! playlist.songs.each do |song|

@@ -1,4 +1,4 @@
-json.extract! @artist, :id, :artist_name, :bio, :profile_photo
+json.extract! @artist, :id, :artist_name, :bio
 
 json.albums do
   json.array! @artist.albums.each do |album|
@@ -13,3 +13,4 @@ end
 if @artist.cover_photo.attached?
   json.coverPhotoUrl url_for(@artist.cover_photo)
 end
+

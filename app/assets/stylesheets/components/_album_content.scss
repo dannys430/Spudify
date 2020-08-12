@@ -1,0 +1,86 @@
+.ac-section1 {
+  display: flex;
+  width: 100%;
+  height: 260px;
+  background: linear-gradient(to bottom, rgba(82, 82, 82, 1), rgba(42, 42, 42, 1));
+  padding-top: 80px;
+  padding-left: 30px;
+}
+
+.album-word {
+  font-family: 'lineto-circular-book';
+  font-size: 14px;
+  color: var(--white);
+}
+
+.ac-section1 h1 {
+  font-size: 50px;
+  font-family: 'lineto-circular-black';
+  color: var(--white);
+  white-space: nowrap;
+}
+
+.album-info-div {
+  width: 100vw;
+  position: relative;
+}
+
+.album-info-div span {
+  position: absolute;
+  bottom: 0;
+  padding: 30px;
+}
+
+.album-info-last {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-family: 'lineto-circular-book'
+}
+
+.album-info-last img {
+  height: 25px;
+  width: 25px;
+  border-radius: 30px;
+  margin-right: 5px;
+}
+
+.album-artist-photo-icon {
+  width: 25px;
+  height: 25px;
+  background: #2a2a2a;
+  box-shadow: 0px 10px 40px -16px black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  margin-right: 5px;
+}
+
+.album-info-artist {
+  font-size: 14px;
+  color: var(--white);
+  margin-right: 5px;
+}
+.album-info-artist:hover {
+  text-decoration: underline;
+}
+
+.album-info-bullet {
+  font-size: 8px;
+  color: rgb(185, 185, 185);
+  margin-right: 5px;
+}
+
+.album-info-year {
+  font-size: 14px;
+  color: rgb(185, 185, 185);
+}
+
+.ac-section2 {
+  font-family: 'lineto-circular-book';
+  // height: 100vh;
+  // background: linear-gradient(to top, rgba(0,0,0,.6),#121212);
+  // padding-left: 30px;
+  // padding-right: 30px;
+}

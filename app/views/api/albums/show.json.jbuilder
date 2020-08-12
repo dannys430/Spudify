@@ -1,7 +1,14 @@
-json.extract! @album, :id, :album_name, :year, :artist
+json.extract! @album, :id, :album_name, :year
 
 if @album.cover_art.attached?
   json.coverArtUrl url_for(@album.cover_art)
+end
+
+json.artist do
+  json.extract! @album.artist, :id, :artist_name, :bio, :created_at, :updated_at
+  if @album.artist.profile_photo.attached?
+    json.profilePhotoUrl url_for(@album.artist.profile_photo)
+  end
 end
 
 json.songs do 

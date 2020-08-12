@@ -40,7 +40,7 @@ class AlbumContent extends React.Component {
 
     return (
       <div>
-        <section className="pc-section1">
+        <section className="ac-section1">
           {this.props.album.coverArtUrl 
             ? <img className="album-photo" src={this.props.album.coverArtUrl}></img>
             : <div className="album-photo">
@@ -50,16 +50,28 @@ class AlbumContent extends React.Component {
               </div>
           }
           
-          <div className="playlist-info-div">
+          <div className="album-info-div">
             <span>
-              <h2>ALBUM</h2>
+              <h2 className="album-word">ALBUM</h2>
               <h1>{this.props.album.album_name}</h1>
-              <h2><Link to={`/artists/${this.props.album.artist.id}`}>{this.props.album.artist.artist_name}</Link> • {this.props.album.year.slice(0, 4)}</h2>
+              <div className="album-info-last">
+                {this.props.album.artist.profilePhotoUrl 
+                  ? <img src={this.props.album.artist.profilePhotoUrl}></img>
+                  : <div className="album-artist-photo-icon">
+                      <div>
+                        <svg width="10" height="10" viewBox="0 0 80 81" xmlns="http://www.w3.org/2000/svg"><title>Playlist Icon</title><path d="M25.6 11.565v45.38c-2.643-3.27-6.68-5.37-11.2-5.37-7.94 0-14.4 6.46-14.4 14.4s6.46 14.4 14.4 14.4 14.4-6.46 14.4-14.4v-51.82l48-10.205V47.2c-2.642-3.27-6.678-5.37-11.2-5.37-7.94 0-14.4 6.46-14.4 14.4s6.46 14.4 14.4 14.4S80 64.17 80 56.23V0L25.6 11.565zm-11.2 65.61c-6.176 0-11.2-5.025-11.2-11.2 0-6.177 5.024-11.2 11.2-11.2 6.176 0 11.2 5.023 11.2 11.2 0 6.174-5.026 11.2-11.2 11.2zm51.2-9.745c-6.176 0-11.2-5.024-11.2-11.2 0-6.174 5.024-11.2 11.2-11.2 6.176 0 11.2 5.026 11.2 11.2 0 6.178-5.026 11.2-11.2 11.2z" fill="#7f7f7f"></path></svg>
+                      </div>
+                    </div>
+                }
+                <h2 className="album-info-artist" ><Link to={`/artists/${this.props.album.artist.id}`}>{this.props.album.artist.artist_name}</Link></h2>
+                <h2 className="album-info-bullet" >•</h2> 
+                <h2 className="album-info-year" >{this.props.album.year.slice(0, 4)}</h2>
+              </div>
             </span>
           </div>
         </section>
 
-        <section className="pc-section2">
+        <section className="ac-section2">
           <div>
             <ul>{songList}</ul>
           </div>
