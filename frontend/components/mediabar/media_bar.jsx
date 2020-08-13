@@ -249,6 +249,7 @@ class MediaBar extends React.Component {
                 name="points"
                 min="0" max={this.state.duration}
               />
+              {/* <button></button> */}
             </div>
               
               <div className="media-bar-duration">

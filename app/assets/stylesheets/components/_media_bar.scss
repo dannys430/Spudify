@@ -281,15 +281,15 @@ h1 {
       height: 15px;
       // cursor: ew-resize;
       // background: #434343;
-      background: var(--white);
-      box-shadow: -300px 0 0 300px var(--ltgray);
+      background: var(--white);  // color of the round knob
+      box-shadow: -400px 0 0 400px var(--ltgray); // already played part to the left of round knob
       // &:hover {
       //   box-shadow: -300px 0 0 300px rgb(29, 185, 84)
       // }
     }
 
     .progress-input-range-div:hover .time-slider::-webkit-slider-thumb {
-      box-shadow: -300px 0 0 300px rgb(29, 185, 84)
+      box-shadow: -400px 0 0 400px rgb(29, 185, 84)
     }
 }
 
