@@ -14,7 +14,9 @@ const initialState = {
   currentSong: null,
   history: [],
   queue: [],
+  durationRaw: null,
   duration: '0:00',
+  currentTimeRaw: null,
   currentTime: '0:00'
 }
 
@@ -59,11 +61,17 @@ const MediaBarReducer = (state = initialState, action) => {
       newState.playing = false
       return newState;
     case RECEIVE_DURATION:
+      newState.durationRaw = newState.currentSong
+        ? `${document.getElementById('media-bar').duration}`
+        : null
       newState.duration = newState.currentSong
         ? `${document.getElementById('media-bar').duration}`.toMMSS()
         : null
       return newState;
     case RECEIVE_CURRENT_TIME:
+      newState.currentTimeRaw = newState.currentSong
+        ? `${document.getElementById('media-bar').currentTime}`
+        : null
       newState.currentTime = newState.currentSong
         ? `${document.getElementById('media-bar').currentTime}`.toMMSS()
         : null

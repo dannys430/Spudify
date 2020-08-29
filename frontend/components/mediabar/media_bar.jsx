@@ -21,8 +21,8 @@ class MediaBar extends React.Component {
     audio.id = 'media-bar'
     document.body.appendChild(audio);
 
-    this.timeSlider.value = 0;
-    this.currentTimeInterval = null;
+    // this.timeSlider.value = 0;
+    // this.currentTimeInterval = null;
 
     // Get duration of the song and set it as max timeSlider value
     audio.onloadedmetadata = function () {
@@ -41,10 +41,10 @@ class MediaBar extends React.Component {
     };
 
     // Seek functionality
-    this.timeSlider.onchange = (e) => {
-      clearInterval(this.currentTimeInterval);
-      audio.currentTime = e.target.value;
-    };
+    // this.timeSlider.onchange = (e) => {
+    //   clearInterval(this.currentTimeInterval);
+    //   audio.currentTime = e.target.value;
+    // };
 
     document.getElementById('media-bar').addEventListener('ended', () => {
       this.handleNext()
@@ -97,6 +97,22 @@ class MediaBar extends React.Component {
         this.props.history.push(this.props.queue[currentIndex + 1])
       }
     }
+  }
+
+  handleProgClick(e) {
+    e.preventDefault()
+    
+    const barWidth = document.getElementById('time-bar').offsetWidth
+    const selectedPos = e.clientX
+    const leftX = document.getElementById('time-bar').getBoundingClientRect().left
+    const rightX = document.getElementById('time-bar').getBoundingClientRect().right
+    const progressPercentage = ((selectedPos - leftX) / barWidth) * 100
+
+    document.getElementById('slider-button').style.left = `${progressPercentage}%`
+    document.getElementById('time-bar-foreground').style.transform = `translateX(${progressPercentage - 100}%)`
+
+    const audio = document.getElementById('media-bar')
+    audio.currentTime = (progressPercentage * audio.duration) / 100
   }
 
   render() {
@@ -217,7 +233,6 @@ class MediaBar extends React.Component {
       document.title = `Spudify`
     }
 
-   
 
     return(
       <footer id="mediabar" className="mediabar">
@@ -235,21 +250,45 @@ class MediaBar extends React.Component {
               <button>{repeat}</button>
             </div>
 
-            <div className="progress-bar-div">
+            <div className="time-bar-div">
 
               <div className="current-time">
                 <div>{this.props.currentTime}</div>
               </div>
 
-            <div className="progress-input-range-div">
-              <input
+            <div 
+              id="time-bar" 
+              className="time-bar"
+              onClick={e => this.handleProgClick(e)}
+            >
+              {/* <input
                 className="time-slider"
                 ref={(timeSlider) => { this.timeSlider = timeSlider }}
                 type="range"
-                name="points"
-                min="0" max={this.state.duration}
-              />
-              {/* <button></button> */}
+                // name="points"
+                // min="0" max={this.state.duration}
+              /> */}
+
+              <div className="center-time-bar time-bar-background">
+                <div className="time-bar-foreground-wrapper">
+                  <div 
+                    id="time-bar-foreground"
+                    className="time-bar-foreground"
+                    style={{transform: `translateX(${(Math.round(this.props.currentTimeRaw) / Math.round(this.props.durationRaw)) * 100 - 100}%)`}}
+                  >
+                  </div>
+                </div>
+                <button 
+                  id="slider-button"
+                  className="center-time-bar time-bar-slider"
+                  style={{left: `${(Math.round(this.props.currentTimeRaw) / Math.round(this.props.durationRaw)) * 100}%`}}
+                >
+                </button>
+              </div>
+
+              
+              
+              
             </div>
               
               <div className="media-bar-duration">

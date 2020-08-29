@@ -171,7 +171,7 @@ h1 {
   justify-content: center;
 }
 
-.progress-bar-div {
+.time-bar-div {
   display: flex;
   justify-content: center;
   color: var(--ltgray);
@@ -224,39 +224,182 @@ h1 {
 //   background: white;
 // }
 
-// .progress-bar-div:hover .bar {
+// .time-bar-div:hover .bar {
 //   background: rgb(29, 285, 84)
 // }
 
-.progress {
-  position: absolute;
-  left: 150px;
-  top: 70px;
-  right: 100px;
-  bottom: 5px;
-  background: black;
-  cursor: pointer;
+// .progress {
+//   position: absolute;
+//   left: 150px;
+//   top: 70px;
+//   right: 100px;
+//   bottom: 5px;
+//   background: black;
+//   cursor: pointer;
+// }
+
+// .progress > .bar {
+//   position: absolute;
+//   left: 5px;
+//   right: 5px;
+//   top: 5px;
+//   bottom: 5px;
+// }
+
+// .progress > .bar > div {
+//   position: absolute;
+//   left: 0;
+//   top: 0;
+//   bottom: 0;
+//   // width: 50%;
+//   background: white;
+// }
+
+
+
+
+.time-bar {
+  height: 12px;
+  position: relative;
+  width: 100%;
+  // width: 200px;
 }
 
-.progress > .bar {
+.center-time-bar {
   position: absolute;
-  left: 5px;
-  right: 5px;
-  top: 5px;
-  bottom: 5px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
-.progress > .bar > div {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  // width: 50%;
-  background: white;
+.time-bar-background {
+  background-color: rgb(83, 83, 83);
+  border-radius: 2px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 4px;
+  width: 100%;
+}
+
+.time-bar-foreground-wrapper {
+  overflow: hidden;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+}
+
+.time-bar-foreground {
+    background-color: var(--ltgray);
+    border-radius: 2px;
+    height: 4px;
+    width: 100%;
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+}
+
+.time-bar-slider {
+  background-color: var(--white);
+  border: 0;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  margin-left: -6px;
+  z-index: 100;
+  -webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,.5);
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.5);
+  opacity: 0;
+}
+
+.time-bar:hover .time-bar-foreground {
+  background-color: var(--green);
+}
+
+.time-bar:hover .time-bar-slider {
+  opacity: 1;
 }
 
 
 
+
+
+
+
+// .total-time {
+//   background-color: #515151;
+//   border-radius: 20px;
+//   display: -webkit-box;
+//   display: flex;
+//   height: 4px;
+//   width: 100%;
+
+//   position: absolute;
+//   top: 50%;
+//   -webkit-transform: translateY(-50%);
+//   transform: translateY(-50%);
+// }
+
+// .time-elapsed-container {
+//   overflow: hidden;
+//   width: 100%;
+//   height: 4px;
+//   border-radius: 20px;
+// }
+
+// .time-elapsed {
+//   background-color: var(--ltgray);
+//   border-radius: 20px;
+//   height: 4px;
+//   width: 100%;
+//   -webkit-transform: translateX(-100%);
+//   transform: translateX(-100%);
+// }
+
+// .slider-thumb {
+//   // position: absolute;
+//   background-color: var(--white);
+//   // border: 0;
+//   border-radius: 20px;
+//   width: 12px;
+//   height: 12px;
+//   // margin-left: -6px;
+//   z-index: 100;
+//   // -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+//   // box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+//   // opacity: 0;
+// }
+
+// .slider-thumb:hover {
+//   opacity: 1;
+// }
+
+
+
+
+
+// DIDN'T WORK TO HAVE ROUND BUTTON AND BOX SHADOW
+// .time-slider {
+//   height: 4px;
+//   width: 33.33vw;
+//   -webkit-appearance: none;
+//   background-color: rgb(81, 81, 81);
+//   border-radius: 20px;
+// }
+
+// .time-slider::-webkit-slider-thumb {
+//     -webkit-appearance: none;
+// }
+
+// .progress-input-range-div:hover ::-webkit-slider-thumb {
+//     width: 12px;
+//     height: 12px;
+//     border-radius: 20px;
+//     background-color: var(--white);
+//     -webkit-appearance: none;
+// }
+
+
+/*
 
 @media screen and (-webkit-min-device-pixel-ratio:0) {
     .time-slider {
@@ -331,7 +474,7 @@ h1 {
     }
 }
 
-
+*/
 
 
 

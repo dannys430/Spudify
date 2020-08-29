@@ -14,7 +14,9 @@ const mSTP = (state, ownProps) => {
     playing: state.ui.mediaBar.playing,
     history: state.ui.mediaBar.history,
     queue: state.ui.mediaBar.queue,
+    durationRaw: state.ui.mediaBar.durationRaw,
     duration: state.ui.mediaBar.duration,
+    currentTimeRaw: state.ui.mediaBar.currentTimeRaw,
     currentTime: state.ui.mediaBar.currentTime,
     // playlist: state.entities.playlists[ownProps.match.params.id],
   }
