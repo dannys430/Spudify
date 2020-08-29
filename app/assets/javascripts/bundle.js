@@ -1790,9 +1790,9 @@ var MediaBar = /*#__PURE__*/function (_React$Component) {
 
       var audio = new Audio();
       audio.id = 'media-bar';
-      document.body.appendChild(audio);
-      this.timeSlider.value = 0;
-      this.currentTimeInterval = null; // Get duration of the song and set it as max timeSlider value
+      document.body.appendChild(audio); // this.timeSlider.value = 0;
+      // this.currentTimeInterval = null;
+      // Get duration of the song and set it as max timeSlider value
 
       audio.onloadedmetadata = function () {
         this.setState({
@@ -1810,12 +1810,11 @@ var MediaBar = /*#__PURE__*/function (_React$Component) {
       audio.onpause = function () {
         clearInterval(_this2.currentTimeInterval);
       }; // Seek functionality
+      // this.timeSlider.onchange = (e) => {
+      //   clearInterval(this.currentTimeInterval);
+      //   audio.currentTime = e.target.value;
+      // };
 
-
-      this.timeSlider.onchange = function (e) {
-        clearInterval(_this2.currentTimeInterval);
-        audio.currentTime = e.target.value;
-      };
 
       document.getElementById('media-bar').addEventListener('ended', function () {
         _this2.handleNext();
@@ -1874,6 +1873,20 @@ var MediaBar = /*#__PURE__*/function (_React$Component) {
           this.props.history.push(this.props.queue[currentIndex + 1]);
         }
       }
+    }
+  }, {
+    key: "handleProgClick",
+    value: function handleProgClick(e) {
+      e.preventDefault();
+      var barWidth = document.getElementById('time-bar').offsetWidth;
+      var selectedPos = e.clientX;
+      var leftX = document.getElementById('time-bar').getBoundingClientRect().left;
+      var rightX = document.getElementById('time-bar').getBoundingClientRect().right;
+      var progressPercentage = (selectedPos - leftX) / barWidth * 100;
+      document.getElementById('slider-button').style.left = "".concat(progressPercentage, "%");
+      document.getElementById('time-bar-foreground').style.transform = "translateX(".concat(progressPercentage - 100, "%)");
+      var audio = document.getElementById('media-bar');
+      audio.currentTime = progressPercentage * audio.duration / 100;
     }
   }, {
     key: "render",
@@ -2119,21 +2132,32 @@ var MediaBar = /*#__PURE__*/function (_React$Component) {
           return _this4.handleNext();
         }
       }, next), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, repeat)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "progress-bar-div"
+        className: "time-bar-div"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "current-time"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.currentTime)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "progress-input-range-div"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "time-slider",
-        ref: function ref(timeSlider) {
-          _this4.timeSlider = timeSlider;
-        },
-        type: "range",
-        name: "points",
-        min: "0",
-        max: this.state.duration
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "time-bar",
+        className: "time-bar",
+        onClick: function onClick(e) {
+          return _this4.handleProgClick(e);
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "center-time-bar time-bar-background"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "time-bar-foreground-wrapper"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "time-bar-foreground",
+        className: "time-bar-foreground",
+        style: {
+          transform: "translateX(".concat(Math.round(this.props.currentTimeRaw) / Math.round(this.props.durationRaw) * 100 - 100, "%)")
+        }
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        id: "slider-button",
+        className: "center-time-bar time-bar-slider",
+        style: {
+          left: "".concat(Math.round(this.props.currentTimeRaw) / Math.round(this.props.durationRaw) * 100, "%")
+        }
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "media-bar-duration"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.duration)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "right-div"
@@ -2182,7 +2206,9 @@ var mSTP = function mSTP(state, ownProps) {
     playing: state.ui.mediaBar.playing,
     history: state.ui.mediaBar.history,
     queue: state.ui.mediaBar.queue,
+    durationRaw: state.ui.mediaBar.durationRaw,
     duration: state.ui.mediaBar.duration,
+    currentTimeRaw: state.ui.mediaBar.currentTimeRaw,
     currentTime: state.ui.mediaBar.currentTime // playlist: state.entities.playlists[ownProps.match.params.id],
 
   };
@@ -5567,7 +5593,9 @@ var initialState = {
   currentSong: null,
   history: [],
   queue: [],
+  durationRaw: null,
   duration: '0:00',
+  currentTimeRaw: null,
   currentTime: '0:00'
 }; // const formatTime = (time) => {
 //   return (!isNaN(time)) ? (`${Math.floor(time / 60)}:${Math.floor(time % 60)}`) : null
@@ -5622,10 +5650,12 @@ var MediaBarReducer = function MediaBarReducer() {
       return newState;
 
     case _actions_media_bar_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_DURATION"]:
+      newState.durationRaw = newState.currentSong ? "".concat(document.getElementById('media-bar').duration) : null;
       newState.duration = newState.currentSong ? "".concat(document.getElementById('media-bar').duration).toMMSS() : null;
       return newState;
 
     case _actions_media_bar_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_TIME"]:
+      newState.currentTimeRaw = newState.currentSong ? "".concat(document.getElementById('media-bar').currentTime) : null;
       newState.currentTime = newState.currentSong ? "".concat(document.getElementById('media-bar').currentTime).toMMSS() : null;
       return newState;
 
