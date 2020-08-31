@@ -51,6 +51,10 @@ class MediaBar extends React.Component {
     })
   }
 
+  componentWillUnmount() {
+    this.handlePause()
+  }
+
   handlePlay() {
     if(!this.props.currentSong) {
       this.props.receiveCurrentSong(this.props.queue[0])

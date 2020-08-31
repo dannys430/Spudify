@@ -1821,6 +1821,11 @@ var MediaBar = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.handlePause();
+    }
+  }, {
     key: "handlePlay",
     value: function handlePlay() {
       var _this3 = this;
