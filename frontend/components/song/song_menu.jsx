@@ -9,6 +9,10 @@ class SongMenu extends React.Component {
     }
   }
 
+  // componentDidMount() {
+  //   this.props.requestPlaylists()
+  // }
+
   toggleMenu() {
     this.setState(prevState => ({ menuShowing: !prevState.menuShowing }))
   }
@@ -21,6 +25,26 @@ class SongMenu extends React.Component {
   handleModal() {
     this.props.openModal('add_to_playlist', this.props.song.id)
     this.setState({menuShowing: false})
+  }
+
+  handleRemoveSong() {
+    // debugger
+    // console.log(this.props.playlistId)
+    // console.log(this.props.song.id)
+    this.props.requestPlaylists()
+    this.setState({menuShowing: false})
+    this.props.removePlaylistSong(this.props.playlistId, this.props.song.id)
+      .then(this.props.requestPlaylists())
+
+
+    // if (this.props.songToAdd) {
+    //   this.props.createPlaylist(this.state)
+    //     .then(() => this.props.requestPlaylists())
+    //     .then(() => this.props.addPlaylistSong(Object.keys(this.props.playlists)[Object.keys(this.props.playlists).length - 1], this.props.songToAdd))
+    //     .then(() => this.props.requestPlaylists())
+    //     .then(() => this.props.closeModal())
+    //     .then(() => window.location.assign(`/#/playlists/${Object.keys(this.props.playlists)[Object.keys(this.props.playlists).length - 1]}`))
+    // }
   }
   
   render() {
@@ -38,7 +62,7 @@ class SongMenu extends React.Component {
           <div className="song-menu-dropdown">
             <li onClick={() => this.handleQueue()}>Add to Queue</li>
             <li onClick={() => this.handleModal()}>Add to Playlist</li>
-            {this.props.parentIsPlaylist ? <li>Remove from this Playlist</li> : null}
+            {this.props.parentIsPlaylist ? <li onClick={() => this.handleRemoveSong()}>Remove from this Playlist</li> : null}
           </div>
         )}
         

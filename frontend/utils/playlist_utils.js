@@ -30,6 +30,13 @@ export const createPlaylistSong = (playlistId, songId) => {
   })
 }
 
+export const deletePlaylistSong = (playlistId, songId) => {
+  return $.ajax({
+    url: `/api/playlists/${playlistId}/removesong/${songId}`,
+    method: 'DELETE'
+  })
+}
+
 // export const fetchPlaylistSongs = (id) => {
 //   // debugger
 //   return $.ajax({

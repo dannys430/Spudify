@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
     resources :playlists, only: [:create, :index, :show, :update, :destroy] do
       post "/addsong/:song_id/", to: "playlists#add_song"
+      delete "/removesong/:song_id/", to: "playlists#remove_song"
       # delete "/addsong/:song_id/", to: "playlists#add_song"
     end
 

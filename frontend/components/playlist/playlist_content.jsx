@@ -84,7 +84,7 @@ class PlaylistContent extends React.Component {
 
     const songList = playlistSongs ? playlistSongs.map((song, id) => {
       return (
-        <SongContainer parentIsPlaylist={true} key={id} song={song}/>
+        <SongContainer playlistId={this.props.playlist.id} parentIsPlaylist={true} key={id} song={song}/>
 
 
 
