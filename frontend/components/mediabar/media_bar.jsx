@@ -30,15 +30,15 @@ class MediaBar extends React.Component {
     }.bind(this);
 
     // Sync timeSlider position with song current time
-    audio.onplay = () => {
-      this.currentTimeInterval = setInterval(() => {
-        this.timeSlider.value = audio.currentTime;
-      }, 500);
-    };
+    // audio.onplay = () => {
+    //   this.currentTimeInterval = setInterval(() => {
+    //     this.timeSlider.value = audio.currentTime;
+    //   }, 500);
+    // };
 
-    audio.onpause = () => {
-      clearInterval(this.currentTimeInterval);
-    };
+    // audio.onpause = () => {
+    //   clearInterval(this.currentTimeInterval);
+    // };
 
     // Seek functionality
     // this.timeSlider.onchange = (e) => {
