@@ -2172,16 +2172,27 @@ var MediaBar = /*#__PURE__*/function (_React$Component) {
         className: "media-bar-duration"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.duration)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "right-div"
-      }, volumeHigh, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "volume-slider",
-        ref: function ref(volumeSlider) {
-          _this4.volumeSlider = volumeSlider;
-        },
-        type: "range",
-        name: "points",
-        min: "0",
-        max: this.state.volume
-      })));
+      }, volumeHigh, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "vol-bar",
+        className: "vol-bar" // onClick={e => this.handleProgClick(e)}
+
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "center-vol-bar vol-bar-background"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "vol-bar-foreground-wrapper"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "vol-bar-foreground",
+        className: "vol-bar-foreground",
+        style: {
+          transform: "translateX(".concat(Math.round(this.props.currentTimeRaw) / Math.round(this.props.durationRaw) * 100 - 100, "%)")
+        }
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        id: "slider-button",
+        className: "center-vol-bar vol-bar-slider",
+        style: {
+          left: "".concat(Math.round(this.props.currentTimeRaw) / Math.round(this.props.durationRaw) * 100, "%")
+        }
+      })))));
     }
   }]);
 
