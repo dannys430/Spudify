@@ -289,10 +289,6 @@ class MediaBar extends React.Component {
                 >
                 </button>
               </div>
-
-              
-              
-              
             </div>
               
               <div className="media-bar-duration">
@@ -305,13 +301,37 @@ class MediaBar extends React.Component {
 
           <div className="right-div">
             {volumeHigh}
-            <input
+            {/* <input
                 className="volume-slider"
                 ref={(volumeSlider) => { this.volumeSlider = volumeSlider }}
                 type="range"
                 name="points"
                 min="0" max={this.state.volume}
-              />
+              /> */}
+
+            <div
+              id="vol-bar"
+              className="vol-bar"
+              // onClick={e => this.handleProgClick(e)}
+            >
+              <div className="center-vol-bar vol-bar-background">
+                <div className="vol-bar-foreground-wrapper">
+                  <div
+                    id="vol-bar-foreground"
+                    className="vol-bar-foreground"
+                    style={{ transform: `translateX(${(Math.round(this.props.currentTimeRaw) / Math.round(this.props.durationRaw)) * 100 - 100}%)` }}
+                  >
+                  </div>
+                </div>
+                <button
+                  id="slider-button"
+                  className="center-vol-bar vol-bar-slider"
+                  style={{ left: `${(Math.round(this.props.currentTimeRaw) / Math.round(this.props.durationRaw)) * 100}%` }}
+                >
+                </button>
+              </div>
+            </div>
+              
           </div>
   
       </footer>
