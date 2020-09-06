@@ -1798,7 +1798,8 @@ var MediaBar = /*#__PURE__*/function (_React$Component) {
 
       var audio = new Audio();
       audio.id = 'media-bar';
-      document.body.appendChild(audio); // this.timeSlider.value = 0;
+      document.body.appendChild(audio);
+      audio.volume = .5; // this.timeSlider.value = 0;
       // this.currentTimeInterval = null;
       // Get duration of the song and set it as max timeSlider value
 
@@ -1898,6 +1899,25 @@ var MediaBar = /*#__PURE__*/function (_React$Component) {
       document.getElementById('time-bar-foreground').style.transform = "translateX(".concat(progressPercentage - 100, "%)");
       var audio = document.getElementById('media-bar');
       audio.currentTime = progressPercentage * audio.duration / 100;
+    }
+  }, {
+    key: "handleVolClick",
+    value: function handleVolClick(e) {
+      e.preventDefault();
+      var barWidth = document.getElementById('vol-bar').offsetWidth;
+      var selectedPos = e.clientX;
+      var leftX = document.getElementById('vol-bar').getBoundingClientRect().left;
+      var rightX = document.getElementById('vol-bar').getBoundingClientRect().right;
+      var volumePercentage = (selectedPos - leftX) / barWidth * 100;
+      document.getElementById('vol-slider-button').style.left = "".concat(volumePercentage, "%");
+      document.getElementById('vol-bar-foreground').style.transform = "translateX(".concat(volumePercentage - 100, "%)");
+      var audio = document.getElementById('media-bar');
+      audio.volume = volumePercentage / 100;
+    }
+  }, {
+    key: "handleMute",
+    value: function handleMute() {
+      document.getElementById('media-bar') ? document.getElementById('media-bar').volume = 0 : null;
     }
   }, {
     key: "render",
@@ -2117,6 +2137,19 @@ var MediaBar = /*#__PURE__*/function (_React$Component) {
         document.title = "Spudify";
       }
 
+      var volumeIcon;
+      var volumeLevel = document.getElementById('media-bar') ? document.getElementById('media-bar').volume : null;
+
+      if (volumeLevel == 0) {
+        volumeIcon = volumeMute;
+      } else if (volumeLevel > 0 && volumeLevel < .25) {
+        volumeIcon = volumeLow;
+      } else if (volumeLevel > .25 && volumeLevel < .5) {
+        volumeIcon = volumeMedium;
+      } else {
+        volumeIcon = volumeHigh;
+      }
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", {
         id: "mediabar",
         className: "mediabar"
@@ -2172,10 +2205,17 @@ var MediaBar = /*#__PURE__*/function (_React$Component) {
         className: "media-bar-duration"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.duration)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "right-div"
-      }, volumeHigh, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "volume-icon",
+        onClick: function onClick() {
+          return _this4.handleMute();
+        }
+      }, volumeIcon), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "vol-bar",
-        className: "vol-bar" // onClick={e => this.handleProgClick(e)}
-
+        className: "vol-bar",
+        onClick: function onClick(e) {
+          return _this4.handleVolClick(e);
+        }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "center-vol-bar vol-bar-background"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2183,14 +2223,18 @@ var MediaBar = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "vol-bar-foreground",
         className: "vol-bar-foreground",
-        style: {
-          transform: "translateX(".concat(Math.round(this.props.currentTimeRaw) / Math.round(this.props.durationRaw) * 100 - 100, "%)")
+        style: document.getElementById('media-bar') ? {
+          transform: "translateX(".concat(document.getElementById('media-bar').volume * 100 - 100, "%)")
+        } : {
+          transform: "translateX(-50%)"
         }
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        id: "slider-button",
+        id: "vol-slider-button",
         className: "center-vol-bar vol-bar-slider",
-        style: {
-          left: "".concat(Math.round(this.props.currentTimeRaw) / Math.round(this.props.durationRaw) * 100, "%")
+        style: document.getElementById('media-bar') ? {
+          left: "".concat(document.getElementById('media-bar').volume * 100, "%")
+        } : {
+          left: "50%"
         }
       })))));
     }

@@ -20,6 +20,8 @@ class MediaBar extends React.Component {
     const audio = new Audio()
     audio.id = 'media-bar'
     document.body.appendChild(audio);
+    audio.volume = .5
+    
 
     // this.timeSlider.value = 0;
     // this.currentTimeInterval = null;
@@ -117,6 +119,28 @@ class MediaBar extends React.Component {
 
     const audio = document.getElementById('media-bar')
     audio.currentTime = (progressPercentage * audio.duration) / 100
+  }
+
+  handleVolClick(e) {
+    e.preventDefault()
+
+    const barWidth = document.getElementById('vol-bar').offsetWidth
+    const selectedPos = e.clientX
+    const leftX = document.getElementById('vol-bar').getBoundingClientRect().left
+    const rightX = document.getElementById('vol-bar').getBoundingClientRect().right
+    const volumePercentage = ((selectedPos - leftX) / barWidth) * 100
+
+    document.getElementById('vol-slider-button').style.left = `${volumePercentage}%`
+    document.getElementById('vol-bar-foreground').style.transform = `translateX(${volumePercentage - 100}%)`
+
+    const audio = document.getElementById('media-bar')
+    audio.volume = volumePercentage / 100
+  }
+
+  handleMute() {
+    document.getElementById('media-bar') 
+      ? document.getElementById('media-bar').volume = 0
+      : null
   }
 
   render() {
@@ -237,6 +261,19 @@ class MediaBar extends React.Component {
       document.title = `Spudify`
     }
 
+    let volumeIcon
+    const volumeLevel = document.getElementById('media-bar') ? document.getElementById('media-bar').volume : null
+    if(volumeLevel == 0) {
+      volumeIcon = volumeMute
+    } else if(volumeLevel > 0 && volumeLevel < .25) {
+      volumeIcon = volumeLow
+    } else if(volumeLevel > .25 && volumeLevel < .5) {
+      volumeIcon = volumeMedium
+    } else {
+      volumeIcon = volumeHigh
+    }
+
+    
 
     return(
       <footer id="mediabar" className="mediabar">
@@ -300,7 +337,8 @@ class MediaBar extends React.Component {
           </div>
 
           <div className="right-div">
-            {volumeHigh}
+            <div className="volume-icon" onClick={() => this.handleMute()}>{volumeIcon}</div>
+
             {/* <input
                 className="volume-slider"
                 ref={(volumeSlider) => { this.volumeSlider = volumeSlider }}
@@ -312,21 +350,21 @@ class MediaBar extends React.Component {
             <div
               id="vol-bar"
               className="vol-bar"
-              // onClick={e => this.handleProgClick(e)}
+              onClick={e => this.handleVolClick(e)}
             >
               <div className="center-vol-bar vol-bar-background">
                 <div className="vol-bar-foreground-wrapper">
                   <div
                     id="vol-bar-foreground"
                     className="vol-bar-foreground"
-                    style={{ transform: `translateX(${(Math.round(this.props.currentTimeRaw) / Math.round(this.props.durationRaw)) * 100 - 100}%)` }}
+                    style={document.getElementById('media-bar') ? { transform: `translateX(${(document.getElementById('media-bar').volume * 100) - 100}%)` } : {transform: `translateX(-50%)`}}
                   >
                   </div>
                 </div>
                 <button
-                  id="slider-button"
+                  id="vol-slider-button"
                   className="center-vol-bar vol-bar-slider"
-                  style={{ left: `${(Math.round(this.props.currentTimeRaw) / Math.round(this.props.durationRaw)) * 100}%` }}
+                  style={document.getElementById('media-bar') ? { left: `${document.getElementById('media-bar').volume * 100}%` } : {left: `50%`}}
                 >
                 </button>
               </div>
