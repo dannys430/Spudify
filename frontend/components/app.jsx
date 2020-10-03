@@ -1,7 +1,7 @@
 import React from 'react';
 import {Route, Switch} from 'react-router-dom';
 
-import {AuthRoute} from '../utils/route_utils';
+import {AuthRoute, AuthRoute2} from '../utils/route_utils';
 
 import SplashContainer from './session/splash_container';
 import SignupContainer from './session/signup_container';
@@ -25,7 +25,7 @@ const App = () => (
         <AuthRoute path="/signup" component={SignupContainer} />
         <AuthRoute path="/login" component={LoginContainer} />
         <Route exact path="/songform" component={SongFormContainer} />
-        <Route path="/" component={HomeContainer} />   
+        <AuthRoute2 path="/" component={HomeContainer} />   
       </Switch>
 
   

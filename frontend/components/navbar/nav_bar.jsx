@@ -9,7 +9,7 @@ const NavBar = ({currentUser, logout}) => {
     </ul>
   ) : (
     <ul className="nav1-ul">
-      <li><Link to="/signup">Sign up</Link></li>
+      <li><Link id="signup-button" to="/signup">Sign up</Link></li>
       <li><Link to="/login">Log In</Link></li>
     </ul>
   );
