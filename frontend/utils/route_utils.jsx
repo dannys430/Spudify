@@ -25,7 +25,7 @@ const Auth2 = ({loggedOut, path, component: Component }) => (
       loggedOut 
         ? <>
             <Redirect to="/us" />
-            {alert('must be signed in')}
+            {/* {alert('must be signed in')} */}
           </>
         : <Component {...props}/>
     )}
