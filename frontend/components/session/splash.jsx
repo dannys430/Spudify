@@ -64,7 +64,7 @@ class Splash extends React.Component {
     const splashGallery = 
       historyDup.length > 5
         ?
-          <ul>
+          <ul onClick={() => this.handleClick()}>
             {historyDup.reverse().slice(0, 6).map((song, id) => {
               return (
                 <li>
@@ -87,7 +87,7 @@ class Splash extends React.Component {
             })}
           </ul>
         :
-          <ul>
+          <ul onClick={() => this.handleClick()}>
           {albumsArray.reverse().slice(0, 6).map((album, id) => {
               return (
                 <li>
