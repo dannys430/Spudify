@@ -4690,8 +4690,15 @@ var Splash = /*#__PURE__*/function (_React$Component) {
       this.props.requestAlbums();
     }
   }, {
+    key: "handleClick",
+    value: function handleClick() {
+      !this.props.currentUser ? alert('must be signed in') : null;
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this = this;
+
       // const albums = this.props.albums
       // const albumKeys = Object.keys(albums)
       // const sixAlbumKeys = albumKeys.slice(12, 18)
@@ -4715,7 +4722,11 @@ var Splash = /*#__PURE__*/function (_React$Component) {
       var history = this.props.history;
       var historyDup = history.slice(); //  console.log(historyDup)
 
-      var splashGallery = historyDup.length > 5 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, historyDup.reverse().slice(0, 6).map(function (song, id) {
+      var splashGallery = historyDup.length > 5 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        onClick: function onClick() {
+          return _this.handleClick();
+        }
+      }, historyDup.reverse().slice(0, 6).map(function (song, id) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "splash-song-div",
           key: id
@@ -4742,7 +4753,11 @@ var Splash = /*#__PURE__*/function (_React$Component) {
           fill: "#fff",
           points: "45,38 90,64 45,90"
         }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, song['song_name']), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, song['artist']['artist_name'])))));
-      })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, albumsArray.reverse().slice(0, 6).map(function (album, id) {
+      })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        onClick: function onClick() {
+          return _this.handleClick();
+        }
+      }, albumsArray.reverse().slice(0, 6).map(function (album, id) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "splash-song-div",
           key: id
@@ -4795,6 +4810,9 @@ var Splash = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "section1-div1"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Jump back in"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Pick up your music right where you left off."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        onClick: function onClick() {
+          return _this.handleClick();
+        },
         className: "web-player-btn-div"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
         to: "/",
@@ -6372,7 +6390,7 @@ var Auth2 = function Auth2(_ref2) {
     render: function render(props) {
       return loggedOut ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Redirect"], {
         to: "/us"
-      }), alert('must be signed in')) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Component, props);
+      })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Component, props);
     }
   });
 };
