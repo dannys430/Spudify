@@ -1,8 +1,7 @@
 import React from 'react';
 import NavBarContainer from '../navbar/nav_bar_container'
 import FooterContainer from '../footer/footer_container'
-import { Link } from 'react-router-dom';
-
+import { Link, Redirect } from 'react-router-dom';
 
 class Splash extends React.Component {
   constructor(props) {
@@ -21,6 +20,11 @@ class Splash extends React.Component {
   }
 
 
+  handleClick() {
+    !this.props.currentUser
+      ? alert('must be signed in')
+      : null
+  }
 
 
   render() {
@@ -60,7 +64,7 @@ class Splash extends React.Component {
     const splashGallery = 
       historyDup.length > 5
         ?
-          <ul>
+          <ul onClick={() => this.handleClick()}>
             {historyDup.reverse().slice(0, 6).map((song, id) => {
               return (
                 <li>
@@ -83,7 +87,7 @@ class Splash extends React.Component {
             })}
           </ul>
         :
-          <ul>
+          <ul onClick={() => this.handleClick()}>
           {albumsArray.reverse().slice(0, 6).map((album, id) => {
               return (
                 <li>
@@ -140,7 +144,7 @@ class Splash extends React.Component {
               <h1>Jump back in</h1>
               <h2>Pick up your music right where you left off.</h2>
               {/* <div className="web-player-btn-div"><a href="/" className="web-player-btn">OPEN WEB PLAYER</a></div> */}
-              <div className="web-player-btn-div"><Link to="/" className="web-player-btn">OPEN WEB PLAYER</Link></div>
+              <div onClick={() => this.handleClick()} className="web-player-btn-div"><Link to="/" className="web-player-btn">OPEN WEB PLAYER</Link></div>
             </div>
             <div className="section1-div2">
               {/* <ul> */}
