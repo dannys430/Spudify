@@ -23,7 +23,7 @@ class SongMenu extends React.Component {
   }
 
   handleModal() {
-    this.props.openModal('add_to_playlist', this.props.song.id)
+    this.props.openModal('add_to_playlist', this.props.song.id, this.props.song.song_name, this.props.song.artist.artist_name)
     this.setState({menuShowing: false})
   }
 

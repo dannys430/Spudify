@@ -16,7 +16,7 @@ const mSTP = (state) => {
 const mDTP = (dispatch) => {
   return {
     // openModal: () => dispatch(openModal('add_to_playlist', secondarg)),
-    openModal: (modalName, songToAdd) => dispatch(openModal(modalName, songToAdd)),
+    openModal: (modalName, songToAdd, songName, artist) => dispatch(openModal(modalName, songToAdd, songName, artist)),
     removePlaylistSong: (playlistId, songId) => dispatch(removePlaylistSong(playlistId, songId)),
     requestPlaylists: () => dispatch(requestPlaylists())
   }

@@ -6,7 +6,7 @@ class PlaylistModal extends React.Component {
     super(props)
 
     this.state = {
-      playlist_name: ""
+      playlist_name: `${this.props.songName} - ${this.props.artist}`
     }
 
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -56,6 +56,7 @@ class PlaylistModal extends React.Component {
               <input
                 type="text"
                 placeholder="New Playlist"
+                defaultValue={`${this.props.songName} - ${this.props.artist}`}
                 onChange={this.update('playlist_name')}
               />
           </div>

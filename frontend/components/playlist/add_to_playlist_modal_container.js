@@ -10,7 +10,9 @@ import AddToPlaylistModal from './add_to_playlist_modal'
 const mSTP = (state) => {
   return {
     playlists: state.entities.playlists,
-    songToAdd: state.ui.modal.songToAdd
+    songToAdd: state.ui.modal.songToAdd,
+    songName: state.ui.modal.songName,
+    artist: state.ui.modal.artist
   }
 }
 
@@ -22,7 +24,7 @@ const mDTP = (dispatch) => {
     requestPlaylists: () => dispatch(requestPlaylists()),
     // requestPlaylist: (id) => dispatch(requestPlaylist(id)), 
     addPlaylistSong: (playlistId, songId) => dispatch(addPlaylistSong(playlistId, songId)),
-    openModal: (modalName, songToAdd) => dispatch(openModal(modalName, songToAdd))
+    openModal: (modalName, songToAdd, songName, artist) => dispatch(openModal(modalName, songToAdd, songName, artist))
   }
 }
 

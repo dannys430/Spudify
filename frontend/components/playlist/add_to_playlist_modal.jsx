@@ -34,7 +34,7 @@ class AddToPlaylistModal extends React.Component {
   }
 
   addToNew() {
-    this.props.openModal('playlist', this.props.songToAdd)
+    this.props.openModal('playlist', this.props.songToAdd, this.props.songName, this.props.artist)
   }
 
   addToExisting(playlistId) {

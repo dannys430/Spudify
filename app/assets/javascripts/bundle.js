@@ -281,11 +281,15 @@ var OPEN_MODAL = 'OPEN_MODAL';
 var CLOSE_MODAL = 'CLOSE_MODAL';
 var openModal = function openModal(modalName) {
   var songToAdd = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+  var songName = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+  var artist = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
   return {
     type: OPEN_MODAL,
     modal: {
       modalName: modalName,
-      songToAdd: songToAdd
+      songToAdd: songToAdd,
+      songName: songName,
+      artist: artist
     }
   };
 };
@@ -2676,7 +2680,7 @@ var AddToPlaylistModal = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "addToNew",
     value: function addToNew() {
-      this.props.openModal('playlist', this.props.songToAdd);
+      this.props.openModal('playlist', this.props.songToAdd, this.props.songName, this.props.artist);
     }
   }, {
     key: "addToExisting",
@@ -2785,7 +2789,9 @@ __webpack_require__.r(__webpack_exports__);
 var mSTP = function mSTP(state) {
   return {
     playlists: state.entities.playlists,
-    songToAdd: state.ui.modal.songToAdd
+    songToAdd: state.ui.modal.songToAdd,
+    songName: state.ui.modal.songName,
+    artist: state.ui.modal.artist
   };
 };
 
@@ -2804,8 +2810,8 @@ var mDTP = function mDTP(dispatch) {
     addPlaylistSong: function addPlaylistSong(playlistId, songId) {
       return dispatch(Object(_actions_playlist_actions__WEBPACK_IMPORTED_MODULE_1__["addPlaylistSong"])(playlistId, songId));
     },
-    openModal: function openModal(modalName, songToAdd) {
-      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__["openModal"])(modalName, songToAdd));
+    openModal: function openModal(modalName, songToAdd, songName, artist) {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__["openModal"])(modalName, songToAdd, songName, artist));
     }
   };
 };
@@ -3238,7 +3244,7 @@ var PlaylistModal = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      playlist_name: ""
+      playlist_name: "".concat(_this.props.songName, " - ").concat(_this.props.artist)
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
@@ -3314,6 +3320,7 @@ var PlaylistModal = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Playlist Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         placeholder: "New Playlist",
+        defaultValue: "".concat(this.props.songName, " - ").concat(this.props.artist),
         onChange: this.update('playlist_name')
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "playlist-modal-buttons-div"
@@ -3358,6 +3365,8 @@ __webpack_require__.r(__webpack_exports__);
 var mSTP = function mSTP(state) {
   return {
     songToAdd: state.ui.modal.songToAdd,
+    songName: state.ui.modal.songName,
+    artist: state.ui.modal.artist,
     playlists: state.entities.playlists
   };
 };
@@ -5562,7 +5571,7 @@ var SongMenu = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleModal",
     value: function handleModal() {
-      this.props.openModal('add_to_playlist', this.props.song.id);
+      this.props.openModal('add_to_playlist', this.props.song.id, this.props.song.song_name, this.props.song.artist.artist_name);
       this.setState({
         menuShowing: false
       });
@@ -5661,8 +5670,8 @@ var mSTP = function mSTP(state) {
 var mDTP = function mDTP(dispatch) {
   return {
     // openModal: () => dispatch(openModal('add_to_playlist', secondarg)),
-    openModal: function openModal(modalName, songToAdd) {
-      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__["openModal"])(modalName, songToAdd));
+    openModal: function openModal(modalName, songToAdd, songName, artist) {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__["openModal"])(modalName, songToAdd, songName, artist));
     },
     removePlaylistSong: function removePlaylistSong(playlistId, songId) {
       return dispatch(Object(_actions_playlist_actions__WEBPACK_IMPORTED_MODULE_3__["removePlaylistSong"])(playlistId, songId));

@@ -10,6 +10,8 @@ import PlaylistModal from './playlist_modal'
 const mSTP = (state) => {
   return {
     songToAdd: state.ui.modal.songToAdd,
+    songName: state.ui.modal.songName,
+    artist: state.ui.modal.artist,
     playlists: state.entities.playlists
   }
 }
