@@ -3244,7 +3244,7 @@ var PlaylistModal = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      playlist_name: "".concat(_this.props.songName, " - ").concat(_this.props.artist)
+      playlist_name: _this.props.songName ? "".concat(_this.props.songName, " - ").concat(_this.props.artist) : ''
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
@@ -3320,7 +3320,7 @@ var PlaylistModal = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Playlist Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         placeholder: "New Playlist",
-        defaultValue: "".concat(this.props.songName, " - ").concat(this.props.artist),
+        defaultValue: this.props.songName ? "".concat(this.props.songName, " - ").concat(this.props.artist) : null,
         onChange: this.update('playlist_name')
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "playlist-modal-buttons-div"
