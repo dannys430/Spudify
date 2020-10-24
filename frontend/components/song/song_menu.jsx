@@ -7,6 +7,27 @@ class SongMenu extends React.Component {
     this.state = {
       menuShowing: false,
     }
+
+    this.setWrapperRef = this.setWrapperRef.bind(this);
+    this.handleClickOutside = this.handleClickOutside.bind(this);
+  }
+
+  componentDidMount() {
+    document.addEventListener('mousedown', this.handleClickOutside);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClickOutside);
+  }
+
+  setWrapperRef(node) {
+    this.wrapperRef = node;
+  }
+
+  handleClickOutside(event) {
+    if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
+      this.setState({menuShowing: false})
+    }
   }
 
   // componentDidMount() {
@@ -59,7 +80,7 @@ class SongMenu extends React.Component {
       <div className="song-menu">
         <div onClick={() => this.toggleMenu()} style={songDivMenuButtonStyles} id="song-div-menu-button" className="song-div-menu-button">•••</div>
         {this.state.menuShowing && (
-          <div className="song-menu-dropdown">
+          <div ref={this.setWrapperRef} className="song-menu-dropdown">
             <li onClick={() => this.handleQueue()}>Add to Queue</li>
             <li onClick={() => this.handleModal()}>Add to Playlist</li>
             {this.props.parentIsPlaylist ? <li onClick={() => this.handleRemoveSong()}>Remove from this Playlist</li> : null}

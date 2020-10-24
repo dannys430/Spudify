@@ -5545,13 +5545,39 @@ var SongMenu = /*#__PURE__*/function (_React$Component) {
     _this.state = {
       menuShowing: false
     };
+    _this.setWrapperRef = _this.setWrapperRef.bind(_assertThisInitialized(_this));
+    _this.handleClickOutside = _this.handleClickOutside.bind(_assertThisInitialized(_this));
     return _this;
-  } // componentDidMount() {
-  //   this.props.requestPlaylists()
-  // }
-
+  }
 
   _createClass(SongMenu, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      document.addEventListener('mousedown', this.handleClickOutside);
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      document.removeEventListener('mousedown', this.handleClickOutside);
+    }
+  }, {
+    key: "setWrapperRef",
+    value: function setWrapperRef(node) {
+      this.wrapperRef = node;
+    }
+  }, {
+    key: "handleClickOutside",
+    value: function handleClickOutside(event) {
+      if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
+        this.setState({
+          menuShowing: false
+        });
+      }
+    } // componentDidMount() {
+    //   this.props.requestPlaylists()
+    // }
+
+  }, {
     key: "toggleMenu",
     value: function toggleMenu() {
       this.setState(function (prevState) {
@@ -5616,6 +5642,7 @@ var SongMenu = /*#__PURE__*/function (_React$Component) {
         id: "song-div-menu-button",
         className: "song-div-menu-button"
       }, "\u2022\u2022\u2022"), this.state.menuShowing && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        ref: this.setWrapperRef,
         className: "song-menu-dropdown"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         onClick: function onClick() {
