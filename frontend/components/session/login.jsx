@@ -113,7 +113,7 @@ class Login extends React.Component {
             
             <hr className="or" />
 
-
+          <form>
             <label>
               <input
                 id="form-input-email"
@@ -144,8 +144,9 @@ class Login extends React.Component {
             <br/>
 
             <div className='login-button-div'>
-              <button className="login-button" onClick={this.handleSubmit}>LOG IN</button>
+              <button type='submit' className="login-button" onClick={this.handleSubmit}>LOG IN</button>
             </div>
+          </form>
 
           
             <div className="login-msg-2-div">
