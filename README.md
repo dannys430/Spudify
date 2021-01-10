@@ -4,6 +4,8 @@ Spudify is an audio streaming platform inspired by Spotify.  Guests can browse c
 
 [Check out Spudify](https://spudify.herokuapp.com/#/us)
 
+![alt text](spudify.gif)
+
 To build Spudify, I used the following stack:
   * Ruby on Rails - web-application framework
   * Postgresql - database management
