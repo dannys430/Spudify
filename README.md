@@ -41,7 +41,6 @@ MediaBar
 
 Reusable components save time and keep code dry.  Given the functional and stylistic similarities between playlist songs and album songs, I decided to keep my code base dry and create one reusable song component that could be shared between both playlist and album parent components.  
 
-individual components, and then piece these components together in a logical heirarchy.  
 ![alt text](song-component.gif)
 ![alt text](song-component.png)
 
