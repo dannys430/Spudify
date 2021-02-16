@@ -9,7 +9,7 @@ import LoginContainer from './session/login_container';
 
 import HomeContainer from  './home/home_container';
 
-import SongFormContainer from  './song/song_form_container';
+// import SongFormContainer from  './song/song_form_container';
 
 import ModalContainer from  './modal/modal_container';
 
@@ -24,7 +24,7 @@ const App = () => (
         <Route exact path="/us" component={SplashContainer} />
         <AuthRoute path="/signup" component={SignupContainer} />
         <AuthRoute path="/login" component={LoginContainer} />
-        <Route exact path="/songform" component={SongFormContainer} />
+        {/* <Route exact path="/songform" component={SongFormContainer} /> */}
         <AuthRoute2 path="/" component={HomeContainer} />   
       </Switch>
 
