@@ -7,83 +7,114 @@ class MediaBar extends React.Component {
 
     this.state = {
       duration: null,
-      volume: null
+      volume: null,
+      songSource: null
     }
 
-    this.handlePlay = this.handlePlay.bind(this)
-    this.handlePause = this.handlePause.bind(this)
+    this.audioRef = React.createRef();
+
+    // this.handlePlay = this.handlePlay.bind(this)
+    // this.handlePause = this.handlePause.bind(this)
     this.handlePrev = this.handlePrev.bind(this)
     this.handleNext = this.handleNext.bind(this)
   }
 
-  componentDidMount() {
-    const audio = new Audio()
-    audio.id = 'media-bar'
-    document.body.appendChild(audio);
-    audio.volume = .5
+  
+
+  // componentDidMount() {
+  //   // const audio = new Audio()
+  //   // audio.id = 'media-bar'
+  //   const audio = document.getElementById('test-audio')
+  //   // document.body.appendChild(audio);
+  //   audio.volume = .5
     
 
-    // this.timeSlider.value = 0;
-    // this.currentTimeInterval = null;
+  //   // this.timeSlider.value = 0;
+  //   // this.currentTimeInterval = null;
 
-    // Get duration of the song and set it as max timeSlider value
-    audio.onloadedmetadata = function () {
-      this.setState({ duration: audio.duration });
-    }.bind(this);
+  //   // Get duration of the song and set it as max timeSlider value
+  //   audio.onloadedmetadata = function () {
+  //     this.setState({ duration: audio.duration });
+  //   }.bind(this);
 
-    // Sync timeSlider position with song current time
-    // audio.onplay = () => {
-    //   this.currentTimeInterval = setInterval(() => {
-    //     this.timeSlider.value = audio.currentTime;
-    //   }, 500);
-    // };
+  //   // Sync timeSlider position with song current time
+  //   // audio.onplay = () => {
+  //   //   this.currentTimeInterval = setInterval(() => {
+  //   //     this.timeSlider.value = audio.currentTime;
+  //   //   }, 500);
+  //   // };
 
-    // audio.onpause = () => {
-    //   clearInterval(this.currentTimeInterval);
-    // };
+  //   // audio.onpause = () => {
+  //   //   clearInterval(this.currentTimeInterval);
+  //   // };
 
-    // Seek functionality
-    // this.timeSlider.onchange = (e) => {
-    //   clearInterval(this.currentTimeInterval);
-    //   audio.currentTime = e.target.value;
-    // };
+  //   // Seek functionality
+  //   // this.timeSlider.onchange = (e) => {
+  //   //   clearInterval(this.currentTimeInterval);
+  //   //   audio.currentTime = e.target.value;
+  //   // };
 
-    document.getElementById('media-bar').addEventListener('ended', () => {
-      this.handleNext()
-    })
+  //   document.getElementById('media-bar').addEventListener('ended', () => {
+  //     this.handleNext()
+  //   })
+  // }
+
+  componentDidUpdate() {
+    if (this.audioRef.current && !this.audioRef.current.paused) {
+      this.props.play()
+    }
+    if (this.audioRef.current && this.audioRef.current.paused) {
+      this.props.pause()
+    }
   }
 
   componentWillUnmount() {
     this.handlePause()
   }
 
-  handlePlay() {
-    if(!this.props.currentSong) {
-      this.props.receiveCurrentSong(this.props.queue[0])
-      this.props.play()
-      document.getElementById('media-bar').src = this.props.queue[0].songUrl
-      document.getElementById('media-bar').play()
+  // handlePlay() {
+  //   if(!this.props.currentSong) {
+  //     this.props.receiveCurrentSong(this.props.queue[0])
+  //     this.props.play()
+  //     document.getElementById('media-bar').src = this.props.queue[0].songUrl
+  //     document.getElementById('media-bar').play()
 
-      document.getElementById('media-bar').addEventListener('progress', (e) => {
-        this.props.receiveDuration()
-      })
-      document.getElementById('media-bar').addEventListener('timeupdate', (e) => {
-        this.props.receiveCurrentTime()
-      })
-    }
+  //     // document.getElementById('media-bar').addEventListener('progress', (e) => {
+  //     //   this.props.receiveDuration()
+  //     // })
+  //     // document.getElementById('media-bar').addEventListener('timeupdate', (e) => {
+  //     //   this.props.receiveCurrentTime()
+  //     // })
+  //   }
 
-    if (this.props.queue[0] !== this.props.history[this.props.history.length - 1]) {
-      this.props.history.push(this.props.queue[0])
-    }
+  //   if (this.props.queue[0] !== this.props.history[this.props.history.length - 1]) {
+  //     this.props.history.push(this.props.queue[0])
+  //   }
     
-    this.props.play()
-    document.getElementById('media-bar').play()
+  //   this.props.play()
+  //   document.getElementById('media-bar').play()
+  // }
+
+  togglePlay() {
+    if (!this.props.currentSong) {
+      this.props.receiveCurrentSong(this.props.queue[0])
+    }
+    if (this.audioRef.current.paused) {
+      this.props.play()
+      // document.getElementById('media-bar').src = this.props.queue[0].songUrl
+      document.getElementById('media-bar').play()
+      this.audioRef.current.play();
+    } else {
+      this.props.pause()
+      document.getElementById('media-bar').pause()
+      this.audioRef.current.pause();
+    }
   }
 
-  handlePause() {
-    this.props.pause()
-    document.getElementById('media-bar').pause()
-  }
+  // handlePause() {
+  //   this.props.pause()
+  //   document.getElementById('media-bar').pause()
+  // }
 
   handlePrev() {
     if (this.props.history[this.props.history.indexOf(this.props.currentSong) - 1]) {
@@ -144,8 +175,16 @@ class MediaBar extends React.Component {
   }
 
   render() {
-    const icon = this.props.playing 
+    const icon = !this.props.playing 
       ? <div className="play-pause">
+          <svg width="40" height="40" viewBox="0 0 130 130">
+            <g>
+              <circle fill="none" stroke="#b3b3b3" stroke-width="4" cx="64" cy="64" r="62" />
+              <polygon fill="#b3b3b3" points="45,38 90,64 45,90" />
+            </g>
+          </svg>
+        </div>
+      : <div className="play-pause">
           <svg width="40" height="40" viewBox="0 0 130 130">
             <g>
               <circle fill="none" stroke="#b3b3b3" stroke-width="4" cx="64" cy="64" r="62" />
@@ -154,14 +193,7 @@ class MediaBar extends React.Component {
             </g>
           </svg>
         </div>
-      : <div className="play-pause">
-          <svg width="40" height="40" viewBox="0 0 130 130">
-            <g>
-              <circle fill="none" stroke="#b3b3b3" stroke-width="4" cx="64" cy="64" r="62" />
-              <polygon fill="#b3b3b3" points="45,38 90,64 45,90" />
-            </g>
-          </svg>
-        </div>
+        
 
     const shuffle =   <div className="">
                         <svg width="60px" height="20px" viewBox="0 0 150 100">
@@ -273,7 +305,10 @@ class MediaBar extends React.Component {
       volumeIcon = volumeHigh
     }
 
-    
+    // const playButton = 
+    //   this.audioRef.current && !this.audioRef.current.paused
+    //     ? 
+    //     : 
 
     return(
       <footer id="mediabar" className="mediabar">
@@ -285,8 +320,9 @@ class MediaBar extends React.Component {
             <div className="controls-div">
               <button>{shuffle}</button>
               <button onClick={() => this.handlePrev()}>{prev}</button>
-              {this.props.playing === false && (<button onClick={() => this.handlePlay()}>{icon}</button>)}
-              {this.props.playing === true && (<button onClick={() => this.handlePause()}>{icon}</button>)}
+              {/* {this.props.playing === false && (<button onClick={() => this.handlePlay()}>{icon}</button>)} */}
+              {/* {this.props.playing === true && (<button onClick={() => this.handlePause()}>{icon}</button>)} */}
+              <button onClick={() => this.togglePlay()}>{icon}</button>
               <button onClick={() => this.handleNext()}>{next}</button>
               <button>{repeat}</button>
             </div>
@@ -369,6 +405,11 @@ class MediaBar extends React.Component {
                 </button>
               </div>
             </div>
+            <audio 
+              ref={this.audioRef} id="media-bar"
+              autoPlay="true" src={this.state.songSource}
+              controlsList="nodownload">
+            </audio>
               
           </div>
   
