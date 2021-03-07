@@ -68,9 +68,9 @@ class MediaBar extends React.Component {
     }
   }
 
-  componentWillUnmount() {
-    this.handlePause()
-  }
+  // componentWillUnmount() {
+  //   this.handlePause()
+  // }
 
   // handlePlay() {
   //   if(!this.props.currentSong) {
